@@ -148,7 +148,7 @@
             CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
             
             // Pass the frame to the processing delegate
-            [frameProcessingDelegate didReceiveFrameBuffer:imageBuffer];
+            [frameProcessingDelegate didReceiveFrame:imageBuffer];
             
             // Pass the frame to the asset writer
             [pixelBufferAdaptor appendPixelBuffer:imageBuffer withPresentationTime:videoTime];

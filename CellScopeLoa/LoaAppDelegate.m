@@ -41,8 +41,12 @@
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:TestCounterKey];
         
         // Store Default number of fields of view
-        NSInteger fieldsOfView = 5;
+        NSInteger fieldsOfView = 8;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:fieldsOfView] forKey:FieldsOfViewKey];
+        
+        // Store the volume of the capillary
+        float capillaryVolume = .00073;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:capillaryVolume] forKey:CapillaryVolumeKey];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
     }

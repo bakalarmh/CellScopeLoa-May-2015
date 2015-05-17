@@ -44,7 +44,7 @@
                                                     <rect key="frame" x="18" y="10" width="60" height="60"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-rm-TWx">
-                                                    <rect key="frame" x="96" y="31" width="32" height="21"/>
+                                                    <rect key="frame" x="96" y="32" width="191" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                                                     <rect key="frame" x="18" y="10" width="60" height="60"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9r-2H-Msp">
-                                                    <rect key="frame" x="96" y="31" width="36" height="21"/>
+                                                    <rect key="frame" x="96" y="32" width="189" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                                     <rect key="frame" x="18" y="10" width="60" height="60"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Devices" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQc-6r-CZn">
-                                                    <rect key="frame" x="96" y="31" width="61" height="21"/>
+                                                    <rect key="frame" x="96" y="32" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -104,7 +104,7 @@
                                                     <rect key="frame" x="18" y="10" width="60" height="60"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmY-uE-9ye">
-                                                    <rect key="frame" x="96" y="31" width="63" height="21"/>
+                                                    <rect key="frame" x="96" y="32" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -138,11 +138,13 @@
                         <outlet property="MenuTableView" destination="mRd-y6-AW3" id="Enu-ou-jV0"/>
                         <outlet property="ToolbarStatusButton" destination="jtn-kz-QcX" id="sh3-6J-by6"/>
                         <outlet property="connectionStatusItem" destination="jtn-kz-QcX" id="BKZ-Xg-xsi"/>
+                        <outlet property="testButtonIcon" destination="x45-UK-a9F" id="JW3-Bj-ePH"/>
+                        <outlet property="testButtonLabel" destination="Zfw-rm-TWx" id="ZIi-sG-s0j"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NV0-ek-8GV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-334" y="45"/>
+            <point key="canvasLocation" x="-334" y="41"/>
         </scene>
         <!--Settings Password View Controller-->
         <scene sceneID="I7C-iB-Yyw">
@@ -579,8 +581,8 @@
                         <outlet property="patientIDLabel" destination="zJP-jc-2Sq" id="He2-Id-f9R"/>
                         <segue destination="O8Q-Q5-bs4" kind="show" identifier="Capture" id="eOU-FD-DK5"/>
                         <segue destination="G8k-VB-W2V" kind="unwind" identifier="Abort" unwindAction="unwindToMainMenu:" id="ZXz-SF-gVp"/>
-                        <segue destination="QXc-1h-ccv" kind="show" id="v8S-hI-997"/>
-                        <segue destination="idD-HF-9BX" kind="show" id="B6s-2H-4q5"/>
+                        <segue destination="QXc-1h-ccv" kind="show" identifier="ResultsInvalid" id="v8S-hI-997"/>
+                        <segue destination="idD-HF-9BX" kind="show" identifier="ResultsValid" id="B6s-2H-4q5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ee-6u-TMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -653,10 +655,10 @@
             </objects>
             <point key="canvasLocation" x="1577" y="-312"/>
         </scene>
-        <!--View Controller-->
+        <!--Valid Results View Controller-->
         <scene sceneID="MYm-Ey-6af">
             <objects>
-                <viewController id="idD-HF-9BX" sceneMemberID="viewController">
+                <viewController id="idD-HF-9BX" customClass="ValidResultsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fQo-hV-w2R"/>
                         <viewControllerLayoutGuide type="bottom" id="lVJ-Ko-3DK"/>
@@ -684,16 +686,32 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="TaT-YS-X6e"/>
+                        <barButtonItem title="Finished" id="6VS-Fw-84g">
+                            <connections>
+                                <action selector="finishedPressed:" destination="idD-HF-9BX" id="u29-Qa-zEo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="J3z-Wq-xTU"/>
+                    </toolbarItems>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="finishedButtonItem" destination="6VS-Fw-84g" id="TaR-QJ-F7s"/>
+                        <outlet property="mffieldLabel" destination="QdT-1m-m9W" id="0ot-p1-bYR"/>
+                        <outlet property="mfmlLabel" destination="SZH-q7-NDx" id="24N-4u-GU2"/>
+                        <segue destination="vKL-mY-bWp" kind="unwind" identifier="ReturnToMenu" unwindAction="unwindToMainMenuValidTest:" id="40z-xd-OBX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="855-me-8fH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vKL-mY-bWp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1962" y="36"/>
         </scene>
-        <!--View Controller-->
+        <!--Invalid Results View Controller-->
         <scene sceneID="2gh-9C-F2p">
             <objects>
-                <viewController id="QXc-1h-ccv" sceneMemberID="viewController">
+                <viewController id="QXc-1h-ccv" customClass="InvalidResultsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bpf-jw-6gv"/>
                         <viewControllerLayoutGuide type="bottom" id="kKm-1V-i2b"/>
@@ -729,9 +747,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="hZe-We-kUs"/>
+                        <barButtonItem title="Finished" id="qG5-25-IJ9">
+                            <connections>
+                                <action selector="finishedPressed:" destination="QXc-1h-ccv" id="bVd-6E-dbG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jsm-lh-53i"/>
+                    </toolbarItems>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="finishedButtonItem" destination="qG5-25-IJ9" id="8mw-yY-aX0"/>
+                        <segue destination="fRW-xL-dwU" kind="unwind" identifier="ReturnToMenu" unwindAction="unwindToMainMenuInvalidTest:" id="Ydy-PN-TRg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldl-Cq-kOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fRW-xL-dwU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1962" y="751"/>
         </scene>

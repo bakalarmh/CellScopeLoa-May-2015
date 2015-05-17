@@ -18,27 +18,32 @@
 
 @synthesize managedObjectContext;
 @synthesize cslContext;
-@synthesize bleManager;
 
 // UI Objects
 @synthesize MenuTableView;
 @synthesize ToolbarStatusButton;
 @synthesize connectionStatusItem;
+@synthesize testButtonLabel;
+@synthesize testButtonIcon;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // Bluetooth manager lives here
-    bleManager = [[BLEManager alloc] init];
+    BLEManager* bleManager = [[BLEManager alloc] init];
     bleManager.delegate = self;
+    cslContext.bleManager = bleManager;
     
     // Setup UI state of the connected indicator
+    testButtonLabel.alpha = 0.2;
+    testButtonIcon.alpha = 0.2;
     if (bleManager.connected) {
-        connectionStatusItem.title = @"Connected";
+        connectionStatusItem.title = NSLocalizedString(@"Connected",nil);
         connectionStatusItem.tintColor = [UIColor colorWithRed:0.0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
     }
     else {
-        connectionStatusItem.title = @"Disconnected";
+        cslContext.loaDevice = nil;
+        connectionStatusItem.title = NSLocalizedString(@"Disconnected",nil);
         connectionStatusItem.tintColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#00CC00*/
     }
 }
@@ -53,20 +58,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    // Return the number of rows in the section.
-    return 4;
 }
 
 /*
@@ -113,47 +104,97 @@
 }
 */
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // rows in section 0 should not be selectable
+    if (indexPath.row == 0) {
+        if ([cslContext deviceIsConnected]) {
+            return indexPath;
+        }
+        else {
+            return nil;
+        }
+    }
+    // By default, allow row to be selected
+    return indexPath;
+}
+
 #pragma mark - Bluetooth
 
 // Seek devices when the board is powered on
 - (void)bluetoothStateDidChange:(CBCentralManagerState)state
 {
     if (state == CBCentralManagerStatePoweredOn) {
-        [bleManager seekDevices];
+        [cslContext.bleManager seekDevices];
     }
 }
 
 - (void)didUpdateDevices
 {
+    BLEManager* manager = cslContext.bleManager;
     BOOL foundTrusted = NO;
     // Connect to trusted UUID if it is detected
-    NSMutableArray* mDevices = bleManager.mDevices;
+    NSMutableArray* mDevices = manager.mDevices;
     for (int i=0; i< mDevices.count; i++) {
-        if ([[mDevices objectAtIndex:i] isEqualToString:bleManager.lastUUID]) {
-            [bleManager connectWithUUID:bleManager.lastUUID];
+        if ([[mDevices objectAtIndex:i] isEqualToString:manager.lastUUID]) {
+            [manager connectWithUUID:manager.lastUUID];
             foundTrusted = YES;
             break;
         }
     }
     if (!foundTrusted) {
-        connectionStatusItem.title = @"Disconnected";
+        connectionStatusItem.title = NSLocalizedString(@"Disconnected",nil);
         connectionStatusItem.tintColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#00CC00*/
     }
 }
 
 - (void)didConnect
 {
-    connectionStatusItem.title = @"Connected";
+    connectionStatusItem.title = NSLocalizedString(@"Connected",nil);
     connectionStatusItem.tintColor = [UIColor colorWithRed:0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
+    
+    testButtonLabel.alpha = 1.0;
+    testButtonIcon.alpha = 1.0;
+    
+    cslContext.loaDevice = [[BluetoothLoaDevice alloc] initWithBLEManager:cslContext.bleManager];
+    [cslContext.loaDevice LEDOn];
+    [cslContext.loaDevice servoFarPostition];
+    //[cslContext.loaDevice servoLoadPosition];
+    
+    int delay = 3;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (cslContext.loaDevice != nil) {
+            [cslContext.loaDevice LEDOff];
+        }
+    });
 }
 
 - (void)didDisconnect
 {
-    connectionStatusItem.title = @"Disconnected";
+    connectionStatusItem.title = NSLocalizedString(@"Disconnected",nil);
     connectionStatusItem.tintColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#FF0000*/
+    
+    cslContext.loaDevice = nil;
+    
+    testButtonLabel.alpha = 0.2;
+    testButtonIcon.alpha = 0.2;
 }
 
 #pragma mark - Navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"Test"]) {
+        if ([cslContext deviceIsConnected]) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    else {
+        return YES;
+    }
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -165,7 +206,7 @@
     }
     else if([segue.identifier isEqualToString:@"Devices"]) {
         DeviceManagerViewController* vc = (DeviceManagerViewController*)segue.destinationViewController;
-        vc.bleManager = bleManager;
+        vc.bleManager = cslContext.bleManager;
     }
 }
 
@@ -177,11 +218,28 @@
     self.navigationItem.hidesBackButton = YES;
 }
 
+// Unwind segue for return from valid test results
+- (IBAction)unwindToMainMenuValidTest:(UIStoryboardSegue *)unwindSegue
+{
+    // Diable returning to the home screen from this - only for changing ID
+    [self.navigationController.toolbar setHidden:YES];
+    self.navigationItem.hidesBackButton = YES;
+}
+
+// Unwind segue for return from valid test results
+- (IBAction)unwindToMainMenuInvalidTest:(UIStoryboardSegue *)unwindSegue
+{
+    // Diable returning to the home screen from this - only for changing ID
+    [self.navigationController.toolbar setHidden:YES];
+    self.navigationItem.hidesBackButton = YES;
+}
+
 - (IBAction)connectionStatusPressed:(id)sender {
-    if (!bleManager.connected) {
-        connectionStatusItem.title = @"Searching...";
+    BLEManager* manager = cslContext.bleManager;
+    if (!manager.connected) {
+        connectionStatusItem.title = NSLocalizedString(@"Searching",nil);
         connectionStatusItem.tintColor = [UIColor colorWithRed:1.0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
-        [bleManager seekDevices];
+        [manager seekDevices];
     }
 }
 

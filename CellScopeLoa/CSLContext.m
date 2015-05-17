@@ -9,6 +9,7 @@
 #import "CSLContext.h"
 #import "TestRecord.h"
 #import "constants.h"
+#import "BLEManager.h"
 #import <CoreLocation/CoreLocation.h>
 
 @implementation CSLContext
@@ -16,6 +17,9 @@
 @synthesize locationManager;
 @synthesize activeTestRecord;
 @synthesize capillaryIndex;
+@synthesize capillaryProcessingIndex;
+@synthesize bleManager;
+@synthesize loaDevice;
 
 - (id)init
 {
@@ -51,6 +55,16 @@
     
     DestPath = [DestPath stringByAppendingPathComponent:DestFilename];
     return [[NSURL alloc] initFileURLWithPath:DestPath];
+}
+
+- (BOOL)deviceIsConnected
+{
+    if ((bleManager != nil) && ([bleManager connected])){
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 - (CLLocationManager*)locationManager

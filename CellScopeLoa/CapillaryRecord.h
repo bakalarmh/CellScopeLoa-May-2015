@@ -13,11 +13,12 @@
 
 @interface CapillaryRecord : NSManagedObject
 
-@property (nonatomic, retain) NSDate * createdGMT;
-@property (nonatomic, retain) NSDate * createdLocal;
+@property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSString * testUUID;
 @property (nonatomic, retain) NSString * errorString;
 @property (nonatomic, retain) NSNumber * capillaryIndex;
+@property (nonatomic, retain) NSNumber * objectsPerMl;
+@property (nonatomic, retain) NSNumber * objectsPerField;
 @property (nonatomic, retain) NSSet *videos;
 @property (nonatomic, retain) TestRecord *testRecord;
 @end

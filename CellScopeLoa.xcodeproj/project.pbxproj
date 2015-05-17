@@ -10,7 +10,6 @@
 		9B0C922C1B055806008F70E3 /* CapillaryRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C922B1B055806008F70E3 /* CapillaryRecord.m */; };
 		9B0C922F1B055807008F70E3 /* MotionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C922E1B055807008F70E3 /* MotionObject.m */; };
 		9B0C92321B055807008F70E3 /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C92311B055807008F70E3 /* TestRecord.m */; };
-		9B0C92351B055807008F70E3 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C92341B055807008F70E3 /* Video.m */; };
 		9B0C92381B05801B008F70E3 /* FrameBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C92371B05801B008F70E3 /* FrameBuffer.mm */; };
 		9B0C923A1B058031008F70E3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0C92391B058030008F70E3 /* opencv2.framework */; };
 		9B0C923D1B058055008F70E3 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C923C1B058055008F70E3 /* UIImage+OpenCV.mm */; };
@@ -55,6 +54,13 @@
 		9B84185C1B00390F008DBA7B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B84185B1B00390F008DBA7B /* AdSupport.framework */; };
 		9B84186D1B01201E008DBA7B /* SettingsPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B84186C1B01201E008DBA7B /* SettingsPasswordViewController.m */; };
 		9B8418701B01239D008DBA7B /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B84186F1B01239D008DBA7B /* SettingsTableViewController.m */; };
+		9BAFD6D61B068569001DC361 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6D51B068569001DC361 /* Video.m */; };
+		9BAFD6D91B06A489001DC361 /* TestValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6D81B06A489001DC361 /* TestValidation.m */; };
+		9BAFD6DF1B06AB12001DC361 /* ValidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */; };
+		9BAFD6E21B09148F001DC361 /* BluetoothLoaDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */; };
+		9BAFD6E51B0934BF001DC361 /* EnglishDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E71B0934BF001DC361 /* EnglishDefault.strings */; };
+		9BAFD6EA1B09353B001DC361 /* FrenchDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */; };
+		9BAFD6F01B093C0C001DC361 /* InvalidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +80,6 @@
 		9B0C922E1B055807008F70E3 /* MotionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotionObject.m; sourceTree = "<group>"; };
 		9B0C92301B055807008F70E3 /* TestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecord.h; sourceTree = "<group>"; };
 		9B0C92311B055807008F70E3 /* TestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecord.m; sourceTree = "<group>"; };
-		9B0C92331B055807008F70E3 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
-		9B0C92341B055807008F70E3 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		9B0C92361B05801B008F70E3 /* FrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameBuffer.h; path = CellScopeLoa/FrameBuffer.h; sourceTree = "<group>"; };
 		9B0C92371B05801B008F70E3 /* FrameBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FrameBuffer.mm; path = CellScopeLoa/FrameBuffer.mm; sourceTree = "<group>"; };
 		9B0C92391B058030008F70E3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../../Dropbox/Projects/opencv2.framework; sourceTree = "<group>"; };
@@ -150,6 +154,19 @@
 		9B84186C1B01201E008DBA7B /* SettingsPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsPasswordViewController.m; sourceTree = "<group>"; };
 		9B84186E1B01239D008DBA7B /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		9B84186F1B01239D008DBA7B /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		9BAFD6D41B068569001DC361 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		9BAFD6D51B068569001DC361 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		9BAFD6D71B06A489001DC361 /* TestValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestValidation.h; sourceTree = "<group>"; };
+		9BAFD6D81B06A489001DC361 /* TestValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestValidation.m; sourceTree = "<group>"; };
+		9BAFD6DD1B06AB12001DC361 /* ValidResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidResultsViewController.h; path = ../ValidResultsViewController.h; sourceTree = "<group>"; };
+		9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidResultsViewController.m; path = ../ValidResultsViewController.m; sourceTree = "<group>"; };
+		9BAFD6E01B09148F001DC361 /* BluetoothLoaDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothLoaDevice.h; path = CellScopeLoa/BluetoothLoaDevice.h; sourceTree = "<group>"; };
+		9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothLoaDevice.m; path = CellScopeLoa/BluetoothLoaDevice.m; sourceTree = "<group>"; };
+		9BAFD6E61B0934BF001DC361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/EnglishDefault.strings; sourceTree = "<group>"; };
+		9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrenchDefault.strings; sourceTree = "<group>"; };
+		9BAFD6EB1B0935C0001DC361 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EnglishDefault.strings; sourceTree = "<group>"; };
+		9BAFD6EE1B093C0C001DC361 /* InvalidResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidResultsViewController.h; sourceTree = "<group>"; };
+		9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidResultsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +206,8 @@
 		9B3B93AC1AFE7F7F00C391CC = {
 			isa = PBXGroup;
 			children = (
+				9BAFD6E01B09148F001DC361 /* BluetoothLoaDevice.h */,
+				9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */,
 				9B0C92441B05899B008F70E3 /* MotionAnalysis.h */,
 				9B0C92451B05899B008F70E3 /* MotionAnalysis.mm */,
 				9B0C923B1B058055008F70E3 /* UIImage+OpenCV.h */,
@@ -214,6 +233,8 @@
 		9B3B93B71AFE7F7F00C391CC /* CellScopeLoa */ = {
 			isa = PBXGroup;
 			children = (
+				9BAFD6DD1B06AB12001DC361 /* ValidResultsViewController.h */,
+				9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */,
 				9B8418381AFFEFBC008DBA7B /* BLE */,
 				9B84182B1AFEC81F008DBA7B /* Virtual */,
 				9B8418291AFEC6F2008DBA7B /* Protocol */,
@@ -254,6 +275,10 @@
 				9B1326911B03BB7100FB694B /* ExposureISOViewController.m */,
 				9B1326931B03D00600FB694B /* CameraDispatcher.h */,
 				9B1326941B03D00600FB694B /* CameraDispatcher.m */,
+				9BAFD6D71B06A489001DC361 /* TestValidation.h */,
+				9BAFD6D81B06A489001DC361 /* TestValidation.m */,
+				9BAFD6EE1B093C0C001DC361 /* InvalidResultsViewController.h */,
+				9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */,
 			);
 			path = CellScopeLoa;
 			sourceTree = "<group>";
@@ -266,6 +291,8 @@
 				9B8418401AFFF10B008DBA7B /* constants.h */,
 				9B8418411AFFF12D008DBA7B /* constants.m */,
 				9B0C92401B0584F4008F70E3 /* CellScopeLoa-Prefix.pch */,
+				9BAFD6E71B0934BF001DC361 /* EnglishDefault.strings */,
+				9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -315,14 +342,14 @@
 			isa = PBXGroup;
 			children = (
 				9B8418461B0024C4008DBA7B /* Model.xcdatamodeld */,
-				9B0C92331B055807008F70E3 /* Video.h */,
-				9B0C92341B055807008F70E3 /* Video.m */,
 				9B0C92301B055807008F70E3 /* TestRecord.h */,
 				9B0C92311B055807008F70E3 /* TestRecord.m */,
 				9B0C922D1B055807008F70E3 /* MotionObject.h */,
 				9B0C922E1B055807008F70E3 /* MotionObject.m */,
 				9B0C922A1B055806008F70E3 /* CapillaryRecord.h */,
 				9B0C922B1B055806008F70E3 /* CapillaryRecord.m */,
+				9BAFD6D41B068569001DC361 /* Video.h */,
+				9BAFD6D51B068569001DC361 /* Video.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -436,6 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B3B93C71AFE7F7F00C391CC /* Main.storyboard in Resources */,
+				9BAFD6EA1B09353B001DC361 /* FrenchDefault.strings in Resources */,
+				9BAFD6E51B0934BF001DC361 /* EnglishDefault.strings in Resources */,
 				9B3B93CC1AFE7F7F00C391CC /* LaunchScreen.xib in Resources */,
 				9B3B93C91AFE7F7F00C391CC /* Images.xcassets in Resources */,
 			);
@@ -462,13 +491,17 @@
 				9B8418421AFFF12D008DBA7B /* constants.m in Sources */,
 				9B84183C1AFFEFCA008DBA7B /* BLE.m in Sources */,
 				9B3B93BB1AFE7F7F00C391CC /* main.m in Sources */,
+				9BAFD6D91B06A489001DC361 /* TestValidation.m in Sources */,
 				9B0C922C1B055806008F70E3 /* CapillaryRecord.m in Sources */,
 				9B0C92321B055807008F70E3 /* TestRecord.m in Sources */,
 				9B84185A1B0032D9008DBA7B /* CSLContext.m in Sources */,
+				9BAFD6E21B09148F001DC361 /* BluetoothLoaDevice.m in Sources */,
 				9B1326951B03D00600FB694B /* CameraDispatcher.m in Sources */,
 				9B3B940A1AFE980B00C391CC /* ManualIDViewController.m in Sources */,
 				9B8418341AFEC97A008DBA7B /* DeviceTableViewController.m in Sources */,
+				9BAFD6D61B068569001DC361 /* Video.m in Sources */,
 				9B8418701B01239D008DBA7B /* SettingsTableViewController.m in Sources */,
+				9BAFD6F01B093C0C001DC361 /* InvalidResultsViewController.m in Sources */,
 				9B0C922F1B055807008F70E3 /* MotionObject.m in Sources */,
 				9B84182E1AFEC839008DBA7B /* TextBluetoothScanner.m in Sources */,
 				9B3B94101AFEA25900C391CC /* CaptureViewController.m in Sources */,
@@ -479,9 +512,9 @@
 				9B13268F1B03B64800FB694B /* WhiteBalanceViewController.m in Sources */,
 				9B8418371AFFD9D1008DBA7B /* LLCamera.m in Sources */,
 				9B3B94041AFE8B1900C391CC /* BarcodeIDViewController.m in Sources */,
+				9BAFD6DF1B06AB12001DC361 /* ValidResultsViewController.m in Sources */,
 				9B8418451B000D71008DBA7B /* DeviceManagerViewController.m in Sources */,
 				9B84183F1AFFF068008DBA7B /* BLEManager.m in Sources */,
-				9B0C92351B055807008F70E3 /* Video.m in Sources */,
 				9B0C92461B05899B008F70E3 /* MotionAnalysis.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +552,15 @@
 				9B3B93CB1AFE7F7F00C391CC /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		9BAFD6E71B0934BF001DC361 /* EnglishDefault.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BAFD6E61B0934BF001DC361 /* Base */,
+				9BAFD6EB1B0935C0001DC361 /* en */,
+			);
+			name = EnglishDefault.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

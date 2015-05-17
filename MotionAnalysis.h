@@ -11,10 +11,21 @@
 #import <AVFoundation/AVFoundation.h>
 #import "FrameBuffer.h"
 
+@interface MAMotionObjects: NSObject
+
+@property (assign, nonatomic) NSInteger x;
+@property (assign, nonatomic) NSInteger y;
+@property (assign, nonatomic) NSInteger start;
+@property (assign, nonatomic) NSInteger end;
+
+@end
+
 @interface MotionAnalysis : NSObject
 
-- (NSMutableArray*)processFramesForMovie:(FrameBuffer*)frameBuffer;  // Mike D method
+-(id)initWithWidth:(NSInteger)width Height:(NSInteger)height
+            Frames:(NSInteger)frames
+        VideoCount:(NSInteger)maxVideos;
 
-- (void)processFrameBuffer:(FrameBuffer*)frameBuffer withSerial:(NSString*)serial;  // Matt B organizing method
+- (void)processFrameBuffer:(FrameBuffer*)frameBuffer withResourceURL:(NSString*)videoURL;
 
 @end

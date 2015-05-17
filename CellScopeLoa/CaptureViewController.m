@@ -54,6 +54,12 @@
     camera.captureDelegate = self;
     camera.frameProcessingDelegate = self;
     
+    // Turn on the imaging LED and initialize the capillary position
+    if (cslContext.loaDevice != nil) {
+        [cslContext.loaDevice LEDOn];
+        [cslContext.loaDevice servoLoadPosition];
+    }
+    
     NSNumber* manualFocusDefault = [[NSUserDefaults standardUserDefaults] objectForKey:ManualFocusLensPositionKey];
     [camera setFocusLensPosition:manualFocusDefault];
     
@@ -92,6 +98,8 @@
 - (void)launchDataAcquisition
 {
     if (fieldIndex < maxFields) {
+        // Create a new frame buffer to store video frames
+        frameBuffer = [[FrameBuffer alloc] initWithWidth:camera.width Height:camera.height Frames:maxFrames];
         NSURL* assetURL = [cslContext generateUniqueURLWithRecord:cslContext.activeTestRecord];
         [camera captureWithDuration:5.0 URL:assetURL];
         [UIView animateWithDuration:0.3 animations:^{
@@ -100,7 +108,13 @@
     }
     else {
         NSLog(@"Acquisition of %d fields of view complete", (int)maxFields);
-        [delegate didCompleteCapture];
+        [delegate didCompleteCapillaryCapture];
+        
+        // Advance the capillary and delay for sync
+        if (cslContext.loaDevice != nil) {
+            [cslContext.loaDevice servoLoadPosition];
+        }
+        
         // Return to the test view controller
         [[self navigationController] popViewControllerAnimated:YES];
     }
@@ -109,25 +123,33 @@
 - (void)prepareNextDataAcquisition
 {
     fieldIndex += 1;
-    frameBuffer = [[FrameBuffer alloc] initWithWidth:camera.width Height:camera.height Frames:maxFrames];
     frameIndex = 0;
-    NSLog(@"Advance bluetooth stage");
-    NSLog(@"Wait for sync");
-    [self launchDataAcquisition];
+    
+    if (fieldIndex < maxFields) {
+        // Advance the capillary and delay for sync
+        if (cslContext.loaDevice != nil) {
+            [cslContext.loaDevice servoAdvance];
+        }
+    }
+    
+    int delay = 1;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self launchDataAcquisition];
+    });
 }
 
 - (void)captureDidFinishWithURL:(NSURL *)assetURL
 {
     NSLog(@"Capture finished!");
-    [delegate didCaptureVideoWithURL:assetURL];
+    [delegate didCaptureVideoWithURL:assetURL frameBuffer:frameBuffer];
+    // Prepare next acquisition
     [self prepareNextDataAcquisition];
 }
 
-- (void)didReceiveFrameBuffer:(CVBufferRef)buffer
+- (void)didReceiveFrame:(CVBufferRef)frame
 {
-    [frameBuffer writeFrame:buffer atIndex:[NSNumber numberWithLong:frameIndex]];
+    [frameBuffer writeFrame:frame atIndex:[NSNumber numberWithLong:frameIndex]];
     frameIndex += 1;
-    NSLog(@"Wrote frame at %d", (int)(frameIndex)-1);
 }
 
 - (void)didFinishRecordingFrames:(LLCamera*)sender
@@ -171,6 +193,11 @@
 {
     // Stop the capture session
     [camera stopCamera];
+    
+    // Turn off the imaging LED
+    if (cslContext.loaDevice != nil) {
+        [cslContext.loaDevice LEDOff];
+    }
     
     // Store the latest manual focus setting as default
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:focusSlider.value] forKey:ManualFocusLensPositionKey];

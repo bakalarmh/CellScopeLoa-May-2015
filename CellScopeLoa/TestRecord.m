@@ -13,8 +13,8 @@
 @implementation TestRecord
 
 @dynamic boardUUID;
-@dynamic createdGMT;
-@dynamic createdLocalTime;
+@dynamic localTimeZone;
+@dynamic created;
 @dynamic deviceID;
 @dynamic latitude;
 @dynamic longitude;
@@ -27,5 +27,7 @@
 @dynamic testNIHID;
 @dynamic testUUID;
 @dynamic capillaryRecords;
+@dynamic objectsPerMl;
+@dynamic objectsPerField;
 
 @end

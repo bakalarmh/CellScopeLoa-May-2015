@@ -12,8 +12,8 @@
 #import "CaptureCamera.h"
 
 @protocol CaptureViewControllerDelegate
-- (void)didCaptureVideoWithURL:(NSURL*)assetURL;
-- (void)didCompleteCapture;
+- (void)didCaptureVideoWithURL:(NSURL*)assetURL frameBuffer:(FrameBuffer*)buffer;
+- (void)didCompleteCapillaryCapture;
 @end
 
 @interface CaptureViewController : UIViewController <FocusDelegate, CaptureDelegate, FrameProcessingDelegate>

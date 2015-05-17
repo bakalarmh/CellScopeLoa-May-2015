@@ -19,7 +19,7 @@
 @end
 
 @protocol FrameProcessingDelegate
-- (void)didReceiveFrameBuffer:(CVBufferRef)buffer;
+- (void)didReceiveFrame:(CVBufferRef)buffer;
 - (void)didFinishRecordingFrames:(LLCamera*)sender;
 @end
 

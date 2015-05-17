@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "TestRecord.h"
-#import "BLEManager.h"
 #import "CaptureViewController.h"
 #import "CSLContext.h"
 #import <CoreLocation/CoreLocation.h>
@@ -21,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *patientIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cellscopeIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *deviceIDLabel;
-@property (weak, nonatomic) BLEManager* bleManager;
 @property (weak, nonatomic) IBOutlet UILabel *capLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *capLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *actionLabel;

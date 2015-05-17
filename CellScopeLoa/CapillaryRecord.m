@@ -13,11 +13,12 @@
 
 @implementation CapillaryRecord
 
-@dynamic createdGMT;
-@dynamic createdLocal;
+@dynamic created;
 @dynamic testUUID;
 @dynamic errorString;
 @dynamic capillaryIndex;
+@dynamic objectsPerMl;
+@dynamic objectsPerField;
 @dynamic videos;
 @dynamic testRecord;
 

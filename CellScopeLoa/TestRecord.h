@@ -14,11 +14,13 @@
 @interface TestRecord : NSManagedObject
 
 @property (nonatomic, retain) NSString * boardUUID;
-@property (nonatomic, retain) NSDate * createdGMT;
-@property (nonatomic, retain) NSDate * createdLocalTime;
+@property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSString * deviceID;
+@property (nonatomic, retain) NSString * localTimeZone;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * objectsPerMl;
+@property (nonatomic, retain) NSNumber * objectsPerField;
 @property (nonatomic, retain) NSString * patientNIHID;
 @property (nonatomic, retain) NSString * phoneIdentifier;
 @property (nonatomic, retain) NSString * simplePhoneID;
