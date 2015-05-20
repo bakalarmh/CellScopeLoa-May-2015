@@ -134,12 +134,28 @@
         NSLog(@"Servo is at maximum position");
     }
     else {
-        currentPos = currentPos + servoStep;
-        buf[1] = currentPos;
+        buf[1] = testPos;
         NSData *data = [[NSData alloc] initWithBytes:buf length:3];
         [ble write:data];
+        currentPos = testPos;
     }
 }
+
+-(void) servoPartialAdvance:(float)fraction
+{
+    UInt8 buf[3] = {0x03, 0x00, 0x00};
+    int testPos = currentPos + (int)servoStep*fraction;
+    if (testPos > 152) {
+        NSLog(@"Servo is at maximum position");
+    }
+    else {
+        buf[1] = testPos;
+        NSData *data = [[NSData alloc] initWithBytes:buf length:3];
+        [ble write:data];
+        currentPos = testPos;
+    }
+}
+
 
 // When data is comming, this will be called
 -(void) bleDidReceiveData:(unsigned char *)data length:(int)length

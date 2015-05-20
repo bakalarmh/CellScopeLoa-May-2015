@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface InvalidResultsViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *finishedButtonItem;
+
 - (IBAction)finishedPressed:(id)sender;
 
 @end

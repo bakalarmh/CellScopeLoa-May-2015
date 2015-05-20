@@ -61,6 +61,9 @@
 		9BAFD6E51B0934BF001DC361 /* EnglishDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E71B0934BF001DC361 /* EnglishDefault.strings */; };
 		9BAFD6EA1B09353B001DC361 /* FrenchDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */; };
 		9BAFD6F01B093C0C001DC361 /* InvalidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */; };
+		9BAFD6F31B099B82001DC361 /* ParseDataAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6F21B099B82001DC361 /* ParseDataAdaptor.m */; };
+		9BAFD6F61B09A0F4001DC361 /* CloudSyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6F51B09A0F4001DC361 /* CloudSyncViewController.m */; };
+		9BAFD6F91B0C3427001DC361 /* AugmentedMotionScopeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6F81B0C3427001DC361 /* AugmentedMotionScopeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +170,12 @@
 		9BAFD6EB1B0935C0001DC361 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EnglishDefault.strings; sourceTree = "<group>"; };
 		9BAFD6EE1B093C0C001DC361 /* InvalidResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidResultsViewController.h; sourceTree = "<group>"; };
 		9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidResultsViewController.m; sourceTree = "<group>"; };
+		9BAFD6F11B099B82001DC361 /* ParseDataAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseDataAdaptor.h; sourceTree = "<group>"; };
+		9BAFD6F21B099B82001DC361 /* ParseDataAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseDataAdaptor.m; sourceTree = "<group>"; };
+		9BAFD6F41B09A0F4001DC361 /* CloudSyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudSyncViewController.h; sourceTree = "<group>"; };
+		9BAFD6F51B09A0F4001DC361 /* CloudSyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudSyncViewController.m; sourceTree = "<group>"; };
+		9BAFD6F71B0C3427001DC361 /* AugmentedMotionScopeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AugmentedMotionScopeViewController.h; sourceTree = "<group>"; };
+		9BAFD6F81B0C3427001DC361 /* AugmentedMotionScopeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AugmentedMotionScopeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +242,8 @@
 		9B3B93B71AFE7F7F00C391CC /* CellScopeLoa */ = {
 			isa = PBXGroup;
 			children = (
+				9BAFD6F71B0C3427001DC361 /* AugmentedMotionScopeViewController.h */,
+				9BAFD6F81B0C3427001DC361 /* AugmentedMotionScopeViewController.m */,
 				9BAFD6DD1B06AB12001DC361 /* ValidResultsViewController.h */,
 				9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */,
 				9B8418381AFFEFBC008DBA7B /* BLE */,
@@ -279,6 +290,10 @@
 				9BAFD6D81B06A489001DC361 /* TestValidation.m */,
 				9BAFD6EE1B093C0C001DC361 /* InvalidResultsViewController.h */,
 				9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */,
+				9BAFD6F11B099B82001DC361 /* ParseDataAdaptor.h */,
+				9BAFD6F21B099B82001DC361 /* ParseDataAdaptor.m */,
+				9BAFD6F41B09A0F4001DC361 /* CloudSyncViewController.h */,
+				9BAFD6F51B09A0F4001DC361 /* CloudSyncViewController.m */,
 			);
 			path = CellScopeLoa;
 			sourceTree = "<group>";
@@ -489,11 +504,14 @@
 				9B3B940D1AFEA11900C391CC /* TestViewController.m in Sources */,
 				9B1326921B03BB7100FB694B /* ExposureISOViewController.m in Sources */,
 				9B8418421AFFF12D008DBA7B /* constants.m in Sources */,
+				9BAFD6F31B099B82001DC361 /* ParseDataAdaptor.m in Sources */,
 				9B84183C1AFFEFCA008DBA7B /* BLE.m in Sources */,
+				9BAFD6F91B0C3427001DC361 /* AugmentedMotionScopeViewController.m in Sources */,
 				9B3B93BB1AFE7F7F00C391CC /* main.m in Sources */,
 				9BAFD6D91B06A489001DC361 /* TestValidation.m in Sources */,
 				9B0C922C1B055806008F70E3 /* CapillaryRecord.m in Sources */,
 				9B0C92321B055807008F70E3 /* TestRecord.m in Sources */,
+				9BAFD6F61B09A0F4001DC361 /* CloudSyncViewController.m in Sources */,
 				9B84185A1B0032D9008DBA7B /* CSLContext.m in Sources */,
 				9BAFD6E21B09148F001DC361 /* BluetoothLoaDevice.m in Sources */,
 				9B1326951B03D00600FB694B /* CameraDispatcher.m in Sources */,

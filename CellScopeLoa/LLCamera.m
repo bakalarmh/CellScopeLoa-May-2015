@@ -31,6 +31,7 @@
 @synthesize focusDelegate;
 @synthesize captureDelegate;
 @synthesize frameProcessingDelegate;
+@synthesize cgProcessingDelegate;
 @synthesize session;
 @synthesize width;
 @synthesize height;
@@ -99,6 +100,11 @@
     return self;
 }
 
+- (void)startSendingFrames
+{
+    writingFrames = YES;
+}
+
 - (void)captureWithDuration:(Float32)duration URL:(NSURL*)assetURL {
     
     captureDuration = duration;
@@ -139,21 +145,31 @@
        fromConnection:(AVCaptureConnection *)connection
 {
     // Are we recording frames right now?
-    if(writingFrames && assetWriterInput.readyForMoreMediaData) {
-        // Has the correct number of frames been captured?
-        if ((videoTime.value/(float)frameRate) >= captureDuration) {
-            // Pass
+    if(writingFrames) {
+        if (assetWriterInput.readyForMoreMediaData) {
+            // Has the correct number of frames been captured?
+            if ((videoTime.value/(float)frameRate) >= captureDuration) {
+                // Pass
+            }
+            else {
+                if (frameProcessingDelegate != nil) {
+                    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+                    
+                    // Pass the frame to the processing delegate
+                    [frameProcessingDelegate didReceiveFrame:imageBuffer];
+                    
+                    // Pass the frame to the asset writer
+                    [pixelBufferAdaptor appendPixelBuffer:imageBuffer withPresentationTime:videoTime];
+                    videoTime.value += 1;
+                }
+            }
         }
-        else {
-            CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-            
-            // Pass the frame to the processing delegate
-            [frameProcessingDelegate didReceiveFrame:imageBuffer];
-            
-            // Pass the frame to the asset writer
-            [pixelBufferAdaptor appendPixelBuffer:imageBuffer withPresentationTime:videoTime];
-            videoTime.value += 1;
+        else if (cgProcessingDelegate != nil) {
+            CGImageRef cgImageRef = [self imageFromSampleBuffer:sampleBuffer];
+            [cgProcessingDelegate didReceiveFrame:cgImageRef];
         }
+        
+    
     }
 }
 
@@ -172,6 +188,29 @@
         // Signal the delegate that recording is complete
         [recordingDelegate captureOutput:nil didFinishRecordingToOutputFileAtURL:outputURL fromConnections:nil error:nil];
     }];
+}
+
+// Create a CGImageRef from sample buffer data
+- (CGImageRef)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
+{
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress(imageBuffer,0);        // Lock the image buffer
+    
+    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0);   // Get information of the image
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef newContext = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    CGImageRef newImage = CGBitmapContextCreateImage(newContext);
+    CGContextRelease(newContext);
+    
+    CGColorSpaceRelease(colorSpace);
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    /* CVBufferRelease(imageBuffer); */  // do not call this!
+    
+    return newImage;
 }
 
 - (void)startCamera
@@ -274,6 +313,37 @@
     float value = (max-min)*iso + min;
     [device lockForConfiguration:nil];
     [device setExposureModeCustomWithDuration:device.exposureDuration ISO:value completionHandler:nil];
+    [device unlockForConfiguration];
+}
+
+- (void)setMinimumExposure
+{
+    // CMTime exposure = device.activeFormat.minExposureDuration;
+    CMTime exposure = CMTimeMake(1, 256);
+    float iso = device.activeFormat.minISO;
+    [device lockForConfiguration:nil];
+    [device setExposureModeCustomWithDuration:exposure ISO:iso completionHandler:nil];
+    [device unlockForConfiguration];
+}
+
+- (void)setExposure:(CMTime)exposure ISO:(float)iso
+{
+    [device lockForConfiguration:nil];
+    [device setExposureModeCustomWithDuration:exposure ISO:iso completionHandler:nil];
+    [device unlockForConfiguration];
+}
+
+- (void)setExposureMinISO:(CMTime)exposure
+{
+    [device lockForConfiguration:nil];
+    [device setExposureModeCustomWithDuration:exposure ISO:device.activeFormat.minISO completionHandler:nil];
+    [device unlockForConfiguration];
+}
+
+- (void)setAutoExposure
+{
+    [device lockForConfiguration:nil];
+    [device setExposureMode:AVCaptureExposureModeAutoExpose];
     [device unlockForConfiguration];
 }
 

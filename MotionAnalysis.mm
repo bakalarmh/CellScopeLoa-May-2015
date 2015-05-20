@@ -135,8 +135,8 @@
     cv::Scalar sumLast;
     cv::Scalar sumLast2;
     cv::Scalar sumLast3;
-    double flickerLow=.995;
-    double flickerHigh=1.005;
+    double flickerLow=.8;
+    double flickerHigh=1.2;
     while(frameIdx < ((frameBuffer.numFrames.integerValue))) {
         int bufferIdx = frameIdx;
         movieFrameMat = [frameBuffer getFrameAtIndex:bufferIdx];
@@ -183,10 +183,9 @@
         frameIdx++;
     }
     if (flickerOverall <10) {
-        // NSLog(@"Lighting error is not enabled!");
-        
-        [resultsDict setObject:@"LightingError" forKey:@"ErrorString"];
-        return;
+        NSLog(@"Lighting error is not enabled!");
+        //[resultsDict setObject:@"LightingError" forKey:@"ErrorString"];
+        //return;
         
     }
     double aveSum=sumSum/frameIdx;
@@ -280,8 +279,9 @@
     cv::erode( flowAngThresh, flowAngThresh, element0 );
     cv::Scalar flowAngThreshS=cv::sum(flowAngThresh);
     if (flowAngThreshS[0] > 10000) {
-        [resultsDict setObject:@"MotionError" forKey:@"ErrorString"];
-        return;
+        // Motion error is disabled
+        // [resultsDict setObject:@"MotionError" forKey:@"ErrorString"];
+        // return;
     }
     
     i = 0;

@@ -18,6 +18,7 @@
 @synthesize cameraPreviewView;
 @synthesize lockBarButtonItem;
 @synthesize camera;
+@synthesize cslContext;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,6 +28,11 @@
     [camera setPreviewLayer:cameraPreviewView.layer];
     [camera startCamera];
     
+    // Turn on the imaging LED
+    if (cslContext.loaDevice != nil) {
+        [cslContext.loaDevice LEDOn];
+    }
+    
     [camera setContinuousWhiteBalanceState];
 }
 
@@ -35,6 +41,11 @@
     // Stop the capture session
     [camera stopCamera];
     camera = nil;
+    
+    // Turn off the imaging LED
+    if (cslContext.loaDevice != nil) {
+        [cslContext.loaDevice LEDOff];
+    }
     
     // Store the latest manual focus setting as default
     AVCaptureWhiteBalanceGains gains = [camera getCurrentWhiteBalanceGains];

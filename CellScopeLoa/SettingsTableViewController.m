@@ -7,6 +7,8 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "ExposureISOViewController.h"
+#import "WhiteBalanceViewController.h"
 #import "constants.h"
 
 @interface SettingsTableViewController ()
@@ -15,6 +17,7 @@
 
 @implementation SettingsTableViewController
 
+@synthesize cslContext;
 @synthesize phoneIDField;
 @synthesize deviceIDField;
 
@@ -33,15 +36,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"ExposureISO"]) {
+        ExposureISOViewController* vc = (ExposureISOViewController*)segue.destinationViewController;
+        vc.cslContext = cslContext;
+    }
+    else if([segue.identifier isEqualToString:@"WhiteBalance"]) {
+        WhiteBalanceViewController* vc = (WhiteBalanceViewController*)segue.destinationViewController;
+        vc.cslContext = cslContext;
+    }
 }
-*/
 
 - (BOOL)textFieldShouldReturn: (UITextField *) textField {
     [textField resignFirstResponder];

@@ -40,6 +40,12 @@
         // Store a counter - global test count for this device
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:TestCounterKey];
         
+        // Lock the relative exposure and ISO to a set value
+        // CMTime exposure = CMTimeMake(1, 256);
+        // NSValue *exposureValue = [NSValue valueWithBytes:&exposure objCType:@encode(CMTime)];
+        // [[NSUserDefaults standardUserDefaults] setObject:exposureValue forKey:ExposureKey];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:0] forKey:ISOKey];
+        
         // Store Default number of fields of view
         NSInteger fieldsOfView = 8;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:fieldsOfView] forKey:FieldsOfViewKey];

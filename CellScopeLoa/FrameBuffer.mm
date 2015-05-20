@@ -58,7 +58,7 @@
     return array;
 }
 
-- (void) releaseFrameBuffers
+- (void)releaseFrameBuffers
 {
     for(int i=0; i<[numFrames intValue]; i++){
         buffer->at(i).release();

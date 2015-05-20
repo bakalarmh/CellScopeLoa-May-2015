@@ -19,6 +19,7 @@
 
 -(BOOL) connected;-(void) connectBLE;
 -(void) servoReturn;
+-(void) servoPartialAdvance:(float)fraction;
 -(void) servoAdvance;
 -(void) servoLoadPosition;
 - (void)servoFarPostition;

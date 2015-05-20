@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSLContext.h"
 
 @interface SettingsPasswordViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) CSLContext* cslContext;
 
 @property (weak, nonatomic) IBOutlet UITextField *PasswordField;
 

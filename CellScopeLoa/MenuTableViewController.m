@@ -9,6 +9,8 @@
 #import "MenuTableViewController.h"
 #import "DeviceManagerViewController.h"
 #import "BarcodeIDViewController.h"
+#import "SettingsPasswordViewController.h"
+#import "CloudSyncViewController.h"
 
 @interface MenuTableViewController ()
 
@@ -157,8 +159,7 @@
     
     cslContext.loaDevice = [[BluetoothLoaDevice alloc] initWithBLEManager:cslContext.bleManager];
     [cslContext.loaDevice LEDOn];
-    [cslContext.loaDevice servoFarPostition];
-    //[cslContext.loaDevice servoLoadPosition];
+    [cslContext.loaDevice servoLoadPosition];
     
     int delay = 3;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
@@ -204,9 +205,18 @@
         vc.cslContext = cslContext;
         vc.recaptureID = NO;
     }
+    else if([segue.identifier isEqualToString:@"Settings"]) {
+        SettingsPasswordViewController* vc = (SettingsPasswordViewController*)segue.destinationViewController;
+        vc.cslContext = cslContext;
+    }
     else if([segue.identifier isEqualToString:@"Devices"]) {
         DeviceManagerViewController* vc = (DeviceManagerViewController*)segue.destinationViewController;
         vc.bleManager = cslContext.bleManager;
+    }
+    else if([segue.identifier isEqualToString:@"CloudSync"]) {
+        CloudSyncViewController* vc = (CloudSyncViewController*)segue.destinationViewController;
+        vc.cslContext = cslContext;
+        vc.managedObjectContext = managedObjectContext;
     }
 }
 

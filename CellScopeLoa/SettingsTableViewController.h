@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSLContext.h"
 
 @interface SettingsTableViewController : UITableViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) CSLContext* cslContext;
 @property (weak, nonatomic) IBOutlet UITextField *phoneIDField;
 @property (weak, nonatomic) IBOutlet UITextField *deviceIDField;
 

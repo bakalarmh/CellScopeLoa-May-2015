@@ -21,6 +21,7 @@
 
 @synthesize cameraPreviewView;
 @synthesize exposureTextField;
+@synthesize cslContext;
 @synthesize ISOTextField;
 @synthesize camera;
 @synthesize isoSlider;
@@ -30,22 +31,26 @@
     [super viewDidLoad];
     
     // ISO and exposure scaling factor for the sliders
-    scaleFactor = 0.1;
     
     // Set up the camera
     camera = [[LLCamera alloc] init];
     [camera setPreviewLayer:cameraPreviewView.layer];
     [camera startCamera];
     
+    // Turn on the imaging LED
+    if (cslContext.loaDevice != nil) {
+        [cslContext.loaDevice LEDOn];
+    }
+    
     exposure = [[[NSUserDefaults standardUserDefaults] objectForKey:ExposureKey] floatValue];
     iso = [[[NSUserDefaults standardUserDefaults] objectForKey:ISOKey] floatValue];
     
     [camera setRelativeExposure:exposure];
-    exposureSlider.value = exposure/scaleFactor;
+    exposureSlider.value = exposure;
     exposureTextField.text = [NSString stringWithFormat:@"%f",exposure];
 
     [camera setRelativeISO:iso];
-    isoSlider.value = iso/scaleFactor;
+    isoSlider.value = iso;
     ISOTextField.text = [NSString stringWithFormat:@"%f",iso];
 }
 
@@ -54,6 +59,11 @@
     // Stop the capture session
     [camera stopCamera];
     camera = nil;
+    
+    // Turn off the imaging LED
+    if (cslContext.loaDevice != nil) {
+        [cslContext.loaDevice LEDOff];
+    }
     
     // Store the latest manual focus setting as default
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:exposure] forKey:ExposureKey];
@@ -78,13 +88,13 @@
 */
 
 - (IBAction)exposureSliderChanged:(id)sender {
-    exposure = [(UISlider*)sender value] * scaleFactor;
+    exposure = [(UISlider*)sender value];
     exposureTextField.text = [NSString stringWithFormat:@"%f",exposure];
     [camera setRelativeExposure:exposure];
 }
 
 - (IBAction)ISOSliderChanged:(id)sender {
-    iso = [(UISlider*)sender value] * scaleFactor;
+    iso = [(UISlider*)sender value];
     ISOTextField.text = [NSString stringWithFormat:@"%.2f",iso];
     [camera setRelativeISO:iso];
 }

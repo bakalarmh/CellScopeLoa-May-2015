@@ -95,6 +95,26 @@
                                             <segue destination="715-II-Utr" kind="show" identifier="Devices" id="eLx-Bo-obD"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="32s-d8-7Hy">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="32s-d8-7Hy" id="o21-dK-hCV">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="upload-cloud" translatesAutoresizingMaskIntoConstraints="NO" id="8oO-0N-dJ2">
+                                                    <rect key="frame" x="18" y="10" width="60" height="60"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cloud Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2Z-Vp-FNe">
+                                                    <rect key="frame" x="96" y="32" width="200" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Fpz-hQ-kX5" kind="show" identifier="CloudSync" id="JIx-kl-jcR"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="5Tu-9H-Mtb">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Tu-9H-Mtb" id="g3R-Le-uNe">
@@ -112,7 +132,27 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="xbZ-vT-jll" kind="show" id="pt9-JD-9zR"/>
+                                            <segue destination="xbZ-vT-jll" kind="show" identifier="Settings" id="pt9-JD-9zR"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="e3g-0Z-wdP">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e3g-0Z-wdP" id="fxm-H5-VoT">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="upload-cloud" translatesAutoresizingMaskIntoConstraints="NO" id="fZU-7h-xcb">
+                                                    <rect key="frame" x="18" y="10" width="60" height="60"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Augmented Microscope" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyd-af-qvN">
+                                                    <rect key="frame" x="96" y="32" width="200" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vcS-yp-V2n" kind="show" identifier="AugmentedMicroscope" id="RF9-sa-6Oe"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -145,6 +185,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NV0-ek-8GV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-334" y="41"/>
+        </scene>
+        <!--Cloud Sync View Controller-->
+        <scene sceneID="kki-pr-YC0">
+            <objects>
+                <viewController id="Fpz-hQ-kX5" customClass="CloudSyncViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bwg-5Q-txi"/>
+                        <viewControllerLayoutGuide type="bottom" id="yvG-Uo-mhE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8yM-cR-Jtf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYd-8t-KxM">
+                                <rect key="frame" x="128" y="269" width="65" height="30"/>
+                                <state key="normal" title="Sync">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="syncButtonPressed:" destination="Fpz-hQ-kX5" eventType="touchUpInside" id="egd-hc-ixi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Data report will go here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFI-Is-ZLP">
+                                <rect key="frame" x="71" y="307" width="179" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="dataReportLabel" destination="jFI-Is-ZLP" id="iO0-Db-laf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WUG-9g-PrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-758" y="757"/>
+        </scene>
+        <!--Augmented Motion Scope View Controller-->
+        <scene sceneID="X6z-h1-Ytt">
+            <objects>
+                <viewController id="vcS-yp-V2n" customClass="AugmentedMotionScopeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nat-JD-4Kf"/>
+                        <viewControllerLayoutGuide type="bottom" id="pJS-Al-3Af"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W6m-1L-vfG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZp-p6-vGp">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="augmentedImageView" destination="bZp-p6-vGp" id="KBK-B2-GBq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uy4-NE-EFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-803" y="2175"/>
         </scene>
         <!--Settings Password View Controller-->
         <scene sceneID="I7C-iB-Yyw">
@@ -281,8 +387,6 @@
                     <connections>
                         <outlet property="deviceIDField" destination="RhK-Oy-Yhc" id="DXX-Ic-MFI"/>
                         <outlet property="phoneIDField" destination="jh6-hg-slC" id="OUk-nP-t5H"/>
-                        <segue destination="fVB-5k-ps8" kind="show" identifier="WhiteBalance" id="SYd-qP-v1l"/>
-                        <segue destination="RC5-ec-V2Y" kind="show" identifier="ExposureISO" id="DCk-Ji-8Qp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9P-xq-vIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -981,6 +1085,7 @@
         <image name="diabetes-icon" width="314" height="318"/>
         <image name="icon_clipboard" width="170" height="200"/>
         <image name="testbar" width="300" height="50"/>
+        <image name="upload-cloud" width="4339" height="3042"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ssu-Lk-28a"/>

@@ -57,18 +57,24 @@
     // Turn on the imaging LED and initialize the capillary position
     if (cslContext.loaDevice != nil) {
         [cslContext.loaDevice LEDOn];
-        [cslContext.loaDevice servoLoadPosition];
     }
     
     NSNumber* manualFocusDefault = [[NSUserDefaults standardUserDefaults] objectForKey:ManualFocusLensPositionKey];
     [camera setFocusLensPosition:manualFocusDefault];
     
-    // Set the camera exposure and white balance to default values
-    float exposure = [[[NSUserDefaults standardUserDefaults] objectForKey:ExposureKey] floatValue];
-    float iso = [[[NSUserDefaults standardUserDefaults] objectForKey:ISOKey] floatValue];
+    // Set the exposure and iso
+    // NSValue* exposureValue = [[NSUserDefaults standardUserDefaults] objectForKey:ExposureKey];
+    // NSNumber* isoValue = [[NSUserDefaults standardUserDefaults] objectForKey:ISOKey];
+
+    // Hard coded exposure and iso. I am not happy with this.
+    CMTime exposure = CMTimeMake(1, 256);
+    [camera setExposureMinISO:exposure];
     
-    [camera setRelativeExposure:exposure];
-    [camera setRelativeISO:iso];
+    // Launch the self test
+    if (cslContext.capillaryIndex.intValue == 0) {
+        [self precaptureDeviceTest];
+        cameraButton.enabled = NO;
+    }
     
     // Set up UI
     CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI_2);
@@ -118,6 +124,25 @@
         // Return to the test view controller
         [[self navigationController] popViewControllerAnimated:YES];
     }
+}
+
+- (void)precaptureDeviceTest
+{
+    // Test Servo motion
+    if (cslContext.loaDevice != nil) {
+        [cslContext.loaDevice servoPartialAdvance:0.5];
+    }
+    int msdelay = 500;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
+        // Test Servo motion
+        if (cslContext.loaDevice != nil) {
+            [cslContext.loaDevice servoLoadPosition];
+        }
+        int msdelay = 1500;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
+            cameraButton.enabled = YES;
+        });
+    });
 }
 
 - (void)prepareNextDataAcquisition
