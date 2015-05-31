@@ -340,10 +340,10 @@
     [device unlockForConfiguration];
 }
 
-- (void)setAutoExposure
+- (void)setAutoExposureContinuous
 {
     [device lockForConfiguration:nil];
-    [device setExposureMode:AVCaptureExposureModeAutoExpose];
+    [device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
     [device unlockForConfiguration];
 }
 

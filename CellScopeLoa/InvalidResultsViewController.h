@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSLContext.h"
 
 @interface InvalidResultsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *finishedButtonItem;
+@property (weak, nonatomic) CSLContext* cslContext;
 
 - (IBAction)finishedPressed:(id)sender;
 

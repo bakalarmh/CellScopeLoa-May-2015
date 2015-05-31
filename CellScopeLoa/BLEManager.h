@@ -14,6 +14,7 @@
 - (void)didUpdateDevices;
 - (void)didConnect;
 - (void)didDisconnect;
+- (void)bleDidReceiveData:(NSMutableArray*)packets;
 @end
 
 @interface BLEManager : NSObject <BLEDelegate>
@@ -30,6 +31,7 @@ extern int const BluetoothPowered;
 @property (weak, nonatomic) id<BLEManagerDelegate> delegate;
 
 - (void)seekDevices;
+- (void)identifyDevice;
 - (void)connectionTimer:(NSTimer *)timer;
 - (void)storeDefaultUUID:(NSString*)newUUID;
 - (void)connectWithUUID:(NSString*)UUID;

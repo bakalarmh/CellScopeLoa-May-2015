@@ -9,21 +9,40 @@
 #import "CloudSyncViewController.h"
 #import "TestRecord.h"
 #import "ParseDataAdaptor.h"
+#import "Video.h"
 
 @interface CloudSyncViewController ()
 
 @end
 
-@implementation CloudSyncViewController
+@implementation CloudSyncViewController {
+    int testRecordCount;
+    int testRecordSyncCount;
+    int capillaryRecordCount;
+    int capillaryRecordSyncCount;
+    int videoCount;
+    int videoSyncCount;
+    
+    int counter;
+    int target;
+}
 
 @synthesize managedObjectContext;
 @synthesize cslContext;
 
 @synthesize dataReportLabel;
+@synthesize testRecordsLabel;
+@synthesize capillaryRecordsLabel;
+@synthesize videosLabel;
+@synthesize videosProgressView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    videosProgressView.alpha = 0.0;
+    [self performDataCensus];
+    [self updateSyncReport];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,17 +50,79 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)updateSyncReport
+{
+    testRecordsLabel.text = [NSString stringWithFormat:@"%d/%d", testRecordSyncCount, testRecordCount];
+    capillaryRecordsLabel.text = [NSString stringWithFormat:@"%d/%d", capillaryRecordSyncCount, capillaryRecordCount];
+    videosLabel.text = [NSString stringWithFormat:@"%d/%d", videoSyncCount, videoCount];
 }
-*/
+
+- (void)performDataCensus
+{
+    // Sync test records
+    NSError *error;
+    
+    NSString *sortKey = @"created";
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:NO];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    // Query all TestRecords from CoreData
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TestRecord"
+                                              inManagedObjectContext:managedObjectContext];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    testRecordCount = (int)fetchedObjects.count;
+    testRecordSyncCount = 0;
+    for (TestRecord* record in fetchedObjects) {
+        if (record.parseID != nil) {
+            testRecordSyncCount += 1;
+        }
+    }
+    
+    // Query capillary records
+    sortKey = @"created";
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:NO];
+    fetchRequest = [[NSFetchRequest alloc] init];
+    
+    // Query all TestRecords from CoreData
+    entity = [NSEntityDescription entityForName:@"CapillaryRecord"
+                         inManagedObjectContext:managedObjectContext];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [fetchRequest setEntity:entity];
+    fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    capillaryRecordCount = (int)fetchedObjects.count;
+    capillaryRecordSyncCount = 0;
+    // Store the basic data for each capillary record
+    for (CapillaryRecord* record in fetchedObjects) {
+        if (record.parseID != nil) {
+            capillaryRecordSyncCount += 1;
+        }
+    }
+    
+    videoCount = 0;
+    videoSyncCount = 0;
+    // Store the videos for each capillary record
+    for (CapillaryRecord* record in fetchedObjects) {
+        videoCount += (int)record.videos.count;
+        for (Video* video in record.videos) {
+            if (video.parseID != nil) {
+                videoSyncCount += 1;
+            }
+        }
+    }
+}
 
 - (IBAction)syncButtonPressed:(id)sender {
+    
+    videosProgressView.progress = 0.0;
+    [UIView animateWithDuration:0.3 animations:^{
+        videosProgressView.alpha = 1.0;
+    }];
+    
+    // Sync test records
     NSError *error;
     
     NSString *sortKey = @"created";
@@ -56,11 +137,76 @@
     NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
     for (TestRecord* record in fetchedObjects) {
-        NSLog(@"Record: %@", record.simpleTestID);
-        [ParseDataAdaptor syncTestRecord:record WithBlock:^(BOOL succeeded, NSError *error) {
+        if (record.parseID == nil) {
+            [ParseDataAdaptor syncTestRecord:record WithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+                        // Save record back in managed object context
+                        [managedObjectContext save:nil];
+                        testRecordSyncCount += 1;
+                        [self updateSyncReport];
+                    }];
+                }
+                else {
+                    NSLog(@"Parse error: %@", error.description);
+                }
+            }];
+        }
+    }
+    
+    // Sync capillary records
+    sortKey = @"created";
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:NO];
+    fetchRequest = [[NSFetchRequest alloc] init];
+    
+    // Query all TestRecords from CoreData
+    entity = [NSEntityDescription entityForName:@"CapillaryRecord"
+                                              inManagedObjectContext:managedObjectContext];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [fetchRequest setEntity:entity];
+    fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    // Store the basic data for each capillary record
+    for (CapillaryRecord* record in fetchedObjects) {
+        if (record.parseID == nil) {
+            [ParseDataAdaptor syncCapillaryRecord:record WithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+                        // Save record back in managed object context
+                        [managedObjectContext save:nil];
+                        capillaryRecordSyncCount += 1;
+                        [self updateSyncReport];
+                    }];
+                }
+                else {
+                    NSLog(@"Parse error: %@", error.description);
+                }
+            }];
+        }
+    }
+    
+    // Store the videos for each capillary record
+    for (CapillaryRecord* record in fetchedObjects) {
+        counter = 0;
+        target = videoCount-videoSyncCount;
+        [ParseDataAdaptor syncVideosForCapillaryRecord:record withBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
+                counter += 1;
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
-                    dataReportLabel.text = @"All data synced";
+                    
+                    // Save record back in managed object context
+                    [managedObjectContext save:nil];
+                    videoSyncCount += 1;
+                    [self updateSyncReport];
+                    
+                    // Update the video upload progress bar
+                    videosProgressView.progress = (float)(videoCount-videoSyncCount)/counter;
+                    if (videosProgressView.progress == 1.0) {
+                        [UIView animateWithDuration:0.3 animations:^{
+                            videosProgressView.alpha = 0.0;
+                        }];
+                    }
+                    
                 }];
             }
             else {
@@ -68,6 +214,7 @@
             }
         }];
     }
+
 }
 
 

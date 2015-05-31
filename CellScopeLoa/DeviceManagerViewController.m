@@ -22,12 +22,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [bleManager seekDevices];
+    // Listen for connection events
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(bleDidConnect:)
+                                                 name:@"bleDidConnect" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(bleDidDisconnect:)
+                                                 name:@"bleDidDisconnect" object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (!bleManager.connected) {
+        [bleManager seekDevices];
+    }
     
     // Set up UI elements
     deviceLabel.text = bleManager.lastUUID;
@@ -39,6 +50,29 @@
         statusLabel.text = @"Disconnected";
         statusLabel.textColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#00CC00*/
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        if (bleManager.connected) {
+            [bleManager identifyDevice];
+        }
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    }
+}
+
+
+- (void)bleDidConnect:(NSNotification*)notification
+{
+    statusLabel.text = @"Connected";
+    statusLabel.textColor = [UIColor colorWithRed:0.0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
+}
+
+- (void)bleDidDisconnect:(NSNotification*)notification
+{
+    statusLabel.text = @"Disconnected";
+    statusLabel.textColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#00CC00*/
 }
 
 - (void)didReceiveMemoryWarning {

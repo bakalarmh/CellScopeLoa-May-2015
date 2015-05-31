@@ -20,6 +20,7 @@
 
 @synthesize cslContext;
 @synthesize augmentedImageView;
+@synthesize focusSlider;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,18 +43,23 @@
     // Set up the UI
     augmentedImageView.contentMode = UIViewContentModeScaleAspectFill;
     
+    CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI_2);
+    focusSlider.transform = trans;
+    focusSlider.enabled = YES;
+    focusSlider.alpha = 1.0;
+    
     NSNumber* manualFocusDefault = [[NSUserDefaults standardUserDefaults] objectForKey:ManualFocusLensPositionKey];
     [camera setFocusLensPosition:manualFocusDefault];
-    
+    camera.focusDelegate = self;
+
     // Set the exposure and iso
     // NSValue* exposureValue = [[NSUserDefaults standardUserDefaults] objectForKey:ExposureKey];
     // NSNumber* isoValue = [[NSUserDefaults standardUserDefaults] objectForKey:ISOKey];
     
     // Hard coded exposure and iso. I am not happy with this.
-    [camera setAutoExposure];
-    
+    [camera setAutoExposureContinuous];    
     [camera startSendingFrames];
-    
+
 }
 
 - (void)didReceiveFrame:(CGImageRef)imageRef
@@ -94,9 +100,33 @@
     backgroundImage = grayscaleImage;
 }
 
+- (IBAction)focusSliderValueChanged:(id)sender {
+    [camera setFocusLensPosition:[NSNumber numberWithFloat:focusSlider.value]];
+}
+
+- (void)focusDidChange:(NSNumber*)focusLensPosition
+{
+    focusSlider.value = focusLensPosition.floatValue;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Stop the capture session
+    [camera stopCamera];
+    
+    // Turn off the imaging LED
+    if (cslContext.loaDevice != nil) {
+        [cslContext.loaDevice LEDOff];
+    }
+    
+    // Store the latest manual focus setting as default
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:focusSlider.value] forKey:ManualFocusLensPositionKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 /*

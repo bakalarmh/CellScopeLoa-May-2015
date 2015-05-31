@@ -104,16 +104,40 @@ int const BluetoothPowered = 5;
     [delegate didConnect];
 }
 
+// Universal command for board to flash an indentifying sequence
+- (void)identifyDevice
+{
+    // Turn on the main LED
+    UInt8 buf[3] = {0x05, 0x00, 0x00};
+    NSData *data = [[NSData alloc] initWithBytes:buf length:3];
+    [ble write:data];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (ble.isConnected) {
+            // Turn off the main LED
+            UInt8 buf[3] = {0x06, 0x00, 0x00};
+            NSData *data = [[NSData alloc] initWithBytes:buf length:3];
+            [ble write:data];
+        }
+    });
+}
+
+// When data is coming, this will be called
+- (void)bleDidReceiveData:(unsigned char *)data length:(int)length
+{
+    NSMutableArray* packets = [[NSMutableArray alloc] init];
+    // parse data, all commands are in 3-byte
+    for (int i = 0; i < length; i+=3)
+    {
+        [packets addObject:[NSData dataWithBytes:(void*)(data+i) length:3]];
+    }
+    [delegate bleDidReceiveData:packets];
+}
+
 - (void)bleDidDisconnect
 {
     NSLog(@"->DidDisconnect");
     connected = NO;
     [delegate didDisconnect];
-}
-
-- (void)bleDidReceiveData:(unsigned char *)data length:(int)length
-{
-    // Pass
 }
 
 - (void)bleDidUpdateRSSI:(NSNumber *) rssi

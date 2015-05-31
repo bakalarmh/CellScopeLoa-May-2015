@@ -13,6 +13,7 @@
 
 @interface TestRecord : NSManagedObject
 
+@property (nonatomic, retain) NSString * parseID;
 @property (nonatomic, retain) NSString * boardUUID;
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSString * deviceID;

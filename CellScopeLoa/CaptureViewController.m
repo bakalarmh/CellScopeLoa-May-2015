@@ -71,10 +71,7 @@
     [camera setExposureMinISO:exposure];
     
     // Launch the self test
-    if (cslContext.capillaryIndex.intValue == 0) {
-        [self precaptureDeviceTest];
-        cameraButton.enabled = NO;
-    }
+    cameraButton.enabled = YES;
     
     // Set up UI
     CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI_2);
@@ -128,21 +125,7 @@
 
 - (void)precaptureDeviceTest
 {
-    // Test Servo motion
-    if (cslContext.loaDevice != nil) {
-        [cslContext.loaDevice servoPartialAdvance:0.5];
-    }
-    int msdelay = 500;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
-        // Test Servo motion
-        if (cslContext.loaDevice != nil) {
-            [cslContext.loaDevice servoLoadPosition];
-        }
-        int msdelay = 1500;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
-            cameraButton.enabled = YES;
-        });
-    });
+    cameraButton.enabled = YES;
 }
 
 - (void)prepareNextDataAcquisition

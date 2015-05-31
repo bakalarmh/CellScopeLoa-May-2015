@@ -17,12 +17,13 @@
 
 - (id)initWithBLEManager:(BLEManager*)manager;
 
--(BOOL) connected;-(void) connectBLE;
+-(BOOL) connected;
+-(void) connectBLE;
 -(void) servoReturn;
 -(void) servoPartialAdvance:(float)fraction;
 -(void) servoAdvance;
 -(void) servoLoadPosition;
-- (void)servoFarPostition;
+-(void) servoFarPostition;
 -(void) servoConfigure:(int) fields;
 -(void) LEDOn;
 -(void) LEDOff;
@@ -30,5 +31,6 @@
 -(void) iled2Toggle:(int) on;
 -(void) iled3Toggle:(int) on;
 -(void) ledPulse:(int) iledNum:(float) onTime: (NSNumber *) numPulse; //iledNum can be 1, 2, or 3.
+-(void) queryBattery;
 
 @end

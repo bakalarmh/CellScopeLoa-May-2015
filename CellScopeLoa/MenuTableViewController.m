@@ -16,7 +16,11 @@
 
 @end
 
-@implementation MenuTableViewController
+@implementation MenuTableViewController {
+    BOOL commlock;
+    BOOL batteryRequest;
+    NSTimer* batteryTimer;
+}
 
 @synthesize managedObjectContext;
 @synthesize cslContext;
@@ -27,6 +31,7 @@
 @synthesize connectionStatusItem;
 @synthesize testButtonLabel;
 @synthesize testButtonIcon;
+@synthesize batteryBarButtonItem;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +53,34 @@
         connectionStatusItem.title = NSLocalizedString(@"Disconnected",nil);
         connectionStatusItem.tintColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#00CC00*/
     }
+    
+    batteryRequest = NO;
+    commlock = NO;
+    [self setBatteryState:@"Unknown"];
+}
+
+- (void)setBatteryState:(NSString*)state
+{
+    if ([state isEqualToString:@"Full"]) {
+        UIImage *image = [[UIImage imageNamed:@"battery-full.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [batteryBarButtonItem setImage:image];
+    }
+    else if([state isEqualToString:@"High"]) {
+        UIImage *image = [[UIImage imageNamed:@"battery-high.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [batteryBarButtonItem setImage:image];
+    }
+    else if([state isEqualToString:@"Half"]) {
+        UIImage *image = [[UIImage imageNamed:@"battery-half.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [batteryBarButtonItem setImage:image];
+    }
+    else if([state isEqualToString:@"Low"]) {
+        UIImage *image = [[UIImage imageNamed:@"battery-low.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [batteryBarButtonItem setImage:image];
+    }
+    else if([state isEqualToString:@"Unknown"]) {
+        UIImage *image = [[UIImage imageNamed:@"battery-unknown.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [batteryBarButtonItem setImage:image];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,50 +94,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // rows in section 0 should not be selectable
@@ -132,6 +121,9 @@
 
 - (void)didUpdateDevices
 {
+    // Post a notificatipn
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"bleDidUpdateDevices" object:self userInfo:nil];
+    
     BLEManager* manager = cslContext.bleManager;
     BOOL foundTrusted = NO;
     // Connect to trusted UUID if it is detected
@@ -151,6 +143,9 @@
 
 - (void)didConnect
 {
+    // Post a notificatipn
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"bleDidConnect" object:self userInfo:nil];
+    
     connectionStatusItem.title = NSLocalizedString(@"Connected",nil);
     connectionStatusItem.tintColor = [UIColor colorWithRed:0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
     
@@ -159,18 +154,37 @@
     
     cslContext.loaDevice = [[BluetoothLoaDevice alloc] initWithBLEManager:cslContext.bleManager];
     [cslContext.loaDevice LEDOn];
-    [cslContext.loaDevice servoLoadPosition];
     
-    int delay = 3;
+    int delay = 1;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         if (cslContext.loaDevice != nil) {
             [cslContext.loaDevice LEDOff];
+            
+            batteryTimer = [NSTimer scheduledTimerWithTimeInterval:60.0
+                                                               target:self
+                                                             selector:@selector(batteryTimerFired:)
+                                                             userInfo:nil
+                                                              repeats:YES];
+            [batteryTimer fire];
         }
     });
 }
 
+- (void)batteryTimerFired:(NSTimer *) theTimer
+{
+    NSLog(@"Battery timer fired!");
+    if (commlock == NO) {
+        [cslContext.loaDevice queryBattery];
+        batteryRequest = YES;
+        commlock = YES;
+    }
+}
+
 - (void)didDisconnect
 {
+    // Post a notificatipn
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"bleDidDisconnect" object:self userInfo:nil];
+    
     connectionStatusItem.title = NSLocalizedString(@"Disconnected",nil);
     connectionStatusItem.tintColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#FF0000*/
     
@@ -178,6 +192,33 @@
     
     testButtonLabel.alpha = 0.2;
     testButtonIcon.alpha = 0.2;
+    
+    [self setBatteryState:@"Unknown"];
+}
+
+- (void)bleDidReceiveData:(NSMutableArray*)packets
+{
+    if (batteryRequest) {
+        NSData* packet = [packets objectAtIndex:0];
+        unsigned char* data = (unsigned char*)packet.bytes;
+        float voltage = (data[0]/(float)0xFF)*5.0;
+        NSLog(@"Voltage: %f", (data[0]/(float)0xFF)*5.0);
+        
+        if (voltage < 3.6) {
+            [self setBatteryState:@"Low"];
+        }
+        else if (voltage < 3.8) {
+            [self setBatteryState:@"Half"];
+        }
+        else if (voltage < 4.0) {
+            [self setBatteryState:@"High"];
+        }
+        else if (voltage > 4.0) {
+            [self setBatteryState:@"Full"];
+        }
+        batteryRequest = NO;
+    }
+    commlock = NO;
 }
 
 #pragma mark - Navigation

@@ -26,6 +26,7 @@
             Frames:(NSInteger)frames
         VideoCount:(NSInteger)maxVideos;
 
+- (void)suspendProcessing;
 - (void)processFrameBuffer:(FrameBuffer*)frameBuffer withResourceURL:(NSString*)videoURL;
 
 @end

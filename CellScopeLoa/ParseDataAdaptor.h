@@ -13,5 +13,7 @@
 @interface ParseDataAdaptor : NSObject
 
 + (void)syncTestRecord:(TestRecord*)record WithBlock:(void (^)(BOOL, NSError*))completionBlock;
++ (void)syncCapillaryRecord:(CapillaryRecord*)record WithBlock:(void (^)(BOOL, NSError*))completionBlock;
++ (void)syncVideosForCapillaryRecord:(CapillaryRecord*)record withBlock:(void (^)(BOOL, NSError*))completionBlock;
 
 @end

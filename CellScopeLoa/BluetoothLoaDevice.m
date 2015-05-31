@@ -11,6 +11,7 @@
 @implementation BluetoothLoaDevice {
     int currentPos;
     int servoStep;
+    BOOL batteryQuery;
 }
 
 @synthesize bleManager;
@@ -23,6 +24,8 @@
     self.ble = manager.ble;
     // Default advance step for the servo
     servoStep = (152-32)/8;
+    
+    batteryQuery = NO;
     
     return self;
 }
@@ -156,32 +159,12 @@
     }
 }
 
-
-// When data is comming, this will be called
--(void) bleDidReceiveData:(unsigned char *)data length:(int)length
+- (void)queryBattery
 {
-    NSLog(@"Length: %d", length);
-    
-    // parse data, all commands are in 3-byte
-    for (int i = 0; i < length; i+=3)
-    {
-        NSLog(@"0x%02X, 0x%02X, 0x%02X", data[i], data[i+1], data[i+2]);
-        
-        if (data[i] == 0x0A)
-        {
-            //if (data[i+1] == 0x01)
-            //swDigitalIn.on = true;
-            //else
-            //swDigitalIn.on = false;
-        }
-        else if (data[i] == 0x0B)
-        {
-            UInt16 Value;
-            
-            Value = data[i+2] | data[i+1] << 8;
-            //lblAnalogIn.text = [NSString stringWithFormat:@"%d", Value];
-        }
-    }
+    UInt8 buf[3] = {0x10, 0x00, 0x00};
+    NSData *data = [[NSData alloc] initWithBytes:buf length:3];
+    [ble write:data];
+    batteryQuery = YES;
 }
 
 - (void)didReceiveMemoryWarning

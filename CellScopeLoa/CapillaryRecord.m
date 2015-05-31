@@ -14,6 +14,7 @@
 @implementation CapillaryRecord
 
 @dynamic created;
+@dynamic parseID;
 @dynamic testUUID;
 @dynamic errorString;
 @dynamic capillaryIndex;

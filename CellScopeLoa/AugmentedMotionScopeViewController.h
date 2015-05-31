@@ -10,9 +10,12 @@
 #import "LLCamera.h"
 #import "CSLContext.h"
 
-@interface AugmentedMotionScopeViewController : UIViewController <CGProcessingDelegate>
+@interface AugmentedMotionScopeViewController : UIViewController <CGProcessingDelegate, FocusDelegate>
 
 @property (nonatomic, weak) CSLContext* cslContext;
 @property (weak, nonatomic) IBOutlet UIImageView *augmentedImageView;
+@property (weak, nonatomic) IBOutlet UISlider *focusSlider;
+
+- (IBAction)focusSliderValueChanged:(id)sender;
 
 @end

@@ -29,5 +29,6 @@
 @dynamic capillaryRecords;
 @dynamic objectsPerMl;
 @dynamic objectsPerField;
+@dynamic parseID;
 
 @end

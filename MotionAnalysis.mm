@@ -38,6 +38,13 @@
     return self;
 }
 
+- (void)suspendProcessing
+{
+    if (backgroundQueue != nil) {
+        dispatch_suspend(backgroundQueue);
+    }
+}
+
 - (void)processFrameBuffer:(FrameBuffer*)frameBuffer withResourceURL:(NSString*)videoURL
 {
     [frameBufferList addObject:frameBuffer];
@@ -198,6 +205,8 @@
         movieFrameMat=movieFrameMat*(aveSum/sum[0]);
         frameIdx++;
     }
+    // Disable motion estimation
+    /*
     i = 0;
     frameIdx = 0;
     cv::Mat tempFlow;
@@ -283,6 +292,7 @@
         // [resultsDict setObject:@"MotionError" forKey:@"ErrorString"];
         // return;
     }
+    */
     
     i = 0;
     frameIdx = 0;
@@ -411,6 +421,9 @@
     cv::Scalar sum44=cv::sum(movieFrameMatDiff4);
     cv::Scalar sum55=cv::sum(movieFrameMatDiff5);
     flowAngThresh.convertTo(flowAngThresh, CV_32FC1);
+    
+    // Disable flow
+    /*
     flow1.convertTo(flow1, CV_32FC1);
     flow2.convertTo(flow2, CV_32FC1);
     flow3.convertTo(flow3, CV_32FC1);
@@ -444,9 +457,10 @@
     cv::Rect myROI(60, 0, 360, 360);
     cv::Mat flowSumTempCrop = flowSumTemp(myROI);
     cv::Scalar flowSum=cv::sum(flowSumTempCrop);
+     */
     NSLog(@"done with loop, sums are %f, %f, %f, %f, %f", sum11[0],sum22[0],sum33[0],sum44[0],sum55[0]);
-    NSLog(@"done with loop, flows are %f, %f, %f, %f, %f", flowSum1[0],flowSum2[0],flowSum3[0],flowSum4[0],flowSum5[0]);
-    NSLog(@"done with loop, flow is, %f,", flowSum[0]);
+    // NSLog(@"done with loop, flows are %f, %f, %f, %f, %f", flowSum1[0],flowSum2[0],flowSum3[0],flowSum4[0],flowSum5[0]);
+    // NSLog(@"done with loop, flow is, %f,", flowSum[0]);
     //estimate background
     int backSize=30;
     int backgroundSize=75; //was 75
@@ -454,8 +468,10 @@
     int backgroundSize3=75; //was 75
     int backgroundSize4=75; //was 75
     int backgroundSize5=75; //was 75
-    int flowCutoff=250000;
     
+    // Disable flow
+    /*
+    int flowCutoff=250000;
     if (flowSum[0]>flowCutoff && flicker1<50) {
         backgroundSize=50-((flowSum[0]-flowCutoff)/5000);
         if (backgroundSize<35) backgroundSize=35;
@@ -480,6 +496,8 @@
         backgroundSize5=50-((flowSum[0]-flowCutoff)/5000);
         if (backgroundSize5<35) backgroundSize5=35;
     }
+     */
+    
     cv::Mat backConvMat= cv::Mat::ones(backSize, backSize, CV_32FC1);
     backConvMat=backConvMat/(backSize*backSize);
     cv::Mat backgroundConvMat= cv::Mat::ones(backgroundSize,backgroundSize, CV_32FC1);
@@ -717,8 +735,9 @@
                     vMaxLoc.push_back(cv::Point( x+locMax.x,y + locMax.y ));
                     int xi=x+locMax.x;
                     int yi= y+locMax.y;
-                    Float32 val=flowAngThresh.at<Float32>(yi, xi);
-                    if (val==1){
+                    // Disable motion detection
+                    // Float32 val=flowAngThresh.at<Float32>(yi, xi);
+                    // if (val==1){
                         // Add worm to the results dictionary
                         MAMotionObjects* worm = [[MAMotionObjects alloc] init];
                         worm.x = xi;
@@ -727,10 +746,10 @@
                         worm.end = endi;
                         [wormObjects addObject:worm];
                         numWorms=numWorms+1;
-                    }
-                    else {
-                        NSLog(@"point rejected due to motion");
-                    }
+                    // }
+                    // else {
+                    //     NSLog(@"point rejected due to motion");
+                    // }
                 }
             }
         }

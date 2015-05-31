@@ -14,6 +14,7 @@
 
 @dynamic averageObjectCount;
 @dynamic created;
+@dynamic parseID;
 @dynamic fieldIndex;
 @dynamic resourceURL;
 @dynamic errorString;

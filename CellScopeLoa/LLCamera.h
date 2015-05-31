@@ -58,7 +58,7 @@
 - (void)setFocusLensPosition:(NSNumber*)position;
 - (void)setRelativeExposure:(float)value;
 - (void)setExposure:(CMTime)exposure ISO:(float)iso;
-- (void)setAutoExposure;
+- (void)setAutoExposureContinuous;
 - (void)setExposureMinISO:(CMTime)exposure;
 - (void)setRelativeISO:(float)iso;
 - (void)setMinimumExposure;

@@ -9,6 +9,7 @@
 #import "TestViewController.h"
 #import <AdSupport/AdSupport.h>
 #import "ValidResultsViewController.h"
+#import "InvalidResultsViewController.h"
 #import "BarcodeIDViewController.h"
 #import "CapillaryRecord.h"
 #import "TestValidation.h"
@@ -100,7 +101,6 @@
 {
     // Save the CoreData state
     NSError* error;
-    [managedObjectContext save:&error];
 }
 
 -(void)receiveNotification:(NSNotification*)notification
@@ -167,6 +167,20 @@
     else if ([segue.identifier isEqualToString:@"ResultsValid"]) {
         ValidResultsViewController* vc = (ValidResultsViewController*)segue.destinationViewController;
         vc.cslContext = cslContext;
+        NSError* error;
+        [managedObjectContext save:&error];
+    }
+    else if ([segue.identifier isEqualToString:@"ResultsInvalid"]) {
+        InvalidResultsViewController* vc = (InvalidResultsViewController*)segue.destinationViewController;
+        vc.cslContext = cslContext;
+        NSError* error;
+        [managedObjectContext save:&error];
+    }
+    else if ([segue.identifier isEqualToString:@"Abort"]) {
+        // Stop any processing
+        [cslContext.motionAnalysis suspendProcessing];
+        // Discard the new test object from the managed object context
+        [managedObjectContext reset];
     }
 }
 
@@ -223,7 +237,13 @@
     Video* video = [NSEntityDescription insertNewObjectForEntityForName:@"Video" inManagedObjectContext: managedObjectContext];
     
     // Set video properties
-    video.resourceURL = assetURL.absoluteString;
+    // Generate a local path (relative to the documents directory)
+    NSArray* pathComponents = assetURL.pathComponents;
+    long count = pathComponents.count;
+    NSArray* constantComponents = [pathComponents subarrayWithRange:NSMakeRange(8,count-8)];
+    NSString* localPath = [constantComponents componentsJoinedByString:@"/"];
+    
+    video.resourceURL = localPath;
     video.created = [NSDate date];
     video.capillaryIndex = cslContext.activeCapillaryRecord.capillaryIndex;
     video.fieldIndex = [NSNumber numberWithInteger:fieldsAcquired];
@@ -302,9 +322,11 @@
             // Validate the results of the test before loading the next view controller
             NSDictionary* results = [TestValidation ValidateTestRecord:cslContext.activeTestRecord];
             if ([[results objectForKey:@"Code"] isEqualToString:@"Valid"]) {
+                cslContext.activeTestRecord.state = @"Valid";
                 [self performSegueWithIdentifier:@"ResultsValid" sender:self];
             }
             else {
+                cslContext.activeTestRecord.state = @"Invalid";
                 [self performSegueWithIdentifier:@"ResultsInvalid" sender:self];
             }
         }

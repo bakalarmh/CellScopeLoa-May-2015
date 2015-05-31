@@ -42,6 +42,7 @@
 		9B3B940A1AFE980B00C391CC /* ManualIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B94091AFE980B00C391CC /* ManualIDViewController.m */; };
 		9B3B940D1AFEA11900C391CC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B940C1AFEA11900C391CC /* TestViewController.m */; };
 		9B3B94101AFEA25900C391CC /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B940F1AFEA25900C391CC /* CaptureViewController.m */; };
+		9B4792461B0D93E400460CA3 /* DataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4792451B0D93E400460CA3 /* DataTableViewController.m */; };
 		9B84182E1AFEC839008DBA7B /* TextBluetoothScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B84182D1AFEC839008DBA7B /* TextBluetoothScanner.m */; };
 		9B8418341AFEC97A008DBA7B /* DeviceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8418331AFEC97A008DBA7B /* DeviceTableViewController.m */; };
 		9B8418371AFFD9D1008DBA7B /* LLCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8418361AFFD9D1008DBA7B /* LLCamera.m */; };
@@ -132,6 +133,8 @@
 		9B3B940C1AFEA11900C391CC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		9B3B940E1AFEA25900C391CC /* CaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureViewController.h; sourceTree = "<group>"; };
 		9B3B940F1AFEA25900C391CC /* CaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureViewController.m; sourceTree = "<group>"; };
+		9B4792441B0D93E400460CA3 /* DataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTableViewController.h; sourceTree = "<group>"; };
+		9B4792451B0D93E400460CA3 /* DataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTableViewController.m; sourceTree = "<group>"; };
 		9B8418281AFEC662008DBA7B /* BluetoothScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothScanner.h; sourceTree = "<group>"; };
 		9B84182A1AFEC7CE008DBA7B /* BluetoothBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothBoard.h; sourceTree = "<group>"; };
 		9B84182C1AFEC839008DBA7B /* TextBluetoothScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBluetoothScanner.h; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 				9BAFD6F21B099B82001DC361 /* ParseDataAdaptor.m */,
 				9BAFD6F41B09A0F4001DC361 /* CloudSyncViewController.h */,
 				9BAFD6F51B09A0F4001DC361 /* CloudSyncViewController.m */,
+				9B4792441B0D93E400460CA3 /* DataTableViewController.h */,
+				9B4792451B0D93E400460CA3 /* DataTableViewController.m */,
 			);
 			path = CellScopeLoa;
 			sourceTree = "<group>";
@@ -524,6 +529,7 @@
 				9B84182E1AFEC839008DBA7B /* TextBluetoothScanner.m in Sources */,
 				9B3B94101AFEA25900C391CC /* CaptureViewController.m in Sources */,
 				9B8418481B0024C4008DBA7B /* Model.xcdatamodeld in Sources */,
+				9B4792461B0D93E400460CA3 /* DataTableViewController.m in Sources */,
 				9B84186D1B01201E008DBA7B /* SettingsPasswordViewController.m in Sources */,
 				9B0C923D1B058055008F70E3 /* UIImage+OpenCV.mm in Sources */,
 				9B0C92381B05801B008F70E3 /* FrameBuffer.mm in Sources */,

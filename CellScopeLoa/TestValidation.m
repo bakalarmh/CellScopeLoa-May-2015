@@ -55,7 +55,7 @@
 }
 
 // Method also stores results in CoreData objects
-+ (NSDictionary*)ResultsFromTestRecord:(TestRecord *)testRecord
++ (NSDictionary*)ResultsFromTestRecord:(TestRecord*)testRecord
 {
     NSNumber* capillaryVolume = [[NSUserDefaults standardUserDefaults] objectForKey:CapillaryVolumeKey];
 
@@ -70,8 +70,10 @@
         }
         float mean = sum/counter;
         NSNumber* value = [NSNumber numberWithFloat:mean];
+        
         // Store in CoreData
         record.objectsPerField = value;
+        
         [capillaryMeans addObject:value];
     }
     
@@ -89,6 +91,10 @@
     NSMutableDictionary* results = [[NSMutableDictionary alloc] init];
     [results setObject:[NSNumber numberWithFloat:objectsPerField] forKey:@"ObjectsPerField"];
     [results setObject:[NSNumber numberWithFloat:objectsPerMl] forKey:@"ObjectsPerMl"];
+    
+    // Store in CoreData
+    testRecord.objectsPerField = [NSNumber numberWithFloat:objectsPerField];
+    testRecord.objectsPerMl = [NSNumber numberWithFloat:objectsPerMl];
     
     return results;
 }

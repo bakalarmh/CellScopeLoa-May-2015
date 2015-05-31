@@ -13,6 +13,7 @@
 
 @interface CapillaryRecord : NSManagedObject
 
+@property (nonatomic, retain) NSString * parseID;
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSString * testUUID;
 @property (nonatomic, retain) NSString * errorString;

@@ -13,6 +13,7 @@
 
 @interface Video : NSManagedObject
 
+@property (nonatomic, retain) NSString * parseID;
 @property (nonatomic, retain) NSNumber * averageObjectCount;
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSNumber * fieldIndex;

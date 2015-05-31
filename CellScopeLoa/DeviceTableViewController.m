@@ -20,13 +20,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Virtual bluetooth device
-    textBluetoothScanner = [[TextBluetoothScanner alloc] init];
+    // Listen for connection events
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(bleDidUpdateDevices:)
+                                                 name:@"bleDidUpdateDevices" object:nil];
+    
+    // Listen for Disconnection events
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(bleDidDisconnect:)
+                                                 name:@"bleDidDisconnect" object:nil];
+    
+    if (!bleManager.connected) {
+        [bleManager seekDevices];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)bleDidUpdateDevices:(NSNotification*)notification
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+}
+
+- (void)bleDidDisconnect:(NSNotification*)notification
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!bleManager.connected) {
+            [bleManager seekDevices];
+        }
+    });
 }
 
 #pragma mark - Table view data source
