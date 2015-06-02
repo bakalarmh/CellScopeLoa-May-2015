@@ -2,7 +2,7 @@
 //  MotionObject.h
 //  CellScopeLoa
 //
-//  Created by Matthew Bakalar on 5/14/15.
+//  Created by Matthew Bakalar on 5/31/15.
 //  Copyright (c) 2015 Fletcher Lab. All rights reserved.
 //
 
@@ -12,8 +12,9 @@
 
 @interface MotionObject : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * t;
+@property (nonatomic, retain) NSNumber * start;
 @property (nonatomic, retain) NSNumber * x;
 @property (nonatomic, retain) NSNumber * y;
+@property (nonatomic, retain) UNKNOWN_TYPE end;
 
 @end

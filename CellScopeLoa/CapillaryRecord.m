@@ -2,7 +2,7 @@
 //  CapillaryRecord.m
 //  CellScopeLoa
 //
-//  Created by Matthew Bakalar on 5/14/15.
+//  Created by Matthew Bakalar on 5/31/15.
 //  Copyright (c) 2015 Fletcher Lab. All rights reserved.
 //
 
@@ -13,14 +13,15 @@
 
 @implementation CapillaryRecord
 
+@dynamic capillaryIndex;
 @dynamic created;
+@dynamic errorString;
+@dynamic objectsPerField;
+@dynamic objectsPerMl;
 @dynamic parseID;
 @dynamic testUUID;
-@dynamic errorString;
-@dynamic capillaryIndex;
-@dynamic objectsPerMl;
-@dynamic objectsPerField;
-@dynamic videos;
+@dynamic videosDeleted;
 @dynamic testRecord;
+@dynamic videos;
 
 @end

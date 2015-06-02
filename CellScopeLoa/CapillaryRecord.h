@@ -2,7 +2,7 @@
 //  CapillaryRecord.h
 //  CellScopeLoa
 //
-//  Created by Matthew Bakalar on 5/14/15.
+//  Created by Matthew Bakalar on 5/31/15.
 //  Copyright (c) 2015 Fletcher Lab. All rights reserved.
 //
 
@@ -13,15 +13,16 @@
 
 @interface CapillaryRecord : NSManagedObject
 
-@property (nonatomic, retain) NSString * parseID;
-@property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSString * testUUID;
-@property (nonatomic, retain) NSString * errorString;
 @property (nonatomic, retain) NSNumber * capillaryIndex;
-@property (nonatomic, retain) NSNumber * objectsPerMl;
+@property (nonatomic, retain) NSDate * created;
+@property (nonatomic, retain) NSString * errorString;
 @property (nonatomic, retain) NSNumber * objectsPerField;
-@property (nonatomic, retain) NSSet *videos;
+@property (nonatomic, retain) NSNumber * objectsPerMl;
+@property (nonatomic, retain) NSString * parseID;
+@property (nonatomic, retain) NSString * testUUID;
+@property (nonatomic, retain) NSNumber * videosDeleted;
 @property (nonatomic, retain) TestRecord *testRecord;
+@property (nonatomic, retain) NSSet *videos;
 @end
 
 @interface CapillaryRecord (CoreDataGeneratedAccessors)

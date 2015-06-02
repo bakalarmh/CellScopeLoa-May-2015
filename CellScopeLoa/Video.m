@@ -2,7 +2,7 @@
 //  Video.m
 //  CellScopeLoa
 //
-//  Created by Matthew Bakalar on 5/15/15.
+//  Created by Matthew Bakalar on 5/31/15.
 //  Copyright (c) 2015 Fletcher Lab. All rights reserved.
 //
 
@@ -13,13 +13,14 @@
 @implementation Video
 
 @dynamic averageObjectCount;
-@dynamic created;
-@dynamic parseID;
-@dynamic fieldIndex;
-@dynamic resourceURL;
-@dynamic errorString;
-@dynamic testUUID;
 @dynamic capillaryIndex;
+@dynamic created;
+@dynamic errorString;
+@dynamic fieldIndex;
+@dynamic parseID;
+@dynamic resourceURL;
+@dynamic testUUID;
+@dynamic deleted;
 @dynamic motionObjects;
 
 @end
