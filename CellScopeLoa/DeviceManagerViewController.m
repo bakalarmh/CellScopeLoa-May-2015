@@ -58,6 +58,9 @@
         if (bleManager.connected) {
             [bleManager identifyDevice];
         }
+        else {
+            [bleManager seekDevices];
+        }
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     }
 }

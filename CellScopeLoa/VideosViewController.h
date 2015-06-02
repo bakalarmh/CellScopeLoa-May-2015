@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Video.h"
+#import "CSLContext.h"
+#import "ImageScrollView.h"
 
-@interface VideosViewController : UIViewController
+@interface VideosViewController : UIViewController <UIScrollViewDelegate>
+
+@property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (weak, nonatomic) CSLContext *cslContext;
+
+@property (weak, nonatomic) Video* video;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *layerSegmentedControl;
 
 @end

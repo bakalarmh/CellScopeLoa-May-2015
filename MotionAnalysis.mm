@@ -738,14 +738,17 @@
                     // Disable motion detection
                     // Float32 val=flowAngThresh.at<Float32>(yi, xi);
                     // if (val==1){
-                        // Add worm to the results dictionary
-                        MAMotionObjects* worm = [[MAMotionObjects alloc] init];
-                        worm.x = xi;
-                        worm.y = yi;
-                        worm.start = starti;
-                        worm.end = endi;
-                        [wormObjects addObject:worm];
-                        numWorms=numWorms+1;
+                    // Add worm to the results dictionary
+                    
+                    NSMutableDictionary* worm = [[NSMutableDictionary alloc] init];
+                    [worm setObject:[NSNumber numberWithInt:xi] forKey:@"x"];
+                    [worm setObject:[NSNumber numberWithInt:yi] forKey:@"y"];
+                    [worm setObject:[NSNumber numberWithInt:starti] forKey:@"start"];
+                    [worm setObject:[NSNumber numberWithInt:endi] forKey:@"end"];
+                    
+                    [wormObjects addObject:worm];
+                    numWorms=numWorms+1;
+                    
                     // }
                     // else {
                     //     NSLog(@"point rejected due to motion");

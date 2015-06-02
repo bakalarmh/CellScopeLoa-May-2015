@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSLContext.h"
 
 @interface DataTableViewController : UITableViewController
+
+@property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (weak, nonatomic) CSLContext *cslContext;
 
 @end

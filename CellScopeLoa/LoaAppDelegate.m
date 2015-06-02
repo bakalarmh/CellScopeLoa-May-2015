@@ -47,7 +47,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:0] forKey:ISOKey];
         
         // Store Default number of fields of view
-        NSInteger fieldsOfView = 8;
+        NSInteger fieldsOfView = 7;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:fieldsOfView] forKey:FieldsOfViewKey];
         
         // Store the volume of the capillary
@@ -63,8 +63,8 @@
     [Parse enableLocalDatastore];
     
     // Initialize Parse.
-    [Parse setApplicationId:@"s3uLN1qC5wGlHNLLOM0PrkbysSFSNjQ3BGjjZw56"
-                  clientKey:@"6BqlzYeoipkEtjPpqnkgQCiNBYS7hCdK35UC1eVS"];
+    [Parse setApplicationId:@"jwqmqPUaus0meXeKC4UbUAe4MS4s5Xgya0VTNvTp"
+                  clientKey:@"16FROWYMwedkW3WoXy0om5qrPHWYgzM2aIJmCghL"];
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

@@ -12,9 +12,12 @@
 @interface ValidResultsViewController : UIViewController
 
 @property (weak, nonatomic) CSLContext* cslContext;
+@property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @property (weak, nonatomic) IBOutlet UILabel *mffieldLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mfmlLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *finishedButtonItem;
+
 - (IBAction)finishedPressed:(id)sender;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface ImageScrollView : UIScrollView
 
+@property (weak, nonatomic) UIImageView* imageView;
+
 @end

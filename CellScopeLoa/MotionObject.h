@@ -13,8 +13,8 @@
 @interface MotionObject : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * start;
+@property (nonatomic, retain) NSNumber * end;
 @property (nonatomic, retain) NSNumber * x;
 @property (nonatomic, retain) NSNumber * y;
-@property (nonatomic, retain) UNKNOWN_TYPE end;
 
 @end

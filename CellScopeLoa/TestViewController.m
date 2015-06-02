@@ -14,6 +14,7 @@
 #import "CapillaryRecord.h"
 #import "TestValidation.h"
 #import "Video.h"
+#import "MotionObject.h"
 #import "constants.h"
 
 @interface TestViewController ()
@@ -128,6 +129,19 @@
             video.errorString = @"None";
             if (video != nil) {
                 video.averageObjectCount = averageCount;
+                for (NSDictionary* m in motionObjects) {
+                    /*
+                    // Copy the motion object data into a new core data object
+                    MotionObject* coreObject = (MotionObject*)[NSEntityDescription insertNewObjectForEntityForName:@"MotionObject"
+                                                                                inManagedObjectContext:managedObjectContext];
+                    coreObject.x = [m objectForKey:@"x"];
+                    coreObject.y = [m objectForKey:@"y"];
+                    coreObject.start = [m objectForKey:@"start"];
+                    coreObject.start = [m objectForKey:@"end"];
+
+                    [video addMotionObjectsObject:coreObject];
+                     */
+                }
             }
         }
         
@@ -167,6 +181,7 @@
     else if ([segue.identifier isEqualToString:@"ResultsValid"]) {
         ValidResultsViewController* vc = (ValidResultsViewController*)segue.destinationViewController;
         vc.cslContext = cslContext;
+        vc.managedObjectContext = managedObjectContext;
         NSError* error;
         [managedObjectContext save:&error];
     }

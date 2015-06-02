@@ -57,6 +57,7 @@
     // Turn on the imaging LED and initialize the capillary position
     if (cslContext.loaDevice != nil) {
         [cslContext.loaDevice LEDOn];
+        [cslContext.loaDevice servoLoadPosition];
     }
     
     NSNumber* manualFocusDefault = [[NSUserDefaults standardUserDefaults] objectForKey:ManualFocusLensPositionKey];

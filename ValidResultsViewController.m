@@ -16,6 +16,7 @@
 @implementation ValidResultsViewController
 
 @synthesize cslContext;
+@synthesize managedObjectContext;
 @synthesize finishedButtonItem;
 @synthesize mffieldLabel;
 @synthesize mfmlLabel;
@@ -40,6 +41,7 @@
     mfmlLabel.text = [NSString stringWithFormat:@"%@ mf/ml", mfmlString];
     
     // Store the output in the ManagedObjectContext
+    [managedObjectContext save:nil];
 }
 
 - (void)didReceiveMemoryWarning {

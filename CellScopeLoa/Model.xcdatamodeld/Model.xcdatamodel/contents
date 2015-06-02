@@ -8,11 +8,13 @@
         <attribute name="objectsPerMl" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="parseID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="testUUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="videosDeleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="testRecord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TestRecord" inverseName="capillaryRecords" inverseEntity="TestRecord" syncable="YES"/>
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
     </entity>
     <entity name="MotionObject" representedClassName="MotionObject" syncable="YES">
-        <attribute name="t" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <attribute name="x" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="y" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
@@ -40,17 +42,18 @@
         <attribute name="averageObjectCount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="capillaryIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="errorString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fieldIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="parseID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="resourceURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="testUUID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="motionObjects" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MotionObject" syncable="YES"/>
+        <relationship name="motionObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MotionObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CapillaryRecord" positionX="115" positionY="144" width="128" height="178"/>
-        <element name="MotionObject" positionX="450" positionY="240" width="128" height="88"/>
+        <element name="CapillaryRecord" positionX="115" positionY="144" width="128" height="193"/>
+        <element name="MotionObject" positionX="450" positionY="240" width="128" height="103"/>
         <element name="TestRecord" positionX="-63" positionY="-18" width="128" height="315"/>
-        <element name="Video" positionX="279" positionY="189" width="128" height="180"/>
+        <element name="Video" positionX="279" positionY="189" width="128" height="193"/>
     </elements>
 </model>

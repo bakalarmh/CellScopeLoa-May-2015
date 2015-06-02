@@ -213,7 +213,7 @@
         else if (voltage < 4.0) {
             [self setBatteryState:@"High"];
         }
-        else if (voltage > 4.0) {
+        else if (voltage >= 4.0) {
             [self setBatteryState:@"Full"];
         }
         batteryRequest = NO;
@@ -255,6 +255,11 @@
         vc.bleManager = cslContext.bleManager;
     }
     else if([segue.identifier isEqualToString:@"CloudSync"]) {
+        CloudSyncViewController* vc = (CloudSyncViewController*)segue.destinationViewController;
+        vc.cslContext = cslContext;
+        vc.managedObjectContext = managedObjectContext;
+    }
+    else if([segue.identifier isEqualToString:@"Data"]) {
         CloudSyncViewController* vc = (CloudSyncViewController*)segue.destinationViewController;
         vc.cslContext = cslContext;
         vc.managedObjectContext = managedObjectContext;
