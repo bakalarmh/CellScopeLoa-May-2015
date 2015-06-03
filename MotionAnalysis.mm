@@ -45,6 +45,7 @@
     }
 }
 
+// Called by the TestViewController
 - (void)processFrameBuffer:(FrameBuffer*)frameBuffer withResourceURL:(NSString*)videoURL
 {
     [frameBufferList addObject:frameBuffer];
@@ -83,6 +84,11 @@
 }
 
 - (void)processFramesForMovie:(FrameBuffer*) frameBuffer {
+    
+    // Is there flow in the capillary?
+    BOOL flow = [self computeFlowForBuffer:frameBuffer];
+    NSLog(@"Flow: %@", flow ? @"YES" : @"NO");
+    
     // Initialize the wormObjects array
     wormObjects = [[NSMutableArray alloc] init];
     
@@ -703,6 +709,166 @@
     [resultsDict setObject:wormObjects forKey:@"MotionObjects"];
 }
 
+// Is there flow in the capillary? Scan through the frameBuffer to find out
+- (BOOL)computeFlowForBuffer:(FrameBuffer*)frameBuffer
+{
+    // Output image
+    UIImage* outputImage;
+    
+    // Movie dimensions
+    int rows = 360;
+    int cols = 480;
+    
+    // Algorithm frames
+    cv::Mat activeFrame;
+    
+    // Algorithm parameters
+    int interval = 25;
+    float max_distance = 2.5;
+    int maxFeatures = 500;
+    int minHessian = 50;
+    float flowThreshold = 0.35;
+    
+    // Algorithm output accumulators
+    float x_motion = 0.0;
+    float y_motion = 0.0;
+    float abs_motion = 0.0;
+    
+    // Run through all frames in the frame buffer
+    int idx = 0;
+    while(idx < frameBuffer.numFrames.intValue) {
+        // Optimize the Hessian detector
+        if (idx == 0) {
+            // Convert the frame to 16 bit unsigned
+            activeFrame = [frameBuffer getFrameAtIndex:idx];
+            activeFrame.convertTo(activeFrame, CV_16UC1);
+            
+            // Perform simple motion estimation
+            cv::Mat detectActiveFrame, detectLastFrame;
+            activeFrame.convertTo(detectActiveFrame, CV_8UC1);
+            
+            int detected = 5000;
+            int attempts = 0;
+            while ((detected > maxFeatures) && attempts < 10) {
+                // Decrease the sensitivity of the SURF detection
+                if (attempts > 0) {
+                    minHessian *= 2;
+                }
+                cv::SurfFeatureDetector detector(minHessian);
+                
+                std::vector<cv::KeyPoint> keypoints1;
+                detector.detect(detectActiveFrame, keypoints1);
+                
+                cv::SurfDescriptorExtractor extractor;
+                cv::Mat descriptors1;
+                extractor.compute(detectActiveFrame, keypoints1, descriptors1);
+                detected = descriptors1.rows;
+                printf("Detected: %d\n", detected);
+                attempts += 1;
+            }
+            printf("Hessian: %d\n", minHessian);
+            
+        }
+        
+        if (idx % interval == (interval-1)) {
+            cv::Mat lastFrame;
+            // Convert the active frame to 16 bit unsigned
+            activeFrame = [frameBuffer getFrameAtIndex:idx];
+            if (idx > interval) {
+                lastFrame = [frameBuffer getFrameAtIndex:idx-interval];
+            }
+            activeFrame.convertTo(activeFrame, CV_16UC1);
+            lastFrame.convertTo(lastFrame, CV_16UC1);
+            
+            // If lastFrame exists, compute the SURF feature flow
+            cv::Size s = lastFrame.size();
+            if ((s.height == rows) && (s.width == cols)) {
+                
+                // Perform simple motion estimation
+                cv::SurfFeatureDetector detector(minHessian);
+                
+                cv::Mat detectActiveFrame, detectLastFrame;
+                activeFrame.convertTo(detectActiveFrame, CV_8UC1);
+                lastFrame.convertTo(detectLastFrame, CV_8UC1);
+                
+                std::vector<cv::KeyPoint> keypoints1, keypoints2;
+                detector.detect(detectActiveFrame, keypoints1);
+                detector.detect(detectLastFrame, keypoints2);
+                
+                cv::SurfDescriptorExtractor extractor;
+                cv::Mat descriptors1, descriptors2;
+                
+                extractor.compute(detectActiveFrame, keypoints1, descriptors1);
+                extractor.compute(detectLastFrame, keypoints2, descriptors2);
+                
+                cv::FlannBasedMatcher matcher;
+                std::vector<cv::DMatch> matches;
+                matcher.match(descriptors1, descriptors2, matches);
+                
+                std::vector<cv::DMatch> good_matches, final_matches;
+                
+                for (int i = 0; i < descriptors1.rows; i++) {
+                    if (matches[i].distance <= max_distance) {
+                        good_matches.push_back(matches[i]);
+                    }
+                }
+                
+                // Clean matches further
+                for (int i = 0; i < good_matches.size(); i++) {
+                    cv::KeyPoint a = keypoints1[good_matches[i].queryIdx];
+                    cv::KeyPoint b = keypoints2[good_matches[i].trainIdx];
+                    cv::Point2d offset = b.pt - a.pt;
+                    if ((abs(offset.x) < max_distance) && (abs(offset.y) < max_distance)) {
+                        final_matches.push_back(good_matches[i]);
+                    }
+                }
+                
+                float local_x = 0.0;
+                float local_y = 0.0;
+                float local_abs = 0.0;
+                for (int i = 0; i < final_matches.size(); i++) {
+                    cv::KeyPoint a = keypoints1[final_matches[i].queryIdx];
+                    cv::KeyPoint b = keypoints2[final_matches[i].trainIdx];
+                    cv::Point2d offset = b.pt - a.pt;
+                    local_x += offset.x;
+                    local_y += offset.y;
+                    
+                    local_abs += sqrtf(offset.x*offset.x + offset.y*offset.y);
+                }
+                
+                x_motion += local_x/final_matches.size();
+                y_motion += local_y/final_matches.size();
+                abs_motion += local_abs/final_matches.size();
+                
+                //-- Draw only "good" matches
+                cv::Mat img_matches;
+                
+                for (int i = 0; i < final_matches.size(); i++) {
+                    cv::Scalar color(0, 255, 0);
+                    cv::line(detectActiveFrame, keypoints1[final_matches[i].queryIdx].pt, keypoints2[final_matches[i].trainIdx].pt, color, 1, 8, 0);
+                }
+                
+                cv::Mat cvOutput;
+                detectActiveFrame.convertTo(cvOutput, CV_8UC1);
+                outputImage = [UIImage imageWithCVMat:cvOutput];
+            }
+        }
+        
+        // Move to the next frame
+        idx += 1;
+        
+    }
+    
+    float flow = sqrtf(y_motion*y_motion);
+    printf("Flow parameter: %f\n", flow);
+    if (flow > flowThreshold) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
 -(cv::vector <cv::Point>) getLocalMaxima:(const cv::Mat) src:(int) matchingSize: (int) threshold: (int) gaussKernel:(int) starti :(int) endi
 {
     cv::vector <cv::Point> vMaxLoc(0);
@@ -759,15 +925,6 @@
         k += w;
     }
     return vMaxLoc;
-}
-
-- (void)thisImage:(UIImage *)image hasBeenSavedInPhotoAlbumWithError:(NSError *)error usingContextInfo:(void*)ctxInfo {
-    if (error) {
-        NSLog(@"error saving image");
-        
-    } else {
-        NSLog(@"image saved in photo album");
-    }
 }
 
 

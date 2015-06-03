@@ -23,7 +23,7 @@
     self.bleManager = manager;
     self.ble = manager.ble;
     // Default advance step for the servo
-    servoStep = (152-32)/8;
+    servoStep = 15;
     
     batteryQuery = NO;
     
@@ -123,17 +123,17 @@
 - (void)servoFarPostition
 {
     UInt8 buf[3] = {0x03, 0x00, 0x00};
-    buf[1]= 152;
+    buf[1]= 137;
     NSData *data = [[NSData alloc] initWithBytes:buf length:3];
     [ble write:data];
-    currentPos = 152;
+    currentPos = 137;
 }
 
 - (void)servoAdvance
 {
     UInt8 buf[3] = {0x03, 0x00, 0x00};
     int testPos = currentPos + servoStep;
-    if (testPos > 152) {
+    if (testPos > 137) {
         NSLog(@"Servo is at maximum position");
     }
     else {
@@ -148,7 +148,7 @@
 {
     UInt8 buf[3] = {0x03, 0x00, 0x00};
     int testPos = currentPos + (int)servoStep*fraction;
-    if (testPos > 152) {
+    if (testPos > 137) {
         NSLog(@"Servo is at maximum position");
     }
     else {

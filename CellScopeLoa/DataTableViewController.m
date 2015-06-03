@@ -24,6 +24,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Listen for connection events
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(bleDidConnect:)
+                                                 name:@"bleDidConnect" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(bleDidDisconnect:)
+                                                 name:@"bleDidDisconnect" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {

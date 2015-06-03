@@ -11,6 +11,7 @@
 
 @implementation BLEManager {
     int bluetoothState;
+    BOOL seeking;
 }
 
 @synthesize ble;
@@ -32,6 +33,7 @@ int const BluetoothPowered = 5;
     
     bluetoothState = 0;
     connected = NO;
+    seeking = NO;
     
     mDevices = [[NSMutableArray alloc] init];
     mDevicesName = [[NSMutableArray alloc] init];
@@ -44,29 +46,32 @@ int const BluetoothPowered = 5;
 
 - (void)seekDevices
 {
-    [self clearConnections];
-    [mDevices removeAllObjects];
-    [mDevicesName removeAllObjects];
-    [mPeripherals removeAllObjects];
-    
-    if (ble.peripherals)
-        ble.peripherals = nil;
-    [ble findBLEPeripherals:3];
-    
-    int delay = 1;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        for (int i = 0; i < ble.peripherals.count; i++)
-        {
-            CBPeripheral *p = [ble.peripherals objectAtIndex:i];
-            if (p.identifier != NULL)
+    if (!seeking) {
+        // [self clearConnections];
+        [mDevices removeAllObjects];
+        [mDevicesName removeAllObjects];
+        [mPeripherals removeAllObjects];
+        
+        if (ble.peripherals)
+            ble.peripherals = nil;
+        [ble findBLEPeripherals:3];
+        
+        int delayms = 1000;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delayms * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
+            for (int i = 0; i < ble.peripherals.count; i++)
             {
-                NSUUID* pid = p.identifier;
-                [mDevices insertObject:pid.UUIDString atIndex:i];
-                [mPeripherals insertObject:p atIndex:i];
+                CBPeripheral *p = [ble.peripherals objectAtIndex:i];
+                if (p.identifier != NULL)
+                {
+                    NSUUID* pid = p.identifier;
+                    [mDevices insertObject:pid.UUIDString atIndex:i];
+                    [mPeripherals insertObject:p atIndex:i];
+                }
             }
-        }
-        [delegate didUpdateDevices];
-    });
+            [delegate didUpdateDevices];
+            seeking = NO;
+        });
+    }
 }
 
 - (void)clearConnections

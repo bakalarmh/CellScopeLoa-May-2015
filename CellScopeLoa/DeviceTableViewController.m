@@ -12,7 +12,9 @@
 
 @end
 
-@implementation DeviceTableViewController
+@implementation DeviceTableViewController {
+    BOOL busy;
+}
 
 @synthesize textBluetoothScanner;
 @synthesize bleManager;
@@ -29,6 +31,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(bleDidDisconnect:)
                                                  name:@"bleDidDisconnect" object:nil];
+    
+    busy = NO;
     
     if (!bleManager.connected) {
         [bleManager seekDevices];
@@ -47,15 +51,6 @@
     });
 }
 
-- (void)bleDidDisconnect:(NSNotification*)notification
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (!bleManager.connected) {
-            [bleManager seekDevices];
-        }
-    });
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -69,9 +64,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Device Cell"];
     
-    // Configure Cell
     UILabel *mainLabel = (UILabel *)[cell.contentView viewWithTag:5];
-    
     mainLabel.text = [bleManager.mDevices objectAtIndex:indexPath.row];
     
     return cell;
@@ -110,9 +103,37 @@
 {
     UIButton *butn = (UIButton *)sender;
     UITableViewCell *cell = [self parentCellForView:butn];
+    
     if (cell != nil) {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        // Identification sequence
+        UILabel *mainLabel = (UILabel *)[cell.contentView viewWithTag:5];
+        NSString* newUUID = mainLabel.text;
+        
+        // Avoid duplicate disconnect signal
+        busy = YES;
+        
+        [bleManager clearConnections];
+        int delayms = 1000;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delayms * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
+            [bleManager connectWithUUID:newUUID];
+            bleManager.lastUUID = newUUID;
+        });
+    }
+}
+
+- (void)bleDidConnect:(NSNotification*)notification
+{
+    NSLog(@"Did connect!");
+    busy = NO;
+}
+
+- (void)bleDidDisconnect:(NSNotification*)notification
+{
+    if (busy == NO) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!bleManager.connected) {
+                [bleManager seekDevices];
+            }
+        });
     }
 }
 
