@@ -79,7 +79,6 @@
     cslContext = [[CSLContext alloc] init];
     menuViewController.cslContext = cslContext;
     
-    
     return YES;
 }
 

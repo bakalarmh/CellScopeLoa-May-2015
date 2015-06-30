@@ -18,6 +18,7 @@
     NSInteger maxFrames;
     NSInteger frameIndex;
     FrameBuffer* frameBuffer;
+    FrameBuffer* focusBuffer;
     BOOL launchAfterFocus;
     BOOL checkingFocusFrame;
 }
@@ -70,6 +71,11 @@
     CMTime exposure = CMTimeMake(1, 128);
     [camera setExposureMinISO:exposure];
     [camera setColorTemperatureKelvin:5700];
+    
+    // Make sure there is an active focus buffer
+    if (focusBuffer == nil) {
+        focusBuffer = [[FrameBuffer alloc] initWithWidth:camera.width Height:camera.height Frames:1];
+    }
     
     // Launch the self test
     cameraButton.enabled = YES;
@@ -140,9 +146,11 @@
         }
         int msdelay = 250;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
+            
             // MHB Focus Test
-            //[camera setImmediateAutoFocusState];
-            [camera setFocusLensPosition:[NSNumber numberWithFloat:0.0]];
+            [camera setImmediateAutoFocusState];
+            //[camera setFocusLensPosition:[NSNumber numberWithFloat:0.0]];
+
             int msdelay = 2500;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
                 // [self launchDataAcquisition];
@@ -175,16 +183,29 @@
 - (void)didReceiveFrame:(CVBufferRef)frame
 {
     if (checkingFocusFrame) {
-        // Launch data acquisition after checking the focus
+
+        // Construct a frame buffer
+        [focusBuffer writeFrame:frame atIndex:[NSNumber numberWithInt:0]];
+        
+        // Check the focus
+        float focusMetric = [MotionAnalysis ComputeFocusMetric:focusBuffer];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+            metricLabel.text = [NSString stringWithFormat:@"%f", focusMetric];
+        }];
+        
         checkingFocusFrame = NO;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
             [camera stopSendingFrames];
             [self launchDataAcquisition];
         }];
+        
     }
     else {
+        
+        // Collect the frame for later processing
         [frameBuffer writeFrame:frame atIndex:[NSNumber numberWithLong:frameIndex]];
         frameIndex += 1;
+        
     }
 }
 
@@ -199,7 +220,10 @@
         cameraButton.enabled = NO;
     }];
     
+    // MHB Focus Test
     [camera setImmediateAutoFocusState];
+    //[camera setFocusLensPosition:[NSNumber numberWithFloat:0.0]];
+    
     int msdelay = 2500;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
         // [self launchDataAcquisition];
@@ -216,6 +240,9 @@
 {
     // Stop the capture session
     [camera stopCamera];
+    
+    // Clear the focus buffer
+    [focusBuffer releaseFrameBuffers];
     
     // Turn off the imaging LED
     if (cslContext.loaDevice != nil) {

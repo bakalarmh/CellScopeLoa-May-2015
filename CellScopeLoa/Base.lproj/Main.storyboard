@@ -15,6 +15,7 @@
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6jt-fx-rfX">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.98983738799999998" green="1" blue="0.01089581783" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="fWC-He-9E3" kind="relationship" relationship="rootViewController" id="38S-X1-7Vm"/>
@@ -24,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-758" y="45"/>
         </scene>
-        <!--Menu Table View Controller-->
+        <!--CellScope Loa-->
         <scene sceneID="KMt-qz-XqG">
             <objects>
                 <tableViewController id="fWC-He-9E3" customClass="MenuTableViewController" sceneMemberID="viewController">
@@ -151,9 +152,11 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="MHK-ys-qxV"/>
-                        <barButtonItem image="battery-low" style="plain" id="4MH-R8-SH9"/>
+                        <barButtonItem image="battery-low" style="plain" id="4MH-R8-SH9">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="9i3-MD-Y0J"/>
+                    <navigationItem key="navigationItem" title="CellScope Loa" id="9i3-MD-Y0J"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="MenuTableView" destination="mRd-y6-AW3" id="Enu-ou-jV0"/>
@@ -168,7 +171,7 @@
             </objects>
             <point key="canvasLocation" x="-334" y="41"/>
         </scene>
-        <!--Cloud Sync View Controller-->
+        <!--Cloud Sync-->
         <scene sceneID="kki-pr-YC0">
             <objects>
                 <viewController id="Fpz-hQ-kX5" customClass="CloudSyncViewController" sceneMemberID="viewController">
@@ -231,6 +234,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Cloud Sync" id="h6C-Ot-2Ob"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="capillaryRecordsLabel" destination="qDO-pV-DF9" id="rQc-2I-0cD"/>
@@ -279,7 +283,7 @@
             </objects>
             <point key="canvasLocation" x="-803" y="2175"/>
         </scene>
-        <!--Settings Password View Controller-->
+        <!--Settings-->
         <scene sceneID="I7C-iB-Yyw">
             <objects>
                 <viewController id="xbZ-vT-jll" customClass="SettingsPasswordViewController" sceneMemberID="viewController">
@@ -305,6 +309,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Settings" id="C4c-Z2-I37"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="PasswordField" destination="hXc-cA-evD" id="6f1-dz-7tw"/>
@@ -455,7 +460,7 @@
             </objects>
             <point key="canvasLocation" x="702" y="-1017"/>
         </scene>
-        <!--BarcodeID View Controller-->
+        <!--Patient ID-->
         <scene sceneID="3UL-qS-5Zv">
             <objects>
                 <viewController id="4Xh-7c-Tlq" customClass="BarcodeIDViewController" sceneMemberID="viewController">
@@ -487,6 +492,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Patient ID" id="NeF-Cv-VDw"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="barcodeLabel" destination="UB7-SB-6wb" id="ZBl-jh-fXs"/>
@@ -498,7 +504,7 @@
             </objects>
             <point key="canvasLocation" x="263" y="45"/>
         </scene>
-        <!--Data Table View Controller-->
+        <!--Records-->
         <scene sceneID="WIA-4q-VeK">
             <objects>
                 <tableViewController id="yXs-ge-iwy" customClass="DataTableViewController" sceneMemberID="viewController">
@@ -533,6 +539,7 @@
                             <outlet property="delegate" destination="yXs-ge-iwy" id="WJ0-B6-dkR"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Records" id="PV1-MW-2bH"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="HfQ-n8-JUP" kind="show" identifier="ShowRecord" id="DJs-Sj-1aT"/>
@@ -542,7 +549,7 @@
             </objects>
             <point key="canvasLocation" x="129" y="757"/>
         </scene>
-        <!--Test Record View Controller-->
+        <!--Results-->
         <scene sceneID="KeY-gl-ZVY">
             <objects>
                 <viewController id="HfQ-n8-JUP" customClass="TestRecordViewController" sceneMemberID="viewController">
@@ -615,6 +622,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Results" id="XeX-r5-DRA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="capillaryOneDataLabel" destination="ztF-ps-Dmi" id="YcU-19-Bu4"/>
@@ -631,7 +639,7 @@
             </objects>
             <point key="canvasLocation" x="611" y="757"/>
         </scene>
-        <!--Videos View Controller-->
+        <!--Data Review-->
         <scene sceneID="0Tn-dx-i4R">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="ete-mj-tqE" customClass="VideosViewController" sceneMemberID="viewController">
@@ -677,6 +685,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Data Review" id="YLy-nT-qUL"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="imageView" destination="fdc-U7-iOE" id="ukD-rb-HxP"/>
@@ -689,7 +698,7 @@
             </objects>
             <point key="canvasLocation" x="1038" y="757"/>
         </scene>
-        <!--ManualID View Controller-->
+        <!--Patient ID-->
         <scene sceneID="hJH-oD-xj7">
             <objects>
                 <viewController id="EuV-Ty-S3x" customClass="ManualIDViewController" sceneMemberID="viewController">
@@ -724,6 +733,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Patient ID" id="9C3-vj-bxB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="IDTextField" destination="trj-Fb-CoB" id="Cgv-zz-BOO"/>
@@ -733,7 +743,7 @@
             </objects>
             <point key="canvasLocation" x="702" y="-377"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Test-->
         <scene sceneID="Z1b-Fi-nv5">
             <objects>
                 <tableViewController id="Uo0-Gq-z6E" customClass="TestViewController" sceneMemberID="viewController">
@@ -890,6 +900,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" title="Test" id="uex-Ho-rN5"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="actionLabel" destination="plD-t5-LWd" id="FEN-Ts-JjD"/>
@@ -909,7 +920,7 @@
             </objects>
             <point key="canvasLocation" x="1141" y="36"/>
         </scene>
-        <!--Capture View Controller-->
+        <!--Capture-->
         <scene sceneID="A74-D3-hTA">
             <objects>
                 <viewController id="O8Q-Q5-bs4" customClass="CaptureViewController" sceneMemberID="viewController">
@@ -938,7 +949,7 @@
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Focus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtU-b4-IFv">
-                                        <rect key="frame" x="11" y="11" width="47" height="21"/>
+                                        <rect key="frame" x="11" y="11" width="109" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -948,16 +959,19 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration" label=""/>
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XT1-JN-ixy"/>
                         <barButtonItem systemItem="camera" id="EKd-v8-jq0">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cameraPressed:" destination="O8Q-Q5-bs4" id="bmt-2h-Ftc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="cPH-dE-REF"/>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" title="Capture" id="vri-SG-q0t"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="cameraButton" destination="EKd-v8-jq0" id="haJ-1t-5b2"/>
@@ -970,7 +984,7 @@
             </objects>
             <point key="canvasLocation" x="1577" y="-312"/>
         </scene>
-        <!--Valid Results View Controller-->
+        <!--Results-->
         <scene sceneID="MYm-Ey-6af">
             <objects>
                 <viewController id="idD-HF-9BX" customClass="ValidResultsViewController" sceneMemberID="viewController">
@@ -1004,12 +1018,14 @@
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="TaT-YS-X6e"/>
                         <barButtonItem title="Finished" id="6VS-Fw-84g">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="finishedPressed:" destination="idD-HF-9BX" id="u29-Qa-zEo"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="J3z-Wq-xTU"/>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" title="Results" id="Lp8-W1-cFx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="finishedButtonItem" destination="6VS-Fw-84g" id="TaR-QJ-F7s"/>
@@ -1023,7 +1039,7 @@
             </objects>
             <point key="canvasLocation" x="1962" y="36"/>
         </scene>
-        <!--Invalid Results View Controller-->
+        <!--Invalid Results-->
         <scene sceneID="2gh-9C-F2p">
             <objects>
                 <viewController id="QXc-1h-ccv" customClass="InvalidResultsViewController" sceneMemberID="viewController">
@@ -1083,12 +1099,14 @@
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="hZe-We-kUs"/>
                         <barButtonItem title="Finished" id="qG5-25-IJ9">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="finishedPressed:" destination="QXc-1h-ccv" id="bVd-6E-dbG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="jsm-lh-53i"/>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" title="Invalid Results" id="F9I-vp-vcf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="countsLabel1" destination="aY0-CL-9yT" id="VCh-Tc-Vi1"/>

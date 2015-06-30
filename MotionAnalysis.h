@@ -29,4 +29,6 @@
 - (void)suspendProcessing;
 - (void)processFrameBuffer:(FrameBuffer*)frameBuffer withResourceURL:(NSString*)videoURL;
 
++ (float)ComputeFocusMetric:(FrameBuffer*)frameBuffer;
+
 @end

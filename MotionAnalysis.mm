@@ -44,6 +44,33 @@
     }
 }
 
++ (float)ComputeFocusMetric:(FrameBuffer*)frameBuffer
+{
+    //crop the image
+    cv::Mat firstMat = [frameBuffer getFrameAtIndex:0];
+    cv::Rect rect1;
+    rect1.x = 480/2-200/2;
+    rect1.y = 360/2-200/2;
+    rect1.width = 200;
+    rect1.height = 200;
+    cv::Mat croppedImage = firstMat(rect1);
+    
+    //generate the mask
+    cv::Mat mask;
+    threshold(croppedImage, mask, 200, 255, CV_THRESH_BINARY_INV);
+    
+    //calc the focus metric
+    cv::Mat lap;
+    cv::Laplacian(croppedImage, lap, CV_64F);
+    cv::Scalar mu, sigma;
+    cv::meanStdDev(lap, mu, sigma, mask);
+
+    double focusMeasure = sigma.val[0]*sigma.val[0];
+    double normFocusMeasure = focusMeasure/300.0;
+    
+    return normFocusMeasure;
+}
+
 // Called by the TestViewController
 - (void)processFrameBuffer:(FrameBuffer*)frameBuffer withResourceURL:(NSString*)videoURL
 {
@@ -83,6 +110,9 @@
 }
 
 - (void)processFramesForMovie:(FrameBuffer*) frameBuffer {
+    
+    // Parameter space!!! MHB MD
+    float bubbleLimit = 480*360*0.5;
     
     // Is there flow in the capillary?
     BOOL flow = [self computeFlowForBuffer:frameBuffer];
@@ -427,8 +457,8 @@
     movieFrameMatDiff1ForWat=movieFrameMatDiff5.clone();
     numWorms=numWorms/5;
     cv::Scalar highSigSum=cv::sum(movieFrameMatBWInv);
-    float totalArea=480*360;
-    float ignoredArea=480*360+480*360-highSigSum[0];
+    float totalArea = 480*360;
+    float ignoredArea = 480*360 - highSigSum[0];
     numWorms=numWorms*(totalArea/(totalArea-ignoredArea));
     NSLog(@"numWorms %f", numWorms);
     movieFrameMatDiff.release();
@@ -440,6 +470,12 @@
     movieFrameMatBW.release();
     
     [resultsDict setObject:wormObjects forKey:@"MotionObjects"];
+    
+    // Mike D'ambrosio -
+    if (ignoredArea > bubbleLimit) {
+        [resultsDict setObject:@"BubbleError" forKey:@"ErrorMessage"];
+    }
+    
 }
 
 // Is there flow in the capillary? Scan through the frameBuffer to find out
