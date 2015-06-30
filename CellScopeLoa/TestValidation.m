@@ -21,12 +21,24 @@
     BOOL videoErrorCheck = YES;
     BOOL videoCountCheck = YES;
     BOOL videoObjectCheck = YES;
+    
+    BOOL fieldVarianceCheck = YES;
+    BOOL capillaryVarianceCheck = YES;
+    
+    NSMutableArray* capillaryCount = [[NSMutableArray alloc] init];
+    
     NSInteger maxFields = [[[NSUserDefaults standardUserDefaults] objectForKey:FieldsOfViewKey] integerValue];
     for (CapillaryRecord* record in testRecord.capillaryRecords) {
+        
+        // Did we capture the correct number of fields
         if (record.videos.count != maxFields) {
             videoCountCheck = NO;
         }
+        
+        // Is the variance of the counts within necessary bounds?
+        NSMutableArray* countArray = [[NSMutableArray alloc] init];
         for (Video* video in record.videos) {
+            [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
             if (![video.errorString isEqualToString:@"None"]) {
                 videoErrorCheck = NO;
             }
@@ -37,11 +49,32 @@
                 videoObjectCheck = NO;
             }
         }
+        
+        // Clean any outliers from the array
+        [self cleanOutliersFromArray:countArray];
+        
+        // Check for variance of data results
+        NSMutableDictionary* stats = [self statisticsFromArray:countArray];
+        float mean = [[stats objectForKey:@"mean"] floatValue];
+        float sigma = [[stats objectForKey:@"sigma"] floatValue];
+        
+        if (sigma > sqrtf(mean)) {
+            fieldVarianceCheck = NO;
+        }
+        
+        [capillaryCount addObject:[NSNumber numberWithFloat:mean]];
+    }
+    
+    NSMutableDictionary* stats = [self statisticsFromArray:capillaryCount];
+    float mean = [[stats objectForKey:@"mean"] floatValue];
+    float sigma = [[stats objectForKey:@"sigma"] floatValue];
+    if (sigma > sqrtf(mean)) {
+        capillaryVarianceCheck = NO;
     }
     
     NSMutableDictionary* results = [[NSMutableDictionary alloc] init];
     
-    if (capillaryCheck && videoErrorCheck && videoObjectCheck && videoObjectCheck) {
+    if (capillaryCheck && videoErrorCheck && videoObjectCheck && videoObjectCheck && fieldVarianceCheck && capillaryVarianceCheck) {
             [results setObject:@"Valid" forKey:@"Code"];
     }
     else {
@@ -49,9 +82,77 @@
             NSLog(@"Validation detected a video error");
             [results setObject:@"Invalid" forKey:@"Code"];
         }
+        if (fieldVarianceCheck == NO) {
+            NSLog(@"Validation detected a field variance error");
+            [results setObject:@"Invalid FieldVariance" forKey:@"Code"];
+        }
+        if (capillaryVarianceCheck == NO) {
+            NSLog(@"Validation detected a field variance error");
+            [results setObject:@"Invalid CapillaryVariance" forKey:@"Code"];
+        }
     }
     
     return results;
+}
+
++ (NSMutableDictionary*)statisticsFromArray:(NSMutableArray*)countArray
+{
+    // Check for variance of data results
+    float sum = 0.0;
+    for (NSNumber* number in countArray) {
+        sum += number.floatValue;
+    }
+    float mean = sum/countArray.count;
+    
+    sum = 0.0;
+    for (NSNumber* number in countArray) {
+        float num = number.floatValue;
+        sum += ((num-mean)*(num-mean));
+    }
+    float var = sum/countArray.count;
+    float sigma = sqrtf(var);
+    
+    NSNumber* m = [NSNumber numberWithFloat:mean];
+    NSNumber* v = [NSNumber numberWithFloat:var];
+    NSNumber* s = [NSNumber numberWithFloat:sigma];
+
+    NSMutableDictionary* results = [[NSMutableDictionary alloc]
+                                    initWithObjectsAndKeys: m, @"mean", v, @"var", s, @"sigma", nil];
+    return results;
+}
+
+// Returns YES if less than maxTrials outliers were cleared from the array. NO if too many outliers in array.
++ (void)cleanOutliersFromArray:(NSMutableArray*)countArray
+{
+    // Try to remove up to 2 outliers
+    int trials = 0;
+    int maxTrials = 2;
+    
+    // Hard coded validation parameters. I do not like this.
+    float sigmaFactor = 1.75;
+    
+    while (trials < maxTrials) {
+        // Check for variance of data results
+        NSMutableDictionary* stats = [self statisticsFromArray:countArray];
+        float mean = [[stats objectForKey:@"mean"] floatValue];
+        float sigma = [[stats objectForKey:@"sigma"] floatValue];
+        
+        NSMutableArray* toRemove = [[NSMutableArray alloc] init];
+        int i = 0;
+        for (NSNumber* number in countArray) {
+            float diff = mean - number.floatValue;
+            if (fabs(diff) > sigmaFactor*sigma) {
+                [toRemove addObject:number];
+            }
+            i += 1;
+        }
+        
+        for (NSNumber* outlier in toRemove){
+            [countArray removeObject:outlier];
+        }
+
+        trials += 1;
+    }
 }
 
 // Method also stores results in CoreData objects
@@ -61,19 +162,27 @@
 
     NSMutableArray* capillaryMeans = [[NSMutableArray alloc] init];
     for (CapillaryRecord* record in testRecord.capillaryRecords) {
-        float sum = 0;
-        int counter = 0;
+        
+        // Is the variance of the counts within necessary bounds?
+        NSMutableArray* countArray = [[NSMutableArray alloc] init];
+
         for (Video* video in record.videos) {
+            [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
             float count = video.averageObjectCount.floatValue;
-            sum += count;
-            counter += 1;
         }
-        float mean = sum/counter;
+        // Clean any outliers from the array
+        [self cleanOutliersFromArray:countArray];
+        
+        float sum = 0.0;
+        for (NSNumber* number in countArray) {
+            sum += number.floatValue;
+        }
+        float mean = sum/countArray.count;
         NSNumber* value = [NSNumber numberWithFloat:mean];
         
         // Store in CoreData
         record.objectsPerField = value;
-        
+        // Add the value to the list of capillary means
         [capillaryMeans addObject:value];
     }
     
@@ -91,6 +200,7 @@
     NSMutableDictionary* results = [[NSMutableDictionary alloc] init];
     [results setObject:[NSNumber numberWithFloat:objectsPerField] forKey:@"ObjectsPerField"];
     [results setObject:[NSNumber numberWithFloat:objectsPerMl] forKey:@"ObjectsPerMl"];
+    [results setObject:testRecord.state forKey:@"state"];
     
     // Store in CoreData
     testRecord.objectsPerField = [NSNumber numberWithFloat:objectsPerField];

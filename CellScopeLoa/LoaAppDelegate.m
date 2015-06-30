@@ -36,6 +36,7 @@
         // Store a temporary SimplePhontID password (unsecure)
         [[NSUserDefaults standardUserDefaults] setObject:@"Null" forKey:SimplePhoneIDKey];
         [[NSUserDefaults standardUserDefaults] setObject:@"Null" forKey:SimpleDeviceIDKey];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:@"True"] forKey:FocusCheckSwitchKey];
         
         // Store a counter - global test count for this device
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:TestCounterKey];
@@ -183,6 +184,28 @@
             abort();
         }
     }
+}
+
++ (uint64_t)FreeDiskSpace
+{
+    uint64_t totalSpace = 0;
+    uint64_t totalFreeSpace = 0;
+    
+    __autoreleasing NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
+    
+    if (dictionary) {
+        NSNumber *fileSystemSizeInBytes = [dictionary objectForKey: NSFileSystemSize];
+        NSNumber *freeFileSystemSizeInBytes = [dictionary objectForKey:NSFileSystemFreeSize];
+        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
+        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
+        NSLog(@"Memory Capacity of %llu MiB with %llu MiB Free memory available.", ((totalSpace/1024ll)/1024ll), ((totalFreeSpace/1024ll)/1024ll));
+    } else {
+        NSLog(@"Error Obtaining System Memory Info: Domain = %@, Code = %d", [error domain], [error code]);
+    }
+    
+    return totalFreeSpace;
 }
 
 @end

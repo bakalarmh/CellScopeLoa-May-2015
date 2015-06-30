@@ -7,10 +7,12 @@
 //
 
 #import "MenuTableViewController.h"
+#import "LoaAppDelegate.h"
 #import "DeviceManagerViewController.h"
 #import "BarcodeIDViewController.h"
 #import "SettingsPasswordViewController.h"
 #import "CloudSyncViewController.h"
+#import "DiskSpaceManager.h"
 
 @interface MenuTableViewController ()
 
@@ -20,6 +22,7 @@
     BOOL commlock;
     BOOL batteryRequest;
     NSTimer* batteryTimer;
+    NSTimer* diskTimer;
 }
 
 @synthesize managedObjectContext;
@@ -57,6 +60,14 @@
     batteryRequest = NO;
     commlock = NO;
     [self setBatteryState:@"Unknown"];
+    
+    // Set up a disk space monitor. Check the disk every 4 hours (just in case the device has been left on).
+    diskTimer = [NSTimer scheduledTimerWithTimeInterval:60.0*60.0*4.0
+                                                    target:self
+                                                  selector:@selector(diskTimerFired:)
+                                                  userInfo:nil
+                                                   repeats:YES];
+    [diskTimer fire];
 }
 
 - (void)setBatteryState:(NSString*)state
@@ -107,6 +118,13 @@
     }
     // By default, allow row to be selected
     return indexPath;
+}
+
+#pragma mark - Manage free disk space
+// Manage disk space to make sure the file system does not fill up
+- (void)manageDiskSpace
+{
+    [DiskSpaceManager ManageDiskSpace:managedObjectContext];
 }
 
 #pragma mark - Bluetooth
@@ -160,7 +178,7 @@
         if (cslContext.loaDevice != nil) {
             [cslContext.loaDevice LEDOff];
             
-            batteryTimer = [NSTimer scheduledTimerWithTimeInterval:60.0
+            batteryTimer = [NSTimer scheduledTimerWithTimeInterval:60.0*10.0
                                                                target:self
                                                              selector:@selector(batteryTimerFired:)
                                                              userInfo:nil
@@ -178,6 +196,12 @@
         batteryRequest = YES;
         commlock = YES;
     }
+}
+
+- (void)diskTimerFired:(NSTimer *) theTimer
+{
+    NSLog(@"Disk timer fired!");
+    [self manageDiskSpace];
 }
 
 - (void)didDisconnect

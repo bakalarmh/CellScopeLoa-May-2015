@@ -20,7 +20,7 @@
     NSURL* outputURL;
     dispatch_queue_t videoQueue; // Queue for processing frames and writing video
     CMTime videoTime;
-    BOOL writingFrames;
+    CameraState cameraState;
     
     NSInteger frameRate;
     float captureDuration;
@@ -46,7 +46,7 @@
     frameRate = 30.0;
     
     // Initialize the state of the camera
-    writingFrames = NO;
+    cameraState = llCameraIdle;
     videoQueue = dispatch_queue_create("VideoQueue", DISPATCH_QUEUE_SERIAL);
     
     // Set up the AV foundation capture session
@@ -100,9 +100,19 @@
     return self;
 }
 
+- (void)processSingleFrame
+{
+    cameraState = llCameraProcessingSingleFrame;
+}
+
 - (void)startSendingFrames
 {
-    writingFrames = YES;
+    cameraState = llCameraWritingFrames;
+}
+
+- (void)stopSendingFrames
+{
+    cameraState = llCameraIdle;
 }
 
 - (void)captureWithDuration:(Float32)duration URL:(NSURL*)assetURL {
@@ -126,7 +136,7 @@
                                    selector:@selector(progressClockAction:)
                                    userInfo:nil
                                     repeats:YES];
-    writingFrames = YES;
+    cameraState = llCameraWritingFrames;
     NSLog(@"Start recording");
 }
 
@@ -145,7 +155,7 @@
        fromConnection:(AVCaptureConnection *)connection
 {
     // Are we recording frames right now?
-    if(writingFrames) {
+    if (cameraState == llCameraWritingFrames) {
         if (assetWriterInput.readyForMoreMediaData) {
             // Has the correct number of frames been captured?
             if ((videoTime.value/(float)frameRate) >= captureDuration) {
@@ -168,14 +178,22 @@
             CGImageRef cgImageRef = [self imageFromSampleBuffer:sampleBuffer];
             [cgProcessingDelegate didReceiveFrame:cgImageRef];
         }
-        
-    
+    }
+    else if (cameraState == llCameraProcessingSingleFrame) {
+        if (frameProcessingDelegate != nil) {
+            CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+            [frameProcessingDelegate didReceiveFrame:imageBuffer];
+            NSLog(@"Process a single frame with the current processing delegate");
+        }
+        else {
+            NSLog(@"No current processing delegate");
+        }
     }
 }
 
 - (void)recordingComplete
 {
-    writingFrames = NO;
+    cameraState = llCameraIdle;
     dispatch_async(dispatch_get_main_queue(), ^{
         // Signal to the processing delegate that we are done recording frames
         // [processingDelegate didFinishRecordingFrames:self];
@@ -344,6 +362,22 @@
 {
     [device lockForConfiguration:nil];
     [device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
+    [device unlockForConfiguration];
+}
+
+- (void)setColorTemperatureKelvin:(NSInteger)temperature
+{
+    [device lockForConfiguration:nil];
+    AVCaptureWhiteBalanceTemperatureAndTintValues temperatureAndTint = {
+        .temperature = temperature,
+        .tint = 0,
+    };
+    
+    AVCaptureWhiteBalanceGains gains = [device deviceWhiteBalanceGainsForTemperatureAndTintValues:temperatureAndTint];
+    
+    [device setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains:gains completionHandler:^(CMTime syncTime) {
+        // Pass
+    }];
     [device unlockForConfiguration];
 }
 

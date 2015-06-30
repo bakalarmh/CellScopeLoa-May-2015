@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B0C49D71B42E2AC007AF237 /* DiskSpaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C49D61B42E2AC007AF237 /* DiskSpaceManager.m */; };
 		9B0C92321B055807008F70E3 /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C92311B055807008F70E3 /* TestRecord.m */; };
 		9B0C92381B05801B008F70E3 /* FrameBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C92371B05801B008F70E3 /* FrameBuffer.mm */; };
 		9B0C923A1B058031008F70E3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0C92391B058030008F70E3 /* opencv2.framework */; };
@@ -81,6 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B0C49D51B42E2AC007AF237 /* DiskSpaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskSpaceManager.h; sourceTree = "<group>"; };
+		9B0C49D61B42E2AC007AF237 /* DiskSpaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskSpaceManager.m; sourceTree = "<group>"; };
 		9B0C92301B055807008F70E3 /* TestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecord.h; sourceTree = "<group>"; };
 		9B0C92311B055807008F70E3 /* TestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecord.m; sourceTree = "<group>"; };
 		9B0C92361B05801B008F70E3 /* FrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameBuffer.h; path = CellScopeLoa/FrameBuffer.h; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 		9B3B93B71AFE7F7F00C391CC /* CellScopeLoa */ = {
 			isa = PBXGroup;
 			children = (
+				9B0C49D51B42E2AC007AF237 /* DiskSpaceManager.h */,
+				9B0C49D61B42E2AC007AF237 /* DiskSpaceManager.m */,
 				9BAFD6F71B0C3427001DC361 /* AugmentedMotionScopeViewController.h */,
 				9BAFD6F81B0C3427001DC361 /* AugmentedMotionScopeViewController.m */,
 				9BAFD6DD1B06AB12001DC361 /* ValidResultsViewController.h */,
@@ -543,6 +548,7 @@
 				9B8418341AFEC97A008DBA7B /* DeviceTableViewController.m in Sources */,
 				9B8418701B01239D008DBA7B /* SettingsTableViewController.m in Sources */,
 				9BAFD6F01B093C0C001DC361 /* InvalidResultsViewController.m in Sources */,
+				9B0C49D71B42E2AC007AF237 /* DiskSpaceManager.m in Sources */,
 				9B84182E1AFEC839008DBA7B /* TextBluetoothScanner.m in Sources */,
 				9B3B94101AFEA25900C391CC /* CaptureViewController.m in Sources */,
 				9B8418481B0024C4008DBA7B /* Model.xcdatamodeld in Sources */,

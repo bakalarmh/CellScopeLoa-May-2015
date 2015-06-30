@@ -81,6 +81,14 @@
     }
     else {
         // Return to existing test
+        capillariesAcquired = cslContext.capillaryIndex.intValue;
+        capillariesProcessed = cslContext.capillaryIndex.intValue;
+        if (capillariesAcquired > 0) {
+            capLabel1.text = @"Completed";
+        }
+        else if (capillariesAcquired > 1) {
+            capLabel2.text = @"Completed";
+        }
     }
     
     // Set up UI
@@ -155,6 +163,7 @@
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
                     processingFinished = YES;
                     actionLabel.text = @"Continue to results";
+                    [self continueToResults];
                 }];
             }
             else {
@@ -164,6 +173,7 @@
 
     }
 }
+
 
 #pragma mark - Navigation
 
@@ -193,7 +203,7 @@
     }
     else if ([segue.identifier isEqualToString:@"Abort"]) {
         // Stop any processing
-        [cslContext.motionAnalysis suspendProcessing];
+        // [cslContext.motionAnalysis suspendProcessing];
         // Discard the new test object from the managed object context
         [managedObjectContext reset];
     }
@@ -296,6 +306,7 @@
         
         if (capillariesProcessed == 2) {
             actionLabel.text = @"Continue to results";
+            
         }
         else {
             actionLabel.text = @"Processing...";
@@ -333,21 +344,26 @@
         if ([actionLabel.text isEqualToString:@"Capture"]) {
             [self performSegueWithIdentifier:@"Capture" sender:self];
         }
-        else if ([actionLabel.text isEqualToString:@"Continue to results"]){
-            // Validate the results of the test before loading the next view controller
-            NSDictionary* results = [TestValidation ValidateTestRecord:cslContext.activeTestRecord];
-            if ([[results objectForKey:@"Code"] isEqualToString:@"Valid"]) {
-                cslContext.activeTestRecord.state = @"Valid";
-                [self performSegueWithIdentifier:@"ResultsValid" sender:self];
-            }
-            else {
-                cslContext.activeTestRecord.state = @"Invalid";
-                [self performSegueWithIdentifier:@"ResultsInvalid" sender:self];
-            }
+        else if ([actionLabel.text isEqualToString:@"Continue to results"]) {
+            [self continueToResults];
         }
         else {
             NSLog(@"Processing is not yet complete");
         }
+    }
+}
+
+- (void)continueToResults
+{
+    // Validate the results of the test before loading the next view controller
+    NSDictionary* results = [TestValidation ValidateTestRecord:cslContext.activeTestRecord];
+    if ([[results objectForKey:@"Code"] isEqualToString:@"Valid"]) {
+        cslContext.activeTestRecord.state = @"Valid";
+        [self performSegueWithIdentifier:@"ResultsValid" sender:self];
+    }
+    else {
+        cslContext.activeTestRecord.state = [results objectForKey:@"Code"];
+        [self performSegueWithIdentifier:@"ResultsInvalid" sender:self];
     }
 }
 
@@ -393,7 +409,7 @@
     CLLocation* location = [locations lastObject];
     NSDate* eventDate = location.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0) {
+    if (fabs(howRecent) < 15.0) {
         // If the event is recent, handle it.
         [manager stopUpdatingLocation];
         cslContext.activeTestRecord.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];

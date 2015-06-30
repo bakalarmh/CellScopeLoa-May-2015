@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *capillaryTwoDataLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mfmlLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mffieldLabel;
+@property (weak, nonatomic) IBOutlet UIView *resultCardView;
+@property (weak, nonatomic) IBOutlet UIButton *videosButton1;
+@property (weak, nonatomic) IBOutlet UIButton *videosButton2;
 
 - (IBAction)videoButtonOnePressed:(id)sender;
 - (IBAction)videoButtonTwoPressed:(id)sender;

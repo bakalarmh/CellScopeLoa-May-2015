@@ -26,13 +26,12 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *focusSlider;
 @property (weak, nonatomic) IBOutlet UIButton *autofocusButton;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *focusModeControl;
 @property (weak, nonatomic) IBOutlet UIView *cameraPreviewView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (weak, nonatomic) IBOutlet UILabel *metricLabel;
 
 
 - (IBAction)focusSliderValueChanged:(id)sender;
-- (IBAction)focusModeChanged:(id)sender;
 - (IBAction)cameraPressed:(id)sender;
 
 @end

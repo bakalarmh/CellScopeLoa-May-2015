@@ -22,7 +22,7 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-
++ (uint64_t)FreeDiskSpace;
 
 @end
 

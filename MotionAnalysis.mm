@@ -18,14 +18,13 @@
     NSMutableDictionary* resultsDict;
     NSMutableArray* wormObjects;
     
-    cv::Mat flowAngThresh;
     float numWorms;
     float numSeconds;
 }
 
 -(id)initWithWidth:(NSInteger)width Height:(NSInteger)height
             Frames:(NSInteger)frames
-            VideoCount:(NSInteger)maxVideos
+        VideoCount:(NSInteger)maxVideos
 {
     self = [super init];
     
@@ -127,16 +126,8 @@
     cv::Mat movieFrameMatDiff3= cv::Mat::zeros(rows, cols, CV_16UC1);
     cv::Mat movieFrameMatDiff4= cv::Mat::zeros(rows, cols, CV_16UC1);
     cv::Mat movieFrameMatDiff5= cv::Mat::zeros(rows, cols, CV_16UC1);
-    double flicker1=0;
-    double flicker2=0;
-    double flicker3=0;
-    double flicker4=0;
-    double flicker5=0;
-    double flickerOverall=0;
-    int i = 0;
     int avgFrames = framesToAvg/framesToSkip;
     frameIdx = 0;
-    int sumSum=0;
     cv::Mat diffTest=cv::Mat::zeros(rows, cols, CV_16UC1);;
     cv::Mat movieFrameMatOldTest;
     cv::Mat diffTest1=cv::Mat::zeros(rows, cols, CV_16UC1);;
@@ -144,163 +135,8 @@
     cv::Mat diffTest3=cv::Mat::zeros(rows, cols, CV_16UC1);;
     cv::Mat diffTest4=cv::Mat::zeros(rows, cols, CV_16UC1);;
     cv::Mat diffTest5=cv::Mat::zeros(rows, cols, CV_16UC1);;
-    //calc ave sum and flicker
-    cv::Scalar sumLast;
-    cv::Scalar sumLast2;
-    cv::Scalar sumLast3;
-    double flickerLow=.8;
-    double flickerHigh=1.2;
-    while(frameIdx < ((frameBuffer.numFrames.integerValue))) {
-        int bufferIdx = frameIdx;
-        movieFrameMat = [frameBuffer getFrameAtIndex:bufferIdx];
-        cv::Scalar sum=cv::sum(movieFrameMat);
-        sumSum=sumSum+sum[0];
-        double backVal;
-        double maxValTrash;
-        cv::minMaxLoc(movieFrameMat, &backVal, &maxValTrash);
-        if (frameIdx>2){
-            if (frameIdx<=34) {
-                if (sumLast3[0]/sum[0]>flickerHigh || sumLast3[0]/sum[0]<flickerLow) {
-                    flicker1++;
-                    flickerOverall++;
-                }
-            }
-            else if  (frameIdx<=62) {
-                if (sumLast3[0]/sum[0]>flickerHigh || sumLast3[0]/sum[0]<flickerLow) {
-                    flicker2++;
-                    flickerOverall++;
-                }
-            }
-            else if (frameIdx<=90) {
-                if (sumLast3[0]/sum[0]>flickerHigh || sumLast3[0]/sum[0]<flickerLow) {
-                    flicker3++;
-                    flickerOverall++;
-                }
-            }
-            else if (frameIdx<=118) {
-                if (sumLast3[0]/sum[0]>flickerHigh || sumLast3[0]/sum[0]<flickerLow) {
-                    flicker4++;
-                    flickerOverall++;
-                }
-            }
-            else if (frameIdx<=146) {
-                if (sumLast3[0]/sum[0]>flickerHigh || sumLast3[0]/sum[0]<flickerLow) {
-                    flicker5++;
-                    flickerOverall++;
-                }
-            }
-        }
-        if (frameIdx>1) sumLast3=sumLast2;
-        if (frameIdx>0) sumLast2=sumLast;
-        sumLast=sum;
-        frameIdx++;
-    }
-    if (flickerOverall <10) {
-        NSLog(@"Lighting error is not enabled!");
-        //[resultsDict setObject:@"LightingError" forKey:@"ErrorString"];
-        //return;
-        
-    }
-    double aveSum=sumSum/frameIdx;
-    //try to correct for flicker
-    frameIdx = 0;
-    while(frameIdx < ((frameBuffer.numFrames.integerValue))) {
-        int bufferIdx = frameIdx;
-        movieFrameMat = [frameBuffer getFrameAtIndex:bufferIdx];
-        cv::Scalar sum=cv::sum(movieFrameMat);
-        movieFrameMat=movieFrameMat*(aveSum/sum[0]);
-        frameIdx++;
-    }
-    // Disable motion estimation
-    /*
-    i = 0;
-    frameIdx = 0;
-    cv::Mat tempFlow;
-    cv::Mat magAng[2];
-    cv::Mat ang=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat angOld=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat angTmp=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat mag;
-    cv::Mat flowAng=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat flowMagThresh;
-    cv::Mat flow=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat flow1=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat flow2=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat flow3=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat flow4=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat flow5=cv::Mat::zeros(rows, cols, CV_32FC1);
-    int numFrameToAdv=20;
-    //estimage optical flow (short timescale)
-    while(frameIdx < ((frameBuffer.numFrames.integerValue))) {
-        int bufferIdx = frameIdx;
-        if (frameIdx>0) movieFrameMatOld=movieFrameMat.clone();
-        movieFrameMat = [frameBuffer getFrameAtIndex:bufferIdx];
-        if (frameIdx>0) {
-            calcOpticalFlowFarneback(movieFrameMatOld, movieFrameMat, tempFlow, 0.5, 3, 15, 3, 5, 1.2, 0);
-            cv::split(tempFlow, magAng);
-            cv::cartToPolar(magAng[0], magAng[1], mag, ang);
-            cv::absdiff(ang, angOld, angTmp);
-            flowAng=flowAng+angTmp;
-            if (frameIdx<=29) {
-                flow1=flow1+mag;
-            }
-            else if  (frameIdx<=58) {
-                flow2=flow2+mag;
-            }
-            else if (frameIdx<=87) {
-                flow3=flow3+mag;
-            }
-            else if (frameIdx<=116) {
-                flow4=flow4+mag;
-            }
-            else if (frameIdx<=145) {
-                flow5=flow5+mag;
-            }
-        }
-        angOld=ang.clone();
-        frameIdx=frameIdx+numFrameToAdv;
-        
-    }
-    //calc long term flow mag
-    frameIdx = 0;
-    numFrameToAdv=5;
-    while(frameIdx < ((frameBuffer.numFrames.integerValue))) {
-        int bufferIdx = frameIdx;
-        if (frameIdx>0) movieFrameMatOld=movieFrameMat;
-        movieFrameMat = [frameBuffer getFrameAtIndex:bufferIdx];
-        if (frameIdx>0) {
-            calcOpticalFlowFarneback(movieFrameMatOld, movieFrameMat, tempFlow, 0.5, 3, 20, 3, 7, 1.5, 0);
-            cv::split(tempFlow, magAng);
-            cv::cartToPolar(magAng[0], magAng[1], mag, ang,true);
-            flow=flow+mag;
-        }
-        frameIdx=frameIdx+numFrameToAdv;
-    }
-    int z=5;
-    i=0;
-    for(int i=0; i<z; i++) {
-        cv::medianBlur(flowAng,flowAng,5);
-    }
-    threshold(flowAng, flowAngThresh,10, 255, CV_THRESH_TOZERO);
-    threshold(flowAngThresh, flowAngThresh, 1 , 255, CV_THRESH_BINARY);
-    flowAngThresh=flowAngThresh/255;
-    threshold(flow, flowMagThresh, 2, 255, CV_THRESH_BINARY);
-    flowMagThresh=flowMagThresh/255;
-    flowMagThresh =  cv::Scalar::all(1) - flowMagThresh;
-    int erosionSize0=10;
-    cv::Mat element0 = getStructuringElement(0, cv::Size( 2*erosionSize0 + 1, 2*erosionSize0+1 ),cv::Point( erosionSize0, erosionSize0));
-    cv::dilate( flowAngThresh, flowAngThresh, element0 );
-    cv::erode( flowAngThresh, flowAngThresh, element0 );
-    cv::erode( flowAngThresh, flowAngThresh, element0 );
-    cv::Scalar flowAngThreshS=cv::sum(flowAngThresh);
-    if (flowAngThreshS[0] > 10000) {
-        // Motion error is disabled
-        // [resultsDict setObject:@"MotionError" forKey:@"ErrorString"];
-        // return;
-    }
-    */
     
-    i = 0;
+    int i = 0;
     frameIdx = 0;
     double focusMeasure;
     double focusMeasure2;
@@ -402,9 +238,6 @@
         frameIdx = frameIdx + framesToSkip;
         i = i+1;
     }
-    flowAngThresh.convertTo(flowAngThresh, CV_16UC1);
-    cv::Mat flowAngThreshInv=  cv::Scalar::all(1) - flowAngThresh;
-    flowAngThreshInv=flowAngThreshInv*65535;
     cv::multiply(movieFrameMatDiff1, movieFrameMatBWInv, movieFrameMatDiff1);
     cv::multiply(movieFrameMatDiff2, movieFrameMatBWInv, movieFrameMatDiff2);
     cv::multiply(movieFrameMatDiff3, movieFrameMatBWInv, movieFrameMatDiff3);
@@ -426,47 +259,8 @@
     cv::Scalar sum33=cv::sum(movieFrameMatDiff3);
     cv::Scalar sum44=cv::sum(movieFrameMatDiff4);
     cv::Scalar sum55=cv::sum(movieFrameMatDiff5);
-    flowAngThresh.convertTo(flowAngThresh, CV_32FC1);
     
-    // Disable flow
-    /*
-    flow1.convertTo(flow1, CV_32FC1);
-    flow2.convertTo(flow2, CV_32FC1);
-    flow3.convertTo(flow3, CV_32FC1);
-    flow4.convertTo(flow4, CV_32FC1);
-    flow5.convertTo(flow5, CV_32FC1);
-    cv::Mat flowSumTemp=cv::Mat::zeros(rows, cols, CV_32FC1);
-    cv::Mat flowSumTempThresh;
-    cv::multiply(flow1, flowAngThresh, flowSumTemp);
-    flowSumTemp.convertTo(flowSumTemp, CV_16UC1);
-    cv::multiply(flowSumTemp, movieFrameMatBWInv, flowSumTemp);
-    cv::Scalar flowSum1=cv::sum(flowSumTemp);
-    cv::multiply(flow2, flowAngThresh, flowSumTemp);
-    flowSumTemp.convertTo(flowSumTemp, CV_16UC1);
-    cv::multiply(flowSumTemp, movieFrameMatBWInv, flowSumTemp);
-    cv::Scalar flowSum2=cv::sum(flowSumTemp);
-    cv::multiply(flow3, flowAngThresh, flowSumTemp);
-    flowSumTemp.convertTo(flowSumTemp, CV_16UC1);
-    cv::multiply(flowSumTemp, movieFrameMatBWInv, flowSumTemp);
-    cv::Scalar flowSum3=cv::sum(flowSumTemp);
-    cv::multiply(flow4, flowAngThresh, flowSumTemp);
-    flowSumTemp.convertTo(flowSumTemp, CV_16UC1);
-    cv::multiply(flowSumTemp, movieFrameMatBWInv, flowSumTemp);
-    cv::Scalar flowSum4=cv::sum(flowSumTemp);
-    cv::multiply(flow5, flowAngThresh, flowSumTemp);
-    flowSumTemp.convertTo(flowSumTemp, CV_16UC1);
-    cv::multiply(flowSumTemp, movieFrameMatBWInv, flowSumTemp);
-    cv::Scalar flowSum5=cv::sum(flowSumTemp);
-    cv::multiply(flow, flowAngThresh, flowSumTemp);
-    flowSumTemp.convertTo(flowSumTemp, CV_16UC1);
-    cv::multiply(flowSumTemp, movieFrameMatBWInv, flowSumTemp);
-    cv::Rect myROI(60, 0, 360, 360);
-    cv::Mat flowSumTempCrop = flowSumTemp(myROI);
-    cv::Scalar flowSum=cv::sum(flowSumTempCrop);
-     */
     NSLog(@"done with loop, sums are %f, %f, %f, %f, %f", sum11[0],sum22[0],sum33[0],sum44[0],sum55[0]);
-    // NSLog(@"done with loop, flows are %f, %f, %f, %f, %f", flowSum1[0],flowSum2[0],flowSum3[0],flowSum4[0],flowSum5[0]);
-    // NSLog(@"done with loop, flow is, %f,", flowSum[0]);
     //estimate background
     int backSize=30;
     int backgroundSize=75; //was 75
@@ -475,58 +269,28 @@
     int backgroundSize4=75; //was 75
     int backgroundSize5=75; //was 75
     
-    // Disable flow
-    /*
-    int flowCutoff=250000;
-    if (flowSum[0]>flowCutoff && flicker1<50) {
-        backgroundSize=50-((flowSum[0]-flowCutoff)/5000);
-        if (backgroundSize<35) backgroundSize=35;
-    }
-    
-    if (flowSum[0]>flowCutoff && flicker2<50){
-        backgroundSize2=50-((flowSum[0]-flowCutoff)/5000);
-        if (backgroundSize2<35) backgroundSize2=35;
-    }
-    
-    if (flowSum[0]>flowCutoff && flicker3<50) {
-        backgroundSize3=50-((flowSum[0]-flowCutoff)/5000);
-        if (backgroundSize3<35) backgroundSize3=35;
-    }
-    
-    if (flowSum[0]>flowCutoff && flicker4<50) {
-        backgroundSize4=50-((flowSum[0]-flowCutoff)/5000);
-        if (backgroundSize4<35) backgroundSize4=35;
-    }
-    
-    if (flowSum[0]>flowCutoff && flicker5<50) {
-        backgroundSize5=50-((flowSum[0]-flowCutoff)/5000);
-        if (backgroundSize5<35) backgroundSize5=35;
-    }
-     */
-    
     cv::Mat backConvMat= cv::Mat::ones(backSize, backSize, CV_32FC1);
     backConvMat=backConvMat/(backSize*backSize);
     cv::Mat backgroundConvMat= cv::Mat::ones(backgroundSize,backgroundSize, CV_32FC1);
     backgroundConvMat=backgroundConvMat/(backgroundSize*backgroundSize);
-    movieFrameMatDiff=movieFrameMatDiff+movieFrameMatBW+flowAngThreshInv;
+    movieFrameMatDiff=movieFrameMatDiff+movieFrameMatBW;
     cv::filter2D(movieFrameMatDiff,movieFrameMatDiff,-1,backgroundConvMat, cv::Point(-1,-1));
     double backVal;
     double maxValTrash;
     cv::minMaxLoc(movieFrameMatDiff, &backVal, &maxValTrash);
     //new background calcs1
-    cv::Mat movieFrameMatDiff1Back=movieFrameMatDiff1+movieFrameMatBW+flowAngThreshInv;;
+    cv::Mat movieFrameMatDiff1Back=movieFrameMatDiff1+movieFrameMatBW;
     cv::dilate(movieFrameMatDiff1Back, movieFrameMatDiff1Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
     double backVal1;
     double maxValTrash1;
     cv::minMaxLoc(movieFrameMatDiff1Back, &backVal1, &maxValTrash1);
-    NSLog(@"movieframediff1back min, max is, %f, %f", backVal1, maxValTrash1 );
     if (backVal1<12) {
         backVal1=12;
     }
     //new background calcs2
     backgroundConvMat= cv::Mat::ones(backgroundSize2,backgroundSize2, CV_32FC1);
     backgroundConvMat=backgroundConvMat/(backgroundSize2*backgroundSize2);
-    cv::Mat movieFrameMatDiff2Back=movieFrameMatDiff2+movieFrameMatBW+flowAngThreshInv;;
+    cv::Mat movieFrameMatDiff2Back=movieFrameMatDiff2+movieFrameMatBW;
     cv::dilate(movieFrameMatDiff2Back, movieFrameMatDiff2Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
     double backVal2;
     double maxValTrash2;
@@ -537,7 +301,7 @@
     //new background calcs3
     backgroundConvMat= cv::Mat::ones(backgroundSize3,backgroundSize3, CV_32FC1);
     backgroundConvMat=backgroundConvMat/(backgroundSize3*backgroundSize3);
-    cv::Mat movieFrameMatDiff3Back=movieFrameMatDiff3+movieFrameMatBW+flowAngThreshInv;;
+    cv::Mat movieFrameMatDiff3Back=movieFrameMatDiff3+movieFrameMatBW;
     cv::dilate(movieFrameMatDiff3Back, movieFrameMatDiff3Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
     double backVal3;
     double maxValTrash3;
@@ -548,8 +312,7 @@
     //new background calcs4
     backgroundConvMat= cv::Mat::ones(backgroundSize4,backgroundSize4, CV_32FC1);
     backgroundConvMat=backgroundConvMat/(backgroundSize4*backgroundSize4);
-    cv::Scalar sum4=cv::sum(movieFrameMatDiff4);
-    cv::Mat movieFrameMatDiff4Back=movieFrameMatDiff4+movieFrameMatBW+flowAngThreshInv;;
+    cv::Mat movieFrameMatDiff4Back=movieFrameMatDiff4+movieFrameMatBW;
     cv::dilate(movieFrameMatDiff4Back, movieFrameMatDiff4Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
     double backVal4;
     double maxValTrash4;
@@ -561,7 +324,7 @@
     //new background calcs5
     backgroundConvMat= cv::Mat::ones(backgroundSize5,backgroundSize5, CV_32FC1);
     backgroundConvMat=backgroundConvMat/(backgroundSize5*backgroundSize5);
-    cv::Mat movieFrameMatDiff5Back=movieFrameMatDiff5+movieFrameMatBW+flowAngThreshInv;;
+    cv::Mat movieFrameMatDiff5Back=movieFrameMatDiff5+movieFrameMatBW;
     cv::dilate(movieFrameMatDiff5Back, movieFrameMatDiff5Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
     double backVal5;
     double maxValTrash5;
@@ -570,33 +333,11 @@
         backVal5=12;
     }
     double backValCorr=2;
-    if (focusMeasure2<50000) {
-        float focusCorr=(focusMeasure2)-50000;
-        focusCorr=focusCorr/38000;
-        backValCorr=backValCorr+focusCorr;
-    }
-    if (focusMeasure<10) {
-    }
     double backValCorr1=backValCorr;
     double backValCorr2=backValCorr;
     double backValCorr3=backValCorr;
     double backValCorr4=backValCorr;
     double backValCorr5=backValCorr;
-    if (flicker1>5) {
-        flicker1=5;
-    }
-    if (flicker2>5) {
-        flicker2=5;
-    }
-    if (flicker3>5) {
-        flicker3=5;
-    }
-    if (flicker4>5) {
-        flicker4=5;
-    }
-    if (flicker5>5) {
-        flicker5=5;
-    }
     movieFrameMatDiff1=movieFrameMatDiff1-backVal1*backValCorr1;
     movieFrameMatDiff2=movieFrameMatDiff2-backVal2*backValCorr2;
     movieFrameMatDiff3=movieFrameMatDiff3-backVal3*backValCorr3;
@@ -650,14 +391,7 @@
     cv::filter2D(movieFrameMatDiff5,movieFrameMatDiff5,-1,gaussKer, cv::Point(-1,-1));
     movieFrameMatDiff5=movieFrameMatDiff5*25500;
     movieFrameMatDiff5.convertTo(movieFrameMatDiff5, CV_16UC1);
-    //median filter i times
-    for(int i=0; i<0;i++) {
-        cv::medianBlur(movieFrameMatDiff1,movieFrameMatDiff1,3);
-        cv::medianBlur(movieFrameMatDiff2,movieFrameMatDiff2,3);
-        cv::medianBlur(movieFrameMatDiff3,movieFrameMatDiff3,3);
-        cv::medianBlur(movieFrameMatDiff4,movieFrameMatDiff4,3);
-        cv::medianBlur(movieFrameMatDiff5,movieFrameMatDiff5,3);
-    }
+    
     movieFrameMatDiff1.convertTo(movieFrameMatDiff1, CV_8UC1);
     movieFrameMatDiff2.convertTo(movieFrameMatDiff2, CV_8UC1);
     movieFrameMatDiff3.convertTo(movieFrameMatDiff3, CV_8UC1);
@@ -692,10 +426,9 @@
     threshold(movieFrameMatDiff5, movieFrameMatDiff5, 1, 255, CV_THRESH_BINARY);
     movieFrameMatDiff1ForWat=movieFrameMatDiff5.clone();
     numWorms=numWorms/5;
-    cv::Scalar flowAngThreshSum=cv::sum(flowAngThresh);
     cv::Scalar highSigSum=cv::sum(movieFrameMatBWInv);
     float totalArea=480*360;
-    float ignoredArea=480*360-flowAngThreshSum[0]+480*360-highSigSum[0];
+    float ignoredArea=480*360+480*360-highSigSum[0];
     numWorms=numWorms*(totalArea/(totalArea-ignoredArea));
     NSLog(@"numWorms %f", numWorms);
     movieFrameMatDiff.release();
@@ -801,56 +534,58 @@
                 extractor.compute(detectActiveFrame, keypoints1, descriptors1);
                 extractor.compute(detectLastFrame, keypoints2, descriptors2);
                 
-                cv::FlannBasedMatcher matcher;
-                std::vector<cv::DMatch> matches;
-                matcher.match(descriptors1, descriptors2, matches);
-                
-                std::vector<cv::DMatch> good_matches, final_matches;
-                
-                for (int i = 0; i < descriptors1.rows; i++) {
-                    if (matches[i].distance <= max_distance) {
-                        good_matches.push_back(matches[i]);
-                    }
-                }
-                
-                // Clean matches further
-                for (int i = 0; i < good_matches.size(); i++) {
-                    cv::KeyPoint a = keypoints1[good_matches[i].queryIdx];
-                    cv::KeyPoint b = keypoints2[good_matches[i].trainIdx];
-                    cv::Point2d offset = b.pt - a.pt;
-                    if ((abs(offset.x) < max_distance) && (abs(offset.y) < max_distance)) {
-                        final_matches.push_back(good_matches[i]);
-                    }
-                }
-                
-                float local_x = 0.0;
-                float local_y = 0.0;
-                float local_abs = 0.0;
-                for (int i = 0; i < final_matches.size(); i++) {
-                    cv::KeyPoint a = keypoints1[final_matches[i].queryIdx];
-                    cv::KeyPoint b = keypoints2[final_matches[i].trainIdx];
-                    cv::Point2d offset = b.pt - a.pt;
-                    local_x += offset.x;
-                    local_y += offset.y;
+                if ((descriptors1.rows > 0) && (descriptors2.rows > 0)) {
+                    cv::FlannBasedMatcher matcher;
+                    std::vector<cv::DMatch> matches;
+                    matcher.match(descriptors1, descriptors2, matches);
                     
-                    local_abs += sqrtf(offset.x*offset.x + offset.y*offset.y);
+                    std::vector<cv::DMatch> good_matches, final_matches;
+                    
+                    for (int i = 0; i < descriptors1.rows; i++) {
+                        if (matches[i].distance <= max_distance) {
+                            good_matches.push_back(matches[i]);
+                        }
+                    }
+                    
+                    // Clean matches further
+                    for (int i = 0; i < good_matches.size(); i++) {
+                        cv::KeyPoint a = keypoints1[good_matches[i].queryIdx];
+                        cv::KeyPoint b = keypoints2[good_matches[i].trainIdx];
+                        cv::Point2d offset = b.pt - a.pt;
+                        if ((std::abs(offset.x) < max_distance) && (std::abs(offset.y) < max_distance)) {
+                            final_matches.push_back(good_matches[i]);
+                        }
+                    }
+                    
+                    float local_x = 0.0;
+                    float local_y = 0.0;
+                    float local_abs = 0.0;
+                    for (int i = 0; i < final_matches.size(); i++) {
+                        cv::KeyPoint a = keypoints1[final_matches[i].queryIdx];
+                        cv::KeyPoint b = keypoints2[final_matches[i].trainIdx];
+                        cv::Point2d offset = b.pt - a.pt;
+                        local_x += offset.x;
+                        local_y += offset.y;
+                        
+                        local_abs += sqrtf(offset.x*offset.x + offset.y*offset.y);
+                    }
+                    
+                    x_motion += local_x/final_matches.size();
+                    y_motion += local_y/final_matches.size();
+                    abs_motion += local_abs/final_matches.size();
+                    
+                    //-- Draw only "good" matches
+                    cv::Mat img_matches;
+                    
+                    for (int i = 0; i < final_matches.size(); i++) {
+                        cv::Scalar color(0, 255, 0);
+                        cv::line(detectActiveFrame, keypoints1[final_matches[i].queryIdx].pt, keypoints2[final_matches[i].trainIdx].pt, color, 1, 8, 0);
+                    }
+                    
+                    cv::Mat cvOutput;
+                    detectActiveFrame.convertTo(cvOutput, CV_8UC1);
+                    outputImage = [UIImage imageWithCVMat:cvOutput];
                 }
-                
-                x_motion += local_x/final_matches.size();
-                y_motion += local_y/final_matches.size();
-                abs_motion += local_abs/final_matches.size();
-                
-                //-- Draw only "good" matches
-                cv::Mat img_matches;
-                
-                for (int i = 0; i < final_matches.size(); i++) {
-                    cv::Scalar color(0, 255, 0);
-                    cv::line(detectActiveFrame, keypoints1[final_matches[i].queryIdx].pt, keypoints2[final_matches[i].trainIdx].pt, color, 1, 8, 0);
-                }
-                
-                cv::Mat cvOutput;
-                detectActiveFrame.convertTo(cvOutput, CV_8UC1);
-                outputImage = [UIImage imageWithCVMat:cvOutput];
             }
         }
         

@@ -16,10 +16,14 @@
 @property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) CSLContext *cslContext;
 
+@property (weak, nonatomic) NSSet* videos;
 @property (weak, nonatomic) Video* video;
 
+@property (weak, nonatomic) IBOutlet UILabel *videoIndex;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *layerSegmentedControl;
+- (IBAction)forwardPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backPressed;
 
 @end

@@ -10,6 +10,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CameraDispatcher.h"
 
+typedef enum CameraState : NSUInteger {
+    llCameraIdle,
+    llCameraWritingFrames,
+    llCameraProcessingSingleFrame,
+} CameraState;
+
 @protocol FocusDelegate
 - (void)focusDidChange:(NSNumber*)focusLensPosition;
 @end
@@ -45,6 +51,8 @@
 - (void)startCamera;
 - (void)stopCamera;
 - (void)startSendingFrames;
+- (void)processSingleFrame;
+- (void)stopSendingFrames;
 - (void)captureWithDuration:(Float32)duration URL:(NSURL*)outputURL;
 - (AVCaptureWhiteBalanceGains)getCurrentWhiteBalanceGains;
 - (void)setManualFocusState;
@@ -61,6 +69,7 @@
 - (void)setAutoExposureContinuous;
 - (void)setExposureMinISO:(CMTime)exposure;
 - (void)setRelativeISO:(float)iso;
+- (void)setColorTemperatureKelvin:(NSInteger)temperature;
 - (void)setMinimumExposure;
 
 @end

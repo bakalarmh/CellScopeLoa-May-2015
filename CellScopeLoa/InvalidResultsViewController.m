@@ -7,6 +7,9 @@
 //
 
 #import "InvalidResultsViewController.h"
+#import "TestValidation.h"
+#import "Video.h"
+#import "CapillaryRecord.h"
 
 @interface InvalidResultsViewController ()
 
@@ -15,12 +18,47 @@
 @implementation InvalidResultsViewController
 
 @synthesize cslContext;
+@synthesize testResultLabel;
+@synthesize errorMessageLabel;
+@synthesize countsLabel1;
+@synthesize countsLabel2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    TestRecord* testRecord = cslContext.activeTestRecord;
+    
     [self.navigationItem setHidesBackButton:YES];
+    NSDictionary* testResults = [TestValidation ResultsFromTestRecord:testRecord];
+    
+    NSString* state = [testResults objectForKey:@"state"];
+    if ([state rangeOfString:@"FieldVariance"].location != NSNotFound) {
+        testResultLabel.text = @"Test result is invalid";
+        errorMessageLabel.text = @"High field of view variance";
+    }
+    else if ([state rangeOfString:@"CapillaryVariance"].location != NSNotFound) {
+        testResultLabel.text = @"Test result is invalid";
+        errorMessageLabel.text = @"High capillary to capillary variance";
+    }
+    
+    int i = 0;
+    for (CapillaryRecord* record in testRecord.capillaryRecords) {
+        NSString* string = @"";
+        for (Video* video in record.videos) {
+            float count = video.averageObjectCount.floatValue;
+            string = [string stringByAppendingFormat:@"%.1f, ",count];
+        }
+        string = [string substringToIndex:string.length - 2];
+        if (i == 0) {
+            countsLabel1.text = string;
+        }
+        else {
+            countsLabel2.text = string;
+        }
+        i += 1;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -20,6 +20,7 @@
 @synthesize cslContext;
 @synthesize phoneIDField;
 @synthesize deviceIDField;
+@synthesize focusCheckSwitch;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,8 +28,9 @@
     phoneIDField.delegate = self;
     deviceIDField.delegate = self;
 
-    phoneIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimplePhoneIDKey];;
-    deviceIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimpleDeviceIDKey];;
+    phoneIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimplePhoneIDKey];
+    deviceIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimpleDeviceIDKey];
+    focusCheckSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:FocusCheckSwitchKey] boolValue];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,8 +58,16 @@
 - (IBAction)phoneIDEdited:(id)sender {
     // Store the latest SimplePhoneID as default
     [[NSUserDefaults standardUserDefaults] setObject:phoneIDField.text forKey:SimplePhoneIDKey];
-    [[NSUserDefaults standardUserDefaults] setObject:deviceIDField.text forKey:SimpleDeviceIDKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
+- (IBAction)focusSwitchValueChanged:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:focusCheckSwitch.on] forKey:FocusCheckSwitchKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)deviceIDEdited:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:deviceIDField.text forKey:SimpleDeviceIDKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

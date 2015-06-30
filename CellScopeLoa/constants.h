@@ -24,6 +24,7 @@ extern NSString* const GreenGainKey;
 extern NSString* const BlueGainKey;
 extern NSString* const SimplePhoneIDKey;
 extern NSString* const SimpleDeviceIDKey;
+extern NSString* const FocusCheckSwitchKey;
 extern NSString* const AdminPassKey;
 extern NSString* const TestCounterKey;
 

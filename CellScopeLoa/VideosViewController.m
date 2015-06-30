@@ -9,7 +9,10 @@
 #import "VideosViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface VideosViewController ()
+@interface VideosViewController () {
+    NSArray* orderedVideos;
+    NSInteger index;
+}
 
 @end
 
@@ -25,16 +28,19 @@
 }
 
 @synthesize video;
+@synthesize videos;
 @synthesize managedObjectContext;
 @synthesize cslContext;
 
 @synthesize imageView;
 @synthesize scrollView;
 @synthesize layerSegmentedControl;
+@synthesize videoIndex;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    orderedVideos = [videos allObjects];
     [self.navigationController setToolbarHidden:YES animated:YES];
     
     scrollView.minimumZoomScale = 0.9;
@@ -44,6 +50,22 @@
     
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     
+    [self initProcessing];
+    
+    index = 0;
+    video = [orderedVideos objectAtIndex:index];
+    videoIndex.text = [NSString stringWithFormat:@"%d", (int)index];
+    
+    [self startProcessing];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)initProcessing
+{
     // Set up the image queue
     imageQueue = [[NSMutableArray alloc] initWithCapacity:10];
     
@@ -52,13 +74,6 @@
     CIColor* black = [CIColor colorWithString:@"0.0 0.0 0.0 1.0"];
     [blackGenerator setValue:black forKey:@"inputColor"];
     blackImage = [blackGenerator valueForKey:@"outputImage"];
-    
-    [self startProcessing];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)startProcessing
@@ -241,4 +256,15 @@
 }
 */
 
+- (IBAction)forwardPressed:(id)sender {
+    [self stopPlayback];
+    [self initProcessing];
+    index += 1;
+    if (index >= orderedVideos.count) {
+        index = 0;
+    }
+    video = [orderedVideos objectAtIndex:index];
+    videoIndex.text = [NSString stringWithFormat:@"%d", (int)index];
+    [self startProcessing];
+}
 @end
