@@ -30,7 +30,7 @@ typedef enum CameraState : NSUInteger {
 @end
 
 @protocol CGProcessingDelegate
-- (void)didReceiveFrame:(CGImageRef)imageRef;
+- (void)didReceiveCGFrame:(CGImageRef)imageRef;
 @end
 
 @interface LLCamera : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate>

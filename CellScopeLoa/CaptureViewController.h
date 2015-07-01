@@ -24,11 +24,13 @@
 @property (strong, nonatomic) LLCamera* camera;
 @property (strong, nonatomic) id<CaptureViewControllerDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UILabel *focusWarningLabel;
 @property (weak, nonatomic) IBOutlet UISlider *focusSlider;
 @property (weak, nonatomic) IBOutlet UIButton *autofocusButton;
 @property (weak, nonatomic) IBOutlet UIView *cameraPreviewView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (weak, nonatomic) IBOutlet UILabel *metricLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *zoomImageView;
 
 
 - (IBAction)focusSliderValueChanged:(id)sender;

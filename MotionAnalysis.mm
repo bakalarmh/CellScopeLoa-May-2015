@@ -66,7 +66,7 @@
     cv::meanStdDev(lap, mu, sigma, mask);
 
     double focusMeasure = sigma.val[0]*sigma.val[0];
-    double normFocusMeasure = focusMeasure/300.0;
+    double normFocusMeasure = focusMeasure/100.0;
     
     return normFocusMeasure;
 }
@@ -131,6 +131,9 @@
     // Algorithm parameters
     int framesToAvg = 7;
     int framesToSkip = 1;
+    // Focus parameter
+    double focusMeasure = 0.0;
+    double normFocusMeasure = 0.0;
     // Matrix for storing normalized frames
     cv::Mat movieFrameMatNorm=cv::Mat::zeros(rows, cols, CV_16UC1);
     cv::Mat movieFrameMatNorm2=cv::Mat::zeros(rows, cols, CV_16UC1);
@@ -168,8 +171,6 @@
     
     int i = 0;
     frameIdx = 0;
-    double focusMeasure;
-    double focusMeasure2;
     // Compute difference image from current movie
     while(frameIdx < (frameBuffer.numFrames.integerValue)) {
         while(i < avgFrames) {
@@ -179,6 +180,7 @@
             double maxValTrash;
             cv::minMaxLoc(movieFrameMat, &backVal, &maxValTrash);
             if (i==0){
+                
                 threshold(movieFrameMat, movieFrameMatBW,150, 255, CV_THRESH_BINARY);
                 cv::Mat element = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size( 10,10 ), cv::Point( 2, 2 ));
                 cv::morphologyEx(movieFrameMatBW,movieFrameMatBW, CV_MOP_DILATE, element );
@@ -189,21 +191,26 @@
                 movieFrameMatBWInv=movieFrameMatBWInv/255;
                 movieFrameMatIllum=movieFrameMat.clone();
                 movieFrameMatIllum.convertTo(movieFrameMatIllum, CV_16UC1);
-                cv::Rect myROI(100, 100, 200, 200);
-                cv::Mat croppedImage = movieFrameMat(myROI);
+                
+                // Generate a robust focus metric
+                //crop the image
+                cv::Mat firstMat = [frameBuffer getFrameAtIndex:0];
+                cv::Rect rect1;
+                rect1.x = 480/2-200/2;
+                rect1.y = 360/2-200/2;
+                rect1.width = 200;
+                rect1.height = 200;
+                cv::Mat croppedImage = firstMat(rect1);
+                //generate the mask
+                cv::Mat mask;
+                threshold(croppedImage, mask, 200, 255, CV_THRESH_BINARY_INV);
+                //calc the focus metric
                 cv::Mat lap;
                 cv::Laplacian(croppedImage, lap, CV_64F);
                 cv::Scalar mu, sigma;
-                cv::meanStdDev(lap, mu, sigma);
+                cv::meanStdDev(lap, mu, sigma, mask);
                 focusMeasure = sigma.val[0]*sigma.val[0];
-                NSLog(@"focus measure is, %f", focusMeasure);
-                int ksize=5;
-                cv::Mat Gx, Gy;
-                cv::Sobel(croppedImage, Gx, CV_64F, 1, 0, ksize);
-                cv::Sobel(croppedImage, Gy, CV_64F, 0, 1, ksize);
-                cv::Mat FM = Gx.mul(Gx) + Gy.mul(Gy);
-                focusMeasure2 = cv::mean(FM).val[0];
-                NSLog(@"focus measure2 is, %f", focusMeasure2);
+                normFocusMeasure = focusMeasure/100.0;
             }
             movieFrameMat.convertTo(movieFrameMat, CV_16UC1);
             if (i == 0){
@@ -470,6 +477,8 @@
     movieFrameMatBW.release();
     
     [resultsDict setObject:wormObjects forKey:@"MotionObjects"];
+    
+    NSLog(@"Focus Measure: %f", normFocusMeasure);
     
     // Mike D'ambrosio -
     if (ignoredArea > bubbleLimit) {

@@ -33,7 +33,9 @@
 @synthesize focusSlider;
 @synthesize cameraButton;
 @synthesize metricLabel;
+@synthesize focusWarningLabel;
 @synthesize managedObjectContext;
+@synthesize zoomImageView;
 @synthesize cslContext;
 
 - (void)viewDidLoad {
@@ -56,6 +58,7 @@
     camera.focusDelegate = self;
     camera.captureDelegate = self;
     camera.frameProcessingDelegate = self;
+    camera.cgProcessingDelegate = self;
     
     // Turn on the imaging LED and initialize the capillary position
     if (cslContext.loaDevice != nil) {
@@ -83,6 +86,8 @@
     // Set up UI
     CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI_2);
     focusSlider.transform = trans;
+    focusWarningLabel.alpha = 0.0;
+    metricLabel.alpha = 0.0;
     
     // Set the capture state
     fieldIndex = 0;
@@ -107,7 +112,6 @@
 
 - (void)checkFocusFrame
 {
-    NSLog(@"Check?");
     checkingFocusFrame = YES;
     [camera processSingleFrame];
 }
@@ -183,14 +187,33 @@
 - (void)didReceiveFrame:(CVBufferRef)frame
 {
     if (checkingFocusFrame) {
-
         // Construct a frame buffer
         [focusBuffer writeFrame:frame atIndex:[NSNumber numberWithInt:0]];
         
         // Check the focus
         float focusMetric = [MotionAnalysis ComputeFocusMetric:focusBuffer];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
-            metricLabel.text = [NSString stringWithFormat:@"%f", focusMetric];
+            float value = focusMetric;
+            if (value > 1.0) {
+                value = 1.0;
+            }
+            NSString* focusString = [self focusCheck:value];
+            
+            metricLabel.alpha = 1.0;
+
+            if ([focusString isEqualToString:@"Good"]) {
+                metricLabel.textColor = [UIColor blackColor];
+                focusWarningLabel.alpha = 0.0;
+            }
+            else if ([focusString isEqualToString:@"Fair"]) {
+                metricLabel.textColor = [UIColor yellowColor];
+                focusWarningLabel.alpha = 0.0;
+            }
+            else if ([focusString isEqualToString:@"Bad"]) {
+                metricLabel.textColor = [UIColor blackColor];
+                focusWarningLabel.alpha = 1.0;
+            }
+            metricLabel.text = [NSString stringWithFormat:@"%.2f", value];
         }];
         
         checkingFocusFrame = NO;
@@ -201,17 +224,31 @@
         
     }
     else {
-        
         // Collect the frame for later processing
         [frameBuffer writeFrame:frame atIndex:[NSNumber numberWithLong:frameIndex]];
         frameIndex += 1;
-        
     }
 }
 
 - (void)didFinishRecordingFrames:(LLCamera*)sender
 {
     
+}
+
+- (NSString*)focusCheck:(float)value
+{
+    if (value < 0.15) {
+        return @"Bad";
+    }
+    else if (value < 0.5) {
+        return @"Fair";
+    }
+    else if (value >= 0.5) {
+        return @"Good";
+    }
+    else {
+        return @"Unknown";
+    }
 }
 
 - (IBAction)cameraPressed:(id)sender {
@@ -257,6 +294,24 @@
 - (void)focusDidChange:(NSNumber*)focusLensPosition
 {
     focusSlider.value = focusLensPosition.floatValue;
+}
+
+- (UIImage*)imageByCroppingImage:(UIImage*)image toSize:(CGSize)size
+{
+    // not equivalent to image.size (which depends on the imageOrientation)!
+    double refWidth = CGImageGetWidth(image.CGImage);
+    double refHeight = CGImageGetHeight(image.CGImage);
+    
+    double x = (refWidth - size.width) / 2.0;
+    double y = (refHeight - size.height) / 2.0;
+    
+    CGRect cropRect = CGRectMake(x, y, size.height, size.width);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef scale:0.0 orientation:image.imageOrientation];
+    CGImageRelease(imageRef);
+    
+    return cropped;
 }
 
 @end

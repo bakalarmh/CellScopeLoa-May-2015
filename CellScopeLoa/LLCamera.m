@@ -174,10 +174,6 @@
                 }
             }
         }
-        else if (cgProcessingDelegate != nil) {
-            CGImageRef cgImageRef = [self imageFromSampleBuffer:sampleBuffer];
-            [cgProcessingDelegate didReceiveFrame:cgImageRef];
-        }
     }
     else if (cameraState == llCameraProcessingSingleFrame) {
         if (frameProcessingDelegate != nil) {
