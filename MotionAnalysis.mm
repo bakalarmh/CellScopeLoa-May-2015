@@ -92,6 +92,9 @@
         NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
         [userInfo setObject:videoURL forKey:@"ResourceURL"];
         
+        NSNumber* focusMetric = [resultsDict objectForKey:@"FocusMetric"];
+        [userInfo setObject:focusMetric forKey:@"FocusMetric"];
+        
         NSString* errorString = [resultsDict objectForKey:@"ErrorString"];
         if (errorString == nil) {
             NSLog(@"No errors");
@@ -477,16 +480,17 @@
     movieFrameMatBW.release();
     
     [resultsDict setObject:wormObjects forKey:@"MotionObjects"];
-    [resultsDict setObject:[NSNumber numberWithFloat:normFocusMeasure] forKey:@"focusMeasure"];
+    [resultsDict setObject:[NSNumber numberWithFloat:normFocusMeasure] forKey:@"FocusMetric"];
+    NSLog(@"NormFocusValue: %f", normFocusMeasure);
     
     // Register error messages
     if (ignoredArea > bubbleLimit) {
         [resultsDict setObject:@"BubbleError" forKey:@"ErrorMessage"];
     }
+    // Flow error message supersedes all messages
     if (flow) {
         [resultsDict setObject:@"FlowError" forKey:@"ErrorMessage"];
     }
-    
 }
 
 // Is there flow in the capillary? Scan through the frameBuffer to find out

@@ -25,6 +25,7 @@ typedef enum CameraState : NSUInteger {
 @end
 
 @protocol FrameProcessingDelegate
+- (void)rawFrameReady:(CVBufferRef)buffer;
 - (void)didReceiveFrame:(CVBufferRef)buffer;
 - (void)didFinishRecordingFrames:(LLCamera*)sender;
 @end

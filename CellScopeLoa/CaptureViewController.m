@@ -58,7 +58,6 @@
     camera.focusDelegate = self;
     camera.captureDelegate = self;
     camera.frameProcessingDelegate = self;
-    camera.cgProcessingDelegate = self;
     
     // Turn on the imaging LED and initialize the capillary position
     if (cslContext.loaDevice != nil) {
@@ -88,6 +87,8 @@
     focusSlider.transform = trans;
     focusWarningLabel.alpha = 0.0;
     metricLabel.alpha = 0.0;
+    zoomImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    zoomImageView.layer.borderWidth = 3.0f;
     
     // Set the capture state
     fieldIndex = 0;
@@ -184,6 +185,24 @@
     [self prepareNextDataAcquisition];
 }
 
+- (void)rawFrameReady:(CVBufferRef)frame
+{
+    // Set the small focus frame in the preview view
+    CIImage* ciImage = [CIImage imageWithCVPixelBuffer:frame];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+        CIContext *context = [CIContext contextWithOptions:nil];
+        CGImageRef cgImage = [context createCGImage:ciImage fromRect:[ciImage extent]];
+        UIImage* uiImage = [UIImage imageWithCGImage:cgImage];
+        CGImageRelease(cgImage);
+        // Zoom in
+        CGSize cgSize;
+        cgSize.width = 40;
+        cgSize.height = 40;
+        zoomImageView.image = [self imageByCroppingImage:uiImage toSize:cgSize];
+;
+    }];
+}
+
 - (void)didReceiveFrame:(CVBufferRef)frame
 {
     if (checkingFocusFrame) {
@@ -210,7 +229,7 @@
                 focusWarningLabel.alpha = 0.0;
             }
             else if ([focusString isEqualToString:@"Bad"]) {
-                metricLabel.textColor = [UIColor blackColor];
+                metricLabel.textColor = [UIColor magentaColor];
                 focusWarningLabel.alpha = 1.0;
             }
             metricLabel.text = [NSString stringWithFormat:@"%.2f", value];
@@ -237,7 +256,7 @@
 
 - (NSString*)focusCheck:(float)value
 {
-    if (value < 0.15) {
+    if (value < 0.2) {
         return @"Bad";
     }
     else if (value < 0.5) {

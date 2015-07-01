@@ -88,6 +88,10 @@
         UIImage *image = [[UIImage imageNamed:@"battery-low.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [batteryBarButtonItem setImage:image];
     }
+    else if([state isEqualToString:@"Empty"]) {
+        UIImage *image = [[UIImage imageNamed:@"battery-empty.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [batteryBarButtonItem setImage:image];
+    }
     else if([state isEqualToString:@"Unknown"]) {
         UIImage *image = [[UIImage imageNamed:@"battery-unknown.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [batteryBarButtonItem setImage:image];
@@ -109,7 +113,7 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // rows in section 0 should not be selectable
     if (indexPath.row == 0) {
-        if ([cslContext deviceIsConnected]) {
+        if ([cslContext deviceIsConnected] && (testButtonLabel.alpha != 0)) {
             return indexPath;
         }
         else {
@@ -178,7 +182,7 @@
         if (cslContext.loaDevice != nil) {
             [cslContext.loaDevice LEDOff];
             
-            batteryTimer = [NSTimer scheduledTimerWithTimeInterval:60.0*10.0
+            batteryTimer = [NSTimer scheduledTimerWithTimeInterval:5*60.0
                                                                target:self
                                                              selector:@selector(batteryTimerFired:)
                                                              userInfo:nil
@@ -228,7 +232,12 @@
         float voltage = (data[0]/(float)0xFF)*5.0;
         NSLog(@"Voltage: %f", (data[0]/(float)0xFF)*5.0);
         
-        if (voltage < 3.6) {
+        if (voltage < 3.3) {
+            [self setBatteryState:@"Empty"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Battery Low" message:@"Battery is critically low. Do not continue to use device without plugging in to a power source." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+        else if (voltage < 3.6) {
             [self setBatteryState:@"Low"];
         }
         else if (voltage < 3.8) {

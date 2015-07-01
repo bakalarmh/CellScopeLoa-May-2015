@@ -163,9 +163,8 @@
             }
             else {
                 if (frameProcessingDelegate != nil) {
-                    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-                    
                     // Pass the frame to the processing delegate
+                    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
                     [frameProcessingDelegate didReceiveFrame:imageBuffer];
                     
                     // Pass the frame to the asset writer

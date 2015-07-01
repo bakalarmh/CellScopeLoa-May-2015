@@ -33,7 +33,11 @@
     NSDictionary* testResults = [TestValidation ResultsFromTestRecord:testRecord];
     
     NSString* state = [testResults objectForKey:@"state"];
-    if ([state rangeOfString:@"FieldVariance"].location != NSNotFound) {
+    if ([state rangeOfString:@"FocusError"].location != NSNotFound) {
+        testResultLabel.text = @"Focus Error";
+        errorMessageLabel.text = @"Image is not in focus.";
+    }
+    else if ([state rangeOfString:@"FieldVariance"].location != NSNotFound) {
         testResultLabel.text = @"Test result is invalid";
         errorMessageLabel.text = @"High field of view variance";
     }

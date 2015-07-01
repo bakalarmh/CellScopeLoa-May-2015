@@ -25,6 +25,8 @@
     BOOL fieldVarianceCheck = YES;
     BOOL capillaryVarianceCheck = YES;
     
+    NSString* videoErrorString = @"";
+    
     NSMutableArray* capillaryCount = [[NSMutableArray alloc] init];
     
     NSInteger maxFields = [[[NSUserDefaults standardUserDefaults] objectForKey:FieldsOfViewKey] integerValue];
@@ -41,6 +43,7 @@
             [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
             if (![video.errorString isEqualToString:@"None"]) {
                 videoErrorCheck = NO;
+                videoErrorString = video.errorString;
             }
             if (video.averageObjectCount >= 0) {
                 // Pass
@@ -80,7 +83,8 @@
     else {
         if (videoErrorCheck == NO) {
             NSLog(@"Validation detected a video error");
-            [results setObject:@"Invalid" forKey:@"Code"];
+            NSString* code = [@"Invalid " stringByAppendingString:videoErrorString];
+            [results setObject:code forKey:@"Code"];
         }
         if (fieldVarianceCheck == NO) {
             NSLog(@"Validation detected a field variance error");

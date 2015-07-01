@@ -121,7 +121,36 @@
         NSString* errorString = (NSString*)userInfo[@"ErrorString"];
         NSString* resourceURL = (NSString*)userInfo[@"ResourceURL"];
         NSNumber* averageCount = (NSNumber*)userInfo[@"AverageCount"];
+        NSNumber* focusMetric = (NSNumber*)userInfo[@"FocusMetric"];
         NSMutableArray* motionObjects = (NSMutableArray*)userInfo[@"MotionObjects"];
+        
+        // Check that the focus metric is within range
+        float focusValue = focusMetric.floatValue;
+        NSLog(@"FocusValue: %f", focusValue);
+        NSString* focusStatus;
+        if (focusValue < 0.2) {
+            focusStatus = @"Bad";
+        }
+        else if (focusValue < 0.5) {
+            focusStatus = @"Fair";
+        }
+        else if (focusValue >= 0.5) {
+            focusStatus = @"Good";
+        }
+        else {
+            focusStatus = @"Unknown";
+        }
+        
+        if (errorString != nil) {
+            if ([focusStatus isEqualToString:@"Bad"]) {
+                errorString = [errorString stringByAppendingString:@" FocusError"];
+            }
+        }
+        else {
+            if ([focusStatus isEqualToString:@"Bad"]) {
+                errorString = @"FocusError";
+            }
+        }
         
         if (errorString != nil) {
             NSLog(@"Processing detected Error: %@", errorString);
