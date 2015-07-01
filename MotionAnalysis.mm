@@ -477,12 +477,14 @@
     movieFrameMatBW.release();
     
     [resultsDict setObject:wormObjects forKey:@"MotionObjects"];
+    [resultsDict setObject:[NSNumber numberWithFloat:normFocusMeasure] forKey:@"focusMeasure"];
     
-    NSLog(@"Focus Measure: %f", normFocusMeasure);
-    
-    // Mike D'ambrosio -
+    // Register error messages
     if (ignoredArea > bubbleLimit) {
         [resultsDict setObject:@"BubbleError" forKey:@"ErrorMessage"];
+    }
+    if (flow) {
+        [resultsDict setObject:@"FlowError" forKey:@"ErrorMessage"];
     }
     
 }
