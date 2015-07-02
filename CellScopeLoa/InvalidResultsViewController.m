@@ -33,9 +33,17 @@
     NSDictionary* testResults = [TestValidation ResultsFromTestRecord:testRecord];
     
     NSString* state = [testResults objectForKey:@"state"];
-    if ([state rangeOfString:@"FocusError"].location != NSNotFound) {
+    if ([state rangeOfString:@"FieldFocusCount"].location != NSNotFound) {
         testResultLabel.text = @"Focus Error";
-        errorMessageLabel.text = @"Image is not in focus.";
+        errorMessageLabel.text = @"Images are not in focus.";
+    }
+    else if ([state rangeOfString:@"FieldCount"].location != NSNotFound) {
+        testResultLabel.text = @"Insuffient data";
+        errorMessageLabel.text = @"Low quality fields of view.";
+    }
+    else if ([state rangeOfString:@"BubbleError"].location != NSNotFound) {
+        testResultLabel.text = @"Focus Error";
+        errorMessageLabel.text = @"Images are not in focus.";
     }
     else if ([state rangeOfString:@"FieldVariance"].location != NSNotFound) {
         testResultLabel.text = @"Test result is invalid";
@@ -44,6 +52,9 @@
     else if ([state rangeOfString:@"CapillaryVariance"].location != NSNotFound) {
         testResultLabel.text = @"Test result is invalid";
         errorMessageLabel.text = @"High capillary to capillary variance";
+    }
+    else {
+        NSLog(@"Undocumented error: %@", state);
     }
     
     int i = 0;

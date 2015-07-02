@@ -47,18 +47,6 @@
     // Load the number of fields of view to acquire from user defaults
     maxFields = [[[NSUserDefaults standardUserDefaults] objectForKey:FieldsOfViewKey] integerValue];
     
-    // Set up the camera
-    camera = [[LLCamera alloc] init];
-    [camera setPreviewLayer:cameraPreviewView.layer];
-    
-    // Start the camera session
-    [camera startCamera];
-
-    // Set up the delegates
-    camera.focusDelegate = self;
-    camera.captureDelegate = self;
-    camera.frameProcessingDelegate = self;
-    
     // Turn on the imaging LED and initialize the capillary position
     if (cslContext.loaDevice != nil) {
         [cslContext.loaDevice LEDOn];
@@ -66,21 +54,7 @@
     }
     
     // Do not default to manual focus
-    [camera setContinuousAutoFocusState];
     focusSlider.enabled = NO;
-    
-    // Hard coded exposure and iso. I am not happy with this.
-    CMTime exposure = CMTimeMake(1, 128);
-    [camera setExposureMinISO:exposure];
-    [camera setColorTemperatureKelvin:5700];
-    
-    // Make sure there is an active focus buffer
-    if (focusBuffer == nil) {
-        focusBuffer = [[FrameBuffer alloc] initWithWidth:camera.width Height:camera.height Frames:1];
-    }
-    
-    // Launch the self test
-    cameraButton.enabled = YES;
     
     // Set up UI
     CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI_2);
@@ -89,11 +63,43 @@
     metricLabel.alpha = 0.0;
     zoomImageView.layer.borderColor = [UIColor whiteColor].CGColor;
     zoomImageView.layer.borderWidth = 3.0f;
+    zoomImageView.alpha = 0.0;
     
     // Set the capture state
     fieldIndex = 0;
     launchAfterFocus = NO;
     checkingFocusFrame = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Set up the camera
+    camera = [[LLCamera alloc] init];
+    [camera setPreviewLayer:cameraPreviewView.layer];
+    
+    // Start the camera session
+    [camera startCamera];
+    
+    // Set up the delegates
+    camera.focusDelegate = self;
+    camera.captureDelegate = self;
+    camera.frameProcessingDelegate = self;
+    
+    // Hard coded exposure and iso. I am not happy with this.
+    CMTime exposure = CMTimeMake(1, 128);
+    [camera setExposureMinISO:exposure];
+    [camera setColorTemperatureKelvin:5700];
+    
+    // Start by autofocusing
+    [camera setContinuousAutoFocusState];
+    
+    // Make sure there is an active focus buffer
+    if (focusBuffer == nil) {
+        focusBuffer = [[FrameBuffer alloc] initWithWidth:camera.width Height:camera.height Frames:1];
+    }
+    
+    // Launch the self test
+    cameraButton.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -156,9 +162,10 @@
             [camera setImmediateAutoFocusState];
             //[camera setFocusLensPosition:[NSNumber numberWithFloat:0.0]];
 
+            [camera autoFocusStateOn];
             int msdelay = 2500;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
-                // [self launchDataAcquisition];
+                [camera autoFocusStateOff];
                 [self checkFocusFrame];
             });
         });
@@ -171,6 +178,10 @@
         if (cslContext.loaDevice != nil) {
             [cslContext.loaDevice servoLoadPosition];
         }
+        
+        // MHB Camera Stop Test
+        // Stop the capture session
+        [camera stopCamera];
         
         // Return to the test view controller
         [[self navigationController] popViewControllerAnimated:YES];
@@ -196,10 +207,10 @@
         CGImageRelease(cgImage);
         // Zoom in
         CGSize cgSize;
-        cgSize.width = 40;
-        cgSize.height = 40;
+        cgSize.width = 50;
+        cgSize.height = 50;
         zoomImageView.image = [self imageByCroppingImage:uiImage toSize:cgSize];
-;
+        zoomImageView.alpha = 1.0;
     }];
 }
 
@@ -218,8 +229,6 @@
             }
             NSString* focusString = [self focusCheck:value];
             
-            metricLabel.alpha = 1.0;
-
             if ([focusString isEqualToString:@"Good"]) {
                 metricLabel.textColor = [UIColor blackColor];
                 focusWarningLabel.alpha = 0.0;
@@ -232,7 +241,11 @@
                 metricLabel.textColor = [UIColor magentaColor];
                 focusWarningLabel.alpha = 1.0;
             }
+            
             metricLabel.text = [NSString stringWithFormat:@"%.2f", value];
+            [UIView animateWithDuration:0.5 animations:^{
+                metricLabel.alpha = 1.0;
+            }];
         }];
         
         checkingFocusFrame = NO;
@@ -241,6 +254,8 @@
             [self launchDataAcquisition];
         }];
         
+        // Write the image to the zoomed in preview
+        [self rawFrameReady:frame];
     }
     else {
         // Collect the frame for later processing
@@ -280,9 +295,10 @@
     [camera setImmediateAutoFocusState];
     //[camera setFocusLensPosition:[NSNumber numberWithFloat:0.0]];
     
+    [camera autoFocusStateOn];
     int msdelay = 2500;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
-        // [self launchDataAcquisition];
+        [camera autoFocusStateOff];
         [self checkFocusFrame];
     });
 
@@ -295,7 +311,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     // Stop the capture session
-    [camera stopCamera];
+    if (camera.cameraState != llCameraStateStopping) {
+        [camera stopCamera];
+    }
     
     // Clear the focus buffer
     [focusBuffer releaseFrameBuffers];

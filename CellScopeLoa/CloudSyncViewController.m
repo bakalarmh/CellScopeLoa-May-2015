@@ -117,11 +117,6 @@
 
 - (IBAction)syncButtonPressed:(id)sender {
     
-    videosProgressView.progress = 0.0;
-    [UIView animateWithDuration:0.3 animations:^{
-        videosProgressView.alpha = 1.0;
-    }];
-    
     // Sync test records
     NSError *error;
     
@@ -198,15 +193,6 @@
                     [managedObjectContext save:nil];
                     videoSyncCount += 1;
                     [self updateSyncReport];
-                    
-                    // Update the video upload progress bar
-                    videosProgressView.progress = (float)(videoCount-videoSyncCount)/counter;
-                    if (videosProgressView.progress == 1.0) {
-                        [UIView animateWithDuration:0.3 animations:^{
-                            videosProgressView.alpha = 0.0;
-                        }];
-                    }
-                    
                 }];
             }
             else {

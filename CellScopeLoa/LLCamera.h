@@ -14,6 +14,8 @@ typedef enum CameraState : NSUInteger {
     llCameraIdle,
     llCameraWritingFrames,
     llCameraProcessingSingleFrame,
+    llCameraAutoFocusing,
+    llCameraStateStopping,
 } CameraState;
 
 @protocol FocusDelegate
@@ -42,6 +44,7 @@ typedef enum CameraState : NSUInteger {
 @property (weak, nonatomic) id<CaptureDelegate> captureDelegate;
 @property (weak, nonatomic) id<FrameProcessingDelegate> frameProcessingDelegate;
 @property (weak, nonatomic) id<CGProcessingDelegate> cgProcessingDelegate;
+@property (assign, nonatomic) CameraState cameraState;
 
 @property (weak, nonatomic) NSNumber* focusLensPosition;
 @property (assign, nonatomic) NSInteger width;
@@ -53,6 +56,8 @@ typedef enum CameraState : NSUInteger {
 - (void)stopCamera;
 - (void)startSendingFrames;
 - (void)processSingleFrame;
+- (void)autoFocusStateOn;
+- (void)autoFocusStateOff;
 - (void)stopSendingFrames;
 - (void)captureWithDuration:(Float32)duration URL:(NSURL*)outputURL;
 - (AVCaptureWhiteBalanceGains)getCurrentWhiteBalanceGains;

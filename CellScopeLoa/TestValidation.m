@@ -24,6 +24,10 @@
     
     BOOL fieldVarianceCheck = YES;
     BOOL capillaryVarianceCheck = YES;
+    BOOL focusFieldCountCheck = YES;
+    BOOL fieldCountCheck = YES;
+    
+    int minimumFields = 5;
     
     NSString* videoErrorString = @"";
     
@@ -40,10 +44,19 @@
         // Is the variance of the counts within necessary bounds?
         NSMutableArray* countArray = [[NSMutableArray alloc] init];
         for (Video* video in record.videos) {
-            [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
+            BOOL focusError = NO;
+            BOOL bubbleError = NO;
             if (![video.errorString isEqualToString:@"None"]) {
-                videoErrorCheck = NO;
-                videoErrorString = video.errorString;
+                if ([video.errorString isEqualToString:@"FocusError"]) {
+                    focusError = YES;
+                }
+                else if ([video.errorString isEqualToString:@"BubbleError"]) {
+                    bubbleError = YES;
+                }
+                else {
+                    videoErrorCheck = NO;
+                    videoErrorString = video.errorString;
+                }
             }
             if (video.averageObjectCount >= 0) {
                 // Pass
@@ -51,10 +64,25 @@
             else {
                 videoObjectCheck = NO;
             }
+            // If there is no focus error and no bubble error, use this data point
+            if ((focusError == NO) && (bubbleError == NO)) {
+                [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
+            }
+        }
+        
+        // How many in focus videos did we collect?
+        NSLog(@"%d fields in focus and without bubbles", (int)countArray.count);
+        if (countArray.count < minimumFields) {
+            focusFieldCountCheck = NO;
         }
         
         // Clean any outliers from the array
         [self cleanOutliersFromArray:countArray];
+        
+        // Are there enough videos left to make a decision?
+        if (countArray.count < minimumFields) {
+            fieldCountCheck = NO;
+        }
         
         // Check for variance of data results
         NSMutableDictionary* stats = [self statisticsFromArray:countArray];
@@ -77,10 +105,11 @@
     
     NSMutableDictionary* results = [[NSMutableDictionary alloc] init];
     
-    if (capillaryCheck && videoErrorCheck && videoObjectCheck && videoObjectCheck && fieldVarianceCheck && capillaryVarianceCheck) {
+    if (focusFieldCountCheck && capillaryCheck && videoErrorCheck && videoObjectCheck && videoObjectCheck && fieldVarianceCheck && capillaryVarianceCheck) {
             [results setObject:@"Valid" forKey:@"Code"];
     }
     else {
+        // Errors are arranged in preferential heiarchy. Final error overwrites previous ones.
         if (videoErrorCheck == NO) {
             NSLog(@"Validation detected a video error");
             NSString* code = [@"Invalid " stringByAppendingString:videoErrorString];
@@ -90,9 +119,17 @@
             NSLog(@"Validation detected a field variance error");
             [results setObject:@"Invalid FieldVariance" forKey:@"Code"];
         }
+        if (fieldCountCheck == NO) {
+            NSLog(@"Insufficient fields to make a decision error");
+            [results setObject:@"Invalid FieldCount" forKey:@"Code"];
+        }
         if (capillaryVarianceCheck == NO) {
             NSLog(@"Validation detected a field variance error");
             [results setObject:@"Invalid CapillaryVariance" forKey:@"Code"];
+        }
+        if (focusFieldCountCheck == NO) {
+            NSLog(@"Validation detected a field focus error");
+            [results setObject:@"Invalid FieldFocusCount" forKey:@"Code"];
         }
     }
     
@@ -171,8 +208,13 @@
         NSMutableArray* countArray = [[NSMutableArray alloc] init];
 
         for (Video* video in record.videos) {
-            [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
-            float count = video.averageObjectCount.floatValue;
+            // Ignore any out of focus images when making the calculation
+            if ([video.errorString isEqualToString:@"FocusError"]) {
+                // Pass
+            }
+            else {
+                [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
+            }
         }
         // Clean any outliers from the array
         [self cleanOutliersFromArray:countArray];

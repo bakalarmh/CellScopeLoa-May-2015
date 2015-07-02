@@ -330,6 +330,10 @@
         connectionStatusItem.tintColor = [UIColor colorWithRed:1.0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
         [manager seekDevices];
     }
+    else {
+        connectionStatusItem.title = NSLocalizedString(@"Connected",nil);
+        connectionStatusItem.tintColor = [UIColor colorWithRed:0.0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
+    }
 }
 
 @end

@@ -20,7 +20,6 @@
     NSURL* outputURL;
     dispatch_queue_t videoQueue; // Queue for processing frames and writing video
     CMTime videoTime;
-    CameraState cameraState;
     
     NSInteger frameRate;
     float captureDuration;
@@ -32,6 +31,7 @@
 @synthesize captureDelegate;
 @synthesize frameProcessingDelegate;
 @synthesize cgProcessingDelegate;
+@synthesize cameraState;
 @synthesize session;
 @synthesize width;
 @synthesize height;
@@ -98,6 +98,16 @@
     [dataOutput setSampleBufferDelegate:self queue:videoQueue];
     
     return self;
+}
+
+- (void)autoFocusStateOn
+{
+    cameraState = llCameraAutoFocusing;
+}
+
+- (void)autoFocusStateOff
+{
+    cameraState = llCameraIdle;
 }
 
 - (void)processSingleFrame
@@ -184,6 +194,9 @@
             NSLog(@"No current processing delegate");
         }
     }
+    else if (cameraState == llCameraAutoFocusing) {
+        // Pass
+    }
 }
 
 - (void)recordingComplete
@@ -234,13 +247,16 @@
 
 - (void)stopCamera
 {
-    [session stopRunning];
-    [session removeInput:input];
-    [videoPreviewLayer removeFromSuperlayer];
-    videoPreviewLayer = nil;
-    session = nil;
-    
+    cameraState = llCameraStateStopping;
     [self clearObservers];
+    // Run asynchronously so as not to block the main thread. Should fail more elegantly.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [session stopRunning];
+        [session removeInput:input];
+        [videoPreviewLayer removeFromSuperlayer];
+        videoPreviewLayer = nil;
+        session = nil;
+    });
 }
 
 - (void)setManualFocusState

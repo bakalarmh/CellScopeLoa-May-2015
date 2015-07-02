@@ -95,7 +95,7 @@
         NSNumber* focusMetric = [resultsDict objectForKey:@"FocusMetric"];
         [userInfo setObject:focusMetric forKey:@"FocusMetric"];
         
-        NSString* errorString = [resultsDict objectForKey:@"ErrorString"];
+        NSString* errorString = [resultsDict objectForKey:@"ErrorMessage"];
         if (errorString == nil) {
             NSLog(@"No errors");
             NSMutableDictionary* motionObjects = [resultsDict objectForKey:@"MotionObjects"];
@@ -184,7 +184,7 @@
             cv::minMaxLoc(movieFrameMat, &backVal, &maxValTrash);
             if (i==0){
                 
-                threshold(movieFrameMat, movieFrameMatBW,150, 255, CV_THRESH_BINARY);
+                threshold(movieFrameMat, movieFrameMatBW, 200, 255, CV_THRESH_BINARY);
                 cv::Mat element = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size( 10,10 ), cv::Point( 2, 2 ));
                 cv::morphologyEx(movieFrameMatBW,movieFrameMatBW, CV_MOP_DILATE, element );
                 movieFrameMatBWInv =  cv::Scalar::all(255) - movieFrameMatBW.clone();
