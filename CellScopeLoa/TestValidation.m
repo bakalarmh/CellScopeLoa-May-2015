@@ -26,6 +26,7 @@
     BOOL capillaryVarianceCheck = YES;
     BOOL focusFieldCountCheck = YES;
     BOOL fieldCountCheck = YES;
+    BOOL bubbleCheck = YES;
     
     int minimumFields = 5;
     
@@ -46,14 +47,15 @@
         for (Video* video in record.videos) {
             BOOL focusError = NO;
             BOOL bubbleError = NO;
-            if (![video.errorString isEqualToString:@"None"]) {
-                if ([video.errorString isEqualToString:@"FocusError"]) {
+            NSString* errorString = video.errorString;
+            if (![errorString isEqualToString:@"None"]) {
+                if ([errorString rangeOfString:@"FocusError"].location != NSNotFound) {
                     focusError = YES;
                 }
-                else if ([video.errorString isEqualToString:@"BubbleError"]) {
+                if ([errorString rangeOfString:@"BubbleError"].location != NSNotFound) {
                     bubbleError = YES;
                 }
-                else {
+                if (!focusError && !bubbleError) {
                     videoErrorCheck = NO;
                     videoErrorString = video.errorString;
                 }
@@ -67,6 +69,11 @@
             // If there is no focus error and no bubble error, use this data point
             if ((focusError == NO) && (bubbleError == NO)) {
                 [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
+            }
+            else {
+                if (bubbleError == YES) {
+                    bubbleCheck = NO;
+                }
             }
         }
         
@@ -128,8 +135,13 @@
             [results setObject:@"Invalid CapillaryVariance" forKey:@"Code"];
         }
         if (focusFieldCountCheck == NO) {
-            NSLog(@"Validation detected a field focus error");
-            [results setObject:@"Invalid FieldFocusCount" forKey:@"Code"];
+            NSString* errorCode = @"";
+            if (bubbleCheck == NO) {
+                NSLog(@"Validation detected a field focus or bubble error");
+                errorCode = [errorCode stringByAppendingString:@"Invalid BubbleCount"];
+            }
+            errorCode = [errorCode stringByAppendingString:@" FieldFocusCount"];
+            [results setObject:errorCode forKey:@"Code"];
         }
     }
     

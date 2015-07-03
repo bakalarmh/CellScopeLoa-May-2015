@@ -115,7 +115,7 @@
 - (void)processFramesForMovie:(FrameBuffer*) frameBuffer {
     
     // Parameter space!!! MHB MD
-    float bubbleLimit = 480*360*0.5;
+    float bubbleLimit = 480*360*0.25;
     
     // Is there flow in the capillary?
     BOOL flow = [self computeFlowForBuffer:frameBuffer];
@@ -185,6 +185,12 @@
             if (i==0){
                 
                 threshold(movieFrameMat, movieFrameMatBW, 200, 255, CV_THRESH_BINARY);
+                
+                // MHB Check
+                cv::Mat uiOutput;
+                movieFrameMatBW.convertTo(uiOutput, CV_8UC1);
+                UIImage* outputImage = [UIImage imageWithCVMat:uiOutput];
+                
                 cv::Mat element = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size( 10,10 ), cv::Point( 2, 2 ));
                 cv::morphologyEx(movieFrameMatBW,movieFrameMatBW, CV_MOP_DILATE, element );
                 movieFrameMatBWInv =  cv::Scalar::all(255) - movieFrameMatBW.clone();
@@ -471,6 +477,7 @@
     float ignoredArea = 480*360 - highSigSum[0];
     numWorms=numWorms*(totalArea/(totalArea-ignoredArea));
     NSLog(@"numWorms %f", numWorms);
+    NSLog(@"Area fraction %f", (totalArea-ignoredArea)/totalArea);
     movieFrameMatDiff.release();
     movieFrameMatDiff1.release();
     movieFrameMatDiff2.release();
@@ -633,9 +640,12 @@
                         cv::line(detectActiveFrame, keypoints1[final_matches[i].queryIdx].pt, keypoints2[final_matches[i].trainIdx].pt, color, 1, 8, 0);
                     }
                     
+                    // Output image. Debugging MHB.
+                    /*
                     cv::Mat cvOutput;
                     detectActiveFrame.convertTo(cvOutput, CV_8UC1);
                     outputImage = [UIImage imageWithCVMat:cvOutput];
+                     */
                 }
             }
         }
@@ -646,7 +656,6 @@
     }
     
     float flow = sqrtf(y_motion*y_motion);
-    printf("Flow parameter: %f\n", flow);
     if (flow > flowThreshold) {
         return YES;
     }

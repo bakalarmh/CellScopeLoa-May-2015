@@ -34,16 +34,23 @@
     
     NSString* state = [testResults objectForKey:@"state"];
     if ([state rangeOfString:@"FieldFocusCount"].location != NSNotFound) {
-        testResultLabel.text = @"Focus Error";
-        errorMessageLabel.text = @"Images are not in focus.";
+        // Are there bubbles in the field?
+        if ([state rangeOfString:@"BubbleCount"].location != NSNotFound) {
+            testResultLabel.text = @"Bubble Error";
+            errorMessageLabel.text = @"Bubbles are in the capillary or blood has coagulated.";
+        }
+        else {
+            testResultLabel.text = @"Focus Error";
+            errorMessageLabel.text = @"Images are not in focus.";
+        }
     }
     else if ([state rangeOfString:@"FieldCount"].location != NSNotFound) {
         testResultLabel.text = @"Insuffient data";
         errorMessageLabel.text = @"Low quality fields of view.";
     }
     else if ([state rangeOfString:@"BubbleError"].location != NSNotFound) {
-        testResultLabel.text = @"Focus Error";
-        errorMessageLabel.text = @"Images are not in focus.";
+        testResultLabel.text = @"Bubble Error";
+        errorMessageLabel.text = @"There are bubbles in the capillary.";
     }
     else if ([state rangeOfString:@"FieldVariance"].location != NSNotFound) {
         testResultLabel.text = @"Test result is invalid";

@@ -88,7 +88,13 @@
     // Hard coded exposure and iso. I am not happy with this.
     CMTime exposure = CMTimeMake(1, 128);
     [camera setExposureMinISO:exposure];
-    [camera setColorTemperatureKelvin:5700];
+    // Hard coded gains. I am not happy with this.
+    AVCaptureWhiteBalanceGains gains;
+    gains.redGain = 1.0;
+    gains.greenGain = 1.9;
+    gains.blueGain = 4.0;
+    [camera setWhiteBalanceGains:gains];
+    // [camera setColorTemperatureKelvin:5700];
     
     // Start by autofocusing
     [camera setContinuousAutoFocusState];
