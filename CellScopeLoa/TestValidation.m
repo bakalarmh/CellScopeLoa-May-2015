@@ -14,140 +14,6 @@
 
 @implementation TestValidation
 
-+ (NSDictionary*)ValidateTestRecord:(TestRecord*)testRecord
-{
-    BOOL capillaryCheck = (testRecord.capillaryRecords.count == 2);
-    
-    BOOL videoErrorCheck = YES;
-    BOOL videoCountCheck = YES;
-    BOOL videoObjectCheck = YES;
-    
-    BOOL fieldVarianceCheck = YES;
-    BOOL capillaryVarianceCheck = YES;
-    BOOL focusFieldCountCheck = YES;
-    BOOL fieldCountCheck = YES;
-    BOOL bubbleCheck = YES;
-    
-    int minimumFields = 5;
-    
-    NSString* videoErrorString = @"";
-    
-    NSMutableArray* capillaryCount = [[NSMutableArray alloc] init];
-    
-    NSInteger maxFields = [[[NSUserDefaults standardUserDefaults] objectForKey:FieldsOfViewKey] integerValue];
-    for (CapillaryRecord* record in testRecord.capillaryRecords) {
-        
-        // Did we capture the correct number of fields
-        if (record.videos.count != maxFields) {
-            videoCountCheck = NO;
-        }
-        
-        // Is the variance of the counts within necessary bounds?
-        NSMutableArray* countArray = [[NSMutableArray alloc] init];
-        for (Video* video in record.videos) {
-            BOOL focusError = NO;
-            BOOL bubbleError = NO;
-            NSString* errorString = video.errorString;
-            if (![errorString isEqualToString:@"None"]) {
-                if ([errorString rangeOfString:@"FocusError"].location != NSNotFound) {
-                    focusError = YES;
-                }
-                if ([errorString rangeOfString:@"BubbleError"].location != NSNotFound) {
-                    bubbleError = YES;
-                }
-                if (!focusError && !bubbleError) {
-                    videoErrorCheck = NO;
-                    videoErrorString = video.errorString;
-                }
-            }
-            if (video.averageObjectCount >= 0) {
-                // Pass
-            }
-            else {
-                videoObjectCheck = NO;
-            }
-            // If there is no focus error and no bubble error, use this data point
-            if ((focusError == NO) && (bubbleError == NO)) {
-                [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
-            }
-            else {
-                if (bubbleError == YES) {
-                    bubbleCheck = NO;
-                }
-            }
-        }
-        
-        // How many in focus videos did we collect?
-        NSLog(@"%d fields in focus and without bubbles", (int)countArray.count);
-        if (countArray.count < minimumFields) {
-            focusFieldCountCheck = NO;
-        }
-        
-        // Clean any outliers from the array
-        [self cleanOutliersFromArray:countArray];
-        
-        // Are there enough videos left to make a decision?
-        if (countArray.count < minimumFields) {
-            fieldCountCheck = NO;
-        }
-        
-        // Check for variance of data results
-        NSMutableDictionary* stats = [self statisticsFromArray:countArray];
-        float mean = [[stats objectForKey:@"mean"] floatValue];
-        float sigma = [[stats objectForKey:@"sigma"] floatValue];
-        
-        if (sigma > sqrtf(mean)) {
-            fieldVarianceCheck = NO;
-        }
-        
-        [capillaryCount addObject:[NSNumber numberWithFloat:mean]];
-    }
-    
-    NSMutableDictionary* stats = [self statisticsFromArray:capillaryCount];
-    float mean = [[stats objectForKey:@"mean"] floatValue];
-    float sigma = [[stats objectForKey:@"sigma"] floatValue];
-    if (sigma > sqrtf(mean)) {
-        capillaryVarianceCheck = NO;
-    }
-    
-    NSMutableDictionary* results = [[NSMutableDictionary alloc] init];
-    
-    if (focusFieldCountCheck && capillaryCheck && videoErrorCheck && videoObjectCheck && videoObjectCheck && fieldVarianceCheck && capillaryVarianceCheck) {
-            [results setObject:@"Valid" forKey:@"Code"];
-    }
-    else {
-        // Errors are arranged in preferential heiarchy. Final error overwrites previous ones.
-        if (videoErrorCheck == NO) {
-            NSLog(@"Validation detected a video error");
-            NSString* code = [@"Invalid " stringByAppendingString:videoErrorString];
-            [results setObject:code forKey:@"Code"];
-        }
-        if (fieldVarianceCheck == NO) {
-            NSLog(@"Validation detected a field variance error");
-            [results setObject:@"Invalid FieldVariance" forKey:@"Code"];
-        }
-        if (fieldCountCheck == NO) {
-            NSLog(@"Insufficient fields to make a decision error");
-            [results setObject:@"Invalid FieldCount" forKey:@"Code"];
-        }
-        if (capillaryVarianceCheck == NO) {
-            NSLog(@"Validation detected a field variance error");
-            [results setObject:@"Invalid CapillaryVariance" forKey:@"Code"];
-        }
-        if (focusFieldCountCheck == NO) {
-            NSString* errorCode = @"";
-            if (bubbleCheck == NO) {
-                NSLog(@"Validation detected a field focus or bubble error");
-                errorCode = [errorCode stringByAppendingString:@"Invalid BubbleCount"];
-            }
-            errorCode = [errorCode stringByAppendingString:@" FieldFocusCount"];
-            [results setObject:errorCode forKey:@"Code"];
-        }
-    }
-    
-    return results;
-}
-
 + (NSMutableDictionary*)statisticsFromArray:(NSMutableArray*)countArray
 {
     // Check for variance of data results
@@ -208,6 +74,147 @@
     }
 }
 
++ (NSDictionary*)ValidateTestRecord:(TestRecord*)testRecord
+{
+    BOOL capillaryCheck = (testRecord.capillaryRecords.count == 2);
+    
+    BOOL videoErrorCheck = YES;
+    BOOL videoCountCheck = YES;
+    BOOL videoObjectCheck = YES;
+    
+    BOOL fieldVarianceCheck = YES;
+    BOOL capillaryVarianceCheck = YES;
+    BOOL validFieldCountCheck = YES;
+    BOOL fieldCountCheck = YES;
+    BOOL bubbleCheck = YES;
+    BOOL flowCheck = YES;
+    
+    int minimumFields = 5;
+    
+    NSString* videoErrorString = @"";
+    
+    NSMutableArray* capillaryCount = [[NSMutableArray alloc] init];
+    
+    NSInteger maxFields = [[[NSUserDefaults standardUserDefaults] objectForKey:FieldsOfViewKey] integerValue];
+    for (CapillaryRecord* record in testRecord.capillaryRecords) {
+        
+        // Did we capture the correct number of fields
+        if (record.videos.count != maxFields) {
+            videoCountCheck = NO;
+        }
+        
+        // Is the variance of the counts within necessary bounds?
+        NSMutableArray* countArray = [[NSMutableArray alloc] init];
+        for (Video* video in record.videos) {
+            BOOL focusError = NO;
+            BOOL bubbleError = NO;
+            BOOL flowError = NO;
+            NSString* errorString = video.errorString;
+            if (![errorString isEqualToString:@"None"]) {
+                if ([errorString rangeOfString:@"FocusError"].location != NSNotFound) {
+                    focusError = YES;
+                }
+                if ([errorString rangeOfString:@"BubbleError"].location != NSNotFound) {
+                    bubbleError = YES;
+                }
+                if ([errorString rangeOfString:@"FlowError"].location != NSNotFound) {
+                    flowError = YES;
+                }
+                if (!focusError && !bubbleError && !flowError) {
+                    videoErrorCheck = NO;
+                    videoErrorString = video.errorString;
+                }
+            }
+            
+            // If there is no focus error and no bubble error and no flow error, use this data point
+            if ((focusError == NO) && (bubbleError == NO) && (flowError == NO)) {
+                [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
+            }
+            else {
+                if (flowError == YES) {
+                    flowCheck = NO;
+                }
+                if (bubbleError == YES) {
+                    bubbleCheck = NO;
+                }
+            }
+        }
+        
+        // How many in focus videos did we collect?
+        NSLog(@"%d fields in focus and without bubbles", (int)countArray.count);
+        if (countArray.count < minimumFields) {
+            validFieldCountCheck = NO;
+        }
+        
+        // Clean any outliers from the array
+        [self cleanOutliersFromArray:countArray];
+        
+        // Are there enough videos left to make a decision?
+        if (countArray.count < minimumFields) {
+            fieldCountCheck = NO;
+        }
+        
+        // Check for variance of data results
+        NSMutableDictionary* stats = [self statisticsFromArray:countArray];
+        float mean = [[stats objectForKey:@"mean"] floatValue];
+        float sigma = [[stats objectForKey:@"sigma"] floatValue];
+        
+        if (sigma > sqrtf(mean)) {
+            fieldVarianceCheck = NO;
+        }
+        
+        [capillaryCount addObject:[NSNumber numberWithFloat:mean]];
+    }
+    
+    NSMutableDictionary* stats = [self statisticsFromArray:capillaryCount];
+    float mean = [[stats objectForKey:@"mean"] floatValue];
+    float sigma = [[stats objectForKey:@"sigma"] floatValue];
+    if (sigma > sqrtf(mean)) {
+        capillaryVarianceCheck = NO;
+    }
+    
+    NSMutableDictionary* results = [[NSMutableDictionary alloc] init];
+    
+    if (validFieldCountCheck && capillaryCheck && videoErrorCheck && videoObjectCheck && videoObjectCheck && fieldVarianceCheck && capillaryVarianceCheck) {
+        [results setObject:@"Valid" forKey:@"Code"];
+    }
+    else {
+        // Errors are arranged in preferential heiarchy. Final error overwrites previous ones.
+        if (videoErrorCheck == NO) {
+            NSLog(@"Validation detected a video error");
+            NSString* code = [@"Invalid " stringByAppendingString:videoErrorString];
+            [results setObject:code forKey:@"Code"];
+        }
+        if (fieldVarianceCheck == NO) {
+            NSLog(@"Validation detected a field variance error");
+            [results setObject:@"Invalid FieldVariance" forKey:@"Code"];
+        }
+        if (fieldCountCheck == NO) {
+            NSLog(@"Insufficient fields to make a decision error");
+            [results setObject:@"Invalid FieldCount" forKey:@"Code"];
+        }
+        if (capillaryVarianceCheck == NO) {
+            NSLog(@"Validation detected a field variance error");
+            [results setObject:@"Invalid CapillaryVariance" forKey:@"Code"];
+        }
+        if (validFieldCountCheck == NO) {
+            NSString* errorCode = @"Invalid";
+            if (flowCheck == NO) {
+                NSLog(@"Validation detected a flow error");
+                errorCode = [errorCode stringByAppendingString:@" Flow"];
+            }
+            if (bubbleCheck == NO) {
+                NSLog(@"Validation detected a field focus or bubble error");
+                errorCode = [errorCode stringByAppendingString:@" BubbleCount"];
+            }
+            errorCode = [errorCode stringByAppendingString:@" FieldFocusCount"];
+            [results setObject:errorCode forKey:@"Code"];
+        }
+    }
+    
+    return results;
+}
+
 // Method also stores results in CoreData objects
 + (NSDictionary*)ResultsFromTestRecord:(TestRecord*)testRecord
 {
@@ -220,16 +227,30 @@
         NSMutableArray* countArray = [[NSMutableArray alloc] init];
 
         for (Video* video in record.videos) {
-            // Ignore any out of focus images when making the calculation
-            if ([video.errorString isEqualToString:@"FocusError"]) {
-                // Pass
+            BOOL focusError = NO;
+            BOOL bubbleError = NO;
+            BOOL flowError = NO;
+            NSString* errorString = video.errorString;
+            if (![errorString isEqualToString:@"None"]) {
+                if ([errorString rangeOfString:@"FocusError"].location != NSNotFound) {
+                    focusError = YES;
+                }
+                if ([errorString rangeOfString:@"BubbleError"].location != NSNotFound) {
+                    bubbleError = YES;
+                }
+                if ([errorString rangeOfString:@"FlowError"].location != NSNotFound) {
+                    flowError = YES;
+                }
             }
-            else {
+            
+            // If there is no focus error and no bubble error and no flow error, use this data point
+            if ((focusError == NO) && (bubbleError == NO) && (flowError == NO)) {
                 [countArray addObject:[NSNumber numberWithFloat:video.averageObjectCount.floatValue]];
             }
         }
         // Clean any outliers from the array
         [self cleanOutliersFromArray:countArray];
+        NSLog(@"%d fields used to compute mean", (int)countArray.count);
         
         float sum = 0.0;
         for (NSNumber* number in countArray) {

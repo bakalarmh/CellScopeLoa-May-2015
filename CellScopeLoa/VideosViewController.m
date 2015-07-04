@@ -33,6 +33,7 @@
 @synthesize cslContext;
 
 @synthesize imageView;
+@synthesize errorLabel;
 @synthesize scrollView;
 @synthesize layerSegmentedControl;
 @synthesize videoIndex;
@@ -45,16 +46,17 @@
     
     scrollView.minimumZoomScale = 0.9;
     scrollView.maximumZoomScale = 6.0;
-    [scrollView setZoomScale:0.9 animated:YES];
+    [scrollView setZoomScale:1.0 animated:YES];
     scrollView.delegate = self;
     
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     
-    [self initProcessing];
-    
     index = 0;
     video = [orderedVideos objectAtIndex:index];
     videoIndex.text = [NSString stringWithFormat:@"%d", (int)index];
+    
+    [self populateVideoInformation];
+    [self initProcessing];
     
     [self startProcessing];
 }
@@ -62,6 +64,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)populateVideoInformation
+{
+    if (![video.errorString isEqualToString:@"None"]) {
+        errorLabel.text = video.errorString;
+        errorLabel.alpha = 1.0;
+    }
+    else {
+        errorLabel.alpha = 0.0;
+    }
 }
 
 - (void)initProcessing
@@ -258,6 +271,7 @@
 
 - (IBAction)forwardPressed:(id)sender {
     [self stopPlayback];
+    [self populateVideoInformation];
     [self initProcessing];
     index += 1;
     if (index >= orderedVideos.count) {

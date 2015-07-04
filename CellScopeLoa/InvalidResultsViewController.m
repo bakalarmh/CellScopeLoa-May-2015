@@ -36,7 +36,7 @@
     if ([state rangeOfString:@"FieldFocusCount"].location != NSNotFound) {
         // Are there bubbles in the field?
         if ([state rangeOfString:@"BubbleCount"].location != NSNotFound) {
-            testResultLabel.text = @"Bubble Error";
+            testResultLabel.text = @"Blood fill Error";
             errorMessageLabel.text = @"Bubbles are in the capillary or blood has coagulated.";
         }
         else {
