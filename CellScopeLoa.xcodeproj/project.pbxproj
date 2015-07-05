@@ -63,7 +63,7 @@
 		9BAFD6D91B06A489001DC361 /* TestValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6D81B06A489001DC361 /* TestValidation.m */; };
 		9BAFD6DF1B06AB12001DC361 /* ValidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */; };
 		9BAFD6E21B09148F001DC361 /* BluetoothLoaDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */; };
-		9BAFD6E51B0934BF001DC361 /* EnglishDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E71B0934BF001DC361 /* EnglishDefault.strings */; };
+		9BAFD6E51B0934BF001DC361 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E71B0934BF001DC361 /* Localizable.strings */; };
 		9BAFD6EA1B09353B001DC361 /* FrenchDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */; };
 		9BAFD6F01B093C0C001DC361 /* InvalidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */; };
 		9BAFD6F31B099B82001DC361 /* ParseDataAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6F21B099B82001DC361 /* ParseDataAdaptor.m */; };
@@ -84,6 +84,9 @@
 /* Begin PBXFileReference section */
 		9B0C49D51B42E2AC007AF237 /* DiskSpaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskSpaceManager.h; sourceTree = "<group>"; };
 		9B0C49D61B42E2AC007AF237 /* DiskSpaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskSpaceManager.m; sourceTree = "<group>"; };
+		9B0C49D81B49D27D007AF237 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		9B0C49D91B49D27D007AF237 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9B0C49DA1B49D27D007AF237 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B0C92301B055807008F70E3 /* TestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecord.h; sourceTree = "<group>"; };
 		9B0C92311B055807008F70E3 /* TestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecord.m; sourceTree = "<group>"; };
 		9B0C92361B05801B008F70E3 /* FrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameBuffer.h; path = CellScopeLoa/FrameBuffer.h; sourceTree = "<group>"; };
@@ -180,9 +183,8 @@
 		9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidResultsViewController.m; path = ../ValidResultsViewController.m; sourceTree = "<group>"; };
 		9BAFD6E01B09148F001DC361 /* BluetoothLoaDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothLoaDevice.h; path = CellScopeLoa/BluetoothLoaDevice.h; sourceTree = "<group>"; };
 		9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothLoaDevice.m; path = CellScopeLoa/BluetoothLoaDevice.m; sourceTree = "<group>"; };
-		9BAFD6E61B0934BF001DC361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/EnglishDefault.strings; sourceTree = "<group>"; };
+		9BAFD6E61B0934BF001DC361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrenchDefault.strings; sourceTree = "<group>"; };
-		9BAFD6EB1B0935C0001DC361 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EnglishDefault.strings; sourceTree = "<group>"; };
 		9BAFD6EE1B093C0C001DC361 /* InvalidResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidResultsViewController.h; sourceTree = "<group>"; };
 		9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidResultsViewController.m; sourceTree = "<group>"; };
 		9BAFD6F11B099B82001DC361 /* ParseDataAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseDataAdaptor.h; sourceTree = "<group>"; };
@@ -331,7 +333,7 @@
 				9B8418401AFFF10B008DBA7B /* constants.h */,
 				9B8418411AFFF12D008DBA7B /* constants.m */,
 				9B0C92401B0584F4008F70E3 /* CellScopeLoa-Prefix.pch */,
-				9BAFD6E71B0934BF001DC361 /* EnglishDefault.strings */,
+				9BAFD6E71B0934BF001DC361 /* Localizable.strings */,
 				9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */,
 			);
 			name = "Supporting Files";
@@ -486,6 +488,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 9B3B93AC1AFE7F7F00C391CC;
 			productRefGroup = 9B3B93B61AFE7F7F00C391CC /* Products */;
@@ -505,7 +508,7 @@
 			files = (
 				9B3B93C71AFE7F7F00C391CC /* Main.storyboard in Resources */,
 				9BAFD6EA1B09353B001DC361 /* FrenchDefault.strings in Resources */,
-				9BAFD6E51B0934BF001DC361 /* EnglishDefault.strings in Resources */,
+				9BAFD6E51B0934BF001DC361 /* Localizable.strings in Resources */,
 				9B3B93CC1AFE7F7F00C391CC /* LaunchScreen.xib in Resources */,
 				9B3B93C91AFE7F7F00C391CC /* Images.xcassets in Resources */,
 			);
@@ -591,6 +594,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9B3B93C61AFE7F7F00C391CC /* Base */,
+				9B0C49D81B49D27D007AF237 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -599,17 +603,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				9B3B93CB1AFE7F7F00C391CC /* Base */,
+				9B0C49D91B49D27D007AF237 /* fr */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		9BAFD6E71B0934BF001DC361 /* EnglishDefault.strings */ = {
+		9BAFD6E71B0934BF001DC361 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9BAFD6E61B0934BF001DC361 /* Base */,
-				9BAFD6EB1B0935C0001DC361 /* en */,
+				9B0C49DA1B49D27D007AF237 /* fr */,
 			);
-			name = EnglishDefault.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

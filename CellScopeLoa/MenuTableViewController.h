@@ -15,6 +15,12 @@
 @property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) CSLContext *cslContext;
 
+// Labels
+@property (weak, nonatomic) IBOutlet UILabel *dataButtonLabel;
+@property (weak, nonatomic) IBOutlet UILabel *devicesButtonLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cloudButtonLabel;
+@property (weak, nonatomic) IBOutlet UILabel *settingsButtonLabel;
+
 // BLE
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *connectionStatusItem;
 @property (weak, nonatomic) IBOutlet UILabel *testButtonLabel;

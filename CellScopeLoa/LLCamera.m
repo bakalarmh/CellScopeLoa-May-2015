@@ -65,7 +65,8 @@
      [NSNumber numberWithLong:width], AVVideoWidthKey,
      [NSNumber numberWithLong:height], AVVideoHeightKey,
      AVVideoCodecH264, AVVideoCodecKey,
-     nil];
+    nil];
+    
     assetWriterInput = [AVAssetWriterInput
                              assetWriterInputWithMediaType:AVMediaTypeVideo
                              outputSettings:outputSettings];

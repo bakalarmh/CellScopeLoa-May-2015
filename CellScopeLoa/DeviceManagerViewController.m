@@ -43,11 +43,11 @@
     // Set up UI elements
     deviceLabel.text = bleManager.lastUUID;
     if (bleManager.connected) {
-        statusLabel.text = @"Connected";
+        statusLabel.text = NSLocalizedString(@"Connected",nil);
         statusLabel.textColor = [UIColor colorWithRed:0.0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
     }
     else {
-        statusLabel.text = @"Disconnected";
+        statusLabel.text = NSLocalizedString(@"Disconnected",nil);
         statusLabel.textColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#00CC00*/
     }
 }
@@ -68,13 +68,13 @@
 
 - (void)bleDidConnect:(NSNotification*)notification
 {
-    statusLabel.text = @"Connected";
+    statusLabel.text = NSLocalizedString(@"Connected",nil);
     statusLabel.textColor = [UIColor colorWithRed:0.0 green:0.8 blue:0 alpha:1]; /*#00CC00*/
 }
 
 - (void)bleDidDisconnect:(NSNotification*)notification
 {
-    statusLabel.text = @"Disconnected";
+    statusLabel.text = NSLocalizedString(@"Disconnected",nil);
     statusLabel.textColor = [UIColor colorWithRed:1.0 green:0.0 blue:0 alpha:1]; /*#00CC00*/
 }
 

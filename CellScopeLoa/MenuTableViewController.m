@@ -34,10 +34,21 @@
 @synthesize connectionStatusItem;
 @synthesize testButtonLabel;
 @synthesize testButtonIcon;
+@synthesize settingsButtonLabel;
+@synthesize cloudButtonLabel;
+@synthesize devicesButtonLabel;
+@synthesize dataButtonLabel;
 @synthesize batteryBarButtonItem;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Localize labels with language
+    testButtonLabel.text = NSLocalizedString(@"Test",nil);
+    dataButtonLabel.text = NSLocalizedString(@"Data",nil);
+    settingsButtonLabel.text = NSLocalizedString(@"Settings",nil);
+    devicesButtonLabel.text = NSLocalizedString(@"Devices",nil);
+    cloudButtonLabel.text = NSLocalizedString(@"Cloud sync",nil);
     
     // Bluetooth manager lives here
     BLEManager* bleManager = [[BLEManager alloc] init];
@@ -47,6 +58,7 @@
     // Setup UI state of the connected indicator
     testButtonLabel.alpha = 0.2;
     testButtonIcon.alpha = 0.2;
+    
     if (bleManager.connected) {
         connectionStatusItem.title = NSLocalizedString(@"Connected",nil);
         connectionStatusItem.tintColor = [UIColor colorWithRed:0.0 green:0.8 blue:0 alpha:1]; /*#00CC00*/

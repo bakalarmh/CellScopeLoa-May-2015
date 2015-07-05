@@ -1,0 +1,29 @@
+/* 
+  EnglishDefault
+  CellScopeLoa
+
+  Created by Matthew Bakalar on 5/17/15.
+  Copyright (c) 2015 Fletcher Lab. All rights reserved.
+*/
+
+"Connected" = "Lié";
+"Disconnected" = "Coupé";
+"Test" = "Test";
+"Data" = "Données";
+"Settings" = "Paramètres";
+"Devices" = "Périphériques";
+"Cloud sync" = "Synchroniser";
+"Searching" = "Recherche";
+
+// Error messages
+
+"Blood fill Error" = "Blood fill Error";
+"Bubbles are in the capillary or blood has coagulated." = "Bubbles are in the capillary or blood has coagulated.";
+"Focus Error" = "Focus Error";
+"Images are not in focus." = "Images are not in focus.";
+"Insuffient data" = "Insuffient data";
+"Low quality fields of view." = "Low quality fields of view.";
+"There are bubbles in the capillary." = "There are bubbles in the capillary.";
+"Test result is invalid" = "Test result is invalid";
+"High field of view variance" = "High field of view variance";
+"High capillary to capillary variance" = "High capillary to capillary variance";

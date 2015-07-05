@@ -28,6 +28,7 @@
     NSInteger capillariesProcessed;
     NSInteger maxFields;
     BOOL processingFinished;
+    BOOL cameraSettling;
     
     NSMutableArray* activeVideos;
 }
@@ -61,6 +62,7 @@
     // Do any additional setup after loading the view.
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:NO];
+    actionLabel.alpha = 0.2;
     
     // Listen for processing results
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -99,6 +101,17 @@
     
     deviceIDLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimpleDeviceIDKey];
     cellscopeIDLabel.text = cslContext.activeTestRecord.simpleTestID;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Wait for capture session to be available - to avoid crashes
+    cameraSettling = YES;
+    actionLabel.alpha = 0.2;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        cameraSettling = NO;
+        actionLabel.alpha = 1.0;
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -348,7 +361,7 @@
     // rows in section 0 should not be selectable
     if (indexPath.section == 2) {
         if ([actionLabel.text isEqualToString:@"Capture"]) {
-            if ([cslContext deviceIsConnected]) {
+            if (([cslContext deviceIsConnected]) && (cameraSettling == NO)) {
                 return indexPath;
             }
             else {

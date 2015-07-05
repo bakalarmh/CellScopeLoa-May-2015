@@ -1,0 +1,273 @@
+
+/* Class = "UILabel"; text = "Enter patient ID"; ObjectID = "0C6-9g-SEO"; */
+"0C6-9g-SEO.text" = "Entrer ID patient";
+
+/* Class = "UILabel"; text = "Undocumented error"; ObjectID = "0JP-tz-FZq"; */
+"0JP-tz-FZq.text" = "Erreur inconnue";
+
+/* Class = "UIButton"; normalTitle = "edit"; ObjectID = "1Gz-oe-sch"; */
+"1Gz-oe-sch.normalTitle" = "edit";
+
+/* Class = "UILabel"; text = "LL00001"; ObjectID = "2k3-sp-XdG"; */
+"2k3-sp-XdG.text" = "LL00001";
+
+/* Class = "UILabel"; text = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2"; ObjectID = "5yM-bH-UCM"; */
+"5yM-bH-UCM.text" = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2";
+
+/* Class = "UIBarButtonItem"; title = "Finished"; ObjectID = "6VS-Fw-84g"; */
+"6VS-Fw-84g.title" = "Fini";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "6YP-Bj-rgE"; */
+"6YP-Bj-rgE.text" = "Detail";
+
+/* Class = "UILabel"; text = "ISO:"; ObjectID = "7A4-JB-XHQ"; */
+"7A4-JB-XHQ.text" = "ISO:";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "8e5-4T-RUl"; */
+"8e5-4T-RUl.text" = "1";
+
+/* Class = "UINavigationItem"; title = "Patient ID"; ObjectID = "9C3-vj-bxB"; */
+"9C3-vj-bxB.title" = "ID patient";
+
+/* Class = "UINavigationItem"; title = "CellScope Loa"; ObjectID = "9i3-MD-Y0J"; */
+"9i3-MD-Y0J.title" = "CellScope Loa";
+
+/* Class = "UILabel"; text = "12,000 mf/ml"; ObjectID = "AYD-tO-AhC"; */
+"AYD-tO-AhC.text" = "12,000 mf/ml";
+
+/* Class = "UILabel"; text = "25/25"; ObjectID = "BF8-Zc-E3Q"; */
+"BF8-Zc-E3Q.text" = "25/25";
+
+/* Class = "UILabel"; text = "Devices"; ObjectID = "BQc-6r-CZn"; */
+"BQc-6r-CZn.text" = "Périphériques";
+
+/* Class = "UIButton"; normalTitle = "Identify"; ObjectID = "BYq-u4-vmd"; */
+"BYq-u4-vmd.normalTitle" = "Identifier";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "C4c-Z2-I37"; */
+"C4c-Z2-I37.title" = "Paramètres";
+
+/* Class = "UILabel"; text = "Data"; ObjectID = "D9r-2H-Msp"; */
+"D9r-2H-Msp.text" = "Données";
+
+/* Class = "UILabel"; text = "Capillary 2:"; ObjectID = "Dqb-DB-Ugr"; */
+"Dqb-DB-Ugr.text" = "Capillary 2:";
+
+/* Class = "UILabel"; text = "ABCDEFG"; ObjectID = "EVU-Qc-6Jv"; */
+"EVU-Qc-6Jv.text" = "ABCDEFG";
+
+/* Class = "UINavigationItem"; title = "Invalid Results"; ObjectID = "F9I-vp-vcf"; */
+"F9I-vp-vcf.title" = "Résultat Non Valide";
+
+/* Class = "UILabel"; text = "ABCDEFG"; ObjectID = "FEW-HR-2gc"; */
+"FEW-HR-2gc.text" = "ABCDEFG";
+
+/* Class = "UILabel"; text = "Capillary records:"; ObjectID = "G2K-th-xmt"; */
+"G2K-th-xmt.text" = "Dossiers capillaires:";
+
+/* Class = "UITableViewSection"; headerTitle = "Identifiers"; ObjectID = "GWe-bf-GQd"; */
+"GWe-bf-GQd.headerTitle" = "Identifiants";
+
+/* Class = "UINavigationItem"; title = "Results"; ObjectID = "Lp8-W1-cFx"; */
+"Lp8-W1-cFx.title" = "Résultats";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "LtU-b4-IFv"; */
+"LtU-b4-IFv.text" = "1.0";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Mxa-bZ-o5k"; */
+"Mxa-bZ-o5k.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Patient ID"; ObjectID = "NeF-Cv-VDw"; */
+"NeF-Cv-VDw.title" = "ID Patient";
+
+/* Class = "UILabel"; text = "Dev ID:"; ObjectID = "OgP-Fj-ma1"; */
+"OgP-Fj-ma1.text" = "ID Dev:";
+
+/* Class = "UILabel"; text = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2"; ObjectID = "OuP-aQ-iMO"; */
+"OuP-aQ-iMO.text" = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2";
+
+/* Class = "UINavigationItem"; title = "Records"; ObjectID = "PV1-MW-2bH"; */
+"PV1-MW-2bH.title" = "Dossiers";
+
+/* Class = "UILabel"; text = "Capillary 2"; ObjectID = "Pj8-VL-6oi"; */
+"Pj8-VL-6oi.text" = "Capillary 2";
+
+/* Class = "UILabel"; text = "Exp:"; ObjectID = "PoF-K5-wdg"; */
+"PoF-K5-wdg.text" = "Exp:";
+
+/* Class = "UIBarButtonItem"; title = "Abort"; ObjectID = "Q5G-xj-8cY"; */
+"Q5G-xj-8cY.title" = "Avorter";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "QAY-kI-vwa"; */
+"QAY-kI-vwa.normalTitle" = "Annuler";
+
+/* Class = "UILabel"; text = "5.6 per field"; ObjectID = "QdT-1m-m9W"; */
+"QdT-1m-m9W.text" = "5.6 per field";
+
+/* Class = "UILabel"; text = "Redraw blood and repeat test"; ObjectID = "Qde-16-V8y"; */
+"Qde-16-V8y.text" = "Redessiner du sang et repeter le test";
+
+/* Class = "UILabel"; text = "Videos:"; ObjectID = "S63-kS-nVd"; */
+"S63-kS-nVd.text" = "Videos:";
+
+/* Class = "UILabel"; text = "12,000 mf/ml"; ObjectID = "SZH-q7-NDx"; */
+"SZH-q7-NDx.text" = "12,000 mf/ml";
+
+/* Class = "UILabel"; text = "Barcode"; ObjectID = "UB7-SB-6wb"; */
+"UB7-SB-6wb.text" = "Barcode";
+
+/* Class = "UILabel"; text = "Settings"; ObjectID = "UmY-uE-9ye"; */
+"UmY-uE-9ye.text" = "Paramètres";
+
+/* Class = "UIButton"; normalTitle = "Enter ID Manually"; ObjectID = "WXc-Tw-IDs"; */
+"WXc-Tw-IDs.normalTitle" = "Entrer ID Manuellement";
+
+/* Class = "UILabel"; text = "5.6 per field"; ObjectID = "X1G-xY-p9d"; */
+"X1G-xY-p9d.text" = "5.6 per field";
+
+/* Class = "UILabel"; text = "Capillary 1:"; ObjectID = "X8o-um-mHa"; */
+"X8o-um-mHa.text" = "Capillaire 1:";
+
+/* Class = "UINavigationItem"; title = "Results"; ObjectID = "XeX-r5-DRA"; */
+"XeX-r5-DRA.title" = "Résultats";
+
+/* Class = "UITableViewSection"; headerTitle = "Validation"; ObjectID = "YIz-oG-Ksb"; */
+"YIz-oG-Ksb.headerTitle" = "Validation";
+
+/* Class = "UINavigationItem"; title = "Data Review"; ObjectID = "YLy-nT-qUL"; */
+"YLy-nT-qUL.title" = "Examen Des Données";
+
+/* Class = "UIButton"; normalTitle = "Start test"; ObjectID = "YmN-8C-8xm"; */
+"YmN-8C-8xm.normalTitle" = "Démarrer le test";
+
+/* Class = "UILabel"; text = "Test"; ObjectID = "Zfw-rm-TWx"; */
+"Zfw-rm-TWx.text" = "Test";
+
+/* Class = "UILabel"; text = "Capillary 2"; ObjectID = "aHy-C4-tPX"; */
+"aHy-C4-tPX.text" = "Capillaire 2";
+
+/* Class = "UILabel"; text = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2"; ObjectID = "aY0-CL-9yT"; */
+"aY0-CL-9yT.text" = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2";
+
+/* Class = "UITableViewSection"; headerTitle = "Data collection"; ObjectID = "bmc-Mv-rYp"; */
+"bmc-Mv-rYp.headerTitle" = "Data collection";
+
+/* Class = "UILabel"; text = "Device ID:"; ObjectID = "cdh-Mn-dVg"; */
+"cdh-Mn-dVg.text" = "Device ID:";
+
+/* Class = "UILabel"; text = "Test result is invalid"; ObjectID = "dUi-0U-HrQ"; */
+"dUi-0U-HrQ.text" = "Test result is invalid";
+
+/* Class = "UITableViewSection"; headerTitle = "Action"; ObjectID = "dcL-gP-fJ7"; */
+"dcL-gP-fJ7.headerTitle" = "Action";
+
+/* Class = "UILabel"; text = "Device label"; ObjectID = "gG2-2S-6le"; */
+"gG2-2S-6le.text" = "Device label";
+
+/* Class = "UINavigationItem"; title = "Cloud Sync"; ObjectID = "h6C-Ot-2Ob"; */
+"h6C-Ot-2Ob.title" = "Cloud Sync";
+
+/* Class = "UILabel"; text = "Select new device"; ObjectID = "jAk-GD-Tnh"; */
+"jAk-GD-Tnh.text" = "Choisissez nouveau périphérique";
+
+/* Class = "UILabel"; text = "Test Records:"; ObjectID = "jFI-Is-ZLP"; */
+"jFI-Is-ZLP.text" = "Dossier Des Tests:";
+
+/* Class = "UIBarButtonItem"; title = "Searching"; ObjectID = "jtn-kz-QcX"; */
+"jtn-kz-QcX.title" = "Recherche";
+
+/* Class = "UITableViewSection"; headerTitle = "Test Information"; ObjectID = "k9B-vW-fQb"; */
+"k9B-vW-fQb.headerTitle" = "Informations Sur Les Tests";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "kSj-lp-15o"; */
+"kSj-lp-15o.normalTitle" = "Suivant";
+
+/* Class = "UILabel"; text = "ISO"; ObjectID = "kig-8m-z5M"; */
+"kig-8m-z5M.text" = "ISO";
+
+/* Class = "UILabel"; text = "Capillary 1"; ObjectID = "lPT-oG-LR4"; */
+"lPT-oG-LR4.text" = "Capillaire 1";
+
+/* Class = "UILabel"; text = "Phone ID:"; ObjectID = "oCl-65-KwS"; */
+"oCl-65-KwS.text" = "Phone ID:";
+
+/* Class = "UILabel"; text = "0/50"; ObjectID = "p9r-nc-9tv"; */
+"p9r-nc-9tv.text" = "0/50";
+
+/* Class = "UILabel"; text = "Capture"; ObjectID = "plD-t5-LWd"; */
+"plD-t5-LWd.text" = "Capture";
+
+/* Class = "UILabel"; text = "Connected"; ObjectID = "pqr-Lc-Ek3"; */
+"pqr-Lc-Ek3.text" = "Lié";
+
+/* Class = "UILabel"; text = "0/50"; ObjectID = "qDO-pV-DF9"; */
+"qDO-pV-DF9.text" = "0/50";
+
+/* Class = "UIBarButtonItem"; title = "Finished"; ObjectID = "qG5-25-IJ9"; */
+"qG5-25-IJ9.title" = "Finis";
+
+/* Class = "UIButton"; normalTitle = "Sync data"; ObjectID = "qYd-8t-KxM"; */
+"qYd-8t-KxM.normalTitle" = "Sync les données";
+
+/* Class = "UITableViewSection"; headerTitle = "Manage devices"; ObjectID = "rFe-cv-9ox"; */
+"rFe-cv-9ox.headerTitle" = "Gérer Les Périphériques";
+
+/* Class = "UIButton"; normalTitle = "Videos"; ObjectID = "rPt-aY-N3d"; */
+"rPt-aY-N3d.normalTitle" = "Vidéos";
+
+/* Class = "UITableViewSection"; headerTitle = "Default device"; ObjectID = "s1p-Nv-UnO"; */
+"s1p-Nv-UnO.headerTitle" = "Périphériques de défaut";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sjP-Br-mMY"; */
+"sjP-Br-mMY.text" = "Label";
+
+/* Class = "UILabel"; text = "Cloud Sync"; ObjectID = "t2Z-Vp-FNe"; */
+"t2Z-Vp-FNe.text" = "Cloud Sync";
+
+/* Class = "UILabel"; text = "Out of focus"; ObjectID = "tI2-9n-l5H"; */
+"tI2-9n-l5H.text" = "Floue";
+
+/* Class = "UITextField"; placeholder = "Patient ID"; ObjectID = "trj-Fb-CoB"; */
+"trj-Fb-CoB.placeholder" = "ID Patient";
+
+/* Class = "UILabel"; text = "Enter administrators password"; ObjectID = "uWT-ar-xVH"; */
+"uWT-ar-xVH.text" = "Mot de passe administrateurs";
+
+/* Class = "UINavigationItem"; title = "Test"; ObjectID = "uex-Ho-rN5"; */
+"uex-Ho-rN5.title" = "Test";
+
+/* Class = "UILabel"; text = "Focus check:"; ObjectID = "viO-wV-r2H"; */
+"viO-wV-r2H.text" = "Focus check:";
+
+/* Class = "UINavigationItem"; title = "Capture"; ObjectID = "vri-SG-q0t"; */
+"vri-SG-q0t.title" = "Capture";
+
+/* Class = "UIButton"; normalTitle = "Videos"; ObjectID = "xCa-S3-W83"; */
+"xCa-S3-W83.normalTitle" = "Vidéos";
+
+/* Class = "UILabel"; text = "Exp"; ObjectID = "y4H-z1-HB6"; */
+"y4H-z1-HB6.text" = "Exp";
+
+/* Class = "UIBarButtonItem"; title = "Lock"; ObjectID = "yfB-sd-llC"; */
+"yfB-sd-llC.title" = "Lock";
+
+/* Class = "UILabel"; text = "Capillary 1"; ObjectID = "z2V-4w-Cwm"; */
+"z2V-4w-Cwm.text" = "Capilaire 1";
+
+/* Class = "UILabel"; text = "ABCDEFG"; ObjectID = "zJP-jc-2Sq"; */
+"zJP-jc-2Sq.text" = "ABCDEFG";
+
+/* Class = "UILabel"; text = "NIH ID:"; ObjectID = "zKc-PX-uKH"; */
+"zKc-PX-uKH.text" = "ID NIH:";
+
+/* Class = "UILabel"; text = "CSL ID:"; ObjectID = "zlO-SE-h7x"; */
+"zlO-SE-h7x.text" = "ID CSL:";
+
+/* Class = "UILabel"; text = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2"; ObjectID = "ztF-ps-Dmi"; */
+"ztF-ps-Dmi.text" = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2";
+
+/* Class = "UISegmentedControl"; zw5-dJ-Dwr.segmentTitles[0] = "Basic"; ObjectID = "zw5-dJ-Dwr"; */
+"zw5-dJ-Dwr.segmentTitles[0]" = "Basic";
+
+/* Class = "UISegmentedControl"; zw5-dJ-Dwr.segmentTitles[1] = "Motion"; ObjectID = "zw5-dJ-Dwr"; */
+"zw5-dJ-Dwr.segmentTitles[1]" = "Motion";

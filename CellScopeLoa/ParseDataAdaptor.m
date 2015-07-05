@@ -133,6 +133,7 @@
                 if (exists) {
                     NSData* data = [NSData dataWithContentsOfFile:path];
                     PFFile *videoFile = [PFFile fileWithName:@"cslvideo.mov" data:data];
+                    NSLog(@"%@", videoFile);
                      [videoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                          if (!error) {
                              [pfvideo setObject:videoFile forKey:@"videoFile"];
@@ -141,6 +142,9 @@
                                  video.parseID = pfvideo.objectId;
                                  completionBlock(succeeded, error);
                              }];
+                         }
+                         else {
+                             NSLog(@"Parse save error!");
                          }
                      }];
                 }

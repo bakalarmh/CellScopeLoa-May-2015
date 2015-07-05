@@ -36,29 +36,29 @@
     if ([state rangeOfString:@"FieldFocusCount"].location != NSNotFound) {
         // Are there bubbles in the field?
         if ([state rangeOfString:@"BubbleCount"].location != NSNotFound) {
-            testResultLabel.text = @"Blood fill Error";
-            errorMessageLabel.text = @"Bubbles are in the capillary or blood has coagulated.";
+            testResultLabel.text = NSLocalizedString(@"Blood fill Error",nil);
+            errorMessageLabel.text = NSLocalizedString(@"Bubbles are in the capillary or blood has coagulated.",nil);
         }
         else {
-            testResultLabel.text = @"Focus Error";
-            errorMessageLabel.text = @"Images are not in focus.";
+            testResultLabel.text = NSLocalizedString(@"Focus Error",nil);
+            errorMessageLabel.text = NSLocalizedString(@"Images are not in focus.",nil);
         }
     }
     else if ([state rangeOfString:@"FieldCount"].location != NSNotFound) {
-        testResultLabel.text = @"Insuffient data";
-        errorMessageLabel.text = @"Low quality fields of view.";
+        testResultLabel.text = NSLocalizedString(@"Insuffient data",nil);
+        errorMessageLabel.text = NSLocalizedString(@"Low quality fields of view.",nil);
     }
     else if ([state rangeOfString:@"BubbleError"].location != NSNotFound) {
-        testResultLabel.text = @"Bubble Error";
-        errorMessageLabel.text = @"There are bubbles in the capillary.";
+        testResultLabel.text = NSLocalizedString(@"Bubble Error",nil);
+        errorMessageLabel.text = NSLocalizedString(@"There are bubbles in the capillary.",nil);
     }
     else if ([state rangeOfString:@"FieldVariance"].location != NSNotFound) {
-        testResultLabel.text = @"Test result is invalid";
-        errorMessageLabel.text = @"High field of view variance";
+        testResultLabel.text = NSLocalizedString(@"Test result is invalid",nil);
+        errorMessageLabel.text = NSLocalizedString(@"High field of view variance",nil);
     }
     else if ([state rangeOfString:@"CapillaryVariance"].location != NSNotFound) {
-        testResultLabel.text = @"Test result is invalid";
-        errorMessageLabel.text = @"High capillary to capillary variance";
+        testResultLabel.text = NSLocalizedString(@"Test result is invalid",nil);
+        errorMessageLabel.text = NSLocalizedString(@"High capillary to capillary variance",nil);
     }
     else {
         NSLog(@"Undocumented error: %@", state);
