@@ -30,5 +30,6 @@
 - (void)processFrameBuffer:(FrameBuffer*)frameBuffer withResourceURL:(NSString*)videoURL;
 
 + (float)ComputeFocusMetric:(FrameBuffer*)frameBuffer;
++ (BOOL)frameBufferIsBlack:(FrameBuffer*)frameBuffer index:(NSNumber*)index;
 
 @end

@@ -226,8 +226,15 @@
         // Construct a frame buffer
         [focusBuffer writeFrame:frame atIndex:[NSNumber numberWithInt:0]];
         
+        // Cannot focus on black frames
+        BOOL black = [MotionAnalysis frameBufferIsBlack:focusBuffer index:@0];
+        if (black) {
+            return;
+        }
+        
         // Check the focus
         float focusMetric = [MotionAnalysis ComputeFocusMetric:focusBuffer];
+        NSLog(@"Local focus: %f", focusMetric);
         [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
             float value = focusMetric;
             if (value > 1.0) {

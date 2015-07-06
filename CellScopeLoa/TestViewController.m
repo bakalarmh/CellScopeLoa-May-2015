@@ -476,11 +476,11 @@
 
 - (IBAction)cancelPushed:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Abort test?"
-                                                    message:@"All results from this test will be discarded."
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Abort test?",nil)
+                                                    message:NSLocalizedString(@"All results from this test will be discarded.",nil)
                                                    delegate:nil
-                                          cancelButtonTitle:@"Abort"
-                                          otherButtonTitles:@"No",nil];
+                                          cancelButtonTitle:NSLocalizedString(@"Abort",nil)
+                                          otherButtonTitles:NSLocalizedString(@"No",nil), nil];
     alert.delegate = self;
     [alert show];
 }

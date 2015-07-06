@@ -22,3 +22,7 @@
 "Test result is invalid" = "Résultat non valide";
 "High field of view variance" = "Variance importante entre les champs";
 "High capillary to capillary variance" = "Variance importante entre les capillaires";
+"All results from this test will be discarded." = "Tous les résultats de ce test seront rejetées";
+"Abort" = "Avorter";
+"No" = "Non";
+"Abort test?" = "Abandonner le test?";

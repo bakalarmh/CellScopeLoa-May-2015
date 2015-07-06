@@ -22,3 +22,7 @@
 "Test result is invalid" = "Test result is invalid";
 "High field of view variance" = "High field of view variance";
 "High capillary to capillary variance" = "High capillary to capillary variance";
+"All results from this test will be discarded." = "All results from this test will be discarded.";
+"Abort" = "Abort";
+"No" = "No";
+"Abort test?" = "Abort test?";

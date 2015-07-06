@@ -55,6 +55,11 @@
     rect1.height = 200;
     cv::Mat croppedImage = firstMat(rect1);
     
+    // MHB Check
+    cv::Mat uiOutput;
+    croppedImage.convertTo(uiOutput, CV_8UC1);
+    UIImage* outputImage = [UIImage imageWithCVMat:uiOutput];
+    
     //generate the mask
     cv::Mat mask;
     threshold(croppedImage, mask, 200, 255, CV_THRESH_BINARY_INV);
@@ -69,6 +74,20 @@
     double normFocusMeasure = focusMeasure/100.0;
     
     return normFocusMeasure;
+}
+
++ (BOOL)frameBufferIsBlack:(FrameBuffer*)frameBuffer index:(NSNumber*)index
+{
+    //crop the image
+    cv::Mat firstMat = [frameBuffer getFrameAtIndex:0];
+    double min, max;
+    cv::minMaxLoc(firstMat, &min, &max);
+    if (max > 0) {
+        return NO;
+    }
+    else {
+        return YES;
+    }
 }
 
 // Called by the TestViewController
@@ -115,7 +134,7 @@
 - (void)processFramesForMovie:(FrameBuffer*) frameBuffer {
     
     // Parameter space!!! MHB MD
-    float bubbleLimit = 480*360*0.25;
+    float bubbleLimit = 480*360*0.3;
     
     // Is there flow in the capillary?
     BOOL flow = [self computeFlowForBuffer:frameBuffer];
@@ -186,11 +205,6 @@
             if (i==0){
                 
                 threshold(movieFrameMat, movieFrameMatBW, 215, 255, CV_THRESH_BINARY);
-                
-                // MHB Check
-                //cv::Mat uiOutput;
-                //movieFrameMatBW.convertTo(uiOutput, CV_8UC1);
-                //UIImage* outputImage = [UIImage imageWithCVMat:uiOutput];
                 
                 cv::Mat element = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size( 10,10 ), cv::Point( 2, 2 ));
                 cv::morphologyEx(movieFrameMatBW,movieFrameMatBW, CV_MOP_DILATE, element );
@@ -505,7 +519,7 @@
 - (BOOL)computeFlowForBuffer:(FrameBuffer*)frameBuffer
 {
     // Output image
-    UIImage* outputImage;
+    // UIImage* outputImage;
     
     // Movie dimensions
     int rows = 360;
@@ -555,10 +569,8 @@
                 cv::Mat descriptors1;
                 extractor.compute(detectActiveFrame, keypoints1, descriptors1);
                 detected = descriptors1.rows;
-                printf("Detected: %d\n", detected);
                 attempts += 1;
             }
-            printf("Hessian: %d\n", minHessian);
             
         }
         
@@ -709,12 +721,7 @@
                     [worm setObject:[NSNumber numberWithInt:endi] forKey:@"end"];
                     
                     [wormObjects addObject:worm];
-                    numWorms=numWorms+1;
-                    
-                    // }
-                    // else {
-                    //     NSLog(@"point rejected due to motion");
-                    // }
+                    numWorms = numWorms+1;
                 }
             }
         }

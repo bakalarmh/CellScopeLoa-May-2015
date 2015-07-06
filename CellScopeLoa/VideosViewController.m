@@ -55,10 +55,10 @@
     video = [orderedVideos objectAtIndex:index];
     videoIndex.text = [NSString stringWithFormat:@"%d", (int)index];
     
-    [self populateVideoInformation];
     [self initProcessing];
-    
-    [self startProcessing];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+        [self startProcessing];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,6 +91,10 @@
 
 - (void)startProcessing
 {
+    // Update the video information
+    [self populateVideoInformation];
+    videoIndex.text = [NSString stringWithFormat:@"%d", (int)index];
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* path = [[paths objectAtIndex:0] stringByAppendingPathComponent:video.resourceURL];
     
@@ -271,14 +275,14 @@
 
 - (IBAction)forwardPressed:(id)sender {
     [self stopPlayback];
-    [self populateVideoInformation];
     [self initProcessing];
     index += 1;
     if (index >= orderedVideos.count) {
         index = 0;
     }
     video = [orderedVideos objectAtIndex:index];
-    videoIndex.text = [NSString stringWithFormat:@"%d", (int)index];
-    [self startProcessing];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+        [self startProcessing];
+    }];
 }
 @end

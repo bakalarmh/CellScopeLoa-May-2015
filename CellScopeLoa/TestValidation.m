@@ -76,8 +76,6 @@
 
 + (NSDictionary*)ValidateTestRecord:(TestRecord*)testRecord
 {
-    BOOL capillaryCheck = (testRecord.capillaryRecords.count == 2);
-    
     BOOL videoErrorCheck = YES;
     BOOL videoCountCheck = YES;
     BOOL videoObjectCheck = YES;
@@ -93,6 +91,13 @@
     
     // Acquire one or two capillaries?
     BOOL twoCapillariesRequired = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
+    BOOL capillaryCheck;
+    if (twoCapillariesRequired) {
+        capillaryCheck = (testRecord.capillaryRecords.count == 2);
+    }
+    else {
+        capillaryCheck = (testRecord.capillaryRecords.count == 1);
+    }
     
     NSString* videoErrorString = @"";
     
@@ -213,6 +218,11 @@
                 errorCode = [errorCode stringByAppendingString:@" BubbleCount"];
             }
             errorCode = [errorCode stringByAppendingString:@" FieldFocusCount"];
+            [results setObject:errorCode forKey:@"Code"];
+        }
+        else {
+            NSString* errorCode = @"Invalid";
+            errorCode = [errorCode stringByAppendingString:@" UnknownError"];
             [results setObject:errorCode forKey:@"Code"];
         }
     }

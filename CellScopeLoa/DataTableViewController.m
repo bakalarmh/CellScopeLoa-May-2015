@@ -137,5 +137,11 @@
     }
 }
 
+#pragma mark - BLE catch messages
+- (void)didConnect
+{
+    
+}
+
 
 @end
