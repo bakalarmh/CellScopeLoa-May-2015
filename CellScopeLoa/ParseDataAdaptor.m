@@ -77,10 +77,10 @@
     if (record.capillaryIndex != nil) {
         [post setObject:record.capillaryIndex forKey:@"capillaryIndex"];
     }
-    if (record.objectsPerMl != nil) {
+    if ((record.objectsPerMl != nil) && (![record.objectsPerMl isEqualToNumber:[NSDecimalNumber notANumber]])) {
         [post setObject:record.objectsPerMl forKey:@"objectsPerMl"];
     }
-    if (record.objectsPerField != nil) {
+    if ((record.objectsPerField != nil) && (![record.objectsPerField isEqualToNumber:[NSDecimalNumber notANumber]])) {
         [post setObject:record.objectsPerField forKey:@"objectsPerField"];
     }
     
