@@ -27,5 +27,6 @@ extern NSString* const SimpleDeviceIDKey;
 extern NSString* const FocusCheckSwitchKey;
 extern NSString* const AdminPassKey;
 extern NSString* const TestCounterKey;
+extern NSString* const RequireTwoCapillariesKey;
 
 #endif

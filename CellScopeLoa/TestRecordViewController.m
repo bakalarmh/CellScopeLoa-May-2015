@@ -12,6 +12,7 @@
 #import "MotionObject.h"
 #import "VideosViewController.h"
 #import "TestValidation.h"
+#import "constants.h"
 
 @interface TestRecordViewController () {
     NSMutableArray* orderedCapillaryRecords;
@@ -22,6 +23,7 @@
 @implementation TestRecordViewController {
     float numSeconds;
     CapillaryRecord* activeCapillaryRecord;
+    BOOL twoCapillariesRequired;
 }
 
 @synthesize testRecord;
@@ -39,6 +41,9 @@
     
     // Hard coded video seconds. I am not happy with this.
     numSeconds = 5.0;
+    
+    // Acquire one or two capillaries?
+    twoCapillariesRequired = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -87,6 +92,11 @@
     else {
         videosButton1.enabled = YES;
         videosButton2.enabled = YES;
+    }
+    
+    if (testRecord.capillaryRecords.count == 1) {
+        videosButton2.enabled = NO;
+        capillaryTwoDataLabel.text = @"";
     }
     
 }

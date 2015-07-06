@@ -45,11 +45,14 @@
         // CMTime exposure = CMTimeMake(1, 256);
         // NSValue *exposureValue = [NSValue valueWithBytes:&exposure objCType:@encode(CMTime)];
         // [[NSUserDefaults standardUserDefaults] setObject:exposureValue forKey:ExposureKey];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:0] forKey:ISOKey];
+        //[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:0] forKey:ISOKey];
         
         // Store Default number of fields of view
         NSInteger fieldsOfView = 7;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:fieldsOfView] forKey:FieldsOfViewKey];
+        
+        // Require two capillaries?
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:RequireTwoCapillariesKey];
         
         // Store the volume of the capillary
         float capillaryVolume = .00073;

@@ -64,7 +64,6 @@
 		9BAFD6DF1B06AB12001DC361 /* ValidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */; };
 		9BAFD6E21B09148F001DC361 /* BluetoothLoaDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */; };
 		9BAFD6E51B0934BF001DC361 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E71B0934BF001DC361 /* Localizable.strings */; };
-		9BAFD6EA1B09353B001DC361 /* FrenchDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */; };
 		9BAFD6F01B093C0C001DC361 /* InvalidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */; };
 		9BAFD6F31B099B82001DC361 /* ParseDataAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6F21B099B82001DC361 /* ParseDataAdaptor.m */; };
 		9BAFD6F61B09A0F4001DC361 /* CloudSyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6F51B09A0F4001DC361 /* CloudSyncViewController.m */; };
@@ -184,7 +183,6 @@
 		9BAFD6E01B09148F001DC361 /* BluetoothLoaDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothLoaDevice.h; path = CellScopeLoa/BluetoothLoaDevice.h; sourceTree = "<group>"; };
 		9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothLoaDevice.m; path = CellScopeLoa/BluetoothLoaDevice.m; sourceTree = "<group>"; };
 		9BAFD6E61B0934BF001DC361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = FrenchDefault.strings; sourceTree = "<group>"; };
 		9BAFD6EE1B093C0C001DC361 /* InvalidResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidResultsViewController.h; sourceTree = "<group>"; };
 		9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidResultsViewController.m; sourceTree = "<group>"; };
 		9BAFD6F11B099B82001DC361 /* ParseDataAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseDataAdaptor.h; sourceTree = "<group>"; };
@@ -334,7 +332,6 @@
 				9B8418411AFFF12D008DBA7B /* constants.m */,
 				9B0C92401B0584F4008F70E3 /* CellScopeLoa-Prefix.pch */,
 				9BAFD6E71B0934BF001DC361 /* Localizable.strings */,
-				9BAFD6E91B09353B001DC361 /* FrenchDefault.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -507,7 +504,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B3B93C71AFE7F7F00C391CC /* Main.storyboard in Resources */,
-				9BAFD6EA1B09353B001DC361 /* FrenchDefault.strings in Resources */,
 				9BAFD6E51B0934BF001DC361 /* Localizable.strings in Resources */,
 				9B3B93CC1AFE7F7F00C391CC /* LaunchScreen.xib in Resources */,
 				9B3B93C91AFE7F7F00C391CC /* Images.xcassets in Resources */,

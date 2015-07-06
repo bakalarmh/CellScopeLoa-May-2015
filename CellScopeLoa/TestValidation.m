@@ -91,6 +91,9 @@
     
     int minimumFields = 5;
     
+    // Acquire one or two capillaries?
+    BOOL twoCapillariesRequired = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
+    
     NSString* videoErrorString = @"";
     
     NSMutableArray* capillaryCount = [[NSMutableArray alloc] init];
@@ -166,11 +169,13 @@
         [capillaryCount addObject:[NSNumber numberWithFloat:mean]];
     }
     
-    NSMutableDictionary* stats = [self statisticsFromArray:capillaryCount];
-    float mean = [[stats objectForKey:@"mean"] floatValue];
-    float sigma = [[stats objectForKey:@"sigma"] floatValue];
-    if (sigma > sqrtf(mean)) {
-        capillaryVarianceCheck = NO;
+    if (twoCapillariesRequired == YES) {
+        NSMutableDictionary* stats = [self statisticsFromArray:capillaryCount];
+        float mean = [[stats objectForKey:@"mean"] floatValue];
+        float sigma = [[stats objectForKey:@"sigma"] floatValue];
+        if (sigma > sqrtf(mean)) {
+            capillaryVarianceCheck = NO;
+        }
     }
     
     NSMutableDictionary* results = [[NSMutableDictionary alloc] init];

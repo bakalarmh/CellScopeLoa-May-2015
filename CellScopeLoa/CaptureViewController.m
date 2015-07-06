@@ -62,7 +62,7 @@
     focusWarningLabel.alpha = 0.0;
     metricLabel.alpha = 0.0;
     zoomImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    zoomImageView.layer.borderWidth = 3.0f;
+    zoomImageView.layer.borderWidth = 1.0f;
     zoomImageView.alpha = 0.0;
     
     // Set the capture state
@@ -90,7 +90,7 @@
     [camera setExposureMinISO:exposure];
     // Hard coded gains. I am not happy with this.
     AVCaptureWhiteBalanceGains gains;
-    gains.redGain = 1.0;
+    gains.redGain = 1.25;
     gains.greenGain = 1.9;
     gains.blueGain = 4.0;
     [camera setWhiteBalanceGains:gains];

@@ -42,14 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Localize labels with language
-    testButtonLabel.text = NSLocalizedString(@"Test",nil);
-    dataButtonLabel.text = NSLocalizedString(@"Data",nil);
-    settingsButtonLabel.text = NSLocalizedString(@"Settings",nil);
-    devicesButtonLabel.text = NSLocalizedString(@"Devices",nil);
-    cloudButtonLabel.text = NSLocalizedString(@"Cloud sync",nil);
-    
+        
     // Bluetooth manager lives here
     BLEManager* bleManager = [[BLEManager alloc] init];
     bleManager.delegate = self;

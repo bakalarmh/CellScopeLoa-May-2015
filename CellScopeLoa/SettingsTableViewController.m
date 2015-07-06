@@ -20,7 +20,7 @@
 @synthesize cslContext;
 @synthesize phoneIDField;
 @synthesize deviceIDField;
-@synthesize focusCheckSwitch;
+@synthesize twoCapillariesSwitch;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +30,7 @@
 
     phoneIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimplePhoneIDKey];
     deviceIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimpleDeviceIDKey];
-    focusCheckSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:FocusCheckSwitchKey] boolValue];
+    twoCapillariesSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,8 +61,8 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (IBAction)focusSwitchValueChanged:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:focusCheckSwitch.on] forKey:FocusCheckSwitchKey];
+- (IBAction)twoCapillariesSwitchValueChanged:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:twoCapillariesSwitch.on] forKey:RequireTwoCapillariesKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

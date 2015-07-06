@@ -389,8 +389,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gNJ-3W-eZ9" id="AEy-uF-4tF">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Focus check:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viO-wV-r2H">
-                                                    <rect key="frame" x="21" y="11" width="103" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Require 2 capillaries:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viO-wV-r2H">
+                                                    <rect key="frame" x="21" y="11" width="160" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -401,7 +401,7 @@
                                                         <constraint firstAttribute="width" constant="49" id="kYC-Lu-wPN"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="focusSwitchValueChanged:" destination="Vy8-n8-rZ3" eventType="valueChanged" id="wH3-oE-sZl"/>
+                                                        <action selector="twoCapillariesSwitchValueChanged:" destination="Vy8-n8-rZ3" eventType="valueChanged" id="uyd-Pm-Vam"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -418,8 +418,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="deviceIDField" destination="RhK-Oy-Yhc" id="DXX-Ic-MFI"/>
-                        <outlet property="focusCheckSwitch" destination="l8g-h8-ncW" id="rP9-UJ-U8L"/>
                         <outlet property="phoneIDField" destination="jh6-hg-slC" id="OUk-nP-t5H"/>
+                        <outlet property="twoCapillariesSwitch" destination="l8g-h8-ncW" id="biS-Yf-NUk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9P-xq-vIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -917,6 +917,8 @@
                         <outlet property="actionLabel" destination="plD-t5-LWd" id="FEN-Ts-JjD"/>
                         <outlet property="capLabel1" destination="1Yq-0W-swe" id="B0J-zg-OMw"/>
                         <outlet property="capLabel2" destination="0fV-KN-GP6" id="WHN-4I-ghY"/>
+                        <outlet property="capTitle1" destination="X8o-um-mHa" id="H4Y-Ci-tTZ"/>
+                        <outlet property="capTitle2" destination="Dqb-DB-Ugr" id="IG6-9t-cDd"/>
                         <outlet property="cellscopeIDLabel" destination="FEW-HR-2gc" id="8zT-Fl-udY"/>
                         <outlet property="deviceIDLabel" destination="EVU-Qc-6Jv" id="XoC-cD-NST"/>
                         <outlet property="patientIDLabel" destination="zJP-jc-2Sq" id="He2-Id-f9R"/>
@@ -1103,7 +1105,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuP-aQ-iMO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuP-aQ-iMO">
                                 <rect key="frame" x="28" y="291" width="276" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

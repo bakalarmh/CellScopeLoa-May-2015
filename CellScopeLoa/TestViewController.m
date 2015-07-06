@@ -27,8 +27,10 @@
     NSInteger capillariesAcquired;
     NSInteger capillariesProcessed;
     NSInteger maxFields;
+    NSInteger maxCapillaries;
     BOOL processingFinished;
     BOOL cameraSettling;
+    BOOL twoCapillariesRequired;
     
     NSMutableArray* activeVideos;
 }
@@ -44,6 +46,8 @@
 @synthesize patientIDLabel;
 @synthesize deviceIDLabel;
 @synthesize cellscopeIDLabel;
+@synthesize capTitle1;
+@synthesize capTitle2;
 @synthesize capLabel1;
 @synthesize capLabel2;
 @synthesize actionLabel;
@@ -58,6 +62,16 @@
     int height = 360;
     int maxFrames = 150;
     maxFields = [[[NSUserDefaults standardUserDefaults] objectForKey:FieldsOfViewKey] integerValue];
+    
+    // Acquire one or two capillaries?
+    twoCapillariesRequired = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
+    if (twoCapillariesRequired) {
+        maxCapillaries = 2;
+    }
+    else {
+        maxCapillaries = 1;
+        capTitle2.text = @"";
+    }
     
     // Do any additional setup after loading the view.
     [self.navigationItem setHidesBackButton:YES];
@@ -201,7 +215,7 @@
         if (fieldsProcessed == maxFields) {
             capillariesProcessed += 1;
             NSLog(@"%d Capillaries processed", (int)capillariesProcessed);
-            if (capillariesProcessed == 2) {
+            if (capillariesProcessed == maxCapillaries) {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
                     processingFinished = YES;
                     actionLabel.text = @"Continue to results";
@@ -329,15 +343,16 @@
     int index = cslContext.capillaryIndex.intValue;
     NSNumber* capillaryIndex = [NSNumber numberWithInt:index+1];
     if (capillariesAcquired == 0) {
-        CapillaryRecord* capillaryRecord = [self generateCapillaryRecordWithIndex:capillaryIndex
-                                                                       TestRecord:cslContext.activeTestRecord];
-        cslContext.activeCapillaryRecord = capillaryRecord;
-        [cslContext.activeTestRecord addCapillaryRecordsObject:capillaryRecord];
-        cslContext.capillaryIndex = capillaryIndex;
-        
         capLabel1.text = @"Completed";
         fieldsAcquired = 0;
         capillariesAcquired += 1;
+        if (twoCapillariesRequired == YES) {
+            CapillaryRecord* capillaryRecord = [self generateCapillaryRecordWithIndex:capillaryIndex
+                                                                           TestRecord:cslContext.activeTestRecord];
+            cslContext.activeCapillaryRecord = capillaryRecord;
+            [cslContext.activeTestRecord addCapillaryRecordsObject:capillaryRecord];
+            cslContext.capillaryIndex = capillaryIndex;
+        }
     }
     else if (capillariesAcquired == 1) {
         cslContext.activeCapillaryRecord = nil;

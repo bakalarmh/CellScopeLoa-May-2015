@@ -6,13 +6,10 @@
   Copyright (c) 2015 Fletcher Lab. All rights reserved.
 */
 
+// Status messages
 "Connected" = "Connected";
 "Disconnected" = "Disconnected";
-"Test" = "Test";
-"Data" = "Data";
-"Settings" = "Settings";
 "Searching" = "Searching";
-"Cloud sync" = "Cloud sync";
 
 // Error messages
 "Blood fill Error" = "Blood fill Error";

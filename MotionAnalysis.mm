@@ -179,6 +179,7 @@
         while(i < avgFrames) {
             int bufferIdx = frameIdx;
             movieFrameMat = [frameBuffer getFrameAtIndex:bufferIdx];
+            
             double backVal;
             double maxValTrash;
             cv::minMaxLoc(movieFrameMat, &backVal, &maxValTrash);

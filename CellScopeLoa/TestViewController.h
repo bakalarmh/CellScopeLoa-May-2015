@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *patientIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cellscopeIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *deviceIDLabel;
+@property (weak, nonatomic) IBOutlet UILabel *capTitle1;
+@property (weak, nonatomic) IBOutlet UILabel *capTitle2;
 @property (weak, nonatomic) IBOutlet UILabel *capLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *capLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *actionLabel;

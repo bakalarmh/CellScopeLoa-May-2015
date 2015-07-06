@@ -14,10 +14,10 @@
 @property (weak, nonatomic) CSLContext* cslContext;
 @property (weak, nonatomic) IBOutlet UITextField *phoneIDField;
 @property (weak, nonatomic) IBOutlet UITextField *deviceIDField;
-@property (weak, nonatomic) IBOutlet UISwitch *focusCheckSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *twoCapillariesSwitch;
 
 - (IBAction)phoneIDEdited:(id)sender;
-- (IBAction)focusSwitchValueChanged:(id)sender;
+- (IBAction)twoCapillariesSwitchValueChanged:(id)sender;
 - (IBAction)deviceIDEdited:(id)sender;
 
 @end

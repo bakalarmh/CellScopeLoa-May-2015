@@ -23,4 +23,4 @@ NSString* const GreenGainKey = @"GreenGainKey";
 NSString* const BlueGainKey = @"BlueGainKey";
 NSString* const TestCounterKey = @"TestCounterKey";
 NSString* const FieldsOfViewKey = @"FieldsOfViewKey";
-
+NSString* const RequireTwoCapillariesKey = @"RequireTwoCapillariesKey";
