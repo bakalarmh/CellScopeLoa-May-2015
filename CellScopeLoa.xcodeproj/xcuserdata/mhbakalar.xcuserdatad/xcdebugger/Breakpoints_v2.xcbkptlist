@@ -779,22 +779,6 @@
             timestampString = "457580898.987702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/CaptureViewController.m"
-            timestampString = "457580898.987702"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
             landmarkName = "-prepareNextDataAcquisition"
@@ -984,7 +968,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/CaptureViewController.m"
-            timestampString = "457580898.987702"
+            timestampString = "457904733.482454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "328"
@@ -1864,7 +1848,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "660"
@@ -1880,7 +1864,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "661"
@@ -1896,7 +1880,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "659"
@@ -2104,7 +2088,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "596"
@@ -2264,7 +2248,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "494"
@@ -2296,7 +2280,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "491"
@@ -2440,7 +2424,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "500"
@@ -2504,7 +2488,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "496"
@@ -2520,7 +2504,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "495"
@@ -2600,7 +2584,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
@@ -2616,7 +2600,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457901328.816721"
+            timestampString = "457903428.099412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "479"
@@ -3016,11 +3000,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/FrameBuffer.mm"
-            timestampString = "457900911.753683"
+            timestampString = "457904733.482454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-writeFrame:atIndex:"
             landmarkType = "5">
             <Locations>
@@ -3055,6 +3039,22 @@
                   offsetFromSymbolStart = "1312">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MotionAnalysis.mm"
+            timestampString = "457903632.883338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "-processFramesForMovie:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

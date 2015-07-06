@@ -121,18 +121,20 @@
         // Release the CGImage memory. This is a place for optimization
         CGImageRelease(image);
         
-        // Copy the green buffer into the blue channel
-        cv::Mat rgb[4];
-        cv::split(colorimage, rgb);
-        rgb[2] = rgb[1].clone();
-        
-        std::vector<cv::Mat> array_to_merge(std::begin(rgb), std::end(rgb));
-
-        cv::Mat color;
-        cv::merge(array_to_merge, color);
-        
-        // Copy the color image into the grayscale buffer
-        cv::cvtColor(color, grayBuffer, CV_BGRA2GRAY);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // Copy the green buffer into the blue channel
+            cv::Mat rgb[4];
+            cv::split(colorimage, rgb);
+            rgb[2] = rgb[1].clone();
+            
+            std::vector<cv::Mat> array_to_merge(std::begin(rgb), std::end(rgb));
+            
+            cv::Mat color;
+            cv::merge(array_to_merge, color);
+            
+            // Copy the color image into the grayscale buffer
+            cv::cvtColor(color, grayBuffer, CV_BGRA2GRAY);
+        });
     }
 }
 

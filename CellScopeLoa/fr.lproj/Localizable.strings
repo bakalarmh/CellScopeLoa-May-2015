@@ -7,8 +7,8 @@
  */
 
 // Status messages
-"Connected" = "Connect√©";
-"Disconnected" = "Coup√©";
+"Connected" = "Connecté";
+"Disconnected" = "Coupé";
 "Searching" = "Recherche";
 
 // Error messages

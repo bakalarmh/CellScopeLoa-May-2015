@@ -185,12 +185,12 @@
             cv::minMaxLoc(movieFrameMat, &backVal, &maxValTrash);
             if (i==0){
                 
-                threshold(movieFrameMat, movieFrameMatBW, 200, 255, CV_THRESH_BINARY);
+                threshold(movieFrameMat, movieFrameMatBW, 215, 255, CV_THRESH_BINARY);
                 
                 // MHB Check
-                cv::Mat uiOutput;
-                movieFrameMatBW.convertTo(uiOutput, CV_8UC1);
-                UIImage* outputImage = [UIImage imageWithCVMat:uiOutput];
+                //cv::Mat uiOutput;
+                //movieFrameMatBW.convertTo(uiOutput, CV_8UC1);
+                //UIImage* outputImage = [UIImage imageWithCVMat:uiOutput];
                 
                 cv::Mat element = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size( 10,10 ), cv::Point( 2, 2 ));
                 cv::morphologyEx(movieFrameMatBW,movieFrameMatBW, CV_MOP_DILATE, element );
@@ -203,7 +203,7 @@
                 movieFrameMatIllum.convertTo(movieFrameMatIllum, CV_16UC1);
                 
                 // Generate a robust focus metric
-                //crop the image
+                // Crop the image
                 cv::Mat firstMat = [frameBuffer getFrameAtIndex:0];
                 cv::Rect rect1;
                 rect1.x = 480/2-200/2;

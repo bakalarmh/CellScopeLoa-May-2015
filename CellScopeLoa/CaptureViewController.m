@@ -86,12 +86,12 @@
     camera.frameProcessingDelegate = self;
     
     // Hard coded exposure and iso. I am not happy with this.
-    CMTime exposure = CMTimeMake(1, 128);
+    CMTime exposure = CMTimeMake(1, 120);
     [camera setExposureMinISO:exposure];
     // Hard coded gains. I am not happy with this.
     AVCaptureWhiteBalanceGains gains;
-    gains.redGain = 1.25;
-    gains.greenGain = 1.9;
+    gains.redGain = 1.0;
+    gains.greenGain = 1.75;
     gains.blueGain = 4.0;
     [camera setWhiteBalanceGains:gains];
     // [camera setColorTemperatureKelvin:5700];

@@ -11,8 +11,8 @@
 /* Class = "UILabel"; text = "LL00001"; ObjectID = "2k3-sp-XdG"; */
 "2k3-sp-XdG.text" = "LL00001";
 
-/* Class = "UILabel"; text = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2"; ObjectID = "5yM-bH-UCM"; */
-"5yM-bH-UCM.text" = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2";
+/* Class = "UILabel"; text = "None"; ObjectID = "5yM-bH-UCM"; */
+"5yM-bH-UCM.text" = "Rien";
 
 /* Class = "UIBarButtonItem"; title = "Finished"; ObjectID = "6VS-Fw-84g"; */
 "6VS-Fw-84g.title" = "Fini";
@@ -83,8 +83,8 @@
 /* Class = "UILabel"; text = "Dev ID:"; ObjectID = "OgP-Fj-ma1"; */
 "OgP-Fj-ma1.text" = "ID Dev:";
 
-/* Class = "UILabel"; text = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2"; ObjectID = "OuP-aQ-iMO"; */
-"OuP-aQ-iMO.text" = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2";
+/* Class = "UILabel"; text = "None"; ObjectID = "OuP-aQ-iMO"; */
+"OuP-aQ-iMO.text" = "Rien";
 
 /* Class = "UINavigationItem"; title = "Records"; ObjectID = "PV1-MW-2bH"; */
 "PV1-MW-2bH.title" = "Dossiers";
@@ -146,8 +146,8 @@
 /* Class = "UILabel"; text = "Capillary 2"; ObjectID = "aHy-C4-tPX"; */
 "aHy-C4-tPX.text" = "Capillaire 2";
 
-/* Class = "UILabel"; text = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2"; ObjectID = "aY0-CL-9yT"; */
-"aY0-CL-9yT.text" = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2";
+/* Class = "UILabel"; text = "None"; ObjectID = "aY0-CL-9yT"; */
+"aY0-CL-9yT.text" = "Rien";
 
 /* Class = "UITableViewSection"; headerTitle = "Data collection"; ObjectID = "bmc-Mv-rYp"; */
 "bmc-Mv-rYp.headerTitle" = "Data collection";
@@ -263,8 +263,8 @@
 /* Class = "UILabel"; text = "CSL ID:"; ObjectID = "zlO-SE-h7x"; */
 "zlO-SE-h7x.text" = "ID CSL:";
 
-/* Class = "UILabel"; text = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2"; ObjectID = "ztF-ps-Dmi"; */
-"ztF-ps-Dmi.text" = "0, 0.1, 0, 0, 0.4, 1.2, 0, 0.2";
+/* Class = "UILabel"; text = "None"; ObjectID = "ztF-ps-Dmi"; */
+"ztF-ps-Dmi.text" = "Rien";
 
 /* Class = "UISegmentedControl"; zw5-dJ-Dwr.segmentTitles[0] = "Basic"; ObjectID = "zw5-dJ-Dwr"; */
 "zw5-dJ-Dwr.segmentTitles[0]" = "Basic";
