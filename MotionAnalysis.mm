@@ -55,11 +55,6 @@
     rect1.height = 200;
     cv::Mat croppedImage = firstMat(rect1);
     
-    // MHB Check
-    cv::Mat uiOutput;
-    croppedImage.convertTo(uiOutput, CV_8UC1);
-    UIImage* outputImage = [UIImage imageWithCVMat:uiOutput];
-    
     //generate the mask
     cv::Mat mask;
     threshold(croppedImage, mask, 200, 255, CV_THRESH_BINARY_INV);

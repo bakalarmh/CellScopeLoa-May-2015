@@ -30,6 +30,7 @@
     NSInteger maxCapillaries;
     BOOL processingFinished;
     BOOL cameraSettling;
+    BOOL finalProcessing;
     BOOL twoCapillariesRequired;
     
     NSMutableArray* activeVideos;
@@ -77,6 +78,7 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:NO];
     actionLabel.alpha = 0.2;
+    finalProcessing = NO;
     
     // Listen for processing results
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -353,6 +355,12 @@
             [cslContext.activeTestRecord addCapillaryRecordsObject:capillaryRecord];
             cslContext.capillaryIndex = capillaryIndex;
         }
+        else {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+                actionLabel.alpha = 0.2;
+            }];
+            finalProcessing = YES;
+        }
     }
     else if (capillariesAcquired == 1) {
         cslContext.activeCapillaryRecord = nil;
@@ -376,7 +384,7 @@
     // rows in section 0 should not be selectable
     if (indexPath.section == 2) {
         if ([actionLabel.text isEqualToString:@"Capture"]) {
-            if (([cslContext deviceIsConnected]) && (cameraSettling == NO)) {
+            if (([cslContext deviceIsConnected]) && (cameraSettling == NO) && (finalProcessing == NO)) {
                 return indexPath;
             }
             else {

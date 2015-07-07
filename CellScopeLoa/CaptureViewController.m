@@ -229,46 +229,48 @@
         // Cannot focus on black frames
         BOOL black = [MotionAnalysis frameBufferIsBlack:focusBuffer index:@0];
         if (black) {
+            // Nothing can be done here. Wait for the next frame to arrive
             return;
         }
-        
-        // Check the focus
-        float focusMetric = [MotionAnalysis ComputeFocusMetric:focusBuffer];
-        NSLog(@"Local focus: %f", focusMetric);
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
-            float value = focusMetric;
-            if (value > 1.0) {
-                value = 1.0;
-            }
-            NSString* focusString = [self focusCheck:value];
-            
-            if ([focusString isEqualToString:@"Good"]) {
-                metricLabel.textColor = [UIColor blackColor];
-                focusWarningLabel.alpha = 0.0;
-            }
-            else if ([focusString isEqualToString:@"Fair"]) {
-                metricLabel.textColor = [UIColor yellowColor];
-                focusWarningLabel.alpha = 0.0;
-            }
-            else if ([focusString isEqualToString:@"Bad"]) {
-                metricLabel.textColor = [UIColor magentaColor];
-                focusWarningLabel.alpha = 1.0;
-            }
-            
-            metricLabel.text = [NSString stringWithFormat:@"%.2f", value];
-            [UIView animateWithDuration:0.5 animations:^{
-                metricLabel.alpha = 1.0;
+        else {
+            // Check the focus
+            float focusMetric = [MotionAnalysis ComputeFocusMetric:focusBuffer];
+            NSLog(@"Local focus: %f", focusMetric);
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+                float value = focusMetric;
+                if (value > 1.0) {
+                    value = 1.0;
+                }
+                NSString* focusString = [self focusCheck:value];
+                
+                if ([focusString isEqualToString:@"Good"]) {
+                    metricLabel.textColor = [UIColor blackColor];
+                    focusWarningLabel.alpha = 0.0;
+                }
+                else if ([focusString isEqualToString:@"Fair"]) {
+                    metricLabel.textColor = [UIColor yellowColor];
+                    focusWarningLabel.alpha = 0.0;
+                }
+                else if ([focusString isEqualToString:@"Bad"]) {
+                    metricLabel.textColor = [UIColor magentaColor];
+                    focusWarningLabel.alpha = 1.0;
+                }
+                
+                metricLabel.text = [NSString stringWithFormat:@"%.2f", value];
+                [UIView animateWithDuration:0.5 animations:^{
+                    metricLabel.alpha = 1.0;
+                }];
             }];
-        }];
-        
-        checkingFocusFrame = NO;
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
-            [camera stopSendingFrames];
-            [self launchDataAcquisition];
-        }];
-        
-        // Write the image to the zoomed in preview
-        [self rawFrameReady:frame];
+            
+            checkingFocusFrame = NO;
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+                [camera stopSendingFrames];
+                [self launchDataAcquisition];
+            }];
+            
+            // Write the image to the zoomed in preview
+            [self rawFrameReady:frame];
+        }
     }
     else {
         // Collect the frame for later processing
