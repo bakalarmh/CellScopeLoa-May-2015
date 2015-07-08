@@ -15,9 +15,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneIDField;
 @property (weak, nonatomic) IBOutlet UITextField *deviceIDField;
 @property (weak, nonatomic) IBOutlet UISwitch *twoCapillariesSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *uncompressedVideoSwitch;
 
 - (IBAction)phoneIDEdited:(id)sender;
 - (IBAction)twoCapillariesSwitchValueChanged:(id)sender;
+- (IBAction)uncompressedVideoSwitchValueChanged:(id)sender;
 - (IBAction)deviceIDEdited:(id)sender;
 
 @end

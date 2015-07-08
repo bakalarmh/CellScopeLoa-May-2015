@@ -54,6 +54,9 @@
         // Require two capillaries?
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:RequireTwoCapillariesKey];
         
+        // Store uncompressed video?
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:SaveUncompressedVideoKey];
+        
         // Store the volume of the capillary
         float capillaryVolume = .00073;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:capillaryVolume] forKey:CapillaryVolumeKey];

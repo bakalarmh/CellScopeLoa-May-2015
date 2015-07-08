@@ -28,5 +28,6 @@ extern NSString* const FocusCheckSwitchKey;
 extern NSString* const AdminPassKey;
 extern NSString* const TestCounterKey;
 extern NSString* const RequireTwoCapillariesKey;
+extern NSString* const SaveUncompressedVideoKey;
 
 #endif

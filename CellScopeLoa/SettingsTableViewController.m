@@ -7,8 +7,6 @@
 //
 
 #import "SettingsTableViewController.h"
-#import "ExposureISOViewController.h"
-#import "WhiteBalanceViewController.h"
 #import "constants.h"
 
 @interface SettingsTableViewController ()
@@ -21,6 +19,7 @@
 @synthesize phoneIDField;
 @synthesize deviceIDField;
 @synthesize twoCapillariesSwitch;
+@synthesize uncompressedVideoSwitch;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +30,8 @@
     phoneIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimplePhoneIDKey];
     deviceIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimpleDeviceIDKey];
     twoCapillariesSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
+    uncompressedVideoSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SaveUncompressedVideoKey] boolValue];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,14 +41,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"ExposureISO"]) {
-        ExposureISOViewController* vc = (ExposureISOViewController*)segue.destinationViewController;
-        vc.cslContext = cslContext;
-    }
-    else if([segue.identifier isEqualToString:@"WhiteBalance"]) {
-        WhiteBalanceViewController* vc = (WhiteBalanceViewController*)segue.destinationViewController;
-        vc.cslContext = cslContext;
-    }
+
 }
 
 - (BOOL)textFieldShouldReturn: (UITextField *) textField {
@@ -63,6 +57,11 @@
 
 - (IBAction)twoCapillariesSwitchValueChanged:(id)sender {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:twoCapillariesSwitch.on] forKey:RequireTwoCapillariesKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)uncompressedVideoSwitchValueChanged:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:uncompressedVideoSwitch.on] forKey:SaveUncompressedVideoKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

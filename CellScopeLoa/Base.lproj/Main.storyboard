@@ -407,6 +407,30 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8ku-Uy-Mka">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8ku-Uy-Mka" id="DTo-Tg-kCg">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save uncompressed video:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5G-le-ByO">
+                                                    <rect key="frame" x="21" y="11" width="208" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTE-kN-mvP">
+                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="49" id="RPz-YQ-i3S"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="twoCapillariesSwitchValueChanged:" destination="Vy8-n8-rZ3" eventType="valueChanged" id="ZT1-sH-UWz"/>
+                                                        <action selector="uncompressedVideoSwitchValueChanged:" destination="Vy8-n8-rZ3" eventType="valueChanged" id="92M-vk-9ZC"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -420,6 +444,7 @@
                         <outlet property="deviceIDField" destination="RhK-Oy-Yhc" id="DXX-Ic-MFI"/>
                         <outlet property="phoneIDField" destination="jh6-hg-slC" id="OUk-nP-t5H"/>
                         <outlet property="twoCapillariesSwitch" destination="l8g-h8-ncW" id="biS-Yf-NUk"/>
+                        <outlet property="uncompressedVideoSwitch" destination="uTE-kN-mvP" id="imN-ZD-Emu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9P-xq-vIk" userLabel="First Responder" sceneMemberID="firstResponder"/>

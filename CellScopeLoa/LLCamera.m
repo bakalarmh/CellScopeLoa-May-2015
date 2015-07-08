@@ -7,6 +7,7 @@
 //
 
 #import "LLCamera.h"
+#import "constants.h"
 
 @implementation LLCamera {
     AVCaptureDevice* device;
@@ -22,6 +23,8 @@
     
     NSURL* outputURL;
     NSURL* uncompressedOutputURL;
+    
+    BOOL saveUncompressed;
     
     dispatch_queue_t videoQueue; // Queue for processing frames and writing video
     CMTime videoTime;
@@ -49,6 +52,9 @@
     width = 480;
     height = 360;
     frameRate = 30.0;
+    
+    // Load any application level parameters
+    saveUncompressed = [[[NSUserDefaults standardUserDefaults] objectForKey:SaveUncompressedVideoKey] boolValue];
     
     // Initialize the state of the camera
     cameraState = llCameraIdle;
@@ -190,33 +196,39 @@
     outputURL = assetURL;
     
     // Generate path for the uncompressed data
-    NSString* lastPath = outputURL.lastPathComponent;
-    NSString* uniqueName = [lastPath substringToIndex:lastPath.length-4];
-    NSString* extension = outputURL.pathExtension;
-    NSString* newLastPath = [[uniqueName stringByAppendingString:@"-uncompressed."] stringByAppendingString:extension];
-    uncompressedOutputURL = [outputURL.URLByDeletingLastPathComponent URLByAppendingPathComponent:@"Uncompressed"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:uncompressedOutputURL.path]) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:uncompressedOutputURL.path withIntermediateDirectories:NO attributes:nil error:nil]; //Create folder
+    if (saveUncompressed) {
+        NSString* lastPath = outputURL.lastPathComponent;
+        NSString* uniqueName = [lastPath substringToIndex:lastPath.length-4];
+        NSString* extension = outputURL.pathExtension;
+        NSString* newLastPath = [[uniqueName stringByAppendingString:@"-uncompressed."] stringByAppendingString:extension];
+        uncompressedOutputURL = [outputURL.URLByDeletingLastPathComponent URLByAppendingPathComponent:@"Uncompressed"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:uncompressedOutputURL.path]) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:uncompressedOutputURL.path withIntermediateDirectories:NO attributes:nil error:nil]; //Create folder
+        }
+        uncompressedOutputURL = [uncompressedOutputURL URLByAppendingPathComponent:newLastPath];
     }
-    uncompressedOutputURL = [uncompressedOutputURL URLByAppendingPathComponent:newLastPath];
     
     assetWriter = [[AVAssetWriter alloc]
                         initWithURL:outputURL
                         fileType:AVFileTypeMPEG4
                         error:nil];
     [assetWriter addInput:assetWriterInput];
-    
-    uncompressedAssetWriter = [[AVAssetWriter alloc]
-                   initWithURL:uncompressedOutputURL
-                   fileType:AVFileTypeMPEG4
-                   error:nil];
-    [uncompressedAssetWriter addInput:uncompressedAssetWriterInput];
+
+    if (saveUncompressed) {
+        uncompressedAssetWriter = [[AVAssetWriter alloc]
+                                   initWithURL:uncompressedOutputURL
+                                   fileType:AVFileTypeMPEG4
+                                   error:nil];
+        [uncompressedAssetWriter addInput:uncompressedAssetWriterInput];
+    }
     
     [assetWriter startWriting];
     [assetWriter startSessionAtSourceTime:kCMTimeZero];
     
-    [uncompressedAssetWriter startWriting];
-    [uncompressedAssetWriter startSessionAtSourceTime:kCMTimeZero];
+    if (saveUncompressed) {
+        [uncompressedAssetWriter startWriting];
+        [uncompressedAssetWriter startSessionAtSourceTime:kCMTimeZero];
+    }
     
     videoTime = CMTimeMake(0, (int)frameRate); // Set timescale at 30 frames per second
     
@@ -258,7 +270,9 @@
                     
                     // Pass the frame to the asset writer
                     [pixelBufferAdaptor appendPixelBuffer:imageBuffer withPresentationTime:videoTime];
-                    [uncompressedPixelBufferAdaptor appendPixelBuffer:imageBuffer withPresentationTime:videoTime];
+                    if (saveUncompressed) {
+                        [uncompressedPixelBufferAdaptor appendPixelBuffer:imageBuffer withPresentationTime:videoTime];
+                    }
                     
                     videoTime.value += 1;
                 }
@@ -289,7 +303,10 @@
     });
     
     [assetWriterInput markAsFinished];
-    [uncompressedAssetWriterInput markAsFinished];
+    
+    if (saveUncompressed) {
+        [uncompressedAssetWriterInput markAsFinished];
+    }
     
     // Let the asset writer finish on his own
     [assetWriter finishWritingWithCompletionHandler:^(){
@@ -297,9 +314,11 @@
         [recordingDelegate captureOutput:nil didFinishRecordingToOutputFileAtURL:outputURL fromConnections:nil error:nil];
     }];
     
-    [uncompressedAssetWriter finishWritingWithCompletionHandler:^(){
-        // Pass
-    }];
+    if (saveUncompressed) {
+        [uncompressedAssetWriter finishWritingWithCompletionHandler:^(){
+            // Pass
+        }];
+    }
 }
 
 // Create a CGImageRef from sample buffer data
