@@ -185,7 +185,7 @@
     
     NSMutableDictionary* results = [[NSMutableDictionary alloc] init];
     
-    if (validFieldCountCheck && capillaryCheck && videoErrorCheck && videoObjectCheck && videoObjectCheck && fieldVarianceCheck && capillaryVarianceCheck) {
+    if (validFieldCountCheck && capillaryCheck && videoErrorCheck && videoObjectCheck && videoObjectCheck && fieldVarianceCheck) {
         [results setObject:@"Valid" forKey:@"Code"];
     }
     else {
@@ -203,10 +203,13 @@
             NSLog(@"Insufficient fields to make a decision error");
             [results setObject:@"Invalid FieldCount" forKey:@"Code"];
         }
+        // Do not run a capillary variance check
+        /*
         if (capillaryVarianceCheck == NO) {
             NSLog(@"Validation detected a field variance error");
             [results setObject:@"Invalid CapillaryVariance" forKey:@"Code"];
         }
+         */
         if (validFieldCountCheck == NO) {
             NSString* errorCode = @"Invalid";
             if (flowCheck == NO) {
@@ -218,11 +221,6 @@
                 errorCode = [errorCode stringByAppendingString:@" BubbleCount"];
             }
             errorCode = [errorCode stringByAppendingString:@" FieldFocusCount"];
-            [results setObject:errorCode forKey:@"Code"];
-        }
-        else {
-            NSString* errorCode = @"Invalid";
-            errorCode = [errorCode stringByAppendingString:@" UnknownError"];
             [results setObject:errorCode forKey:@"Code"];
         }
     }

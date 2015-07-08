@@ -65,7 +65,7 @@
             BOOL cleaned = YES;
             for (CapillaryRecord* capillaryRecord in testRecord.capillaryRecords) {
                 for (Video* video in capillaryRecord.videos) {
-                    if (video.deleted.boolValue == NO) {
+                    if (video.videoDeleted.boolValue == NO) {
                         cleaned = NO;
                     }
                 }
@@ -89,7 +89,7 @@
                     synced = YES;
                     for (Video* video in capillaryRecord.videos) {
                         // If the video has not yet been deleted
-                        if (video.deleted.boolValue == NO) {
+                        if (video.videoDeleted.boolValue == NO) {
                             // Has the video has not been synced?
                             if (video.parseID == nil) {
                                 synced = NO;
@@ -119,7 +119,7 @@
     if (success) {
         NSLog(@"File has been deleted");
         video.resourceURL = @"";
-        video.deleted = [NSNumber numberWithBool:YES];
+        video.videoDeleted = [NSNumber numberWithBool:YES];
         [managedObjectContext save:&error];
     }
     else

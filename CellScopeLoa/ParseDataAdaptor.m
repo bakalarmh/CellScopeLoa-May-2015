@@ -156,4 +156,27 @@
     }];
 }
 
+- (void)convertVideoToLowQuality:(Video*)video
+                                     handler:(void (^)(AVAssetExportSession*))handler
+{
+    NSString *tempFilePath = [NSTemporaryDirectory()
+                                  stringByAppendingPathComponent:@"recording.mov"];
+    NSURL* outputURL = [NSURL URLWithString:tempFilePath];
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* path = [[paths objectAtIndex:0] stringByAppendingPathComponent:video.resourceURL];
+    
+    NSURL* url = [NSURL fileURLWithPath:path isDirectory:NO];
+    AVURLAsset* asset = [AVURLAsset assetWithURL:url];
+    
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetMediumQuality];
+    
+    exportSession.outputURL = outputURL;
+    exportSession.outputFileType = AVFileTypeQuickTimeMovie;
+    [exportSession exportAsynchronouslyWithCompletionHandler:^(void)
+     {
+         handler(exportSession);
+     }];
+}
+
 @end

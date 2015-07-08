@@ -62,7 +62,7 @@
         [orderedCapillaryRecords addObject:record];
         NSString* string = @"";
         for (Video* video in record.videos) {
-            if (video.deleted.boolValue == YES) {
+            if (video.videoDeleted.boolValue == YES) {
                 videosAvailable = NO;
             }
             float count = video.averageObjectCount.floatValue;

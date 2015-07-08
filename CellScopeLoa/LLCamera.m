@@ -12,12 +12,17 @@
     AVCaptureDevice* device;
     AVCaptureDeviceInput* input;
     AVAssetWriterInputPixelBufferAdaptor* pixelBufferAdaptor;
+    AVAssetWriterInputPixelBufferAdaptor* uncompressedPixelBufferAdaptor;
     AVCaptureConnection* captureConnection;
     AVCaptureVideoPreviewLayer* videoPreviewLayer;
     AVAssetWriterInput* assetWriterInput;
+    AVAssetWriterInput* uncompressedAssetWriterInput;
     AVAssetWriter* assetWriter;
+    AVAssetWriter* uncompressedAssetWriter;
     
     NSURL* outputURL;
+    NSURL* uncompressedOutputURL;
+    
     dispatch_queue_t videoQueue; // Queue for processing frames and writing video
     CMTime videoTime;
     
@@ -59,17 +64,57 @@
     // Set up capture input
     input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
     
-    // Setup movie output
+    // Compressed assetWriterInput settings
+    NSDictionary *videoCleanApertureSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                [NSNumber numberWithInt:480], AVVideoCleanApertureWidthKey,
+                                                [NSNumber numberWithInt:360], AVVideoCleanApertureHeightKey,
+                                                [NSNumber numberWithInt:0], AVVideoCleanApertureHorizontalOffsetKey,
+                                                [NSNumber numberWithInt:0], AVVideoCleanApertureVerticalOffsetKey,
+                                                nil];
+    // Codec settings
+    NSDictionary *codecSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithInt:20000000], AVVideoAverageBitRateKey,
+                                   [NSNumber numberWithInt:5],AVVideoMaxKeyFrameIntervalKey,
+                                   videoCleanApertureSettings, AVVideoCleanApertureKey,
+                                   nil];
+
     NSDictionary *outputSettings =
     [NSDictionary dictionaryWithObjectsAndKeys:
      [NSNumber numberWithLong:width], AVVideoWidthKey,
      [NSNumber numberWithLong:height], AVVideoHeightKey,
+     codecSettings, AVVideoCompressionPropertiesKey,
      AVVideoCodecH264, AVVideoCodecKey,
     nil];
     
     assetWriterInput = [AVAssetWriterInput
                              assetWriterInputWithMediaType:AVMediaTypeVideo
                              outputSettings:outputSettings];
+    
+    // Uncompressed assetWriterInput settings
+    videoCleanApertureSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSNumber numberWithInt:480], AVVideoCleanApertureWidthKey,
+                                    [NSNumber numberWithInt:360], AVVideoCleanApertureHeightKey,
+                                    [NSNumber numberWithInt:0], AVVideoCleanApertureHorizontalOffsetKey,
+                                    [NSNumber numberWithInt:0], AVVideoCleanApertureVerticalOffsetKey,
+                                    nil];
+    // Codec settings
+    codecSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                       [NSNumber numberWithInt:20000000], AVVideoAverageBitRateKey,
+                       [NSNumber numberWithInt:1],AVVideoMaxKeyFrameIntervalKey,
+                       videoCleanApertureSettings, AVVideoCleanApertureKey,
+                       nil];
+    
+    outputSettings =
+        [NSDictionary dictionaryWithObjectsAndKeys:
+         [NSNumber numberWithLong:width], AVVideoWidthKey,
+         [NSNumber numberWithLong:height], AVVideoHeightKey,
+         codecSettings, AVVideoCompressionPropertiesKey,
+         AVVideoCodecH264, AVVideoCodecKey,
+         nil];
+    
+    uncompressedAssetWriterInput = [AVAssetWriterInput
+                        assetWriterInputWithMediaType:AVMediaTypeVideo
+                        outputSettings:outputSettings];
     
     // Setup pixel buffer adaptor
     pixelBufferAdaptor =
@@ -81,7 +126,18 @@
       kCVPixelBufferPixelFormatTypeKey,
       nil]];
     
+    // Setup compressed pixel buffer adaptor
+    uncompressedPixelBufferAdaptor =
+    [[AVAssetWriterInputPixelBufferAdaptor alloc]
+     initWithAssetWriterInput:uncompressedAssetWriterInput
+     sourcePixelBufferAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSNumber numberWithInt:kCVPixelFormatType_32BGRA],
+      kCVPixelBufferPixelFormatTypeKey,
+      nil]];
+    
     assetWriterInput.expectsMediaDataInRealTime = YES;
+    uncompressedAssetWriterInput.expectsMediaDataInRealTime = YES;
     
     // Add session input and output
     [session addInput:input];
@@ -133,13 +189,35 @@
     // Start recording
     outputURL = assetURL;
     
+    // Generate path for the uncompressed data
+    NSString* lastPath = outputURL.lastPathComponent;
+    NSString* uniqueName = [lastPath substringToIndex:lastPath.length-4];
+    NSString* extension = outputURL.pathExtension;
+    NSString* newLastPath = [[uniqueName stringByAppendingString:@"-uncompressed."] stringByAppendingString:extension];
+    uncompressedOutputURL = [outputURL.URLByDeletingLastPathComponent URLByAppendingPathComponent:@"Uncompressed"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:uncompressedOutputURL.path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:uncompressedOutputURL.path withIntermediateDirectories:NO attributes:nil error:nil]; //Create folder
+    }
+    uncompressedOutputURL = [uncompressedOutputURL URLByAppendingPathComponent:newLastPath];
+    
     assetWriter = [[AVAssetWriter alloc]
                         initWithURL:outputURL
                         fileType:AVFileTypeMPEG4
                         error:nil];
     [assetWriter addInput:assetWriterInput];
+    
+    uncompressedAssetWriter = [[AVAssetWriter alloc]
+                   initWithURL:uncompressedOutputURL
+                   fileType:AVFileTypeMPEG4
+                   error:nil];
+    [uncompressedAssetWriter addInput:uncompressedAssetWriterInput];
+    
     [assetWriter startWriting];
     [assetWriter startSessionAtSourceTime:kCMTimeZero];
+    
+    [uncompressedAssetWriter startWriting];
+    [uncompressedAssetWriter startSessionAtSourceTime:kCMTimeZero];
+    
     videoTime = CMTimeMake(0, (int)frameRate); // Set timescale at 30 frames per second
     
     [NSTimer scheduledTimerWithTimeInterval:captureDuration/100.0
@@ -180,6 +258,8 @@
                     
                     // Pass the frame to the asset writer
                     [pixelBufferAdaptor appendPixelBuffer:imageBuffer withPresentationTime:videoTime];
+                    [uncompressedPixelBufferAdaptor appendPixelBuffer:imageBuffer withPresentationTime:videoTime];
+                    
                     videoTime.value += 1;
                 }
             }
@@ -205,15 +285,20 @@
     cameraState = llCameraIdle;
     dispatch_async(dispatch_get_main_queue(), ^{
         // Signal to the processing delegate that we are done recording frames
-        // [processingDelegate didFinishRecordingFrames:self];
-        // Signal to the capture delegate that we are finished
         [captureDelegate captureDidFinishWithURL:outputURL];
     });
+    
     [assetWriterInput markAsFinished];
+    [uncompressedAssetWriterInput markAsFinished];
+    
     // Let the asset writer finish on his own
     [assetWriter finishWritingWithCompletionHandler:^(){
         // Signal the delegate that recording is complete
         [recordingDelegate captureOutput:nil didFinishRecordingToOutputFileAtURL:outputURL fromConnections:nil error:nil];
+    }];
+    
+    [uncompressedAssetWriter finishWritingWithCompletionHandler:^(){
+        // Pass
     }];
 }
 

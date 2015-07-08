@@ -20,7 +20,8 @@
 @dynamic parseID;
 @dynamic resourceURL;
 @dynamic testUUID;
-@dynamic deleted;
+@dynamic videoDeleted;
 @dynamic motionObjects;
+@dynamic surfMotionMetric;
 
 @end

@@ -32,6 +32,9 @@
     NSNumber* objectsPerField = [testResults objectForKey:@"ObjectsPerField"];
     
     NSNumber* objectsPerMl = [testResults objectForKey:@"ObjectsPerMl"];
+    if (objectsPerField.floatValue < 1.0) {
+        objectsPerMl = @0.0;
+    }
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setMaximumFractionDigits:0];

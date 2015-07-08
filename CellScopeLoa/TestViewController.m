@@ -150,6 +150,7 @@
         NSString* errorString = (NSString*)userInfo[@"ErrorString"];
         NSString* resourceURL = (NSString*)userInfo[@"ResourceURL"];
         NSNumber* averageCount = (NSNumber*)userInfo[@"AverageCount"];
+        NSNumber* surfMotionMetric = (NSNumber*)userInfo[@"SurfMotionMetric"];
         NSNumber* focusMetric = (NSNumber*)userInfo[@"FocusMetric"];
         NSMutableArray* motionObjects = (NSMutableArray*)userInfo[@"MotionObjects"];
         
@@ -358,6 +359,7 @@
         else {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
                 actionLabel.alpha = 0.2;
+                actionLabel.text = @"Processing...";
             }];
             finalProcessing = YES;
         }

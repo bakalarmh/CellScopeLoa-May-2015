@@ -2,7 +2,7 @@
 //  CapillaryRecord.h
 //  CellScopeLoa
 //
-//  Created by Matthew Bakalar on 5/31/15.
+//  Created by Matthew Bakalar on 7/8/15.
 //  Copyright (c) 2015 Fletcher Lab. All rights reserved.
 //
 
@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSNumber * videosDeleted;
 @property (nonatomic, retain) TestRecord *testRecord;
 @property (nonatomic, retain) NSSet *videos;
+@property (nonatomic, retain) Video *uncompressedVideos;
 @end
 
 @interface CapillaryRecord (CoreDataGeneratedAccessors)

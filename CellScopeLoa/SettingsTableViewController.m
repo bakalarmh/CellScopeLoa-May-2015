@@ -73,14 +73,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            [self performSegueWithIdentifier:@"WhiteBalance" sender:self];
-        }
-        else if (indexPath.row == 1) {
-            [self performSegueWithIdentifier:@"ExposureISO" sender:self];
-        }
-    }
+    
 }
 
 @end

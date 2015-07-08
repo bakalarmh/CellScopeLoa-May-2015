@@ -21,8 +21,10 @@
 @property (nonatomic, retain) NSString * parseID;
 @property (nonatomic, retain) NSString * resourceURL;
 @property (nonatomic, retain) NSString * testUUID;
-@property (nonatomic, retain) NSNumber * deleted;
+@property (nonatomic, retain) NSNumber * videoDeleted;
 @property (nonatomic, retain) NSOrderedSet *motionObjects;
+@property (nonatomic, retain) NSNumber *surfMotionMetric;
+
 @end
 
 @interface Video (CoreDataGeneratedAccessors)

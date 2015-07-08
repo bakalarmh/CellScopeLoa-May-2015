@@ -225,7 +225,7 @@
 "t2Z-Vp-FNe.text" = "Cloud Sync";
 
 /* Class = "UILabel"; text = "Out of focus"; ObjectID = "tI2-9n-l5H"; */
-"tI2-9n-l5H.text" = "Floue";
+"tI2-9n-l5H.text" = "Pas mise au point";
 
 /* Class = "UITextField"; placeholder = "Patient ID"; ObjectID = "trj-Fb-CoB"; */
 "trj-Fb-CoB.placeholder" = "ID Patient";

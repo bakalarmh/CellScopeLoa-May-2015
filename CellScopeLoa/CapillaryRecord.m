@@ -2,7 +2,7 @@
 //  CapillaryRecord.m
 //  CellScopeLoa
 //
-//  Created by Matthew Bakalar on 5/31/15.
+//  Created by Matthew Bakalar on 7/8/15.
 //  Copyright (c) 2015 Fletcher Lab. All rights reserved.
 //
 
@@ -23,5 +23,6 @@
 @dynamic videosDeleted;
 @dynamic testRecord;
 @dynamic videos;
+@dynamic uncompressedVideos;
 
 @end
