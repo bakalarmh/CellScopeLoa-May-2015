@@ -48,7 +48,7 @@
     int maxTrials = 2;
     
     // Hard coded validation parameters. I do not like this.
-    float sigmaFactor = 1.75;
+    float sigmaFactor = 2.0;
     
     while (trials < maxTrials) {
         // Check for variance of data results
@@ -88,6 +88,8 @@
     BOOL flowCheck = YES;
     
     int minimumFields = 5;
+    
+    float sigmaTolerance = 1.25;
     
     // Acquire one or two capillaries?
     BOOL twoCapillariesRequired = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
@@ -167,7 +169,7 @@
         float mean = [[stats objectForKey:@"mean"] floatValue];
         float sigma = [[stats objectForKey:@"sigma"] floatValue];
         
-        if (sigma > sqrtf(mean)) {
+        if (sigma > sqrtf(mean)*sigmaTolerance) {
             fieldVarianceCheck = NO;
         }
         

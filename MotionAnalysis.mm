@@ -131,6 +131,7 @@
 }
 
 - (void)processFramesForMovie:(FrameBuffer*) frameBuffer {
+    
     // Parameter space!!! MHB MD
     float bubbleLimit = 480*360*0.3;
     // Algorithm parameters
@@ -139,18 +140,18 @@
     int avgFrames = framesToAvg/framesToSkip;
     int frameIdx = 0;
     int bubbleThresh=210; //above this threshold, bubbles are identified
-    int backgroundSize=50; //these are the kernel sizes used to estimate the background
+    int backgroundSize=75; //these are the kernel sizes used to estimate the background
     int backgroundSize2=75;
     int backgroundSize3=75;
     int backgroundSize4=75;
     int backgroundSize5=75;
     int gaussKernel00=5; //kernel size used for blurring
-    int minBack=15; //this is the max val that the background can climb to
-    int maxBack=36;
-    double backValCorr=2; //multiplier for detected background level. happens AFTER minBack is capped
+    int minBack=2400; //this is the max val that the background can climb to- 4000 for new movies
+    int maxBack=65535;
+    double backValCorr=1; //multiplier for detected background level. happens AFTER maxBack is capped
     int corrGausSize=31; //these are used to generate the correlation gaussian
-    int corrGausSig=100;
-    int thresh=1; //the minimum value of the local maxima
+    int corrGausSig=500;
+    int thresh=5; //the minimum value of the local maxima
     int matchingSize=17; //the minimum size of the local maxima
     int minHessian = 50; //for surf detector
     // Is there flow in the capillary?
@@ -197,62 +198,25 @@
     cv::Mat movieFrameMatDiff3= cv::Mat::zeros(rows, cols, CV_16UC1);
     cv::Mat movieFrameMatDiff4= cv::Mat::zeros(rows, cols, CV_16UC1);
     cv::Mat movieFrameMatDiff5= cv::Mat::zeros(rows, cols, CV_16UC1);
+    cv::Mat movieFrameMattDiff1Erode;
+    cv::Mat movieFrameMattDiff2Erode;
+    cv::Mat movieFrameMattDiff3Erode;
+    cv::Mat movieFrameMattDiff4Erode;
+    cv::Mat movieFrameMattDiff5Erode;
     
-    //calculate intensity normalizing matrix
-    frameIdx = 0;
-    while(frameIdx < (frameBuffer.numFrames.integerValue)) {
-        movieFrameMat = [frameBuffer getFrameAtIndex:frameIdx];
-        
-        // Output image. Debugging MHB.
-        cv::Mat cvOutput;
-        movieFrameMat.convertTo(cvOutput, CV_8UC1);
-        UIImage* outputImage = [UIImage imageWithCVMat:cvOutput];
-        
-        //calc the illum uniformity
-        if (frameIdx==0){
-            //identify white areas
-            threshold(movieFrameMat, movieFrameMatBW, bubbleThresh, 255, CV_THRESH_BINARY);
-            int blurKernel=15;
-            int dilationKernel=7;
-            cv::Mat element = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size(dilationKernel,dilationKernel ), cv::Point( (dilationKernel-1)/(dilationKernel-1), 2 ));
-            cv::morphologyEx(movieFrameMatBW,movieFrameMatBW, CV_MOP_DILATE, element );
-            movieFrameMatBWInv =  cv::Scalar::all(255) - movieFrameMatBW.clone();
-            movieFrameMatBW.convertTo(movieFrameMatBW, CV_32FC1);
-            movieFrameMatBW=movieFrameMatBW*255;
-            movieFrameMatBWInv.convertTo(movieFrameMatBWInv, CV_32FC1);
-            movieFrameMatBWInv=movieFrameMatBWInv/255;
-            
-            //general illum normalizer
-            movieFrameMatIllum=movieFrameMat.clone();
-            movieFrameMatIllum.convertTo(movieFrameMatIllum, CV_32FC1);
-            
-            cv::Mat blurCorrection=movieFrameMatBWInv.clone();
-            cv::blur(blurCorrection,blurCorrection,cv::Size(blurKernel,blurKernel));
-            for (int blurCycle=0; blurCycle<5; blurCycle++){
-                cv::multiply(movieFrameMatIllum, movieFrameMatBWInv, movieFrameMatIllum);
-                cv::blur(movieFrameMatIllum,movieFrameMatIllum,cv::Size(blurKernel,blurKernel));
-                cv::divide(movieFrameMatIllum, blurCorrection, movieFrameMatIllum);
-            }
-            double minVal;
-            double maxVal;
-            cv::minMaxLoc(movieFrameMatIllum, &minVal, &maxVal);
-            cv::divide(movieFrameMatIllum, maxVal, movieFrameMatIllum);
-            cv::multiply(movieFrameMatIllum, movieFrameMatBWInv, movieFrameMatIllum);
-            
-            //reset white pixels to 1
-            cv::Mat matBW=movieFrameMatBW/(255*255);
-            cv::add(movieFrameMatIllum, matBW, movieFrameMatIllum);
-            
-            // Output image. Debugging MHB.
-            movieFrameMatIllum= cv::Mat::ones(rows,cols,CV_32FC1);
-            cv::Mat cvOutput;
-            cvOutput = movieFrameMatIllum.clone();
-            cvOutput *= 255;
-            cvOutput.convertTo(cvOutput, CV_8UC1);
-            UIImage* outputImage = [UIImage imageWithCVMat:cvOutput];
-        }
-        frameIdx=frameIdx+1;
-    }
+    
+    //generate BW mask
+    movieFrameMat = [frameBuffer getFrameAtIndex:0];
+    threshold(movieFrameMat, movieFrameMatBW, bubbleThresh, 255, CV_THRESH_BINARY);
+    int blurKernel=7;
+    cv::Mat element0 = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size(blurKernel,blurKernel ), cv::Point( (blurKernel-1)/2,(blurKernel-1)/2 ));
+    cv::morphologyEx(movieFrameMatBW,movieFrameMatBW, CV_MOP_DILATE, element0 );
+    movieFrameMatBWInv =  cv::Scalar::all(255) - movieFrameMatBW.clone();
+    movieFrameMatBW.convertTo(movieFrameMatBW, CV_32FC1);
+    movieFrameMatBW=movieFrameMatBW*255;
+    movieFrameMatBWInv.convertTo(movieFrameMatBWInv, CV_32FC1);
+    movieFrameMatBWInv=movieFrameMatBWInv/255;
+    
     
     int i = 0;
     frameIdx = 0;
@@ -263,10 +227,12 @@
             //read the image and do illum correction
             movieFrameMat = [frameBuffer getFrameAtIndex:bufferIdx];
             movieFrameMat.convertTo(movieFrameMat, CV_32FC1);
-            cv::divide(movieFrameMat,movieFrameMatIllum,movieFrameMat);
+            //cv::divide(movieFrameMat,movieFrameMatIllum,movieFrameMat);
             cv::multiply(movieFrameMat,movieFrameMatBWInv,movieFrameMat);
             movieFrameMat.convertTo(movieFrameMat, CV_16UC1);
             if (i==0){
+                
+                
                 // Generate a robust focus metric
                 //crop the image
                 cv::Mat firstMat = [frameBuffer getFrameAtIndex:0];
@@ -286,6 +252,7 @@
                 cv::meanStdDev(lap, mu, sigma, mask);
                 focusMeasure = sigma.val[0]*sigma.val[0];
                 normFocusMeasure = focusMeasure/100.0;
+                NSLog(@"normfocus, %f", normFocusMeasure);
             }
             if (i == 0){
                 movieFrameMatOld=movieFrameMat;
@@ -309,20 +276,15 @@
         if (i >= avgFrames) {
             int bufferIdx = frameIdx;
             movieFrameMat = [frameBuffer getFrameAtIndex:bufferIdx];
-            //do illum correction on the next frame
             movieFrameMat.convertTo(movieFrameMat, CV_32FC1);
-            cv::divide(movieFrameMat,movieFrameMatIllum,movieFrameMat);
             cv::multiply(movieFrameMat,movieFrameMatBWInv,movieFrameMat);
             movieFrameMat.convertTo(movieFrameMat, CV_16UC1);
             
             int firstBufferIdx = (frameIdx-avgFrames);
+            
             movieFrameMatFirst = [frameBuffer getFrameAtIndex:firstBufferIdx];
-            /*cv::Mat uiOutput;
-             movieFrameMatFirst.convertTo(uiOutput, CV_8UC1);
-             UIImage* outputImage = [UIImage imageWithCVMat:uiOutput];*/
-            //do illum correction on the first frame
             movieFrameMatFirst.convertTo(movieFrameMatFirst, CV_32FC1);
-            cv::divide(movieFrameMatFirst,movieFrameMatIllum,movieFrameMatFirst);
+            
             cv::multiply(movieFrameMatFirst,movieFrameMatBWInv,movieFrameMatFirst);
             movieFrameMatFirst.convertTo(movieFrameMatFirst, CV_16UC1);
             movieFrameMatCum = movieFrameMatCum - movieFrameMatFirst + movieFrameMat;
@@ -358,101 +320,145 @@
         frameIdx = frameIdx + framesToSkip;
         i = i+1;
     }
+    
+    
     movieFrameMatBW.convertTo(movieFrameMatBW, CV_16UC1);
     movieFrameMatBWInv.convertTo(movieFrameMatBWInv, CV_16UC1);
     
-    movieFrameMatDiff1=movieFrameMatDiff1*10;
-    movieFrameMatDiff2=movieFrameMatDiff2*10;
-    movieFrameMatDiff3=movieFrameMatDiff3*10;
-    movieFrameMatDiff4=movieFrameMatDiff4*10;
-    movieFrameMatDiff5=movieFrameMatDiff5*10;
-    GaussianBlur(movieFrameMatDiff1,movieFrameMatDiff1,cv::Size(gaussKernel00,gaussKernel00),0,0,4);
-    GaussianBlur(movieFrameMatDiff2,movieFrameMatDiff2,cv::Size(gaussKernel00,gaussKernel00),0,0,4);
-    GaussianBlur(movieFrameMatDiff3,movieFrameMatDiff3,cv::Size(gaussKernel00,gaussKernel00),0,0,4);
-    GaussianBlur(movieFrameMatDiff4,movieFrameMatDiff4,cv::Size(gaussKernel00,gaussKernel00),0,0,4);
-    GaussianBlur(movieFrameMatDiff5,movieFrameMatDiff5,cv::Size(gaussKernel00,gaussKernel00),0,0,4);
+    movieFrameMatDiff1=movieFrameMatDiff1*600;
+    movieFrameMatDiff2=movieFrameMatDiff2*600;
+    movieFrameMatDiff3=movieFrameMatDiff3*600;
+    movieFrameMatDiff4=movieFrameMatDiff4*600;
+    movieFrameMatDiff5=movieFrameMatDiff5*600;
+    double trash;
+    double maxVal;
+    cv::minMaxLoc(movieFrameMatDiff5, &trash, &maxVal);
+    NSLog(@"maxval after loop is %f", maxVal);
+    
+    GaussianBlur(movieFrameMatDiff1,movieFrameMatDiff1,cv::Size(gaussKernel00,gaussKernel00),0,0,cv::BORDER_REPLICATE);
+    GaussianBlur(movieFrameMatDiff2,movieFrameMatDiff2,cv::Size(gaussKernel00,gaussKernel00),0,0,cv::BORDER_REPLICATE);
+    GaussianBlur(movieFrameMatDiff3,movieFrameMatDiff3,cv::Size(gaussKernel00,gaussKernel00),0,0,cv::BORDER_REPLICATE);
+    GaussianBlur(movieFrameMatDiff4,movieFrameMatDiff4,cv::Size(gaussKernel00,gaussKernel00),0,0,cv::BORDER_REPLICATE);
+    GaussianBlur(movieFrameMatDiff5,movieFrameMatDiff5,cv::Size(gaussKernel00,gaussKernel00),0,0,cv::BORDER_REPLICATE);
     cv::Scalar sum11=cv::sum(movieFrameMatDiff1);
     cv::Scalar sum22=cv::sum(movieFrameMatDiff2);
     cv::Scalar sum33=cv::sum(movieFrameMatDiff3);
     cv::Scalar sum44=cv::sum(movieFrameMatDiff4);
     cv::Scalar sum55=cv::sum(movieFrameMatDiff5);
     
-    // Output image. Debugging MHB.
-    cv::Mat cvOutput;
-    movieFrameMatDiff1.convertTo(cvOutput, CV_8UC1);
-    UIImage* outputImage = [UIImage imageWithCVMat:cvOutput];
     
     NSLog(@"done with loop, sums are %f, %f, %f, %f, %f", sum11[0],sum22[0],sum33[0],sum44[0],sum55[0]);
+    
     //estimate background
+    cv::Mat movieFrameMatDiff1Open;
+    cv::Mat element = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size(21,21 ), cv::Point( (21-1)/2,(21-1)/2 ));
+    cv::morphologyEx(movieFrameMatDiff1,movieFrameMatDiff1Open, CV_MOP_OPEN, element );
+    movieFrameMatDiff1=movieFrameMatDiff1-movieFrameMatDiff1Open;
+    
+    cv::Mat movieFrameMatDiff2Open;
+    cv::morphologyEx(movieFrameMatDiff2,movieFrameMatDiff2Open, CV_MOP_OPEN, element );
+    movieFrameMatDiff2=movieFrameMatDiff2-movieFrameMatDiff2Open;
+    
+    
+    cv::Mat movieFrameMatDiff3Open;
+    cv::morphologyEx(movieFrameMatDiff3,movieFrameMatDiff3Open, CV_MOP_OPEN, element );
+    movieFrameMatDiff3=movieFrameMatDiff3-movieFrameMatDiff3Open;
+    
+    cv::Mat movieFrameMatDiff4Open;
+    cv::morphologyEx(movieFrameMatDiff4,movieFrameMatDiff4Open, CV_MOP_OPEN, element );
+    movieFrameMatDiff4=movieFrameMatDiff4-movieFrameMatDiff4Open;
+    
+    cv::Mat movieFrameMatDiff5Open;
+    cv::morphologyEx(movieFrameMatDiff5,movieFrameMatDiff5Open, CV_MOP_OPEN, element );
+    movieFrameMatDiff5=movieFrameMatDiff5-movieFrameMatDiff5Open;
+    
+    
     cv::Mat backgroundConvMat= cv::Mat::ones(backgroundSize,backgroundSize, CV_32FC1);
     backgroundConvMat=backgroundConvMat/(backgroundSize*backgroundSize);
-    movieFrameMatDiff=movieFrameMatDiff+movieFrameMatBW;
-    cv::filter2D(movieFrameMatDiff,movieFrameMatDiff,-1,backgroundConvMat, cv::Point(-1,-1));
-    double backVal;
-    double maxValTrash;
-    cv::minMaxLoc(movieFrameMatDiff, &backVal, &maxValTrash);
     //new background calcs1
     cv::Mat movieFrameMatDiff1Back=movieFrameMatDiff1+movieFrameMatBW;
     cv::dilate(movieFrameMatDiff1Back, movieFrameMatDiff1Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
+    
     double backVal1;
     double maxValTrash1;
     cv::minMaxLoc(movieFrameMatDiff1Back, &backVal1, &maxValTrash1);
+    //new background calcs2
+    backgroundConvMat= cv::Mat::ones(backgroundSize2,backgroundSize2, CV_32FC1);
+    backgroundConvMat=backgroundConvMat/(backgroundSize2*backgroundSize2);
+    cv::Mat movieFrameMatDiff2Back=movieFrameMatDiff2+movieFrameMatBW;
+    cv::dilate(movieFrameMatDiff2Back, movieFrameMatDiff2Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
+    
+    
+    double backVal2;
+    double maxValTrash2;
+    cv::minMaxLoc(movieFrameMatDiff2Back, &backVal2, &maxValTrash2);
+    
+    //new background calcs3
+    backgroundConvMat= cv::Mat::ones(backgroundSize3,backgroundSize3, CV_32FC1);
+    backgroundConvMat=backgroundConvMat/(backgroundSize3*backgroundSize3);
+    cv::Mat movieFrameMatDiff3Back=movieFrameMatDiff3+movieFrameMatBW;
+    cv::dilate(movieFrameMatDiff3Back, movieFrameMatDiff3Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
+    
+    
+    double backVal3;
+    double maxValTrash3;
+    cv::minMaxLoc(movieFrameMatDiff3Back, &backVal3, &maxValTrash3);
+    //new background calcs4
+    backgroundConvMat= cv::Mat::ones(backgroundSize4,backgroundSize4, CV_32FC1);
+    backgroundConvMat=backgroundConvMat/(backgroundSize4*backgroundSize4);
+    cv::Mat movieFrameMatDiff4Back=movieFrameMatDiff4+movieFrameMatBW;
+    cv::dilate(movieFrameMatDiff4Back, movieFrameMatDiff4Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
+    
+    double backVal4;
+    double maxValTrash4;
+    cv::minMaxLoc(movieFrameMatDiff4Back, &backVal4, &maxValTrash4);
+    //new background calcs5
+    backgroundConvMat= cv::Mat::ones(backgroundSize5,backgroundSize5, CV_32FC1);
+    backgroundConvMat=backgroundConvMat/(backgroundSize5*backgroundSize5);
+    cv::Mat movieFrameMatDiff5Back=movieFrameMatDiff5+movieFrameMatBW;
+    cv::dilate(movieFrameMatDiff5Back, movieFrameMatDiff5Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
+    
+    double backVal5;
+    double maxValTrash5;
+    cv::minMaxLoc(movieFrameMatDiff5Back, &backVal5, &maxValTrash5);
+    NSLog(@"backvals, %f, %f, %f, %f, %f", backVal1,backVal2,backVal3,backVal4,backVal5);
+    
+    double backValCorr1=backValCorr;
+    double backValCorr2=backValCorr;
+    double backValCorr3=backValCorr;
+    double backValCorr4=backValCorr;
+    double backValCorr5=backValCorr;
+    backVal1=backVal1*backValCorr1;
+    backVal2=backVal2*backValCorr2;
+    backVal3=backVal3*backValCorr3;
+    backVal4=backVal4*backValCorr4;
+    backVal5=backVal5*backValCorr5;
+    
     if (backVal1<minBack) {
         backVal1=minBack;
     }
     else if (backVal1>maxBack) {
         backVal1=maxBack;
     }
-    //new background calcs2
-    backgroundConvMat= cv::Mat::ones(backgroundSize2,backgroundSize2, CV_32FC1);
-    backgroundConvMat=backgroundConvMat/(backgroundSize2*backgroundSize2);
-    cv::Mat movieFrameMatDiff2Back=movieFrameMatDiff2+movieFrameMatBW;
-    cv::dilate(movieFrameMatDiff2Back, movieFrameMatDiff2Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
-    double backVal2;
-    double maxValTrash2;
-    cv::minMaxLoc(movieFrameMatDiff2Back, &backVal2, &maxValTrash2);
     if (backVal2<minBack) {
         backVal2=minBack;
     }
     else if (backVal2>maxBack) {
         backVal2=maxBack;
     }
-    //new background calcs3
-    backgroundConvMat= cv::Mat::ones(backgroundSize3,backgroundSize3, CV_32FC1);
-    backgroundConvMat=backgroundConvMat/(backgroundSize3*backgroundSize3);
-    cv::Mat movieFrameMatDiff3Back=movieFrameMatDiff3+movieFrameMatBW;
-    cv::dilate(movieFrameMatDiff3Back, movieFrameMatDiff3Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
-    double backVal3;
-    double maxValTrash3;
-    cv::minMaxLoc(movieFrameMatDiff3Back, &backVal3, &maxValTrash3);
     if (backVal3<minBack) {
         backVal3=minBack;
     }
     else if (backVal3>maxBack) {
         backVal3=maxBack;
     }
-    //new background calcs4
-    backgroundConvMat= cv::Mat::ones(backgroundSize4,backgroundSize4, CV_32FC1);
-    backgroundConvMat=backgroundConvMat/(backgroundSize4*backgroundSize4);
-    cv::Mat movieFrameMatDiff4Back=movieFrameMatDiff4+movieFrameMatBW;
-    cv::dilate(movieFrameMatDiff4Back, movieFrameMatDiff4Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
-    double backVal4;
-    double maxValTrash4;
-    cv::minMaxLoc(movieFrameMatDiff4Back, &backVal4, &maxValTrash4);
     if (backVal4<minBack) {
         backVal4=minBack;
     }
     else if (backVal4>maxBack) {
         backVal4=maxBack;
     }
-    //new background calcs5
-    backgroundConvMat= cv::Mat::ones(backgroundSize5,backgroundSize5, CV_32FC1);
-    backgroundConvMat=backgroundConvMat/(backgroundSize5*backgroundSize5);
-    cv::Mat movieFrameMatDiff5Back=movieFrameMatDiff5+movieFrameMatBW;
-    cv::dilate(movieFrameMatDiff5Back, movieFrameMatDiff5Back, backgroundConvMat, cv::Point(-1,-1),1,cv::BORDER_CONSTANT, cv::Scalar(cv::morphologyDefaultBorderValue()));
-    double backVal5;
-    double maxValTrash5;
-    cv::minMaxLoc(movieFrameMatDiff5Back, &backVal5, &maxValTrash5);
+    
     if (backVal5<minBack) {
         backVal5=minBack;
     }
@@ -460,16 +466,12 @@
         backVal5=maxBack;
     }
     
-    double backValCorr1=backValCorr;
-    double backValCorr2=backValCorr;
-    double backValCorr3=backValCorr;
-    double backValCorr4=backValCorr;
-    double backValCorr5=backValCorr;
-    movieFrameMatDiff1=movieFrameMatDiff1-backVal1*backValCorr1;
-    movieFrameMatDiff2=movieFrameMatDiff2-backVal2*backValCorr2;
-    movieFrameMatDiff3=movieFrameMatDiff3-backVal3*backValCorr3;
-    movieFrameMatDiff4=movieFrameMatDiff4-backVal4*backValCorr4;
-    movieFrameMatDiff5=movieFrameMatDiff5-backVal5*backValCorr5;
+    movieFrameMatDiff1=movieFrameMatDiff1-backVal1;
+    movieFrameMatDiff2=movieFrameMatDiff2-backVal2;
+    movieFrameMatDiff3=movieFrameMatDiff3-backVal3;
+    movieFrameMatDiff4=movieFrameMatDiff4-backVal4;
+    movieFrameMatDiff5=movieFrameMatDiff5-backVal5;
+    
     //median filter n times
     int n=3;
     for(int i=0; i<n; i++) {
@@ -481,12 +483,14 @@
     }
     //erode
     int erosionSize=2;
-    cv::Mat element = getStructuringElement(0, cv::Size( 2*erosionSize + 1, 2*erosionSize+1 ),cv::Point( erosionSize, erosionSize));
-    cv::erode( movieFrameMatDiff1, movieFrameMatDiff1, element );
-    cv::erode( movieFrameMatDiff2, movieFrameMatDiff2, element );
-    cv::erode( movieFrameMatDiff3, movieFrameMatDiff3, element );
-    cv::erode( movieFrameMatDiff4, movieFrameMatDiff4, element );
-    cv::erode( movieFrameMatDiff5, movieFrameMatDiff5, element );
+    element = getStructuringElement(0, cv::Size( 2*erosionSize + 1, 2*erosionSize+1 ),cv::Point( erosionSize, erosionSize));
+    
+    cv::morphologyEx( movieFrameMatDiff1, movieFrameMatDiff1,CV_MOP_ERODE, element );
+    cv::morphologyEx( movieFrameMatDiff2, movieFrameMatDiff2, CV_MOP_ERODE,element );
+    cv::morphologyEx( movieFrameMatDiff3, movieFrameMatDiff3, CV_MOP_ERODE,element );
+    cv::morphologyEx( movieFrameMatDiff4, movieFrameMatDiff4, CV_MOP_ERODE,element );
+    cv::morphologyEx( movieFrameMatDiff5, movieFrameMatDiff5, CV_MOP_ERODE,element );
+    
     GaussianBlur(movieFrameMatDiff1,movieFrameMatDiff1,cv::Size(gaussKernel00,gaussKernel00),0,0,4);
     GaussianBlur(movieFrameMatDiff2,movieFrameMatDiff2,cv::Size(gaussKernel00,gaussKernel00),0,0,4);
     GaussianBlur(movieFrameMatDiff3,movieFrameMatDiff3,cv::Size(gaussKernel00,gaussKernel00),0,0,4);
@@ -527,25 +531,42 @@
     movieFrameMatDiff4.convertTo(movieFrameMatDiff4, CV_8UC1);
     movieFrameMatDiff5.convertTo(movieFrameMatDiff5, CV_8UC1);
     
-    // Output image. Debugging MHB.
-    cvOutput;
-    movieFrameMatDiff1.convertTo(cvOutput, CV_8UC1);
-    outputImage = [UIImage imageWithCVMat:cvOutput];
+    cv::Mat movieFrameMatDiff1Surf=movieFrameMatDiff1.clone();
+    movieFrameMatDiff1Surf=movieFrameMatDiff1Surf/255;
+    movieFrameMatDiff1Surf.convertTo(movieFrameMatDiff1Surf, CV_8UC1);
+    
+    cv::Mat movieFrameMatDiff2Surf=movieFrameMatDiff2.clone();
+    movieFrameMatDiff2Surf=movieFrameMatDiff2Surf/255;
+    movieFrameMatDiff2Surf.convertTo(movieFrameMatDiff2Surf, CV_8UC1);
+    
+    cv::Mat movieFrameMatDiff3Surf=movieFrameMatDiff3.clone();
+    movieFrameMatDiff3Surf=movieFrameMatDiff3Surf/255;
+    movieFrameMatDiff3Surf.convertTo(movieFrameMatDiff3Surf, CV_8UC1);
+    
+    cv::Mat movieFrameMatDiff4Surf=movieFrameMatDiff4.clone();
+    movieFrameMatDiff4Surf=movieFrameMatDiff4Surf/255;
+    movieFrameMatDiff4Surf.convertTo(movieFrameMatDiff4Surf, CV_8UC1);
+    
+    cv::Mat movieFrameMatDiff5Surf=movieFrameMatDiff5.clone();
+    movieFrameMatDiff5Surf=movieFrameMatDiff5Surf/255;
+    movieFrameMatDiff5Surf.convertTo(movieFrameMatDiff5Surf, CV_8UC1);
+    
     
     //detect features
     cv::SurfFeatureDetector detector(minHessian);
     std::vector<cv::KeyPoint> keypoints;
-    detector.detect(movieFrameMatDiff1, keypoints);
+    detector.detect(movieFrameMatDiff1Surf, keypoints);
     unsigned long numPoints1=keypoints.size();
-    detector.detect(movieFrameMatDiff2, keypoints);
+    detector.detect(movieFrameMatDiff2Surf, keypoints);
     unsigned long numPoints2=keypoints.size();
-    detector.detect(movieFrameMatDiff3, keypoints);
+    detector.detect(movieFrameMatDiff3Surf, keypoints);
     unsigned long numPoints3=keypoints.size();
-    detector.detect(movieFrameMatDiff4, keypoints);
+    detector.detect(movieFrameMatDiff4Surf, keypoints);
     unsigned long numPoints4=keypoints.size();
-    detector.detect(movieFrameMatDiff5, keypoints);
+    detector.detect(movieFrameMatDiff5Surf, keypoints);
     unsigned long numPoints5=keypoints.size();
     NSLog(@"numsurf, %ld,%ld,%ld,%ld,%ld",numPoints1,numPoints2,numPoints3,numPoints4,numPoints5);
+    
     
     //read out total intensity
     cv::Scalar sumDiff1=cv::sum(movieFrameMatDiff1);

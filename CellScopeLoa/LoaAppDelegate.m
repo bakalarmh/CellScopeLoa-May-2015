@@ -62,7 +62,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:capillaryVolume] forKey:CapillaryVolumeKey];
         
         // Gold standard multiplier - gold count = Loa count * gold multiplier
-        float goldMultiplier = 2.3623;
+        float goldMultiplier = 2.3348;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:goldMultiplier] forKey:GoldMultiplierKey];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
