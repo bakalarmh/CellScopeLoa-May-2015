@@ -24,6 +24,8 @@ typedef enum CameraState : NSUInteger {
 
 @protocol CaptureDelegate
 - (void)captureDidFinishWithURL:(NSURL*)assetURL;
+- (void)captureDidFinishWithURL:(NSURL*)assetURL uncompressedURL:(NSURL*)uncompressedURL;
+
 @end
 
 @protocol FrameProcessingDelegate

@@ -17,6 +17,7 @@ extern NSString* const UUIDPrefKey;
 extern NSString* const ManualFocusLensPositionKey;
 extern NSString* const FieldsOfViewKey;
 extern NSString* const CapillaryVolumeKey;
+extern NSString* const GoldMultiplierKey;
 extern NSString* const ISOKey;
 extern NSString* const ExposureKey;
 extern NSString* const RedGainKey;

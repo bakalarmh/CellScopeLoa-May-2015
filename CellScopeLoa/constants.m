@@ -18,6 +18,7 @@ NSString* const SimplePhoneIDKey = @"SimplePhoneIDKey";
 NSString* const SimpleDeviceIDKey = @"SimpleDeviceIDKey";
 NSString* const FocusCheckSwitchKey = @"FocusCheckSwitchKey";
 NSString* const CapillaryVolumeKey = @"CapillaryVolumeKey";
+NSString* const GoldMultiplier = @"GoldMultiplierKey";
 NSString* const RedGainKey = @"RedGainKey";
 NSString* const GreenGainKey = @"GreenGainKey";
 NSString* const BlueGainKey = @"BlueGainKey";

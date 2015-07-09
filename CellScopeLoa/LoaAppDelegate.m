@@ -57,9 +57,13 @@
         // Store uncompressed video?
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:SaveUncompressedVideoKey];
         
-        // Store the volume of the capillary
-        float capillaryVolume = .00073;
+        // Store the volume of the capillary. Mf/ml = objects per field / capillaryVolume
+        float capillaryVolume = .00259;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:capillaryVolume] forKey:CapillaryVolumeKey];
+        
+        // Gold standard multiplier - gold count = Loa count * gold multiplier
+        float goldMultiplier = 2.21;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:goldMultiplier] forKey:GoldMultiplierKey];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
     }

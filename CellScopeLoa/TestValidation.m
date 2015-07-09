@@ -232,6 +232,7 @@
 + (NSDictionary*)ResultsFromTestRecord:(TestRecord*)testRecord
 {
     NSNumber* capillaryVolume = [[NSUserDefaults standardUserDefaults] objectForKey:CapillaryVolumeKey];
+    NSNUmber* goldMultiplier = [[NSUserDefaults standardUserDefaults] objectForKey:GoldMultiplierKey];
 
     NSMutableArray* capillaryMeans = [[NSMutableArray alloc] init];
     for (CapillaryRecord* record in testRecord.capillaryRecords) {
@@ -287,7 +288,7 @@
     
     float objectsPerField = capillarySum/capillaryCount;
     
-    float objectsPerMl = objectsPerField/capillaryVolume.floatValue;
+    float objectsPerMl = (objectsPerField/capillaryVolume.floatValue)*goldMultiplier.floatValue;
     
     NSMutableDictionary* results = [[NSMutableDictionary alloc] init];
     [results setObject:[NSNumber numberWithFloat:objectsPerField] forKey:@"ObjectsPerField"];

@@ -10,7 +10,7 @@
         <attribute name="testUUID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videosDeleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="testRecord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TestRecord" inverseName="capillaryRecords" inverseEntity="TestRecord" syncable="YES"/>
-        <relationship name="uncompressedVideos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
+        <relationship name="uncompressedVideos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
     </entity>
     <entity name="MotionObject" representedClassName="MotionObject" syncable="YES">

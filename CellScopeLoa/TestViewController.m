@@ -191,7 +191,7 @@
             }
         }
         else {
-            // Store results with Video object
+            // Store results with Video objectdid
             Video* video = [self fetchVideoWithResourceURL:resourceURL];
             video.errorString = @"None";
             if (video != nil) {
@@ -339,6 +339,26 @@
     
     // Increment the field of view counter
     fieldsAcquired += 1;
+}
+
+- (void)didCaptureUncompressedVideoWithURL:(NSURL*)assetURL frameBuffer:(FrameBuffer *)buffer
+{
+    Video* video = [NSEntityDescription insertNewObjectForEntityForName:@"Video" inManagedObjectContext: managedObjectContext];
+    
+    // Set video properties
+    // Generate a local path (relative to the documents directory)
+    NSArray* pathComponents = assetURL.pathComponents;
+    long count = pathComponents.count;
+    NSArray* constantComponents = [pathComponents subarrayWithRange:NSMakeRange(8,count-8)];
+    NSString* localPath = [constantComponents componentsJoinedByString:@"/"];
+    
+    video.resourceURL = localPath;
+    video.created = [NSDate date];
+    video.capillaryIndex = cslContext.activeCapillaryRecord.capillaryIndex;
+    video.fieldIndex = [NSNumber numberWithInteger:fieldsAcquired];
+    video.testUUID = cslContext.activeTestRecord.testUUID;
+    
+    [cslContext.activeCapillaryRecord addUncompressedVideosObject:video];
 }
 
 - (void)didCompleteCapillaryCapture

@@ -12,10 +12,13 @@
 @interface SettingsTableViewController : UITableViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) CSLContext* cslContext;
+@property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @property (weak, nonatomic) IBOutlet UITextField *phoneIDField;
 @property (weak, nonatomic) IBOutlet UITextField *deviceIDField;
 @property (weak, nonatomic) IBOutlet UISwitch *twoCapillariesSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *uncompressedVideoSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *diskSpaceLabel;
 
 - (IBAction)phoneIDEdited:(id)sender;
 - (IBAction)twoCapillariesSwitchValueChanged:(id)sender;

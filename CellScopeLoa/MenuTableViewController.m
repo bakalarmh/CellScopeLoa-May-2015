@@ -287,6 +287,7 @@
     else if([segue.identifier isEqualToString:@"Settings"]) {
         SettingsPasswordViewController* vc = (SettingsPasswordViewController*)segue.destinationViewController;
         vc.cslContext = cslContext;
+        vc.managedObjectContext = managedObjectContext;
     }
     else if([segue.identifier isEqualToString:@"Devices"]) {
         DeviceManagerViewController* vc = (DeviceManagerViewController*)segue.destinationViewController;

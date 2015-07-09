@@ -196,8 +196,15 @@
 
 - (void)captureDidFinishWithURL:(NSURL *)assetURL
 {
-    NSLog(@"Capture finished!");
     [delegate didCaptureVideoWithURL:assetURL frameBuffer:frameBuffer];
+    // Prepare next acquisition
+    [self prepareNextDataAcquisition];
+}
+
+- (void)captureDidFinishWithURL:(NSURL*)assetURL uncompressedURL:(NSURL*)uncompressedURL
+{
+    [delegate didCaptureVideoWithURL:assetURL frameBuffer:frameBuffer];
+    [delegate didCaptureUncompressedVideoWithURL:uncompressedURL frameBuffer:frameBuffer];
     // Prepare next acquisition
     [self prepareNextDataAcquisition];
 }

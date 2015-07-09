@@ -13,6 +13,7 @@
 
 @protocol CaptureViewControllerDelegate
 - (void)didCaptureVideoWithURL:(NSURL*)assetURL frameBuffer:(FrameBuffer*)buffer;
+- (void)didCaptureUncompressedVideoWithURL:(NSURL*)assetURL frameBuffer:(FrameBuffer *)buffer;
 - (void)didCompleteCapillaryCapture;
 @end
 

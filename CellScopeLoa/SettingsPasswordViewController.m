@@ -17,6 +17,7 @@
 @implementation SettingsPasswordViewController
 
 @synthesize cslContext;
+@synthesize managedObjectContext;
 @synthesize PasswordField;
 
 - (void)viewDidLoad {
@@ -65,6 +66,7 @@
     if([segue.identifier isEqualToString:@"EditSettings"]) {
         SettingsTableViewController* vc = (SettingsTableViewController*)segue.destinationViewController;
         vc.cslContext = cslContext;
+        vc.managedObjectContext = managedObjectContext;
     }
 }
 

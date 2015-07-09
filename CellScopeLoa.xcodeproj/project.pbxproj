@@ -67,7 +67,7 @@
 		9BAFD6F61B09A0F4001DC361 /* CloudSyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6F51B09A0F4001DC361 /* CloudSyncViewController.m */; };
 		9BAFD6F91B0C3427001DC361 /* AugmentedMotionScopeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6F81B0C3427001DC361 /* AugmentedMotionScopeViewController.m */; };
 		9BFF5B891B4C75C000831E7E /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF5B881B4C75C000831E7E /* TestRecord.m */; };
-		9BFF5B8C1B4DA24600831E7E /* CapillaryRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF5B8B1B4DA24600831E7E /* CapillaryRecord.m */; };
+		9BFF5B921B4DC1D800831E7E /* CapillaryRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF5B911B4DC1D800831E7E /* CapillaryRecord.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,8 +189,8 @@
 		9BAFD6F81B0C3427001DC361 /* AugmentedMotionScopeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AugmentedMotionScopeViewController.m; sourceTree = "<group>"; };
 		9BFF5B871B4C75C000831E7E /* TestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecord.h; sourceTree = "<group>"; };
 		9BFF5B881B4C75C000831E7E /* TestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecord.m; sourceTree = "<group>"; };
-		9BFF5B8A1B4DA24600831E7E /* CapillaryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapillaryRecord.h; sourceTree = "<group>"; };
-		9BFF5B8B1B4DA24600831E7E /* CapillaryRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapillaryRecord.m; sourceTree = "<group>"; };
+		9BFF5B901B4DC1D800831E7E /* CapillaryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapillaryRecord.h; sourceTree = "<group>"; };
+		9BFF5B911B4DC1D800831E7E /* CapillaryRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapillaryRecord.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,9 +380,9 @@
 		9B3B93FC1AFE816300C391CC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				9BFF5B901B4DC1D800831E7E /* CapillaryRecord.h */,
+				9BFF5B911B4DC1D800831E7E /* CapillaryRecord.m */,
 				9B8418461B0024C4008DBA7B /* Model.xcdatamodeld */,
-				9BFF5B8A1B4DA24600831E7E /* CapillaryRecord.h */,
-				9BFF5B8B1B4DA24600831E7E /* CapillaryRecord.m */,
 				9BFF5B871B4C75C000831E7E /* TestRecord.h */,
 				9BFF5B881B4C75C000831E7E /* TestRecord.m */,
 				9B2209F41B1B8E3900093516 /* MotionObject.h */,
@@ -552,7 +552,7 @@
 				9B8418481B0024C4008DBA7B /* Model.xcdatamodeld in Sources */,
 				9B4792461B0D93E400460CA3 /* DataTableViewController.m in Sources */,
 				9B84186D1B01201E008DBA7B /* SettingsPasswordViewController.m in Sources */,
-				9BFF5B8C1B4DA24600831E7E /* CapillaryRecord.m in Sources */,
+				9BFF5B921B4DC1D800831E7E /* CapillaryRecord.m in Sources */,
 				9B0C923D1B058055008F70E3 /* UIImage+OpenCV.mm in Sources */,
 				9B0C92381B05801B008F70E3 /* FrameBuffer.mm in Sources */,
 				9B13268F1B03B64800FB694B /* WhiteBalanceViewController.m in Sources */,

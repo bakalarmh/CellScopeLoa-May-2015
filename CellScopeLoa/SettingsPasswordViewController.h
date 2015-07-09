@@ -11,6 +11,7 @@
 
 @interface SettingsPasswordViewController : UIViewController <UITextFieldDelegate>
 
+@property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) CSLContext* cslContext;
 
 @property (weak, nonatomic) IBOutlet UITextField *PasswordField;

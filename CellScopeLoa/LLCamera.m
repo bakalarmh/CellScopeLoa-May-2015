@@ -299,11 +299,15 @@
     cameraState = llCameraIdle;
     dispatch_async(dispatch_get_main_queue(), ^{
         // Signal to the processing delegate that we are done recording frames
-        [captureDelegate captureDidFinishWithURL:outputURL];
+        if (saveUncompressed) {
+            [captureDelegate captureDidFinishWithURL:outputURL uncompressedURL:uncompressedOutputURL];
+        }
+        else {
+            [captureDelegate captureDidFinishWithURL:outputURL];
+        }
     });
     
     [assetWriterInput markAsFinished];
-    
     if (saveUncompressed) {
         [uncompressedAssetWriterInput markAsFinished];
     }

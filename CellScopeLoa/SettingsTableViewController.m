@@ -7,6 +7,7 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "DiskSpaceManager.h"
 #import "constants.h"
 
 @interface SettingsTableViewController ()
@@ -16,8 +17,11 @@
 @implementation SettingsTableViewController
 
 @synthesize cslContext;
+@synthesize managedObjectContext;
+
 @synthesize phoneIDField;
 @synthesize deviceIDField;
+@synthesize diskSpaceLabel;
 @synthesize twoCapillariesSwitch;
 @synthesize uncompressedVideoSwitch;
 
@@ -31,7 +35,9 @@
     deviceIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimpleDeviceIDKey];
     twoCapillariesSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
     uncompressedVideoSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SaveUncompressedVideoKey] boolValue];
-
+    
+    NSNumber* diskSpace = [DiskSpaceManager FreeDiskSpace];
+    diskSpaceLabel.text = [NSString stringWithFormat:@"%lld MB", diskSpace.longLongValue];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,7 +78,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if ((indexPath.section == 2) && (indexPath.row == 1)) {
+        [DiskSpaceManager ManageUncompressedVideos:managedObjectContext];
+        NSNumber* diskSpace = [DiskSpaceManager FreeDiskSpace];
+        diskSpaceLabel.text = [NSString stringWithFormat:@"%lld MB", diskSpace.longLongValue];
+    }
 }
 
 @end

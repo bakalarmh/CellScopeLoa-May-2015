@@ -12,5 +12,7 @@
 @interface DiskSpaceManager : NSObject
 
 + (void)ManageDiskSpace:(NSManagedObjectContext*)managedObjectContext;
++ (void)ManageUncompressedVideos:(NSManagedObjectContext*)managedObjectContext;
++ (NSNumber*)FreeDiskSpace;
 
 @end

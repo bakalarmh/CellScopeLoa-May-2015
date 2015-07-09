@@ -23,7 +23,7 @@
 @property (nonatomic, retain) NSNumber * videosDeleted;
 @property (nonatomic, retain) TestRecord *testRecord;
 @property (nonatomic, retain) NSSet *videos;
-@property (nonatomic, retain) NSSet *uncompressedVideos;
+@property (nonatomic, retain) Video *uncompressedVideos;
 @end
 
 @interface CapillaryRecord (CoreDataGeneratedAccessors)
@@ -32,10 +32,5 @@
 - (void)removeVideosObject:(Video *)value;
 - (void)addVideos:(NSSet *)values;
 - (void)removeVideos:(NSSet *)values;
-
-- (void)addUncompressedVideosObject:(Video *)value;
-- (void)removeUncompressedVideosObject:(Video *)value;
-- (void)addUncompressedVideos:(NSSet *)values;
-- (void)removeUncompressedVideos:(NSSet *)values;
 
 @end
