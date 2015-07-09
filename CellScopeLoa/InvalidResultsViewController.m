@@ -39,6 +39,10 @@
             testResultLabel.text = NSLocalizedString(@"Blood fill Error",nil);
             errorMessageLabel.text = NSLocalizedString(@"Bubbles are in the capillary or blood has coagulated.",nil);
         }
+        else if ([state rangeOfString:@"Flow"].location != NSNotFound) {
+            testResultLabel.text = NSLocalizedString(@"Flow Error",nil);
+            errorMessageLabel.text = NSLocalizedString(@"There is blood flow within the capillary.",nil);
+        }
         else {
             testResultLabel.text = NSLocalizedString(@"Focus Error",nil);
             errorMessageLabel.text = NSLocalizedString(@"Images are not in focus.",nil);

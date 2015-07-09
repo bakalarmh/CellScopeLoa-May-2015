@@ -33,6 +33,8 @@
     BOOL finalProcessing;
     BOOL twoCapillariesRequired;
     
+    NSInteger locationsReceived;
+    
     NSMutableArray* activeVideos;
 }
 
@@ -293,6 +295,7 @@
     
     // Add location to the test record
     cslContext.locationManager.delegate = self;
+    locationsReceived = 0;
     [cslContext startLocationUpdates];
     
     // Create a new capillary record for the test

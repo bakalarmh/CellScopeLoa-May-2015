@@ -30,15 +30,16 @@
     NSDictionary* testResults = [TestValidation ResultsFromTestRecord:cslContext.activeTestRecord];
     
     NSNumber* objectsPerField = [testResults objectForKey:@"ObjectsPerField"];
-    
     NSNumber* objectsPerMl = [testResults objectForKey:@"ObjectsPerMl"];
+    
+    NSNumber* reportObjectsPerMl = objectsPerMl;
     if (objectsPerField.floatValue < 1.0) {
-        objectsPerMl = @0.0;
+        reportObjectsPerMl = @0.0;
     }
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setMaximumFractionDigits:0];
-    NSString* mfmlString = [formatter stringFromNumber:objectsPerMl];
+    NSString* mfmlString = [formatter stringFromNumber:reportObjectsPerMl];
     
     mffieldLabel.text = [NSString stringWithFormat:@"%.2f mf/field", objectsPerField.floatValue];
     mfmlLabel.text = [NSString stringWithFormat:@"%@ mf/ml", mfmlString];

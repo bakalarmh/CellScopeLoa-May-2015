@@ -77,10 +77,10 @@
 
 - (void)startLocationUpdates
 {
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
     // Set a movement threshold for new events.
-    locationManager.distanceFilter = 1000; // meters
+    locationManager.distanceFilter = 10; // meters
     
     [locationManager requestWhenInUseAuthorization];
     [locationManager startUpdatingLocation];

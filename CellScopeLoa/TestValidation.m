@@ -232,7 +232,7 @@
 + (NSDictionary*)ResultsFromTestRecord:(TestRecord*)testRecord
 {
     NSNumber* capillaryVolume = [[NSUserDefaults standardUserDefaults] objectForKey:CapillaryVolumeKey];
-    NSNUmber* goldMultiplier = [[NSUserDefaults standardUserDefaults] objectForKey:GoldMultiplierKey];
+    NSNumber* goldMultiplier = [[NSUserDefaults standardUserDefaults] objectForKey:GoldMultiplierKey];
 
     NSMutableArray* capillaryMeans = [[NSMutableArray alloc] init];
     for (CapillaryRecord* record in testRecord.capillaryRecords) {
@@ -275,6 +275,11 @@
         
         // Store in CoreData
         record.objectsPerField = value;
+        
+        // Compute objectsPerMl
+        float objectsPerMl = (value.floatValue/capillaryVolume.floatValue)*goldMultiplier.floatValue;
+        record.objectsPerMl = [NSNumber numberWithFloat:objectsPerMl];
+        
         // Add the value to the list of capillary means
         [capillaryMeans addObject:value];
     }
