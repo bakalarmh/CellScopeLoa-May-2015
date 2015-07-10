@@ -124,6 +124,12 @@
                 if (video.motionObjects != nil) {
                     NSLog(@"Motion objects available to store");
                 }
+                if (video.surfMotionMetric != nil) {
+                    [pfvideo setObject:video.averageObjectCount forKey:@"surfMotionMetric"];
+                }
+                if (video.diffMotionMetric != nil) {
+                    [pfvideo setObject:video.averageObjectCount forKey:@"diffMotionMetric"];
+                }
                 
                 // Upload the video to the cloud
                 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

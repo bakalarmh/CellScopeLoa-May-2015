@@ -2,7 +2,7 @@
 //  Video.m
 //  CellScopeLoa
 //
-//  Created by Matthew Bakalar on 5/31/15.
+//  Created by Matthew Bakalar on 7/10/15.
 //  Copyright (c) 2015 Fletcher Lab. All rights reserved.
 //
 
@@ -19,9 +19,10 @@
 @dynamic fieldIndex;
 @dynamic parseID;
 @dynamic resourceURL;
+@dynamic surfMotionMetric;
 @dynamic testUUID;
 @dynamic videoDeleted;
+@dynamic diffMotionMetric;
 @dynamic motionObjects;
-@dynamic surfMotionMetric;
 
 @end

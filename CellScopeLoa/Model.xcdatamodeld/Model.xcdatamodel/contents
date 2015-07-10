@@ -44,6 +44,7 @@
         <attribute name="averageObjectCount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="capillaryIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="diffMotionMetric" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="errorString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fieldIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="parseID" optional="YES" attributeType="String" syncable="YES"/>
@@ -57,6 +58,6 @@
         <element name="CapillaryRecord" positionX="115" positionY="144" width="128" height="210"/>
         <element name="MotionObject" positionX="450" positionY="240" width="128" height="103"/>
         <element name="TestRecord" positionX="-63" positionY="-18" width="128" height="330"/>
-        <element name="Video" positionX="279" positionY="189" width="128" height="210"/>
+        <element name="Video" positionX="279" positionY="189" width="128" height="225"/>
     </elements>
 </model>

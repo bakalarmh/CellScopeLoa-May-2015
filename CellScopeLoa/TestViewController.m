@@ -199,6 +199,8 @@
             video.errorString = @"None";
             if (video != nil) {
                 video.averageObjectCount = averageCount;
+                video.surfMotionMetric = surfMotionMetric;
+                video.diffMotionMetric = diffMotionMetric;
                 /*
                 for (NSDictionary* m in motionObjects) {
                     

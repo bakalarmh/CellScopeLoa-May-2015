@@ -2,7 +2,7 @@
 //  Video.h
 //  CellScopeLoa
 //
-//  Created by Matthew Bakalar on 5/31/15.
+//  Created by Matthew Bakalar on 7/10/15.
 //  Copyright (c) 2015 Fletcher Lab. All rights reserved.
 //
 
@@ -20,11 +20,11 @@
 @property (nonatomic, retain) NSNumber * fieldIndex;
 @property (nonatomic, retain) NSString * parseID;
 @property (nonatomic, retain) NSString * resourceURL;
+@property (nonatomic, retain) NSNumber * surfMotionMetric;
 @property (nonatomic, retain) NSString * testUUID;
 @property (nonatomic, retain) NSNumber * videoDeleted;
+@property (nonatomic, retain) NSNumber * diffMotionMetric;
 @property (nonatomic, retain) NSOrderedSet *motionObjects;
-@property (nonatomic, retain) NSNumber *surfMotionMetric;
-
 @end
 
 @interface Video (CoreDataGeneratedAccessors)
