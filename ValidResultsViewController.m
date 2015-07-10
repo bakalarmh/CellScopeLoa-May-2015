@@ -17,6 +17,7 @@
 
 @synthesize cslContext;
 @synthesize managedObjectContext;
+@synthesize cardColorView;
 @synthesize finishedButtonItem;
 @synthesize mffieldLabel;
 @synthesize mfmlLabel;
@@ -43,6 +44,16 @@
     
     mffieldLabel.text = [NSString stringWithFormat:@"%.2f mf/field", objectsPerField.floatValue];
     mfmlLabel.text = [NSString stringWithFormat:@"%@ mf/ml", mfmlString];
+    
+    if (objectsPerMl.floatValue < 10000) {
+        cardColorView.backgroundColor = [UIColor greenColor];
+    }
+    else if (objectsPerMl.floatValue < 23000) {
+        cardColorView.backgroundColor = [UIColor yellowColor];
+    }
+    else {
+        cardColorView.backgroundColor = [UIColor redColor];
+    }
     
     // Store the output in the ManagedObjectContext
     [managedObjectContext save:nil];

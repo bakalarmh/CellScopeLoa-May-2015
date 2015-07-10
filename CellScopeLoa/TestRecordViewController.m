@@ -84,6 +84,17 @@
         mfmlLabel.text = @"Invalid";
         mffieldLabel.text = @"";
     }
+    else {
+        if (testRecord.objectsPerMl.floatValue < 10000) {
+            resultCardView.backgroundColor = [UIColor greenColor];
+        }
+        else if (testRecord.objectsPerMl.floatValue < 23000) {
+            resultCardView.backgroundColor = [UIColor yellowColor];
+        }
+        else {
+            resultCardView.backgroundColor = [UIColor redColor];
+        }
+    }
     
     if (videosAvailable == NO) {
         videosButton1.enabled = NO;

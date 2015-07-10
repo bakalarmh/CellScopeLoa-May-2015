@@ -152,8 +152,9 @@
         NSString* errorString = (NSString*)userInfo[@"ErrorString"];
         NSString* resourceURL = (NSString*)userInfo[@"ResourceURL"];
         NSNumber* averageCount = (NSNumber*)userInfo[@"AverageCount"];
-        NSNumber* surfMotionMetric = (NSNumber*)userInfo[@"SurfMotionMetric"];
         NSNumber* focusMetric = (NSNumber*)userInfo[@"FocusMetric"];
+        NSNumber* surfMotionMetric = (NSNumber*)userInfo[@"SurfMotionMetric"];
+        NSNumber* diffMotionMetric = (NSNumber*)userInfo[@"DiffMotionMetric"];
         NSMutableArray* motionObjects = (NSMutableArray*)userInfo[@"MotionObjects"];
         
         // Check that the focus metric is within range
@@ -198,8 +199,9 @@
             video.errorString = @"None";
             if (video != nil) {
                 video.averageObjectCount = averageCount;
+                /*
                 for (NSDictionary* m in motionObjects) {
-                    /*
+                    
                     // Copy the motion object data into a new core data object
                     MotionObject* coreObject = (MotionObject*)[NSEntityDescription insertNewObjectForEntityForName:@"MotionObject"
                                                                                 inManagedObjectContext:managedObjectContext];
@@ -209,8 +211,8 @@
                     coreObject.start = [m objectForKey:@"end"];
 
                     [video addMotionObjectsObject:coreObject];
-                     */
                 }
+                */
             }
         }
         

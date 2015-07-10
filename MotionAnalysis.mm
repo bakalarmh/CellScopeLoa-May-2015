@@ -116,11 +116,13 @@
             float averageCount = (motionObjects.count/numSeconds);  // x, y, start, end
             
             // Backup motion metric
-            NSNumber* surfMotionMetric = [resultsDict objectForKey:@"surfMotionMetric"];
+            NSNumber* surfMotionMetric = [resultsDict objectForKey:@"SurfMotionMetric"];
+            NSNumber* diffMotionMetric = [resultsDict objectForKey:@"DiffMotionMetric"];
             
             [userInfo setObject:motionObjects forKey:@"MotionObjects"];
             [userInfo setObject:[NSNumber numberWithFloat:averageCount] forKey:@"AverageCount"];
             [userInfo setObject:surfMotionMetric forKey:@"SurfMotionMetric"];
+            [userInfo setObject:surfMotionMetric forKey:@"DiffMotionMetric"];
         }
         else {
             [userInfo setObject:errorString forKey:@"ErrorString"];
@@ -133,13 +135,13 @@
 - (void)processFramesForMovie:(FrameBuffer*) frameBuffer {
     
     // Parameter space!!! MHB MD
-    float bubbleLimit = 480*360*0.3;
+    float bubbleLimit = 480*360*0.25;
     // Algorithm parameters
     int framesToAvg = 7;
     int framesToSkip = 1;
     int avgFrames = framesToAvg/framesToSkip;
     int frameIdx = 0;
-    int bubbleThresh=210; //above this threshold, bubbles are identified
+    int bubbleThresh=215; //above this threshold, bubbles are identified
     int backgroundSize=75; //these are the kernel sizes used to estimate the background
     int backgroundSize2=75;
     int backgroundSize3=75;
@@ -208,6 +210,7 @@
     //generate BW mask
     movieFrameMat = [frameBuffer getFrameAtIndex:0];
     threshold(movieFrameMat, movieFrameMatBW, bubbleThresh, 255, CV_THRESH_BINARY);
+    
     int blurKernel=7;
     cv::Mat element0 = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size(blurKernel,blurKernel ), cv::Point( (blurKernel-1)/2,(blurKernel-1)/2 ));
     cv::morphologyEx(movieFrameMatBW,movieFrameMatBW, CV_MOP_DILATE, element0 );
@@ -216,7 +219,6 @@
     movieFrameMatBW=movieFrameMatBW*255;
     movieFrameMatBWInv.convertTo(movieFrameMatBWInv, CV_32FC1);
     movieFrameMatBWInv=movieFrameMatBWInv/255;
-    
     
     int i = 0;
     frameIdx = 0;
@@ -324,6 +326,45 @@
     
     movieFrameMatBW.convertTo(movieFrameMatBW, CV_16UC1);
     movieFrameMatBWInv.convertTo(movieFrameMatBWInv, CV_16UC1);
+    
+    cv::Mat movieFrameMatDiff1Surf=movieFrameMatDiff1.clone();
+    movieFrameMatDiff1Surf.convertTo(movieFrameMatDiff1Surf, CV_8UC1);
+    
+    cv::Mat movieFrameMatDiff2Surf=movieFrameMatDiff2.clone();
+    movieFrameMatDiff2Surf.convertTo(movieFrameMatDiff2Surf, CV_8UC1);
+    
+    cv::Mat movieFrameMatDiff3Surf=movieFrameMatDiff3.clone();
+    movieFrameMatDiff3Surf.convertTo(movieFrameMatDiff3Surf, CV_8UC1);
+    
+    cv::Mat movieFrameMatDiff4Surf=movieFrameMatDiff4.clone();
+    movieFrameMatDiff4Surf.convertTo(movieFrameMatDiff4Surf, CV_8UC1);
+    
+    cv::Mat movieFrameMatDiff5Surf=movieFrameMatDiff5.clone();
+    movieFrameMatDiff5Surf.convertTo(movieFrameMatDiff5Surf, CV_8UC1);
+    
+    
+    //detect features
+    cv::SurfFeatureDetector detector(minHessian);
+    std::vector<cv::KeyPoint> keypoints;
+    detector.detect(movieFrameMatDiff1Surf, keypoints);
+    unsigned long numPoints1=keypoints.size();
+    detector.detect(movieFrameMatDiff2Surf, keypoints);
+    unsigned long numPoints2=keypoints.size();
+    detector.detect(movieFrameMatDiff3Surf, keypoints);
+    unsigned long numPoints3=keypoints.size();
+    detector.detect(movieFrameMatDiff4Surf, keypoints);
+    unsigned long numPoints4=keypoints.size();
+    detector.detect(movieFrameMatDiff5Surf, keypoints);
+    unsigned long numPoints5=keypoints.size();
+    NSLog(@"numsurf, %ld,%ld,%ld,%ld,%ld",numPoints1,numPoints2,numPoints3,numPoints4,numPoints5);
+    
+    //read out total intensity
+    cv::Scalar sumDiff1=cv::sum(movieFrameMatDiff1);
+    cv::Scalar sumDiff2=cv::sum(movieFrameMatDiff2);
+    cv::Scalar sumDiff3=cv::sum(movieFrameMatDiff3);
+    cv::Scalar sumDiff4=cv::sum(movieFrameMatDiff4);
+    cv::Scalar sumDiff5=cv::sum(movieFrameMatDiff5);
+    NSLog(@"diffsums, %f, %f, %f, %f, %f", sumDiff1[0],sumDiff2[0],sumDiff3[0],sumDiff4[0],sumDiff5[0]);
     
     movieFrameMatDiff1=movieFrameMatDiff1*600;
     movieFrameMatDiff2=movieFrameMatDiff2*600;
@@ -531,51 +572,6 @@
     movieFrameMatDiff4.convertTo(movieFrameMatDiff4, CV_8UC1);
     movieFrameMatDiff5.convertTo(movieFrameMatDiff5, CV_8UC1);
     
-    cv::Mat movieFrameMatDiff1Surf=movieFrameMatDiff1.clone();
-    movieFrameMatDiff1Surf=movieFrameMatDiff1Surf/255;
-    movieFrameMatDiff1Surf.convertTo(movieFrameMatDiff1Surf, CV_8UC1);
-    
-    cv::Mat movieFrameMatDiff2Surf=movieFrameMatDiff2.clone();
-    movieFrameMatDiff2Surf=movieFrameMatDiff2Surf/255;
-    movieFrameMatDiff2Surf.convertTo(movieFrameMatDiff2Surf, CV_8UC1);
-    
-    cv::Mat movieFrameMatDiff3Surf=movieFrameMatDiff3.clone();
-    movieFrameMatDiff3Surf=movieFrameMatDiff3Surf/255;
-    movieFrameMatDiff3Surf.convertTo(movieFrameMatDiff3Surf, CV_8UC1);
-    
-    cv::Mat movieFrameMatDiff4Surf=movieFrameMatDiff4.clone();
-    movieFrameMatDiff4Surf=movieFrameMatDiff4Surf/255;
-    movieFrameMatDiff4Surf.convertTo(movieFrameMatDiff4Surf, CV_8UC1);
-    
-    cv::Mat movieFrameMatDiff5Surf=movieFrameMatDiff5.clone();
-    movieFrameMatDiff5Surf=movieFrameMatDiff5Surf/255;
-    movieFrameMatDiff5Surf.convertTo(movieFrameMatDiff5Surf, CV_8UC1);
-    
-    
-    //detect features
-    cv::SurfFeatureDetector detector(minHessian);
-    std::vector<cv::KeyPoint> keypoints;
-    detector.detect(movieFrameMatDiff1Surf, keypoints);
-    unsigned long numPoints1=keypoints.size();
-    detector.detect(movieFrameMatDiff2Surf, keypoints);
-    unsigned long numPoints2=keypoints.size();
-    detector.detect(movieFrameMatDiff3Surf, keypoints);
-    unsigned long numPoints3=keypoints.size();
-    detector.detect(movieFrameMatDiff4Surf, keypoints);
-    unsigned long numPoints4=keypoints.size();
-    detector.detect(movieFrameMatDiff5Surf, keypoints);
-    unsigned long numPoints5=keypoints.size();
-    NSLog(@"numsurf, %ld,%ld,%ld,%ld,%ld",numPoints1,numPoints2,numPoints3,numPoints4,numPoints5);
-    
-    
-    //read out total intensity
-    cv::Scalar sumDiff1=cv::sum(movieFrameMatDiff1);
-    cv::Scalar sumDiff2=cv::sum(movieFrameMatDiff2);
-    cv::Scalar sumDiff3=cv::sum(movieFrameMatDiff3);
-    cv::Scalar sumDiff4=cv::sum(movieFrameMatDiff4);
-    cv::Scalar sumDiff5=cv::sum(movieFrameMatDiff5);
-    NSLog(@"diffsums, %f, %f, %f, %f, %f", sumDiff1[0],sumDiff2[0],sumDiff3[0],sumDiff4[0],sumDiff5[0]);
-    
     //detect local maxima
     [self getLocalMaxima:movieFrameMatDiff1: matchingSize: thresh: 0:1:32];
     movieFrameMatDiff1.convertTo(movieFrameMatDiff1, CV_8UC1);
@@ -607,7 +603,10 @@
     cv::Scalar usedSum=cv::sum(movieFrameMatBWInv);
     float totalArea = 480*360;
     float ignoredArea = 480*360 - usedSum[0];
+    
+    // Do not perform any area compensation
     //numWorms=numWorms*(totalArea/(totalArea-ignoredArea));
+    
     NSLog(@"numWorms, %f", numWorms);
     NSLog(@"Area fraction, %f", (totalArea-ignoredArea)/totalArea);
     movieFrameMatDiff.release();
@@ -620,7 +619,8 @@
     
     [resultsDict setObject:wormObjects forKey:@"MotionObjects"];
     [resultsDict setObject:[NSNumber numberWithFloat:normFocusMeasure] forKey:@"FocusMetric"];
-    [resultsDict setObject:[NSNumber numberWithFloat:0.0] forKey:@"surfMotionMetric"];
+    [resultsDict setObject:[NSNumber numberWithFloat:0.0] forKey:@"SurfMotionMetric"];
+    [resultsDict setObject:[NSNumber numberWithFloat:0.0] forKey:@"DiffMotionMetric"];
     
     // Register error messages
     if (ignoredArea > bubbleLimit) {

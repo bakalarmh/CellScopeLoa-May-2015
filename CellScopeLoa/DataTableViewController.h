@@ -14,4 +14,6 @@
 @property (weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) CSLContext *cslContext;
 
+- (void)didConnect;
+
 @end

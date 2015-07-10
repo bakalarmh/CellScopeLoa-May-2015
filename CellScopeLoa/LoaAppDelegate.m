@@ -36,7 +36,7 @@
         // Store a temporary SimplePhontID password (unsecure)
         [[NSUserDefaults standardUserDefaults] setObject:@"Null" forKey:SimplePhoneIDKey];
         [[NSUserDefaults standardUserDefaults] setObject:@"Null" forKey:SimpleDeviceIDKey];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:@"True"] forKey:FocusCheckSwitchKey];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:FocusCheckSwitchKey];
         
         // Store a counter - global test count for this device
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:TestCounterKey];
@@ -52,7 +52,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:fieldsOfView] forKey:FieldsOfViewKey];
         
         // Require two capillaries?
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:RequireTwoCapillariesKey];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:RequireTwoCapillariesKey];
         
         // Store uncompressed video?
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:SaveUncompressedVideoKey];
@@ -74,8 +74,8 @@
     [Parse enableLocalDatastore];
     
     // Initialize Parse.
-    [Parse setApplicationId:@"jwqmqPUaus0meXeKC4UbUAe4MS4s5Xgya0VTNvTp"
-                  clientKey:@"16FROWYMwedkW3WoXy0om5qrPHWYgzM2aIJmCghL"];
+    [Parse setApplicationId:@"vitn53WDyyclIvAXm8TgKVOdfsQUnEN83l17Dnyq"
+                  clientKey:@"LCRoIkrX6riioaS0uHwlqUtN0hw4W6Xfn7vH3wAF"];
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

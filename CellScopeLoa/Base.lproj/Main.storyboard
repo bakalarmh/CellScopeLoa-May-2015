@@ -1109,6 +1109,7 @@
                     <navigationItem key="navigationItem" title="Results" id="Lp8-W1-cFx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="cardColorView" destination="g9s-j8-OLz" id="MA9-Qt-v5G"/>
                         <outlet property="finishedButtonItem" destination="6VS-Fw-84g" id="TaR-QJ-F7s"/>
                         <outlet property="mffieldLabel" destination="QdT-1m-m9W" id="0ot-p1-bYR"/>
                         <outlet property="mfmlLabel" destination="SZH-q7-NDx" id="24N-4u-GU2"/>

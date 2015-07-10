@@ -180,6 +180,7 @@
     testButtonIcon.alpha = 1.0;
     
     cslContext.loaDevice = [[BluetoothLoaDevice alloc] initWithBLEManager:cslContext.bleManager];
+    [cslContext.loaDevice servoLoadPosition];
     [cslContext.loaDevice LEDOn];
     
     int delay = 1;

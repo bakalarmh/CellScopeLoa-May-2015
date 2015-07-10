@@ -808,11 +808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "539"
-            endingLineNumber = "539"
+            startingLineNumber = "541"
+            endingLineNumber = "541"
             landmarkName = "-fetchVideoWithResourceURL:"
             landmarkType = "5">
          </BreakpointContent>
@@ -824,11 +824,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "481"
+            endingLineNumber = "481"
             landmarkName = "-currentDateAndTime"
             landmarkType = "5">
          </BreakpointContent>
@@ -840,11 +840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "478"
+            endingLineNumber = "478"
             landmarkName = "-currentDateAndTime"
             landmarkType = "5">
          </BreakpointContent>
@@ -856,11 +856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "-createActiveTest"
             landmarkType = "5">
          </BreakpointContent>
@@ -872,11 +872,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ValidResultsViewController.m"
-            timestampString = "454791849.803083"
+            timestampString = "458172848.804218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -888,11 +888,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ValidResultsViewController.m"
-            timestampString = "458161528.26914"
+            timestampString = "458172848.804218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -952,11 +952,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/MenuTableViewController.m"
-            timestampString = "457826089.087141"
+            timestampString = "458177412.360896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-didConnect"
             landmarkType = "5">
          </BreakpointContent>
@@ -1000,11 +1000,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-receiveNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1016,23 +1016,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "-receiveNotification:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
@@ -1048,7 +1032,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
@@ -1064,11 +1048,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-receiveNotification:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/TestViewController.m"
+            timestampString = "458189071.933256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-receiveNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1480,11 +1480,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-didCaptureVideoWithURL:frameBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1528,11 +1528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "-didCaptureVideoWithURL:frameBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1592,11 +1592,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/MenuTableViewController.m"
-            timestampString = "457826089.087141"
+            timestampString = "458177412.360896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-didDisconnect"
             landmarkType = "5">
          </BreakpointContent>
@@ -1672,11 +1672,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1688,11 +1688,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ValidResultsViewController.m"
-            timestampString = "454791849.803083"
+            timestampString = "458172848.804218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1704,11 +1704,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ValidResultsViewController.m"
-            timestampString = "454791849.803083"
+            timestampString = "458172848.804218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1720,11 +1720,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1736,11 +1736,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "-receiveNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1752,11 +1752,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-receiveNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1768,11 +1768,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestRecordViewController.m"
-            timestampString = "457894488.30266"
+            timestampString = "458173285.324689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-videoButtonOnePressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1784,11 +1784,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestRecordViewController.m"
-            timestampString = "457894488.30266"
+            timestampString = "458173285.324689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-videoButtonOnePressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1848,11 +1848,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "458004846.678142"
+            timestampString = "458189206.849927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "768"
-            endingLineNumber = "768"
+            startingLineNumber = "789"
+            endingLineNumber = "789"
             landmarkName = "-computeFlowForBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1864,11 +1864,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "458004846.678142"
+            timestampString = "458189206.849927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "769"
-            endingLineNumber = "769"
+            startingLineNumber = "790"
+            endingLineNumber = "790"
             landmarkName = "-computeFlowForBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1880,11 +1880,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "458004846.678142"
+            timestampString = "458189206.849927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "767"
-            endingLineNumber = "767"
+            startingLineNumber = "788"
+            endingLineNumber = "788"
             landmarkName = "-computeFlowForBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2072,11 +2072,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "458004846.678142"
+            timestampString = "458189206.849927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "704"
-            endingLineNumber = "704"
+            startingLineNumber = "725"
+            endingLineNumber = "725"
             landmarkName = "-computeFlowForBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2200,75 +2200,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-receiveNotification:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/TestViewController.m"
+            timestampString = "458189071.933256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-receiveNotification:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/TestViewController.m"
+            timestampString = "458189071.933256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "-receiveNotification:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/TestViewController.m"
+            timestampString = "458189071.933256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-receiveNotification:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/TestViewController.m"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
             endingLineNumber = "190"
-            landmarkName = "-receiveNotification:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "-receiveNotification:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-receiveNotification:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "-receiveNotification:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
             landmarkName = "-receiveNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2360,11 +2360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-receiveNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2376,11 +2376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457996243.900109"
+            timestampString = "458189206.849927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-processFrameBuffer:withResourceURL:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2408,11 +2408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MotionAnalysis.mm"
-            timestampString = "457996243.900109"
+            timestampString = "458189206.849927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-processFrameBuffer:withResourceURL:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2936,11 +2936,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "-continueToResults"
             landmarkType = "5">
          </BreakpointContent>
@@ -2952,11 +2952,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "-continueToResults"
             landmarkType = "5">
          </BreakpointContent>
@@ -2968,11 +2968,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "-continueToResults"
             landmarkType = "5">
          </BreakpointContent>
@@ -2984,11 +2984,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "-receiveNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3160,11 +3160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
             landmarkName = "-didCaptureUncompressedVideoWithURL:frameBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3176,11 +3176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "-didCaptureVideoWithURL:frameBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3192,11 +3192,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "-didCaptureUncompressedVideoWithURL:frameBuffer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3480,11 +3480,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162876.141002"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3496,11 +3496,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/TestViewController.m"
-            timestampString = "458162866.907892"
+            timestampString = "458189071.933256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3518,6 +3518,38 @@
             startingLineNumber = "269"
             endingLineNumber = "269"
             landmarkName = "+ResultsFromTestRecord:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MotionAnalysis.mm"
+            timestampString = "458189206.849927"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "-processFramesForMovie:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MotionAnalysis.mm"
+            timestampString = "458189206.849927"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-processFramesForMovie:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
