@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *layerSegmentedControl;
 - (IBAction)forwardPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backPressed;

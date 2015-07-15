@@ -122,7 +122,7 @@
             [userInfo setObject:motionObjects forKey:@"MotionObjects"];
             [userInfo setObject:[NSNumber numberWithFloat:averageCount] forKey:@"AverageCount"];
             [userInfo setObject:surfMotionMetric forKey:@"SurfMotionMetric"];
-            [userInfo setObject:surfMotionMetric forKey:@"DiffMotionMetric"];
+            [userInfo setObject:diffMotionMetric forKey:@"DiffMotionMetric"];
         }
         else {
             [userInfo setObject:errorString forKey:@"ErrorString"];

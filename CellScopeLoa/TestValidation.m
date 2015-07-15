@@ -48,7 +48,7 @@
     int maxTrials = 2;
     
     // Hard coded validation parameters. I do not like this.
-    float sigmaFactor = 2.0;
+    float sigmaFactor = 2.2;
     
     while (trials < maxTrials) {
         // Check for variance of data results
