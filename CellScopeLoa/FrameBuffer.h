@@ -23,6 +23,7 @@
 
 #ifdef __cplusplus
 - (cv::Mat)getFrameAtIndex:(NSInteger)index;
+- (cv::Mat)getMaskAtIndex:(NSInteger)index;
 #endif
 
 @end

@@ -34,13 +34,20 @@
     NSNumber* objectsPerMl = [testResults objectForKey:@"ObjectsPerMl"];
     
     NSNumber* reportObjectsPerMl = objectsPerMl;
-    if (objectsPerField.floatValue < 1.0) {
+    NSString* mfmlString;
+    if (objectsPerField.floatValue < 0.06) {
         reportObjectsPerMl = @0.0;
+        mfmlString = @"0 mf/ml";
     }
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    [formatter setMaximumFractionDigits:0];
-    NSString* mfmlString = [formatter stringFromNumber:reportObjectsPerMl];
+    else if (objectsPerField.floatValue < 1.0) {
+        mfmlString = @"< 1000 mf/ml";
+    }
+    else {
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [formatter setMaximumFractionDigits:0];
+        mfmlString = [formatter stringFromNumber:reportObjectsPerMl];
+    }
     
     mffieldLabel.text = [NSString stringWithFormat:@"%.2f mf/field", objectsPerField.floatValue];
     mfmlLabel.text = [NSString stringWithFormat:@"%@ mf/ml", mfmlString];

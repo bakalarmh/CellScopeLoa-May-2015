@@ -13,6 +13,7 @@
 
 @implementation FrameBuffer {
     std::vector<cv::Mat> *buffer;
+    std::vector<cv::Mat> *maskchannels;
     bool cleared;
 }
 
@@ -33,6 +34,11 @@
         buffer->at(i) = frame;
     }
     
+    // MHB create a mask channel
+    maskchannels = new std::vector<cv::Mat>(1);
+    cv::Mat frame(frameHeight.intValue, frameWidth.intValue, CV_8UC1);
+    maskchannels->at(0) = frame;
+    
     return self;
 }
 
@@ -42,6 +48,11 @@
         NSLog(@"!!!!!!!! Read from cleared buffer !!!!!!!!");
     }
     return buffer->at(index);
+}
+
+- (cv::Mat)getMaskAtIndex:(NSInteger)index
+{
+    return maskchannels->at(index);
 }
 
 - (UIImage*)getUIImageFromIndex:(NSInteger)index
@@ -134,6 +145,11 @@
             
             // Copy the color image into the grayscale buffer
             cv::cvtColor(color, grayBuffer, CV_BGRA2GRAY);
+            
+            // MHB improving the blood thresholding. Copy the mask channel for the first frame in the buffer
+            if (index.intValue == 0) {
+                maskchannels->at(0) = rgb[1].clone();
+            }
         });
     }
 }
