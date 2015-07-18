@@ -141,7 +141,7 @@
     int framesToSkip = 1;
     int avgFrames = framesToAvg/framesToSkip;
     int frameIdx = 0;
-    int bubbleThresh=240; //above this threshold, bubbles are identified
+    int bubbleThresh=235; //above this threshold, bubbles are identified
     int backgroundSize=75; //these are the kernel sizes used to estimate the background
     int backgroundSize2=75;
     int backgroundSize3=75;
@@ -208,7 +208,7 @@
     
     // MHB Use the mask channel provided in the frame buffer
     cv::Mat bloodMask = [frameBuffer getMaskAtIndex:0];
-    cv::medianBlur(bloodMask,bloodMask,9);
+    cv::medianBlur(bloodMask,bloodMask,35);
     
     //generate BW mask
     movieFrameMat = [frameBuffer getFrameAtIndex:0];

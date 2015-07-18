@@ -91,8 +91,8 @@
     // Hard coded gains. I am not happy with this.
     AVCaptureWhiteBalanceGains gains;
     gains.redGain = 1.0;
-    gains.greenGain = 1.75;
-    gains.blueGain = 4.0;
+    gains.greenGain = 1.0;
+    gains.blueGain = 1.0;
     [camera setWhiteBalanceGains:gains];
     // [camera setColorTemperatureKelvin:5700];
     

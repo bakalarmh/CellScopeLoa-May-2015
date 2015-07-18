@@ -23,7 +23,11 @@
     // Register first launch
     if ([[NSUserDefaults standardUserDefaults] boolForKey:HasLaunchedKey])
     {
-        // Application has launched previously
+        // Application has launched previously.
+        
+        // Clean up parse cache.
+        [LoaAppDelegate cleanUpPFFileCacheDirectory];
+        [LoaAppDelegate cleanUpPFFilePrivateFilesDirectory];
     }
     else
     {
@@ -191,6 +195,54 @@
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
+        }
+    }
+}
+
++ (void)cleanUpPFFileCacheDirectory
+{
+    NSError *error = nil;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *cacheDirectoryURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *PFFileCacheDirectoryURL = [cacheDirectoryURL URLByAppendingPathComponent:@"Parse/PFFileCache" isDirectory:YES];
+    NSArray *PFFileCacheDirectory = [fileManager contentsOfDirectoryAtURL:PFFileCacheDirectoryURL includingPropertiesForKeys:nil options:0 error:&error];
+    
+    if (!PFFileCacheDirectory || error) {
+        if (error && error.code != NSFileReadNoSuchFileError) {
+            NSLog(@"Error : Retrieving content of directory at URL %@ failed with error : %@", PFFileCacheDirectoryURL, error);
+        }
+        return;
+    }
+    
+    for (NSURL *fileURL in PFFileCacheDirectory) {
+        BOOL success = [fileManager removeItemAtURL:fileURL error:&error];
+        if (!success || error) {
+            NSLog(@"Error : Removing item at URL %@ failed with error : %@", fileURL, error);
+            error = nil;
+        }
+    }
+}
+
++ (void)cleanUpPFFilePrivateFilesDirectory
+{
+    NSError *error = nil;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *libraryDirectory = [[fileManager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *PFFilePrivateDocumentsDirectoryURL = [libraryDirectory URLByAppendingPathComponent:@"Private Documents/Parse/PFFileStaging" isDirectory:YES];
+    NSArray *PFFileCacheDirectory = [fileManager contentsOfDirectoryAtURL:PFFilePrivateDocumentsDirectoryURL includingPropertiesForKeys:nil options:0 error:&error];
+    
+    if (!PFFileCacheDirectory || error) {
+        if (error && error.code != NSFileReadNoSuchFileError) {
+            NSLog(@"Error : Retrieving content of directory at URL %@ failed with error : %@", PFFilePrivateDocumentsDirectoryURL, error);
+        }
+        return;
+    }
+    
+    for (NSURL *fileURL in PFFileCacheDirectory) {
+        BOOL success = [fileManager removeItemAtURL:fileURL error:&error];
+        if (!success || error) {
+            NSLog(@"Error : Removing item at URL %@ failed with error : %@", fileURL, error);
+            error = nil;
         }
     }
 }

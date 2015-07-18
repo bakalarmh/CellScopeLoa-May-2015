@@ -89,7 +89,7 @@
     
     int minimumFields = 5;
     
-    float sigmaTolerance = 1.25;
+    float sigmaTolerance = 1.4;
     
     // Acquire one or two capillaries?
     BOOL twoCapillariesRequired = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
