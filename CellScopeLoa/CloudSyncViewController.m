@@ -34,6 +34,7 @@
 @synthesize testRecordsLabel;
 @synthesize capillaryRecordsLabel;
 @synthesize videosLabel;
+@synthesize syncVideosSwitch;
 @synthesize videosProgressView;
 
 - (void)viewDidLoad {
@@ -43,6 +44,7 @@
     videosProgressView.alpha = 0.0;
     [self performDataCensus];
     [self updateSyncReport];
+    syncVideosSwitch.on = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -181,24 +183,26 @@
     }
     
     // Store the videos for each capillary record
-    for (CapillaryRecord* record in fetchedObjects) {
-        counter = 0;
-        target = videoCount-videoSyncCount;
-        [ParseDataAdaptor syncVideosForCapillaryRecord:record withBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                counter += 1;
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
-                    
-                    // Save record back in managed object context
-                    [managedObjectContext save:nil];
-                    videoSyncCount += 1;
-                    [self updateSyncReport];
-                }];
-            }
-            else {
-                NSLog(@"Parse error: %@", error.description);
-            }
-        }];
+    if (syncVideosSwitch.on == YES) {
+        for (CapillaryRecord* record in fetchedObjects) {
+            counter = 0;
+            target = videoCount-videoSyncCount;
+            [ParseDataAdaptor syncVideosForCapillaryRecord:record withBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    counter += 1;
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+                        
+                        // Save record back in managed object context
+                        [managedObjectContext save:nil];
+                        videoSyncCount += 1;
+                        [self updateSyncReport];
+                    }];
+                }
+                else {
+                    NSLog(@"Parse error: %@", error.description);
+                }
+            }];
+        }
     }
 
 }

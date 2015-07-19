@@ -235,6 +235,15 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="udk-yT-JHA">
                                 <rect key="frame" x="56" y="473" width="209" height="2"/>
                             </progressView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-4j-kM0">
+                                <rect key="frame" x="213" y="289" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sync videos:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COf-nO-dHP">
+                                <rect key="frame" x="7" y="294" width="167" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -243,6 +252,7 @@
                     <connections>
                         <outlet property="capillaryRecordsLabel" destination="qDO-pV-DF9" id="rQc-2I-0cD"/>
                         <outlet property="dataReportLabel" destination="jFI-Is-ZLP" id="iO0-Db-laf"/>
+                        <outlet property="syncVideosSwitch" destination="Bhg-4j-kM0" id="k9r-ZL-JZD"/>
                         <outlet property="testRecordsLabel" destination="BF8-Zc-E3Q" id="ZWk-Oz-nok"/>
                         <outlet property="videosLabel" destination="p9r-nc-9tv" id="ozv-ct-4xB"/>
                         <outlet property="videosProgressView" destination="udk-yT-JHA" id="GsD-Hv-BiU"/>

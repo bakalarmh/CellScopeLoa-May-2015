@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *capillaryRecordsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *videosLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *videosProgressView;
+@property (weak, nonatomic) IBOutlet UISwitch *syncVideosSwitch;
 
 @property (weak, nonatomic) IBOutlet UILabel *testRecordsLabel;
 - (IBAction)syncButtonPressed:(id)sender;
