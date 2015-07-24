@@ -60,18 +60,17 @@
         
         // Store uncompressed video?
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:SaveUncompressedVideoKey];
-        
-        // Store the volume of the capillary. Mf/ml = objects per field / capillaryVolume
-        float capillaryVolume = .00259;
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:capillaryVolume] forKey:CapillaryVolumeKey];
-        
-        // Gold standard multiplier - gold count = Loa count * gold multiplier
-        float goldMultiplier = 2.3348;
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:goldMultiplier] forKey:GoldMultiplierKey];
-        
-        [[NSUserDefaults standardUserDefaults] synchronize];
     }
-
+    
+    // Store the volume of the capillary. Mf/ml = objects per field / capillaryVolume
+    float capillaryVolume = .00259;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:capillaryVolume] forKey:CapillaryVolumeKey];
+    
+    // Gold standard multiplier - gold count = Loa count * gold multiplier
+    float goldMultiplier = 1.9885;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:goldMultiplier] forKey:GoldMultiplierKey];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS

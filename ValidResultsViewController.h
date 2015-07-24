@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *mfmlLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *finishedButtonItem;
 @property (weak, nonatomic) IBOutlet UIView *cardColorView;
+@property (weak, nonatomic) IBOutlet UILabel *tntIDLabel;
 
 - (IBAction)finishedPressed:(id)sender;
 

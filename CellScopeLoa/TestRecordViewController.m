@@ -65,8 +65,13 @@
             if (video.videoDeleted.boolValue == YES) {
                 videosAvailable = NO;
             }
-            float count = video.averageObjectCount.floatValue;
-            string = [string stringByAppendingFormat:@"%.1f, ",count];
+            if ([video.errorString isEqualToString:@"None"]) {
+                float count = video.averageObjectCount.floatValue;
+                string = [string stringByAppendingFormat:@"%.1f, ",count];
+            }
+            else {
+                string = [string stringByAppendingFormat:@"x, "];
+            }
         }
         string = [string substringToIndex:string.length - 2];
         if (i == 0) {

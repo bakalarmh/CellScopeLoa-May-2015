@@ -21,6 +21,7 @@
 @synthesize finishedButtonItem;
 @synthesize mffieldLabel;
 @synthesize mfmlLabel;
+@synthesize tntIDLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,12 +36,12 @@
     
     NSNumber* reportObjectsPerMl = objectsPerMl;
     NSString* mfmlString;
-    if (objectsPerField.floatValue < 0.06) {
+    if (objectsPerField.floatValue < 0.05) {
         reportObjectsPerMl = @0.0;
-        mfmlString = @"0 mf/ml";
+        mfmlString = @"0";
     }
-    else if (objectsPerField.floatValue < 1.0) {
-        mfmlString = @"< 1000 mf/ml";
+    else if (objectsPerField.floatValue < 0.2) {
+        mfmlString = @"< 150";
     }
     else {
         NSNumberFormatter *formatter = [NSNumberFormatter new];
@@ -52,10 +53,12 @@
     mffieldLabel.text = [NSString stringWithFormat:@"%.2f mf/field", objectsPerField.floatValue];
     mfmlLabel.text = [NSString stringWithFormat:@"%@ mf/ml", mfmlString];
     
+    tntIDLabel.text = cslContext.activeTestRecord.patientNIHID;
+    
     if (objectsPerMl.floatValue < 10000) {
         cardColorView.backgroundColor = [UIColor greenColor];
     }
-    else if (objectsPerMl.floatValue < 23000) {
+    else if (objectsPerMl.floatValue < 20000) {
         cardColorView.backgroundColor = [UIColor yellowColor];
     }
     else {
