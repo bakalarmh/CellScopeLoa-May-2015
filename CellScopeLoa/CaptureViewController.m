@@ -37,6 +37,7 @@
 @synthesize managedObjectContext;
 @synthesize zoomImageView;
 @synthesize cslContext;
+@synthesize waitingLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,6 +65,7 @@
     zoomImageView.layer.borderColor = [UIColor whiteColor].CGColor;
     zoomImageView.layer.borderWidth = 1.0f;
     zoomImageView.alpha = 0.0;
+    waitingLabel.alpha = 0.0;
     
     // Set the capture state
     fieldIndex = 0;
@@ -272,6 +274,7 @@
             checkingFocusFrame = NO;
             [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
                 [camera stopSendingFrames];
+                waitingLabel.alpha = 0.0;
                 [self launchDataAcquisition];
             }];
             
@@ -318,7 +321,8 @@
     //[camera setFocusLensPosition:[NSNumber numberWithFloat:0.0]];
     
     [camera autoFocusStateOn];
-    int msdelay = 2500;
+    int msdelay = 12500;
+    waitingLabel.alpha = 1.0;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
         [camera autoFocusStateOff];
         [self checkFocusFrame];

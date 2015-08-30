@@ -55,10 +55,10 @@
     
     tntIDLabel.text = cslContext.activeTestRecord.patientNIHID;
     
-    if (objectsPerMl.floatValue < 10000) {
+    if (objectsPerMl.floatValue < 5000) {
         cardColorView.backgroundColor = [UIColor greenColor];
     }
-    else if (objectsPerMl.floatValue < 20000) {
+    else if (objectsPerMl.floatValue < 26000) {
         cardColorView.backgroundColor = [UIColor yellowColor];
     }
     else {

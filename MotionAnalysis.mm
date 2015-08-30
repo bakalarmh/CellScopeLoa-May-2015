@@ -655,7 +655,7 @@
     float max_distance = 2.5;
     int maxFeatures = 500;
     int minHessian = 50;
-    float flowThreshold = 0.35;
+    float flowThreshold = 0.5;
     
     // Algorithm output accumulators
     float x_motion = 0.0;

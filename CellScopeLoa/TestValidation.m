@@ -79,7 +79,6 @@
     BOOL videoErrorCheck = YES;
     BOOL videoCountCheck = YES;
     BOOL videoObjectCheck = YES;
-    
     BOOL fieldVarianceCheck = YES;
     BOOL capillaryVarianceCheck = YES;
     BOOL validFieldCountCheck = YES;
@@ -89,7 +88,7 @@
     
     int minimumFields = 5;
     
-    float sigmaTolerance = 1.4;
+    float sigmaTolerance = 1.7;
     
     // Acquire one or two capillaries?
     BOOL twoCapillariesRequired = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];

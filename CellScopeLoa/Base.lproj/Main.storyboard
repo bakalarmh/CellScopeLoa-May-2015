@@ -1052,6 +1052,12 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOB-g4-dma">
+                                        <rect key="frame" x="124" y="219" width="72" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1077,6 +1083,7 @@
                         <outlet property="focusSlider" destination="jUB-vi-CL2" id="wTR-Dc-zEt"/>
                         <outlet property="focusWarningLabel" destination="tI2-9n-l5H" id="x5c-Qr-BgJ"/>
                         <outlet property="metricLabel" destination="LtU-b4-IFv" id="YdP-Pd-vuM"/>
+                        <outlet property="waitingLabel" destination="mOB-g4-dma" id="atH-Yf-5Mp"/>
                         <outlet property="zoomImageView" destination="PHh-Cs-CC6" id="qHX-NT-pxp"/>
                     </connections>
                 </viewController>
