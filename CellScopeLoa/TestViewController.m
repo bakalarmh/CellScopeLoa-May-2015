@@ -119,6 +119,9 @@
     
     deviceIDLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimpleDeviceIDKey];
     cellscopeIDLabel.text = cslContext.activeTestRecord.simpleTestID;
+    
+    // Can we lock the servo only on load?
+    [cslContext.loaDevice servoPowerUp];
 }
 
 - (void)viewDidAppear:(BOOL)animated

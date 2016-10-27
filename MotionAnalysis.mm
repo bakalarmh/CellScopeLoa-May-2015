@@ -214,7 +214,6 @@
     movieFrameMat = [frameBuffer getFrameAtIndex:0];
     // threshold(movieFrameMat, movieFrameMatBW, bubbleThresh, 255, CV_THRESH_BINARY);
     threshold(bloodMask, movieFrameMatBW, bubbleThresh, 255, CV_THRESH_BINARY);
-
     
     int blurKernel=7;
     cv::Mat element0 = getStructuringElement(CV_SHAPE_ELLIPSE, cv::Size(blurKernel,blurKernel ), cv::Point( (blurKernel-1)/2,(blurKernel-1)/2 ));
@@ -655,7 +654,9 @@
     float max_distance = 2.5;
     int maxFeatures = 500;
     int minHessian = 50;
-    float flowThreshold = 0.5;
+    
+    // Flow threshold is set high! MHB Debug 8-18-16
+    float flowThreshold = 1.0;
     
     // Algorithm output accumulators
     float x_motion = 0.0;
@@ -791,6 +792,7 @@
     }
     
     float flow = sqrtf(y_motion*y_motion);
+    NSLog(@"Flow = %f", flow);
     if (flow > flowThreshold) {
         return YES;
     }

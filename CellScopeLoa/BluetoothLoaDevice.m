@@ -30,15 +30,6 @@
     return self;
 }
 
-- (void)servoReturn
-{
-    UInt8 buf[3] = {0x03, 0x00, 0x00};
-    buf[1]= 32;
-    NSData *data = [[NSData alloc] initWithBytes:buf length:3];
-    [ble write:data];
-    currentPos = 32;
-}
-
 - (void)LEDOn
 {
     UInt8 buf[3] = {0x05, 0x00, 0x00};
@@ -111,50 +102,56 @@
     //NSLog (@"Got the string: %@", (NSString*)[iled1Timer userInfo]);
 }
 
-- (void)servoLoadPosition
+- (void)servoPowerUp
 {
-    UInt8 buf[3] = {0x03, 0x00, 0x00};
-    buf[1]= 25;
+    UInt8 buf[3] = {0x13, 0x00, 0x00};
     NSData *data = [[NSData alloc] initWithBytes:buf length:3];
     [ble write:data];
-    currentPos = 25;
 }
 
-- (void)servoFarPostition
+- (void)servoPowerDown
 {
-    UInt8 buf[3] = {0x03, 0x00, 0x00};
-    buf[1]= 137;
+    UInt8 buf[3] = {0x14, 0x00, 0x00};
     NSData *data = [[NSData alloc] initWithBytes:buf length:3];
     [ble write:data];
-    currentPos = 137;
+}
+
+- (void)servoSync
+{
+    UInt8 buf[3] = {0x17, 0x00, 0x00};
+    NSData *data = [[NSData alloc] initWithBytes:buf length:3];
+    [ble write:data];
+}
+
+- (void)servoMoveToPos:(int)pos
+{
+    UInt8 buf[3] = {0x15, 0x00, 0x00};
+    buf[1]= pos;
+    NSData *data = [[NSData alloc] initWithBytes:buf length:3];
+    [ble write:data];
+    currentPos = pos;
+}
+
+- (void)servoLoadPosition
+{
+    [self servoMoveToPos:25];
+    [self servoPowerUp];
+    [self servoSync];
+    [self servoPowerDown];
 }
 
 - (void)servoAdvance
 {
-    UInt8 buf[3] = {0x03, 0x00, 0x00};
+    
     int testPos = currentPos + servoStep;
     if (testPos > 137) {
         NSLog(@"Servo is at maximum position");
     }
     else {
-        buf[1] = testPos;
-        NSData *data = [[NSData alloc] initWithBytes:buf length:3];
-        [ble write:data];
-        currentPos = testPos;
-    }
-}
-
--(void) servoPartialAdvance:(float)fraction
-{
-    UInt8 buf[3] = {0x03, 0x00, 0x00};
-    int testPos = currentPos + (int)servoStep*fraction;
-    if (testPos > 137) {
-        NSLog(@"Servo is at maximum position");
-    }
-    else {
-        buf[1] = testPos;
-        NSData *data = [[NSData alloc] initWithBytes:buf length:3];
-        [ble write:data];
+        [self servoMoveToPos:testPos];
+        [self servoPowerUp];
+        [self servoSync];
+        [self servoPowerDown];
         currentPos = testPos;
     }
 }

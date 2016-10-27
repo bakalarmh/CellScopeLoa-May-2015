@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B0C49D71B42E2AC007AF237 /* DiskSpaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C49D61B42E2AC007AF237 /* DiskSpaceManager.m */; };
 		9B0C92381B05801B008F70E3 /* FrameBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C92371B05801B008F70E3 /* FrameBuffer.mm */; };
-		9B0C923A1B058031008F70E3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0C92391B058030008F70E3 /* opencv2.framework */; };
 		9B0C923D1B058055008F70E3 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C923C1B058055008F70E3 /* UIImage+OpenCV.mm */; };
-		9B0C923F1B0583A9008F70E3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0C923E1B0583A9008F70E3 /* libc++.dylib */; };
 		9B0C92461B05899B008F70E3 /* MotionAnalysis.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C92451B05899B008F70E3 /* MotionAnalysis.mm */; };
 		9B13268F1B03B64800FB694B /* WhiteBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B13268E1B03B64800FB694B /* WhiteBalanceViewController.m */; };
 		9B1326921B03BB7100FB694B /* ExposureISOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1326911B03BB7100FB694B /* ExposureISOViewController.m */; };
@@ -27,7 +25,6 @@
 		9B3B93CC1AFE7F7F00C391CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B93CA1AFE7F7F00C391CC /* LaunchScreen.xib */; };
 		9B3B93D81AFE7F7F00C391CC /* CellScopeLoaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B93D71AFE7F7F00C391CC /* CellScopeLoaTests.m */; };
 		9B3B93E41AFE804E00C391CC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93E21AFE804E00C391CC /* Bolts.framework */; };
-		9B3B93E51AFE804E00C391CC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93E31AFE804E00C391CC /* Parse.framework */; };
 		9B3B93E71AFE807A00C391CC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93E61AFE807A00C391CC /* AudioToolbox.framework */; };
 		9B3B93E91AFE807F00C391CC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93E81AFE807F00C391CC /* CFNetwork.framework */; };
 		9B3B93EB1AFE808400C391CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93EA1AFE808400C391CC /* CoreGraphics.framework */; };
@@ -37,8 +34,6 @@
 		9B3B93F31AFE809900C391CC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93F21AFE809900C391CC /* Security.framework */; };
 		9B3B93F51AFE809E00C391CC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93F41AFE809E00C391CC /* StoreKit.framework */; };
 		9B3B93F71AFE80A500C391CC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93F61AFE80A500C391CC /* SystemConfiguration.framework */; };
-		9B3B93F91AFE80AC00C391CC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93F81AFE80AC00C391CC /* libz.dylib */; };
-		9B3B93FB1AFE80B200C391CC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3B93FA1AFE80B200C391CC /* libsqlite3.dylib */; };
 		9B3B94011AFE87F100C391CC /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B94001AFE87F100C391CC /* MenuTableViewController.m */; };
 		9B3B94041AFE8B1900C391CC /* BarcodeIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B94031AFE8B1900C391CC /* BarcodeIDViewController.m */; };
 		9B3B940A1AFE980B00C391CC /* ManualIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B94091AFE980B00C391CC /* ManualIDViewController.m */; };
@@ -46,6 +41,7 @@
 		9B3B94101AFEA25900C391CC /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B940F1AFEA25900C391CC /* CaptureViewController.m */; };
 		9B4792461B0D93E400460CA3 /* DataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4792451B0D93E400460CA3 /* DataTableViewController.m */; };
 		9B6AF2601B503A38005552A7 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6AF25F1B503A38005552A7 /* Video.m */; };
+		9B7DCEA11DAFFC2C006C3200 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7DCEA01DAFFC2C006C3200 /* Parse.framework */; };
 		9B84182E1AFEC839008DBA7B /* TextBluetoothScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B84182D1AFEC839008DBA7B /* TextBluetoothScanner.m */; };
 		9B8418341AFEC97A008DBA7B /* DeviceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8418331AFEC97A008DBA7B /* DeviceTableViewController.m */; };
 		9B8418371AFFD9D1008DBA7B /* LLCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8418361AFFD9D1008DBA7B /* LLCamera.m */; };
@@ -58,6 +54,7 @@
 		9B84185C1B00390F008DBA7B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B84185B1B00390F008DBA7B /* AdSupport.framework */; };
 		9B84186D1B01201E008DBA7B /* SettingsPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B84186C1B01201E008DBA7B /* SettingsPasswordViewController.m */; };
 		9B8418701B01239D008DBA7B /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B84186F1B01239D008DBA7B /* SettingsTableViewController.m */; };
+		9BA882E71DC275BE008C00B3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA882E61DC275BE008C00B3 /* opencv2.framework */; };
 		9BAFD6D91B06A489001DC361 /* TestValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6D81B06A489001DC361 /* TestValidation.m */; };
 		9BAFD6DF1B06AB12001DC361 /* ValidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */; };
 		9BAFD6E21B09148F001DC361 /* BluetoothLoaDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */; };
@@ -81,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B0852AA1DC274B10097B081 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../opencv2.framework; sourceTree = "<group>"; };
 		9B0C49D51B42E2AC007AF237 /* DiskSpaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskSpaceManager.h; sourceTree = "<group>"; };
 		9B0C49D61B42E2AC007AF237 /* DiskSpaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskSpaceManager.m; sourceTree = "<group>"; };
 		9B0C49D81B49D27D007AF237 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -88,10 +86,8 @@
 		9B0C49DA1B49D27D007AF237 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B0C92361B05801B008F70E3 /* FrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameBuffer.h; path = CellScopeLoa/FrameBuffer.h; sourceTree = "<group>"; };
 		9B0C92371B05801B008F70E3 /* FrameBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FrameBuffer.mm; path = CellScopeLoa/FrameBuffer.mm; sourceTree = "<group>"; };
-		9B0C92391B058030008F70E3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../../Dropbox/Projects/opencv2.framework; sourceTree = "<group>"; };
 		9B0C923B1B058055008F70E3 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
 		9B0C923C1B058055008F70E3 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
-		9B0C923E1B0583A9008F70E3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		9B0C92401B0584F4008F70E3 /* CellScopeLoa-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CellScopeLoa-Prefix.pch"; sourceTree = "<group>"; };
 		9B0C92441B05899B008F70E3 /* MotionAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionAnalysis.h; sourceTree = "<group>"; };
 		9B0C92451B05899B008F70E3 /* MotionAnalysis.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MotionAnalysis.mm; sourceTree = "<group>"; };
@@ -121,7 +117,6 @@
 		9B3B93D61AFE7F7F00C391CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B3B93D71AFE7F7F00C391CC /* CellScopeLoaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellScopeLoaTests.m; sourceTree = "<group>"; };
 		9B3B93E21AFE804E00C391CC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		9B3B93E31AFE804E00C391CC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9B3B93E61AFE807A00C391CC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9B3B93E81AFE807F00C391CC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		9B3B93EA1AFE808400C391CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -131,8 +126,6 @@
 		9B3B93F21AFE809900C391CC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9B3B93F41AFE809E00C391CC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9B3B93F61AFE80A500C391CC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9B3B93F81AFE80AC00C391CC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		9B3B93FA1AFE80B200C391CC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		9B3B93FF1AFE87F100C391CC /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
 		9B3B94001AFE87F100C391CC /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
 		9B3B94021AFE8B1900C391CC /* BarcodeIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeIDViewController.h; sourceTree = "<group>"; };
@@ -147,6 +140,7 @@
 		9B4792451B0D93E400460CA3 /* DataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTableViewController.m; sourceTree = "<group>"; };
 		9B6AF25E1B503A38005552A7 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		9B6AF25F1B503A38005552A7 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		9B7DCEA01DAFFC2C006C3200 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../../../../../../Volumes/Storage/Dropbox/Projects/Parse.framework; sourceTree = "<group>"; };
 		9B8418281AFEC662008DBA7B /* BluetoothScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothScanner.h; sourceTree = "<group>"; };
 		9B84182A1AFEC7CE008DBA7B /* BluetoothBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothBoard.h; sourceTree = "<group>"; };
 		9B84182C1AFEC839008DBA7B /* TextBluetoothScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBluetoothScanner.h; sourceTree = "<group>"; };
@@ -172,6 +166,7 @@
 		9B84186C1B01201E008DBA7B /* SettingsPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsPasswordViewController.m; sourceTree = "<group>"; };
 		9B84186E1B01239D008DBA7B /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		9B84186F1B01239D008DBA7B /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		9BA882E61DC275BE008C00B3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = SOURCE_ROOT; };
 		9BAFD6D71B06A489001DC361 /* TestValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestValidation.h; sourceTree = "<group>"; };
 		9BAFD6D81B06A489001DC361 /* TestValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestValidation.m; sourceTree = "<group>"; };
 		9BAFD6DD1B06AB12001DC361 /* ValidResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidResultsViewController.h; path = ../ValidResultsViewController.h; sourceTree = "<group>"; };
@@ -198,21 +193,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B0C923F1B0583A9008F70E3 /* libc++.dylib in Frameworks */,
+				9BA882E71DC275BE008C00B3 /* opencv2.framework in Frameworks */,
 				9B84185C1B00390F008DBA7B /* AdSupport.framework in Frameworks */,
-				9B3B93FB1AFE80B200C391CC /* libsqlite3.dylib in Frameworks */,
-				9B3B93F91AFE80AC00C391CC /* libz.dylib in Frameworks */,
-				9B0C923A1B058031008F70E3 /* opencv2.framework in Frameworks */,
 				9B3B93F71AFE80A500C391CC /* SystemConfiguration.framework in Frameworks */,
 				9B3B93F51AFE809E00C391CC /* StoreKit.framework in Frameworks */,
 				9B3B93F31AFE809900C391CC /* Security.framework in Frameworks */,
 				9B3B93F11AFE809300C391CC /* QuartzCore.framework in Frameworks */,
+				9B7DCEA11DAFFC2C006C3200 /* Parse.framework in Frameworks */,
 				9B3B93EF1AFE808F00C391CC /* MobileCoreServices.framework in Frameworks */,
 				9B3B93ED1AFE808900C391CC /* CoreLocation.framework in Frameworks */,
 				9B3B93EB1AFE808400C391CC /* CoreGraphics.framework in Frameworks */,
 				9B3B93E91AFE807F00C391CC /* CFNetwork.framework in Frameworks */,
 				9B3B93E71AFE807A00C391CC /* AudioToolbox.framework in Frameworks */,
-				9B3B93E51AFE804E00C391CC /* Parse.framework in Frameworks */,
 				9B3B93E41AFE804E00C391CC /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,11 +348,10 @@
 		9B3B93E11AFE803A00C391CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9B0C923E1B0583A9008F70E3 /* libc++.dylib */,
-				9B0C92391B058030008F70E3 /* opencv2.framework */,
+				9BA882E61DC275BE008C00B3 /* opencv2.framework */,
+				9B0852AA1DC274B10097B081 /* opencv2.framework */,
+				9B7DCEA01DAFFC2C006C3200 /* Parse.framework */,
 				9B84185B1B00390F008DBA7B /* AdSupport.framework */,
-				9B3B93FA1AFE80B200C391CC /* libsqlite3.dylib */,
-				9B3B93F81AFE80AC00C391CC /* libz.dylib */,
 				9B3B93F61AFE80A500C391CC /* SystemConfiguration.framework */,
 				9B3B93F41AFE809E00C391CC /* StoreKit.framework */,
 				9B3B93F21AFE809900C391CC /* Security.framework */,
@@ -371,7 +362,6 @@
 				9B3B93E81AFE807F00C391CC /* CFNetwork.framework */,
 				9B3B93E61AFE807A00C391CC /* AudioToolbox.framework */,
 				9B3B93E21AFE804E00C391CC /* Bolts.framework */,
-				9B3B93E31AFE804E00C391CC /* Parse.framework */,
 			);
 			name = Frameworks;
 			path = CellScopeLoa;
@@ -698,15 +688,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CellScopeLoa",
 					/Users/mhbakalar/Dropbox/Projects,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CellScopeLoa/CellScopeLoa-Prefix.pch";
 				INFOPLIST_FILE = CellScopeLoa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.fletchlab.CellScopeLoa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -718,15 +711,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CellScopeLoa",
 					/Users/mhbakalar/Dropbox/Projects,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CellScopeLoa/CellScopeLoa-Prefix.pch";
 				INFOPLIST_FILE = CellScopeLoa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.fletchlab.CellScopeLoa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

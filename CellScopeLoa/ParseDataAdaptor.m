@@ -16,16 +16,31 @@
 
 + (void)syncTestRecord:(TestRecord*)record WithBlock:(void (^)(BOOL, NSError*))completionBlock
 {
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        NSLog(@"Current user: %@", currentUser.username);
+        //run the query here
+    }
+    else {
+        NSLog(@"user not logged in");
+    }
+    
     PFObject *post = [PFObject objectWithClassName:@"TestRecord"];
     
+    /*
     [post setObject:record.boardUUID forKey:@"boardUUID"];
     [post setObject:record.testUUID forKey:@"testUUID"];
     [post setObject:record.created forKey:@"created"];
-    [post setObject:record.deviceID forKey:@"deviceID"];
+    
     [post setObject:record.localTimeZone forKey:@"localTimeZone"];
     [post setObject:record.phoneIdentifier forKey:@"phoneIdentifier"];
-    [post setObject:record.simplePhoneID forKey:@"simplePhoneID"];
-    [post setObject:record.simpleTestID forKey:@"simpleTestID"];
+    
+    if (record.deviceID != nil) {
+        [post setObject:record.deviceID forKey:@"deviceID"];
+    }
+    if (record.simplePhoneID != nil) {
+        [post setObject:record.simplePhoneID forKey:@"simplePhoneID"];
+    }
     
     if (record.state != nil) {
         [post setObject:record.state forKey:@"state"];
@@ -51,6 +66,7 @@
     if (record.testNIHID != nil) {
         [post setObject:record.testNIHID forKey:@"testNIHID"];
     }
+    */
 
     // Save it to Parse with completion block
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

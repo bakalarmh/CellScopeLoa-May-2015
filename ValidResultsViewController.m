@@ -58,7 +58,7 @@
     if (objectsPerMl.floatValue < 5000) {
         cardColorView.backgroundColor = [UIColor greenColor];
     }
-    else if (objectsPerMl.floatValue < 26000) {
+    else if (objectsPerMl.floatValue < 20000) {
         cardColorView.backgroundColor = [UIColor yellowColor];
     }
     else {

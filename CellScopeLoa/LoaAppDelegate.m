@@ -74,11 +74,14 @@
     
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
-    [Parse enableLocalDatastore];
+    // [Parse enableLocalDatastore];
     
     // Initialize Parse.
     [Parse setApplicationId:@"vitn53WDyyclIvAXm8TgKVOdfsQUnEN83l17Dnyq"
                   clientKey:@"LCRoIkrX6riioaS0uHwlqUtN0hw4W6Xfn7vH3wAF"];
+    
+    // Enable revokable sessions
+    // [PFUser enableRevocableSessionInBackground];
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

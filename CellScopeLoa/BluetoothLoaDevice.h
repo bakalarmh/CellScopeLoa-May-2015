@@ -19,11 +19,15 @@
 
 -(BOOL) connected;
 -(void) connectBLE;
+-(void) servoPowerUp;
+-(void) servoPowerDown;
+-(void) servoMoveToPos:(int)pos;
 -(void) servoReturn;
--(void) servoPartialAdvance:(float)fraction;
 -(void) servoAdvance;
+-(void) servoSync;
+-(void) servoLock;
+-(void) servoUnlock;
 -(void) servoLoadPosition;
--(void) servoFarPostition;
 -(void) servoConfigure:(int) fields;
 -(void) LEDOn;
 -(void) LEDOff;

@@ -51,7 +51,9 @@
     // Turn on the imaging LED and initialize the capillary position
     if (cslContext.loaDevice != nil) {
         [cslContext.loaDevice LEDOn];
-        [cslContext.loaDevice servoLoadPosition];
+        // Servo is already in the load position
+        //[cslContext.loaDevice servoLoadPosition];
+        //[cslContext.loaDevice servoPowerUp];
     }
     
     // Do not default to manual focus
@@ -163,7 +165,7 @@
         if (cslContext.loaDevice != nil) {
             [cslContext.loaDevice servoAdvance];
         }
-        int msdelay = 250;
+        int msdelay = 2000;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
             
             // MHB Focus Test
@@ -316,13 +318,14 @@
         cameraButton.enabled = NO;
     }];
     
-    // MHB Focus Test
+    // MHB Focus Testrr
     [camera setImmediateAutoFocusState];
     //[camera setFocusLensPosition:[NSNumber numberWithFloat:0.0]];
     
     [camera autoFocusStateOn];
-    int msdelay = 12500;
+    int msdelay = 2000;
     waitingLabel.alpha = 1.0;
+    [cslContext.loaDevice servoPowerDown];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
         [camera autoFocusStateOff];
         [self checkFocusFrame];
@@ -347,6 +350,7 @@
     // Turn off the imaging LED
     if (cslContext.loaDevice != nil) {
         [cslContext.loaDevice LEDOff];
+        [cslContext.loaDevice servoPowerDown];
     }
     
     // Store the latest manual focus setting as default
