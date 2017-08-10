@@ -13,6 +13,7 @@
 
 + (void)ManageDiskSpace:(NSManagedObjectContext*)managedObjectContext;
 + (void)ManageUncompressedVideos:(NSManagedObjectContext*)managedObjectContext;
++ (void)DeleteAllVideos:(NSManagedObjectContext*)managedObjectContext;
 + (NSNumber*)FreeDiskSpace;
 
 @end

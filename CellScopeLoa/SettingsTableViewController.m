@@ -22,7 +22,6 @@
 @synthesize phoneIDField;
 @synthesize deviceIDField;
 @synthesize diskSpaceLabel;
-@synthesize twoCapillariesSwitch;
 @synthesize uncompressedVideoSwitch;
 
 - (void)viewDidLoad {
@@ -33,7 +32,6 @@
 
     phoneIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimplePhoneIDKey];
     deviceIDField.text = [[NSUserDefaults standardUserDefaults] objectForKey:SimpleDeviceIDKey];
-    twoCapillariesSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:RequireTwoCapillariesKey] boolValue];
     uncompressedVideoSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SaveUncompressedVideoKey] boolValue];
     
     NSNumber* diskSpace = [DiskSpaceManager FreeDiskSpace];
@@ -61,11 +59,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (IBAction)twoCapillariesSwitchValueChanged:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:twoCapillariesSwitch.on] forKey:RequireTwoCapillariesKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 - (IBAction)uncompressedVideoSwitchValueChanged:(id)sender {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:uncompressedVideoSwitch.on] forKey:SaveUncompressedVideoKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -76,13 +69,34 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ((indexPath.section == 2) && (indexPath.row == 1)) {
-        [DiskSpaceManager ManageUncompressedVideos:managedObjectContext];
-        NSNumber* diskSpace = [DiskSpaceManager FreeDiskSpace];
-        diskSpaceLabel.text = [NSString stringWithFormat:@"%lld MB", diskSpace.longLongValue];
-    }
+- (IBAction)deleteVideosPressed:(id)sender {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Delete videos?"
+                                                                   message:@"This action will delete all videos from the device. Are you sure you want to continue?"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *delete = [UIAlertAction
+                             actionWithTitle:@"Delete videos"
+                             style:UIAlertActionStyleDestructive
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [DiskSpaceManager DeleteAllVideos:managedObjectContext];
+                                 NSNumber* diskSpace = [DiskSpaceManager FreeDiskSpace];
+                                 diskSpaceLabel.text = [NSString stringWithFormat:@"%lld MB", diskSpace.longLongValue];
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+    
+    UIAlertAction *cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDestructive
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+    
+    
+    [alert addAction:delete];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

@@ -339,6 +339,7 @@
     
     video.resourceURL = localPath;
     video.created = [NSDate date];
+    video.videoDeleted = [NSNumber numberWithBool:NO];
     video.capillaryIndex = cslContext.activeCapillaryRecord.capillaryIndex;
     video.fieldIndex = [NSNumber numberWithInteger:fieldsAcquired];
     video.testUUID = cslContext.activeTestRecord.testUUID;

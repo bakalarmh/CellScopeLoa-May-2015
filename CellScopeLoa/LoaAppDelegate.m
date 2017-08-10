@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import "MenuTableViewController.h"
 #import "constants.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSCognito/AWSCognito.h>
 
 @interface LoaAppDelegate ()
 
@@ -75,6 +77,7 @@
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
     // [Parse enableLocalDatastore];
+    
     
     // Initialize Parse.
     [Parse setApplicationId:@"vitn53WDyyclIvAXm8TgKVOdfsQUnEN83l17Dnyq"

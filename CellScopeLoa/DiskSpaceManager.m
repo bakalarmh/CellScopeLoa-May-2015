@@ -51,12 +51,77 @@
     }
 }
 
+// Delete uncompressed videos from old records
++ (void)DeleteAllVideos:(NSManagedObjectContext*)managedObjectContext;
+{
+    NSMutableArray* videoTrashBin = [self findAllVideosToDelete:managedObjectContext];
+    if (videoTrashBin.count == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not find videos to delete." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    for (Video* video in videoTrashBin) {
+        [self deleteVideoFile:video withContext:managedObjectContext];
+    }
+}
+
 + (NSNumber*)FreeDiskSpace
 {
     uint64_t totalFreeSpace = [LoaAppDelegate FreeDiskSpace];
     uint64_t freeMB = ((totalFreeSpace/1024ll)/1024ll);
     NSNumber* freeSpace = [NSNumber numberWithLongLong:freeMB];
     return freeSpace;
+}
+
++ (NSMutableArray*)findAllVideosToDelete:(NSManagedObjectContext*)managedObjectContext
+{
+    NSInteger count = 0;
+    NSArray* testRecords;
+
+    // Select records that were created before today
+    NSDate *today = [NSDate date];
+    
+    NSError *error;
+    
+    NSString *sortKey = @"created";
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:NO];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(created < %@)", today];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TestRecord"
+                                              inManagedObjectContext:managedObjectContext];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [fetchRequest setEntity:entity];
+    testRecords = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    count = 0;
+    for (TestRecord* testRecord in testRecords) {
+        BOOL cleaned = YES;
+        for (CapillaryRecord* capillaryRecord in testRecord.capillaryRecords) {
+            for (Video* video in capillaryRecord.videos) {
+                if (video.videoDeleted.boolValue == NO) {
+                    cleaned = NO;
+                }
+            }
+        }
+        if (cleaned == NO) {
+            count += 1;
+        }
+    }
+    
+    NSMutableArray* videoTrashBin = [[NSMutableArray alloc] init];
+    for (TestRecord* testRecord in testRecords) {
+        for (CapillaryRecord* capillaryRecord in testRecord.capillaryRecords) {
+            for (Video* video in capillaryRecord.videos) {
+                // If the video has not yet been deleted
+                if (video.videoDeleted.boolValue == NO) {
+                    // The video is slated for deletion
+                    [videoTrashBin addObject:video];
+                }
+            }
+        }
+    }
+    return videoTrashBin;
 }
 
 + (NSMutableArray*)findVideosToDelete:(NSManagedObjectContext*)managedObjectContext daysOld:(NSInteger)days

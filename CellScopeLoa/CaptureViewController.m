@@ -323,7 +323,7 @@
     //[camera setFocusLensPosition:[NSNumber numberWithFloat:0.0]];
     
     [camera autoFocusStateOn];
-    int msdelay = 2000;
+    int msdelay = 30000;
     waitingLabel.alpha = 1.0;
     [cslContext.loaDevice servoPowerDown];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, msdelay * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{

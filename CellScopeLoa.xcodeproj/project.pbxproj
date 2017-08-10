@@ -18,6 +18,8 @@
 		9B2209F61B1B8E3900093516 /* MotionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2209F51B1B8E3900093516 /* MotionObject.m */; };
 		9B2209F91B1B966E00093516 /* VideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2209F81B1B966E00093516 /* VideosViewController.m */; };
 		9B2209FC1B1BB4F400093516 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2209FB1B1BB4F400093516 /* ImageScrollView.m */; };
+		9B304CE61DC2C0500044D411 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B304CE51DC2C0500044D411 /* AWSCore.framework */; };
+		9B304CE71DC2C0500044D411 /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B304CE51DC2C0500044D411 /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9B3B93BB1AFE7F7F00C391CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B93BA1AFE7F7F00C391CC /* main.m */; };
 		9B3B93BE1AFE7F7F00C391CC /* LoaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B93BD1AFE7F7F00C391CC /* LoaAppDelegate.m */; };
 		9B3B93C71AFE7F7F00C391CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B93C51AFE7F7F00C391CC /* Main.storyboard */; };
@@ -54,6 +56,17 @@
 		9B84185C1B00390F008DBA7B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B84185B1B00390F008DBA7B /* AdSupport.framework */; };
 		9B84186D1B01201E008DBA7B /* SettingsPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B84186C1B01201E008DBA7B /* SettingsPasswordViewController.m */; };
 		9B8418701B01239D008DBA7B /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B84186F1B01239D008DBA7B /* SettingsTableViewController.m */; };
+		9B89B9AC1DC6AE6500EFD2DD /* DynamoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89B9AB1DC6AE6500EFD2DD /* DynamoVideo.m */; };
+		9B9D7D191DC2F077004F7EC3 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D7D161DC2F077004F7EC3 /* AWSCognito.framework */; };
+		9B9D7D1A1DC2F077004F7EC3 /* AWSCognito.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D7D161DC2F077004F7EC3 /* AWSCognito.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9B9D7D1B1DC2F077004F7EC3 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D7D171DC2F077004F7EC3 /* AWSCognitoIdentityProvider.framework */; };
+		9B9D7D1C1DC2F077004F7EC3 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D7D171DC2F077004F7EC3 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9B9D7D1D1DC2F077004F7EC3 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D7D181DC2F077004F7EC3 /* AWSDynamoDB.framework */; };
+		9B9D7D1E1DC2F077004F7EC3 /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D7D181DC2F077004F7EC3 /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9B9D7D201DC2F0CA004F7EC3 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D7D1F1DC2F0CA004F7EC3 /* AWSS3.framework */; };
+		9B9D7D211DC2F0CA004F7EC3 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D7D1F1DC2F0CA004F7EC3 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9B9D7D241DC2FA37004F7EC3 /* DynamoTestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D7D231DC2FA37004F7EC3 /* DynamoTestRecord.m */; };
+		9B9D7D271DC2FC66004F7EC3 /* DynamoDataAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D7D261DC2FC66004F7EC3 /* DynamoDataAdaptor.m */; };
 		9BA882E71DC275BE008C00B3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA882E61DC275BE008C00B3 /* opencv2.framework */; };
 		9BAFD6D91B06A489001DC361 /* TestValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6D81B06A489001DC361 /* TestValidation.m */; };
 		9BAFD6DF1B06AB12001DC361 /* ValidResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFD6DE1B06AB12001DC361 /* ValidResultsViewController.m */; };
@@ -76,6 +89,24 @@
 			remoteInfo = CellScopeLoa;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9B304CE41DC2BFA30044D411 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9B9D7D1A1DC2F077004F7EC3 /* AWSCognito.framework in Embed Frameworks */,
+				9B9D7D1C1DC2F077004F7EC3 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
+				9B9D7D1E1DC2F077004F7EC3 /* AWSDynamoDB.framework in Embed Frameworks */,
+				9B304CE71DC2C0500044D411 /* AWSCore.framework in Embed Frameworks */,
+				9B9D7D211DC2F0CA004F7EC3 /* AWSS3.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9B0852AA1DC274B10097B081 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../opencv2.framework; sourceTree = "<group>"; };
@@ -105,6 +136,7 @@
 		9B2209F81B1B966E00093516 /* VideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosViewController.m; sourceTree = "<group>"; };
 		9B2209FA1B1BB4F400093516 /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
 		9B2209FB1B1BB4F400093516 /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
+		9B304CE51DC2C0500044D411 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = ../Carthage/Build/iOS/AWSCore.framework; sourceTree = "<group>"; };
 		9B3B93B51AFE7F7F00C391CC /* CellScopeLoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CellScopeLoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3B93B91AFE7F7F00C391CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B3B93BA1AFE7F7F00C391CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -166,6 +198,16 @@
 		9B84186C1B01201E008DBA7B /* SettingsPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsPasswordViewController.m; sourceTree = "<group>"; };
 		9B84186E1B01239D008DBA7B /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		9B84186F1B01239D008DBA7B /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		9B89B9AA1DC6AE6500EFD2DD /* DynamoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamoVideo.h; sourceTree = "<group>"; };
+		9B89B9AB1DC6AE6500EFD2DD /* DynamoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamoVideo.m; sourceTree = "<group>"; };
+		9B9D7D161DC2F077004F7EC3 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognito.framework; path = ../Carthage/Build/iOS/AWSCognito.framework; sourceTree = "<group>"; };
+		9B9D7D171DC2F077004F7EC3 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = ../Carthage/Build/iOS/AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
+		9B9D7D181DC2F077004F7EC3 /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSDynamoDB.framework; path = ../Carthage/Build/iOS/AWSDynamoDB.framework; sourceTree = "<group>"; };
+		9B9D7D1F1DC2F0CA004F7EC3 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = Carthage/Build/iOS/AWSS3.framework; sourceTree = "<group>"; };
+		9B9D7D221DC2FA37004F7EC3 /* DynamoTestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamoTestRecord.h; sourceTree = "<group>"; };
+		9B9D7D231DC2FA37004F7EC3 /* DynamoTestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamoTestRecord.m; sourceTree = "<group>"; };
+		9B9D7D251DC2FC66004F7EC3 /* DynamoDataAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamoDataAdaptor.h; sourceTree = "<group>"; };
+		9B9D7D261DC2FC66004F7EC3 /* DynamoDataAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamoDataAdaptor.m; sourceTree = "<group>"; };
 		9BA882E61DC275BE008C00B3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = SOURCE_ROOT; };
 		9BAFD6D71B06A489001DC361 /* TestValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestValidation.h; sourceTree = "<group>"; };
 		9BAFD6D81B06A489001DC361 /* TestValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestValidation.m; sourceTree = "<group>"; };
@@ -186,6 +228,8 @@
 		9BFF5B881B4C75C000831E7E /* TestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecord.m; sourceTree = "<group>"; };
 		9BFF5B901B4DC1D800831E7E /* CapillaryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapillaryRecord.h; sourceTree = "<group>"; };
 		9BFF5B911B4DC1D800831E7E /* CapillaryRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapillaryRecord.m; sourceTree = "<group>"; };
+		BC294E012F67165C8EDB74FA /* Pods-CellScopeLoa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellScopeLoa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CellScopeLoa/Pods-CellScopeLoa.debug.xcconfig"; sourceTree = "<group>"; };
+		D44BB2C89EBD4529FBCF6C36 /* Pods-CellScopeLoa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellScopeLoa.release.xcconfig"; path = "Pods/Target Support Files/Pods-CellScopeLoa/Pods-CellScopeLoa.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,14 +237,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B9D7D1D1DC2F077004F7EC3 /* AWSDynamoDB.framework in Frameworks */,
 				9BA882E71DC275BE008C00B3 /* opencv2.framework in Frameworks */,
+				9B9D7D201DC2F0CA004F7EC3 /* AWSS3.framework in Frameworks */,
+				9B304CE61DC2C0500044D411 /* AWSCore.framework in Frameworks */,
 				9B84185C1B00390F008DBA7B /* AdSupport.framework in Frameworks */,
+				9B9D7D1B1DC2F077004F7EC3 /* AWSCognitoIdentityProvider.framework in Frameworks */,
 				9B3B93F71AFE80A500C391CC /* SystemConfiguration.framework in Frameworks */,
 				9B3B93F51AFE809E00C391CC /* StoreKit.framework in Frameworks */,
 				9B3B93F31AFE809900C391CC /* Security.framework in Frameworks */,
 				9B3B93F11AFE809300C391CC /* QuartzCore.framework in Frameworks */,
 				9B7DCEA11DAFFC2C006C3200 /* Parse.framework in Frameworks */,
 				9B3B93EF1AFE808F00C391CC /* MobileCoreServices.framework in Frameworks */,
+				9B9D7D191DC2F077004F7EC3 /* AWSCognito.framework in Frameworks */,
 				9B3B93ED1AFE808900C391CC /* CoreLocation.framework in Frameworks */,
 				9B3B93EB1AFE808400C391CC /* CoreGraphics.framework in Frameworks */,
 				9B3B93E91AFE807F00C391CC /* CFNetwork.framework in Frameworks */,
@@ -222,6 +271,7 @@
 		9B3B93AC1AFE7F7F00C391CC = {
 			isa = PBXGroup;
 			children = (
+				9B9D7D1F1DC2F0CA004F7EC3 /* AWSS3.framework */,
 				9BAFD6E01B09148F001DC361 /* BluetoothLoaDevice.h */,
 				9BAFD6E11B09148F001DC361 /* BluetoothLoaDevice.m */,
 				9B0C92441B05899B008F70E3 /* MotionAnalysis.h */,
@@ -234,6 +284,7 @@
 				9B3B93B71AFE7F7F00C391CC /* CellScopeLoa */,
 				9B3B93D41AFE7F7F00C391CC /* CellScopeLoaTests */,
 				9B3B93B61AFE7F7F00C391CC /* Products */,
+				F109F26C66914BF27345C094 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -301,6 +352,8 @@
 				9BAFD6EF1B093C0C001DC361 /* InvalidResultsViewController.m */,
 				9BAFD6F11B099B82001DC361 /* ParseDataAdaptor.h */,
 				9BAFD6F21B099B82001DC361 /* ParseDataAdaptor.m */,
+				9B9D7D251DC2FC66004F7EC3 /* DynamoDataAdaptor.h */,
+				9B9D7D261DC2FC66004F7EC3 /* DynamoDataAdaptor.m */,
 				9BAFD6F41B09A0F4001DC361 /* CloudSyncViewController.h */,
 				9BAFD6F51B09A0F4001DC361 /* CloudSyncViewController.m */,
 				9B4792441B0D93E400460CA3 /* DataTableViewController.h */,
@@ -311,6 +364,10 @@
 				9B2209F81B1B966E00093516 /* VideosViewController.m */,
 				9B2209FA1B1BB4F400093516 /* ImageScrollView.h */,
 				9B2209FB1B1BB4F400093516 /* ImageScrollView.m */,
+				9B9D7D221DC2FA37004F7EC3 /* DynamoTestRecord.h */,
+				9B9D7D231DC2FA37004F7EC3 /* DynamoTestRecord.m */,
+				9B89B9AA1DC6AE6500EFD2DD /* DynamoVideo.h */,
+				9B89B9AB1DC6AE6500EFD2DD /* DynamoVideo.m */,
 			);
 			path = CellScopeLoa;
 			sourceTree = "<group>";
@@ -348,6 +405,10 @@
 		9B3B93E11AFE803A00C391CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B9D7D161DC2F077004F7EC3 /* AWSCognito.framework */,
+				9B9D7D171DC2F077004F7EC3 /* AWSCognitoIdentityProvider.framework */,
+				9B9D7D181DC2F077004F7EC3 /* AWSDynamoDB.framework */,
+				9B304CE51DC2C0500044D411 /* AWSCore.framework */,
 				9BA882E61DC275BE008C00B3 /* opencv2.framework */,
 				9B0852AA1DC274B10097B081 /* opencv2.framework */,
 				9B7DCEA01DAFFC2C006C3200 /* Parse.framework */,
@@ -411,6 +472,15 @@
 			name = BLE;
 			sourceTree = "<group>";
 		};
+		F109F26C66914BF27345C094 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC294E012F67165C8EDB74FA /* Pods-CellScopeLoa.debug.xcconfig */,
+				D44BB2C89EBD4529FBCF6C36 /* Pods-CellScopeLoa.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -418,9 +488,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B3B93DB1AFE7F7F00C391CC /* Build configuration list for PBXNativeTarget "CellScopeLoa" */;
 			buildPhases = (
+				BA75D8D7397FD39B8EF44966 /* [CP] Check Pods Manifest.lock */,
 				9B3B93B11AFE7F7F00C391CC /* Sources */,
 				9B3B93B21AFE7F7F00C391CC /* Frameworks */,
 				9B3B93B31AFE7F7F00C391CC /* Resources */,
+				BBDC39CF37CE39AADFA66389 /* [CP] Embed Pods Frameworks */,
+				BF12CAE5611C8BDC77B57333 /* [CP] Copy Pods Resources */,
+				9B304CE41DC2BFA30044D411 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -455,7 +529,7 @@
 		9B3B93AD1AFE7F7F00C391CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Fletcher Lab";
 				TargetAttributes = {
 					9B3B93B41AFE7F7F00C391CC = {
@@ -509,6 +583,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BA75D8D7397FD39B8EF44966 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BBDC39CF37CE39AADFA66389 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CellScopeLoa/Pods-CellScopeLoa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF12CAE5611C8BDC77B57333 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CellScopeLoa/Pods-CellScopeLoa-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9B3B93B11AFE7F7F00C391CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -519,6 +641,7 @@
 				9B3B93BE1AFE7F7F00C391CC /* LoaAppDelegate.m in Sources */,
 				9B3B940D1AFEA11900C391CC /* TestViewController.m in Sources */,
 				9B1326921B03BB7100FB694B /* ExposureISOViewController.m in Sources */,
+				9B9D7D271DC2FC66004F7EC3 /* DynamoDataAdaptor.m in Sources */,
 				9B8418421AFFF12D008DBA7B /* constants.m in Sources */,
 				9B2209FC1B1BB4F400093516 /* ImageScrollView.m in Sources */,
 				9BAFD6F31B099B82001DC361 /* ParseDataAdaptor.m in Sources */,
@@ -536,6 +659,7 @@
 				9B8418701B01239D008DBA7B /* SettingsTableViewController.m in Sources */,
 				9BAFD6F01B093C0C001DC361 /* InvalidResultsViewController.m in Sources */,
 				9B0C49D71B42E2AC007AF237 /* DiskSpaceManager.m in Sources */,
+				9B9D7D241DC2FA37004F7EC3 /* DynamoTestRecord.m in Sources */,
 				9B84182E1AFEC839008DBA7B /* TextBluetoothScanner.m in Sources */,
 				9B3B94101AFEA25900C391CC /* CaptureViewController.m in Sources */,
 				9B8418481B0024C4008DBA7B /* Model.xcdatamodeld in Sources */,
@@ -554,6 +678,7 @@
 				9B2209F61B1B8E3900093516 /* MotionObject.m in Sources */,
 				9BFF5B891B4C75C000831E7E /* TestRecord.m in Sources */,
 				9B0C92461B05899B008F70E3 /* MotionAnalysis.mm in Sources */,
+				9B89B9AC1DC6AE6500EFD2DD /* DynamoVideo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +735,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -619,15 +745,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -651,6 +781,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -660,8 +791,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -669,6 +802,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -684,16 +818,19 @@
 		};
 		9B3B93DC1AFE7F7F00C391CC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC294E012F67165C8EDB74FA /* Pods-CellScopeLoa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 76ANGZ5BJZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CellScopeLoa",
 					/Users/mhbakalar/Dropbox/Projects,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CellScopeLoa/CellScopeLoa-Prefix.pch";
@@ -707,16 +844,19 @@
 		};
 		9B3B93DD1AFE7F7F00C391CC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D44BB2C89EBD4529FBCF6C36 /* Pods-CellScopeLoa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 76ANGZ5BJZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CellScopeLoa",
 					/Users/mhbakalar/Dropbox/Projects,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CellScopeLoa/CellScopeLoa-Prefix.pch";
@@ -742,6 +882,7 @@
 				);
 				INFOPLIST_FILE = CellScopeLoaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "FL.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CellScopeLoa.app/CellScopeLoa";
 			};
@@ -757,6 +898,7 @@
 				);
 				INFOPLIST_FILE = CellScopeLoaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "FL.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CellScopeLoa.app/CellScopeLoa";
 			};

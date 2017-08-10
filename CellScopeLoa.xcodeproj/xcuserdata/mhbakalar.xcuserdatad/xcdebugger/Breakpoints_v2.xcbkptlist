@@ -64,7 +64,7 @@
             startingLineNumber = "50"
             endingLineNumber = "50"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -80,7 +80,7 @@
             startingLineNumber = "62"
             endingLineNumber = "62"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -96,7 +96,7 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,7 +158,7 @@
             startingLineNumber = "353"
             endingLineNumber = "353"
             landmarkName = "-startCamera"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -174,7 +174,7 @@
             startingLineNumber = "354"
             endingLineNumber = "354"
             landmarkName = "-startCamera"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -510,7 +510,7 @@
             startingLineNumber = "194"
             endingLineNumber = "194"
             landmarkName = "-captureWithDuration:URL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -526,7 +526,7 @@
             startingLineNumber = "235"
             endingLineNumber = "235"
             landmarkName = "-captureWithDuration:URL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -542,7 +542,7 @@
             startingLineNumber = "247"
             endingLineNumber = "247"
             landmarkName = "-progressClockAction:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -558,7 +558,7 @@
             startingLineNumber = "245"
             endingLineNumber = "245"
             landmarkName = "-progressClockAction:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -574,7 +574,7 @@
             startingLineNumber = "248"
             endingLineNumber = "248"
             landmarkName = "-progressClockAction:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -590,7 +590,7 @@
             startingLineNumber = "424"
             endingLineNumber = "424"
             landmarkName = "-setWhiteBalanceGains:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -606,7 +606,7 @@
             startingLineNumber = "423"
             endingLineNumber = "423"
             landmarkName = "-setWhiteBalanceGains:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -622,7 +622,7 @@
             startingLineNumber = "432"
             endingLineNumber = "432"
             landmarkName = "-getCurrentWhiteBalanceGains"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -686,7 +686,7 @@
             startingLineNumber = "126"
             endingLineNumber = "126"
             landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -702,7 +702,7 @@
             startingLineNumber = "122"
             endingLineNumber = "122"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -718,7 +718,7 @@
             startingLineNumber = "139"
             endingLineNumber = "139"
             landmarkName = "-launchDataAcquisition"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -734,7 +734,7 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "-generateUniqueURLWithRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -750,7 +750,7 @@
             startingLineNumber = "146"
             endingLineNumber = "146"
             landmarkName = "-launchDataAcquisition"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -766,7 +766,7 @@
             startingLineNumber = "99"
             endingLineNumber = "99"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -782,7 +782,7 @@
             startingLineNumber = "160"
             endingLineNumber = "160"
             landmarkName = "-prepareNextDataAcquisition"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -798,7 +798,7 @@
             startingLineNumber = "78"
             endingLineNumber = "78"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -814,7 +814,7 @@
             startingLineNumber = "546"
             endingLineNumber = "546"
             landmarkName = "-fetchVideoWithResourceURL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -830,7 +830,7 @@
             startingLineNumber = "486"
             endingLineNumber = "486"
             landmarkName = "-currentDateAndTime"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -846,7 +846,7 @@
             startingLineNumber = "483"
             endingLineNumber = "483"
             landmarkName = "-currentDateAndTime"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -862,7 +862,7 @@
             startingLineNumber = "292"
             endingLineNumber = "292"
             landmarkName = "-createActiveTest"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -910,7 +910,7 @@
             startingLineNumber = "298"
             endingLineNumber = "298"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -926,7 +926,7 @@
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -974,7 +974,7 @@
             startingLineNumber = "351"
             endingLineNumber = "351"
             landmarkName = "-viewWillDisappear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1006,7 +1006,7 @@
             startingLineNumber = "227"
             endingLineNumber = "227"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1022,7 +1022,7 @@
             startingLineNumber = "228"
             endingLineNumber = "228"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1038,7 +1038,7 @@
             startingLineNumber = "230"
             endingLineNumber = "230"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1054,7 +1054,7 @@
             startingLineNumber = "232"
             endingLineNumber = "232"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1070,7 +1070,7 @@
             startingLineNumber = "233"
             endingLineNumber = "233"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1134,7 +1134,7 @@
             startingLineNumber = "462"
             endingLineNumber = "462"
             landmarkName = "-setMinimumExposure"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1166,7 +1166,7 @@
             startingLineNumber = "258"
             endingLineNumber = "258"
             landmarkName = "-captureOutput:didOutputSampleBuffer:fromConnection:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1214,7 +1214,7 @@
             startingLineNumber = "28"
             endingLineNumber = "28"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1224,29 +1224,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/CloudSyncViewController.m"
-            timestampString = "459003438.33698"
+            timestampString = "516326099.498942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-syncButtonPressed:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/CloudSyncViewController.m"
-            timestampString = "459003438.33698"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "-syncButtonPressed:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1262,7 +1246,7 @@
             startingLineNumber = "82"
             endingLineNumber = "82"
             landmarkName = "+syncCapillaryRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1278,7 +1262,7 @@
             startingLineNumber = "90"
             endingLineNumber = "90"
             landmarkName = "+syncCapillaryRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1294,71 +1278,7 @@
             startingLineNumber = "91"
             endingLineNumber = "91"
             landmarkName = "+syncCapillaryRecord:WithBlock:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/CloudSyncViewController.m"
-            timestampString = "459003438.33698"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "-syncButtonPressed:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CloudSyncViewController syncButtonPressed:]"
-                  moduleName = "CellScopeLoa"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/CloudSyncViewController.m"
-                  timestampString = "454543885.688283"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "2020">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CloudSyncViewController syncButtonPressed:]_block_invoke53"
-                  moduleName = "CellScopeLoa"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/CloudSyncViewController.m"
-                  timestampString = "454543885.688543"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/CloudSyncViewController.m"
-            timestampString = "459003438.33698"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "-syncButtonPressed:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1374,7 +1294,7 @@
             startingLineNumber = "173"
             endingLineNumber = "173"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1390,7 +1310,7 @@
             startingLineNumber = "318"
             endingLineNumber = "318"
             landmarkName = "-recordingComplete"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1406,7 +1326,7 @@
             startingLineNumber = "321"
             endingLineNumber = "321"
             landmarkName = "-recordingComplete"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1422,7 +1342,7 @@
             startingLineNumber = "341"
             endingLineNumber = "341"
             landmarkName = "-didCaptureVideoWithURL:frameBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1438,7 +1358,7 @@
             startingLineNumber = "173"
             endingLineNumber = "173"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1454,7 +1374,7 @@
             startingLineNumber = "155"
             endingLineNumber = "155"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1470,7 +1390,7 @@
             startingLineNumber = "340"
             endingLineNumber = "340"
             landmarkName = "-didCaptureVideoWithURL:frameBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1486,7 +1406,7 @@
             startingLineNumber = "125"
             endingLineNumber = "125"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1502,7 +1422,7 @@
             startingLineNumber = "126"
             endingLineNumber = "126"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1566,7 +1486,7 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1582,7 +1502,7 @@
             startingLineNumber = "77"
             endingLineNumber = "77"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1598,7 +1518,7 @@
             startingLineNumber = "234"
             endingLineNumber = "234"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1614,7 +1534,7 @@
             startingLineNumber = "260"
             endingLineNumber = "260"
             landmarkName = "-prepareForSegue:sender:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1662,7 +1582,7 @@
             startingLineNumber = "264"
             endingLineNumber = "264"
             landmarkName = "-prepareForSegue:sender:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1678,7 +1598,7 @@
             startingLineNumber = "213"
             endingLineNumber = "213"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1694,7 +1614,7 @@
             startingLineNumber = "218"
             endingLineNumber = "218"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1710,7 +1630,7 @@
             startingLineNumber = "138"
             endingLineNumber = "138"
             landmarkName = "-videoButtonOnePressed:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1726,7 +1646,7 @@
             startingLineNumber = "139"
             endingLineNumber = "139"
             landmarkName = "-videoButtonOnePressed:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1742,7 +1662,7 @@
             startingLineNumber = "113"
             endingLineNumber = "113"
             landmarkName = "-startProcessing"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1758,7 +1678,7 @@
             startingLineNumber = "115"
             endingLineNumber = "115"
             landmarkName = "-startProcessing"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1774,7 +1694,7 @@
             startingLineNumber = "271"
             endingLineNumber = "271"
             landmarkName = "-imageFromSampleBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1790,7 +1710,7 @@
             startingLineNumber = "796"
             endingLineNumber = "796"
             landmarkName = "-computeFlowForBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1806,7 +1726,7 @@
             startingLineNumber = "797"
             endingLineNumber = "797"
             landmarkName = "-computeFlowForBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1822,7 +1742,7 @@
             startingLineNumber = "794"
             endingLineNumber = "794"
             landmarkName = "-computeFlowForBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1854,7 +1774,7 @@
             startingLineNumber = "183"
             endingLineNumber = "183"
             landmarkName = "-startSendingFrames"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1870,7 +1790,7 @@
             startingLineNumber = "237"
             endingLineNumber = "237"
             landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1886,7 +1806,7 @@
             startingLineNumber = "138"
             endingLineNumber = "138"
             landmarkName = "-launchDataAcquisition"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1902,7 +1822,7 @@
             startingLineNumber = "193"
             endingLineNumber = "193"
             landmarkName = "-captureWithDuration:URL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1918,7 +1838,7 @@
             startingLineNumber = "241"
             endingLineNumber = "241"
             landmarkName = "-captureWithDuration:URL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1934,7 +1854,7 @@
             startingLineNumber = "331"
             endingLineNumber = "331"
             landmarkName = "-imageFromSampleBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1950,7 +1870,7 @@
             startingLineNumber = "246"
             endingLineNumber = "246"
             landmarkName = "-progressClockAction:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1966,7 +1886,7 @@
             startingLineNumber = "259"
             endingLineNumber = "259"
             landmarkName = "-captureOutput:didOutputSampleBuffer:fromConnection:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1982,7 +1902,7 @@
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "+cleanOutliersFromArray:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1998,7 +1918,7 @@
             startingLineNumber = "39"
             endingLineNumber = "39"
             landmarkName = "+statisticsFromArray:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2014,7 +1934,7 @@
             startingLineNumber = "731"
             endingLineNumber = "731"
             landmarkName = "-computeFlowForBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2030,7 +1950,7 @@
             startingLineNumber = "285"
             endingLineNumber = "285"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2046,7 +1966,7 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2062,7 +1982,7 @@
             startingLineNumber = "28"
             endingLineNumber = "28"
             landmarkName = "+statisticsFromArray:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2072,13 +1992,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/LoaAppDelegate.m"
-            timestampString = "498075170.673634"
+            timestampString = "499320157.16878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "+FreeDiskSpace"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2104,13 +2024,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458082674.577673"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "+findVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2126,7 +2046,7 @@
             startingLineNumber = "91"
             endingLineNumber = "91"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2142,7 +2062,7 @@
             startingLineNumber = "194"
             endingLineNumber = "194"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2158,7 +2078,7 @@
             startingLineNumber = "191"
             endingLineNumber = "191"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2174,7 +2094,7 @@
             startingLineNumber = "167"
             endingLineNumber = "167"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2190,7 +2110,7 @@
             startingLineNumber = "161"
             endingLineNumber = "161"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2206,7 +2126,7 @@
             startingLineNumber = "193"
             endingLineNumber = "193"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2254,7 +2174,7 @@
             startingLineNumber = "164"
             endingLineNumber = "164"
             landmarkName = "-init"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2270,7 +2190,7 @@
             startingLineNumber = "263"
             endingLineNumber = "263"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2286,7 +2206,7 @@
             startingLineNumber = "242"
             endingLineNumber = "242"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2302,7 +2222,7 @@
             startingLineNumber = "196"
             endingLineNumber = "196"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2318,7 +2238,7 @@
             startingLineNumber = "129"
             endingLineNumber = "129"
             landmarkName = "-processFrameBuffer:withResourceURL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2334,7 +2254,7 @@
             startingLineNumber = "114"
             endingLineNumber = "114"
             landmarkName = "-processFrameBuffer:withResourceURL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2350,7 +2270,7 @@
             startingLineNumber = "128"
             endingLineNumber = "128"
             landmarkName = "-processFrameBuffer:withResourceURL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2382,7 +2302,7 @@
             startingLineNumber = "498"
             endingLineNumber = "498"
             landmarkName = "-setColorTemperatureKelvin:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2462,7 +2382,7 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2478,7 +2398,7 @@
             startingLineNumber = "119"
             endingLineNumber = "119"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2494,7 +2414,7 @@
             startingLineNumber = "124"
             endingLineNumber = "124"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2510,7 +2430,7 @@
             startingLineNumber = "121"
             endingLineNumber = "121"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2558,7 +2478,7 @@
             startingLineNumber = "134"
             endingLineNumber = "134"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2574,7 +2494,7 @@
             startingLineNumber = "157"
             endingLineNumber = "157"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2590,7 +2510,7 @@
             startingLineNumber = "160"
             endingLineNumber = "160"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2606,7 +2526,7 @@
             startingLineNumber = "159"
             endingLineNumber = "159"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2654,7 +2574,7 @@
             startingLineNumber = "169"
             endingLineNumber = "169"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2670,7 +2590,7 @@
             startingLineNumber = "156"
             endingLineNumber = "156"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2686,7 +2606,7 @@
             startingLineNumber = "158"
             endingLineNumber = "158"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2702,7 +2622,7 @@
             startingLineNumber = "150"
             endingLineNumber = "150"
             landmarkName = "+syncVideosForCapillaryRecord:withBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2759,22 +2679,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/SettingsTableViewController.m"
-            timestampString = "458082838.138812"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-twoCapillariesSwitchValueChanged:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/FrameBuffer.mm"
             timestampString = "458742996.9946"
             startingColumnNumber = "9223372036854775807"
@@ -2782,7 +2686,7 @@
             startingLineNumber = "154"
             endingLineNumber = "154"
             landmarkName = "-writeFrame:atIndex:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2830,7 +2734,7 @@
             startingLineNumber = "235"
             endingLineNumber = "235"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2846,7 +2750,7 @@
             startingLineNumber = "229"
             endingLineNumber = "229"
             landmarkName = "+ValidateTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2862,7 +2766,7 @@
             startingLineNumber = "457"
             endingLineNumber = "457"
             landmarkName = "-continueToResults"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2878,7 +2782,7 @@
             startingLineNumber = "462"
             endingLineNumber = "462"
             landmarkName = "-continueToResults"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2894,7 +2798,7 @@
             startingLineNumber = "461"
             endingLineNumber = "461"
             landmarkName = "-continueToResults"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2910,7 +2814,7 @@
             startingLineNumber = "166"
             endingLineNumber = "166"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2926,7 +2830,7 @@
             startingLineNumber = "76"
             endingLineNumber = "76"
             landmarkName = "-populateVideoInformation"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2942,7 +2846,7 @@
             startingLineNumber = "108"
             endingLineNumber = "108"
             landmarkName = "-startProcessing"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2958,7 +2862,7 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2974,7 +2878,7 @@
             startingLineNumber = "247"
             endingLineNumber = "247"
             landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2990,7 +2894,7 @@
             startingLineNumber = "58"
             endingLineNumber = "58"
             landmarkName = "+ComputeFocusMetric:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3006,7 +2910,7 @@
             startingLineNumber = "277"
             endingLineNumber = "277"
             landmarkName = "-captureOutput:didOutputSampleBuffer:fromConnection:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3022,7 +2926,7 @@
             startingLineNumber = "286"
             endingLineNumber = "286"
             landmarkName = "-captureOutput:didOutputSampleBuffer:fromConnection:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3038,7 +2942,7 @@
             startingLineNumber = "62"
             endingLineNumber = "62"
             landmarkName = "+ComputeFocusMetric:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3054,7 +2958,7 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "+ComputeFocusMetric:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3070,7 +2974,7 @@
             startingLineNumber = "211"
             endingLineNumber = "211"
             landmarkName = "-captureWithDuration:URL:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3086,7 +2990,7 @@
             startingLineNumber = "371"
             endingLineNumber = "371"
             landmarkName = "-didCaptureUncompressedVideoWithURL:frameBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3102,7 +3006,7 @@
             startingLineNumber = "351"
             endingLineNumber = "351"
             landmarkName = "-didCaptureVideoWithURL:frameBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3118,7 +3022,7 @@
             startingLineNumber = "372"
             endingLineNumber = "372"
             landmarkName = "-didCaptureUncompressedVideoWithURL:frameBuffer:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3128,13 +3032,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3144,13 +3048,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3160,13 +3064,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3176,13 +3080,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3192,13 +3096,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3208,13 +3112,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3224,13 +3128,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3240,13 +3144,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3256,13 +3160,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3272,13 +3176,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083295.565598"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3288,13 +3192,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083179.209865"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3304,13 +3208,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083245.913129"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3320,13 +3224,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CellScopeLoa/DiskSpaceManager.m"
-            timestampString = "458083255.747087"
+            timestampString = "508400107.170968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "+findUncompressedVideosToDelete:daysOld:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3342,7 +3246,7 @@
             startingLineNumber = "238"
             endingLineNumber = "238"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3358,7 +3262,7 @@
             startingLineNumber = "279"
             endingLineNumber = "279"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3374,7 +3278,7 @@
             startingLineNumber = "277"
             endingLineNumber = "277"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3390,7 +3294,7 @@
             startingLineNumber = "308"
             endingLineNumber = "308"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3406,7 +3310,7 @@
             startingLineNumber = "510"
             endingLineNumber = "510"
             landmarkName = "-locationManager:didUpdateLocations:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3422,7 +3326,7 @@
             startingLineNumber = "509"
             endingLineNumber = "509"
             landmarkName = "-locationManager:didUpdateLocations:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3438,7 +3342,7 @@
             startingLineNumber = "268"
             endingLineNumber = "268"
             landmarkName = "+ResultsFromTestRecord:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3454,7 +3358,7 @@
             startingLineNumber = "218"
             endingLineNumber = "218"
             landmarkName = "-processFramesForMovie:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3470,7 +3374,7 @@
             startingLineNumber = "228"
             endingLineNumber = "228"
             landmarkName = "-processFramesForMovie:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3486,7 +3390,7 @@
             startingLineNumber = "207"
             endingLineNumber = "207"
             landmarkName = "-receiveNotification:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3502,7 +3406,7 @@
             startingLineNumber = "195"
             endingLineNumber = "195"
             landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3518,7 +3422,7 @@
             startingLineNumber = "224"
             endingLineNumber = "224"
             landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3534,7 +3438,7 @@
             startingLineNumber = "235"
             endingLineNumber = "235"
             landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3550,7 +3454,7 @@
             startingLineNumber = "208"
             endingLineNumber = "208"
             landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3566,7 +3470,7 @@
             startingLineNumber = "246"
             endingLineNumber = "246"
             landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3582,7 +3486,7 @@
             startingLineNumber = "248"
             endingLineNumber = "248"
             landmarkName = "-didReceiveFrame:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3598,7 +3502,7 @@
             startingLineNumber = "212"
             endingLineNumber = "212"
             landmarkName = "-processFramesForMovie:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3614,7 +3518,7 @@
             startingLineNumber = "77"
             endingLineNumber = "77"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -3677,7 +3581,7 @@
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -3725,7 +3629,7 @@
             startingLineNumber = "44"
             endingLineNumber = "44"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3741,7 +3645,7 @@
             startingLineNumber = "37"
             endingLineNumber = "37"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3757,23 +3661,7 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CellScopeLoa/LoaAppDelegate.m"
-            timestampString = "498075170.673634"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3789,7 +3677,7 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -3837,7 +3725,7 @@
             startingLineNumber = "73"
             endingLineNumber = "73"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3853,7 +3741,7 @@
             startingLineNumber = "39"
             endingLineNumber = "39"
             landmarkName = "+syncTestRecord:WithBlock:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -3886,6 +3774,613 @@
                   offsetFromSymbolStart = "48">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "499575233.653441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "+syncTestRecord:WithBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "499561651.969782"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "+createPostWithRecord:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516326099.498942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-performDataCensus"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516326099.498942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-syncButtonPressed:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CloudSyncViewController syncButtonPressed:]"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/CloudSyncViewController.m"
+                  timestampString = "516768253.092775"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "3116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[CloudSyncViewController syncButtonPressed:]_block_invoke.86"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/CloudSyncViewController.m"
+                  timestampString = "516768253.096334"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "499574171.96045"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "+createPostWithRecord:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/SettingsTableViewController.m"
+            timestampString = "508400870.87841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-deleteVideosPressed:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/SettingsTableViewController.m"
+            timestampString = "508400870.87841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-deleteVideosPressed:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516326099.498942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "-syncButtonPressed:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[CloudSyncViewController syncButtonPressed:]_block_invoke.86"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/CloudSyncViewController.m"
+                  timestampString = "516768274.147628"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "209"
+                  endingLineNumber = "209"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[CloudSyncViewController syncButtonPressed:]_block_invoke_2.87"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/CloudSyncViewController.m"
+                  timestampString = "516768274.151077"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "508401692.732463"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516326099.498942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-performDataCensus"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516326099.498942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-performDataCensus"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516326139.453109"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-performDataCensus"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516768116.716176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-syncButtonPressed:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516768139.369968"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "-syncButtonPressed:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CloudSyncViewController syncButtonPressed:]"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/CloudSyncViewController.m"
+                  timestampString = "516768139.383837"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "1416">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[CloudSyncViewController syncButtonPressed:]_block_invoke.62"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/CloudSyncViewController.m"
+                  timestampString = "516768139.386829"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/CloudSyncViewController.m"
+            timestampString = "516768227.751651"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "-syncButtonPressed:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516768355.125739"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516768363.269537"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[DynamoDataAdaptor syncVideosForCapillaryRecords:withBlock:]"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/DynamoDataAdaptor.m"
+                  timestampString = "516768363.281855"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__61+[DynamoDataAdaptor syncVideosForCapillaryRecords:withBlock:]_block_invoke"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/DynamoDataAdaptor.m"
+                  timestampString = "516768363.285062"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516768388.919181"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516768404.828953"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516768412.634758"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516770112.943227"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__61+[DynamoDataAdaptor syncVideosForCapillaryRecords:withBlock:]_block_invoke"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/DynamoDataAdaptor.m"
+                  timestampString = "516768427.170198"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "1284">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__61+[DynamoDataAdaptor syncVideosForCapillaryRecords:withBlock:]_block_invoke_2"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/DynamoDataAdaptor.m"
+                  timestampString = "516768427.173203"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516772123.283246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-convertVideoToLowQuality:handler:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__61+[DynamoDataAdaptor syncVideosForCapillaryRecords:withBlock:]_block_invoke"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/DynamoDataAdaptor.m"
+                  timestampString = "516768470.799276"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "1952">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.221"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/DynamoDataAdaptor.m"
+                  timestampString = "516768470.801818"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.222"
+                  moduleName = "CellScopeLoa"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mhbakalar/LocalDropbox/Projects/CellScopeLoa/CellScopeLoa/DynamoDataAdaptor.m"
+                  timestampString = "516768470.804244"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516770787.143893"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516772123.283246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellScopeLoa/DynamoDataAdaptor.m"
+            timestampString = "516772123.283246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "+syncVideosForCapillaryRecords:withBlock:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
